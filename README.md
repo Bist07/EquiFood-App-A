@@ -5,6 +5,10 @@ Jake Daongam - QA Leader <br>
 
 # EquiFood-App-A - Develop Branch
 
-#### All important team documents saved in this branch. Currently includes Team Agreement and a early draft of requirements and client questions. 
+#### All important team documents saved in this branch. 
+<br>
+
+#### Currently includes Team Agreement and a early draft of requirements and client questions. 
+<br>
 
 #### Will include User scenarios and Prototype.
