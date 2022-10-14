@@ -4,11 +4,11 @@ Griffin Wilchuk - Client Liaison <br>
 Jake Daongam - QA Leader <br>
 
 # EquiFood-App-A - Develop Branch
-
 #### All important team documents saved in this branch. 
 <br>
 
 #### Currently includes Team Agreement and a early draft of requirements, client questions, user scenarios, and prototype. 
+
 <br>
 
 # Equifood App Purpose:
@@ -16,6 +16,7 @@ The purpose of Equifood is to aid in reducing food wastage of restaurants. This 
 
 Equifood administrators manually keep track of the money amount Equifood has saved individuals from restaurants. These are considered as donations.
 
+<br>
 # About our Software:
 
 Our software will allow restaurant owners to post their discounted/free offers for individuals to see and will automatically keep track of donation amounts.
