@@ -11,6 +11,12 @@ Jake Daongam - QA Leader <br>
 #### Currently includes Team Agreement and a early draft of requirements, client questions, user scenarios, and prototype. 
 <br>
 
+# Equifood App Purpose:
+The purpose of Equifood is to aid in reducing food wastage of restaurants. This app presents restaurant owners the idea of giving away excess food they have at the end of each day at discounted prices, or for free. 
+
+Equifood administrators manually keep track of the money amount Equifood has saved individuals from restaurants. These are considered as donations.
+
+
 # Tech Stack
 The current stack used for the project is a MERN (MongoDB, Express, React Native, NodeJS) stack. This is due to the low cost and abundance of documentation for this popular stack.
 <br>
