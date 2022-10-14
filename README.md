@@ -16,3 +16,23 @@ The current stack used for the project is a MERN (MongoDB, Express, React Native
 
 
 
+
+
+
+
+
+<br>
+# User Groups
+<br>
+###The administrators, the individuals in ownership of Equifood. 
+Their purpose in using the app will be monitoring that restaurant owners are using Equifood as per their guidelines. They will have the option to                       approve, deny, or remove restaurants from this app. 
+Admin will have access to viewing donation amounts. 
+<br>
+
+###The Restaurant Representatives.
+The app will allow them to post information about their restaurant and food options available. 
+They will update total donations collected from their restaurant.
+<br>
+###Individuals.
+Will be able to use the app to view available restaurants and food options.
+<br>
