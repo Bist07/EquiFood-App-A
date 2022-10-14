@@ -13,6 +13,13 @@ Jake Daongam - QA Leader <br>
 
 # Tech Stack
 The current stack used for the project is a MERN (MongoDB, Express, React Native, NodeJS) stack. This is due to the low cost and abundance of documentation for this popular stack.
+<br>
+
+#Project Milestones
+Milestone 1: Basic Front End (Allow users to see restaurant and food options)
+Milestone 2: Create Databases, implement backend, improve navigation (Clicking things bring you to the proper pages and show proper values)
+Milestone 3: Deploy and populate databases
+Milestone 4: Extensively test, document, and prepare for handoff
 
 
 
