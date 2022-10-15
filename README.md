@@ -29,9 +29,9 @@ The current stack used for the project is a MERN (MongoDB, Express, React Native
 <br>
 
 # Project Milestones:
-Milestone 1: Basic Front End (Allow users to see restaurant and food options)
-Milestone 2: Create Databases, implement backend, improve navigation (Clicking things bring you to the proper pages and show proper values)
-Milestone 3: Deploy and populate databases
+Milestone 1: Basic Front End (Allow users to see restaurant and food options) <br>
+Milestone 2: Create Databases, implement backend, improve navigation (Clicking things bring you to the proper pages and show proper values) <br>
+Milestone 3: Deploy and populate databases <br>
 Milestone 4: Extensively test, document, and prepare for handoff
 
 
