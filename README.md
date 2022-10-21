@@ -25,7 +25,8 @@ Our software will allow restaurant owners to post their discounted/free offers f
 
 
 # Tech Stack:
-The current stack used for the project is a MERN (MongoDB, Express, React Native, NodeJS) stack. This is due to the low cost and abundance of documentation for this popular stack.
+Our client preferred we use one of the two MERN stack variations (MariaDB or MongoDB)
+The current stack chosen for the project is a MERN (MariaDB, Express, React Native, NodeJS) stack. This is due to the low cost and abundance of documentation for this popular stack. Our team decided to use the MariaDB variation. We prefer MariaDB as its relational model is crucial for our queries and additions of new available products. 
 <br>
 
 # Project Milestones:
