@@ -36,8 +36,11 @@ Information for setting up the MERN stack can be found in the following links <b
 <br>
 [Ionic + React Setup](https://ionicframework.com/docs/intro/cdn#ionic--react)
 <br>
+[MariaDB Setup](https://mariadb.com/get-started-with-mariadb/)
+<br>
 [VSCode Extension](https://ionicframework.com/docs/intro/vscode-extension)
 <br>
+
 
 # Project Milestones:
 Milestone 1: Basic Front End and back end (Allow users to see restaurant and food options) <br>
