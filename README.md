@@ -7,7 +7,13 @@ Jake Daongam - QA Leader <br>
 #### All important team documents saved in this development branch. 
 <br>
 
-#### Currently includes Team Agreement and a early draft of requirements, client questions, user scenarios, prototype, and Gantt Chart. 
+#### Currently includes:
+- Team Agreement 
+- Early draft of requirements
+- Client questions 
+- User scenarios
+- Prototype(s)
+- Gantt Chart. 
 
 
 <br>
