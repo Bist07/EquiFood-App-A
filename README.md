@@ -4,7 +4,7 @@ Griffin Wilchuk - Client Liaison <br>
 Jake Daongam - QA Leader <br>
 
 # EquiFood-App-A - Develop Branch
-#### All important team documents saved in this development branch. 
+#### All important team documents and initial code saved in this development branch. 
 <br>
 
 #### Currently includes:
@@ -14,7 +14,12 @@ Jake Daongam - QA Leader <br>
 - User scenarios
 - Prototype(s)
 - Gantt Chart. 
+- Front End Aspects:
+    - Initial Ionic Build
 
+- Back End Aspects:
+    - Rough draft of DDL for Food Table
+    - Rough draft of DDL for Restaurant Table
 
 <br>
 
@@ -35,7 +40,8 @@ Our client preferred we use one of the two MERN stack variations (MariaDB or Mon
 The current stack chosen for the project is a MERN (MariaDB, Express, React Native, NodeJS) stack. This is due to the low cost and abundance of documentation for this popular stack. Our team decided to use the MariaDB variation. We prefer MariaDB as its relational model is crucial for our queries and additions of new available products. 
 <br>
 
-Information for setting up the MERN stack can be found in the following links <br>
+Information for setting up the MERN stack can be found in the following links:
+ <br>
 [Nodejs](https://nodejs.org/en/download/)
 <br>
 [Ionic Setup](https://ionicframework.com/docs/intro/cli)
