@@ -1,4 +1,4 @@
-CREATE TABLE `Food` (
+CREATE TABLE IF NOT EXISTS `Food` (
   `storeID` mediumint NOT NULL AUTO_INCREMENT,
   `itemName` varchar(100) NOT NULL, 
   `itemID` mediumint NOT NULL AUTO_INCREMENT,
