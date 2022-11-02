@@ -20,22 +20,27 @@ const Tab1: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-
-          <IonItem>
-            <IonToolbar>
-              <IonThumbnail slot="start">
-                <img src="assets/icon/ProjectEquiFood.png" alt="Project Equifood Logo" />
-              </IonThumbnail>
-
-              <IonTitle>Restaurant Catalogue</IonTitle>
-            </IonToolbar>
-          </IonItem>
-
-          <IonToolbar>
-            <IonSearchbar></IonSearchbar>
-          </IonToolbar>
-          
         
+          <IonToolbar>
+            <IonThumbnail slot="start">
+              <img
+                src="assets/icon/ProjectEquiFood.jpeg"
+                alt="Project Equifood Logo"
+              />
+            </IonThumbnail>
+
+            <IonTitle>Restaurant Catalogue</IonTitle>
+          </IonToolbar>
+        
+
+        <IonToolbar>
+          <IonSearchbar
+            className="searchbar"
+            animated={true}
+            placeholder="Search for food or restaurants"
+            type="text"
+          ></IonSearchbar>
+        </IonToolbar>
       </IonHeader>
 
       <IonContent>
