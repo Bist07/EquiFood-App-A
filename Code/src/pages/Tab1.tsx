@@ -11,7 +11,6 @@ import {
   IonCardTitle,
   IonThumbnail,
   IonSearchbar,
-  IonLabel,
   IonItem,
 } from "@ionic/react";
 import React from "react";
@@ -27,7 +26,7 @@ const Tab1: React.FC = () => {
               <IonThumbnail slot="start">
                 <img src="assets/icon/ProjectEquiFood.png" alt="Project Equifood Logo" />
               </IonThumbnail>
-              
+
               <IonTitle>Restaurant Catalogue</IonTitle>
             </IonToolbar>
           </IonItem>
