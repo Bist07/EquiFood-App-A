@@ -24,12 +24,11 @@ const Tab1: React.FC = () => {
 
           <IonItem>
             <IonToolbar>
-              <IonThumbnail>
+              <IonThumbnail slot="start">
                 <img src="assets/icon/ProjectEquiFood.png" alt="Project Equifood Logo" />
-                <IonLabel>Item Thumbnail</IonLabel>
               </IonThumbnail>
               
-              {/* <IonTitle>Restaurant Catalogue</IonTitle> */}
+              <IonTitle>Restaurant Catalogue</IonTitle>
             </IonToolbar>
           </IonItem>
 
