@@ -16,7 +16,7 @@ const FoodCatalogue: React.FC<FoodProps> = ({name, description, imgPath}) => {
   return (
     <IonCard color="light">
       <img
-        alt="A&W Logo"
+        alt = {name}
         className="foodCard"
         src={imgPath}
       />
