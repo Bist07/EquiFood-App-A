@@ -4,5 +4,6 @@ CREATE TABLE IF NOT EXISTS Admin(
 	adminPass varchar(100) NOT NULL,
     adminPhone varchar(20),
     adminEmail varchar(100) NOT NULL,
+	totalDonations mediumint,
     PRIMARY KEY (adminID)
 )
