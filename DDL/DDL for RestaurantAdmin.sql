@@ -6,5 +6,6 @@ CREATE TABLE IF NOT EXISTS restaurantAdmin(
     restuarantAdminPass varchar(100) NOT NULL,
     restaurantAdminPhone varchar(20) NOT NULL,
     restaurantAdminEmail varchar(100) NOT NULL,
+	totalDonationPerRestaurant mediumint,
     PRIMARY KEY (adminID)
 );
