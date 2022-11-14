@@ -15,6 +15,7 @@ import { ellipse, square, fastFoodOutline } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
+import Ab from './pages/Ab';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -45,6 +46,9 @@ const App: React.FC = () => (
           <Route exact path="/tab1">
             <Tab1 />
           </Route>
+          <Route exact path="/Ab">
+            <Ab/>
+          </Route>
           <Route exact path="/tab2">
             <Tab2 />
           </Route>
@@ -59,6 +63,10 @@ const App: React.FC = () => (
           <IonTabButton tab="tab1" href="/tab1">
             <IonIcon icon={fastFoodOutline} />
             <IonLabel>Restaurants</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="Ab" href="/Ab">
+            <IonIcon icon={fastFoodOutline} />
+            <IonLabel>Ab</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab2" href="/tab2">
             <IonIcon icon={ellipse} />
