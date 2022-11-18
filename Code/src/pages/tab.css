@@ -45,6 +45,10 @@
 
 }
 
+.scroll-content{
+    margin-bottom: 150px;
+}
+
 ion-item {
     --border-radius: 10px;
 
