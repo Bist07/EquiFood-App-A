@@ -18,6 +18,7 @@ import {
   IonInfiniteScroll,
   ScrollDetail,
   IonInfiniteScrollContent,
+  IonText,
 } from "@ionic/react";
 import ExploreContainer from "../components/ExploreContainer";
 import "./tab.css";
@@ -53,6 +54,16 @@ const Tab1: React.FC = () => {
                 alt="Silhouette of mountains"
                 src="https://order.subway.com/en-ca/-/media/northamerica/Canada/HomePageLogOut/Catering_Hockey-Night_3369-S.jpg?la=en-CA&h=640&w=640&mw=1280&hash=8360841CC2C4395EC39094BEF225FDC0"
               />
+              <IonText className="cardText">
+                <p>3333 University Way</p>
+                <div className="storeHours">
+                  <li>Store Hours:</li>
+                  <li>Monday - Friday: 6AM-10PM</li>
+                  <li>Weekends: 10AM-8PM</li>
+                </div>
+
+                
+              </IonText>
               <IonCardHeader>
                 <IonButton
                   className="button"
@@ -75,6 +86,14 @@ const Tab1: React.FC = () => {
                 alt="Freshii"
                 src="https://www.qsrmagazine.com/sites/default/files/styles/story_page/public/2021-10/1200x800.jpg?itok=MdGv3Hwg"
               />
+              <IonText className="cardText">
+                <p>5538 Airport Way</p>
+                <div className="storeHours">
+                  <li>Store Hours:</li>
+                  <li>Monday - Friday: 8AM-8PM</li>
+                  <li>Weekends: Closed</li>
+                </div>
+              </IonText>
               <IonCardHeader>
                 <IonButton
                   className="button"
@@ -97,6 +116,14 @@ const Tab1: React.FC = () => {
                 alt="Jugo Juice"
                 src="https://kaleandkrunches.com/wp-content/uploads/2017/11/IMG_0391.jpg"
               />
+              <IonText className="cardText">
+                <p>4075 Gordon Drive</p>
+                <div className="storeHours">
+                  <li>Store hours:</li>
+                  <li>Monday - Friday: 8AM-10PM</li>
+                  <li>Weekends: 8AM-6PM</li>
+                </div>
+              </IonText>
               <IonCardHeader>
                 <IonButton
                   className="button"
