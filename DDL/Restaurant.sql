@@ -6,5 +6,6 @@ CREATE TABLE Restaurant (
   cuisineStyle text(65000),
   address text(65000) NOT NULL,
   openHours varchar (100), 
+  restaurantImg varchar(100) NOT NULL,
   PRIMARY KEY (`storeID`)
 );
