@@ -14,6 +14,7 @@ Jake Daongam - QA Leader <br>
 - User scenarios
 - Prototype(s)
 - Gantt Chart. 
+- List of Usability Tasks
 - Front End Aspects:
     - Initial Ionic Build
 
