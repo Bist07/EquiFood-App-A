@@ -1,12 +1,13 @@
 import React, { createRef } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonIcon, IonToolbar, IonSearchbar, IonList, IonItem, IonLabel, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, IonInfiniteScroll, ScrollDetail,IonInfiniteScrollContent, IonThumbnail} from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonIcon,  IonTitle, IonToolbar, IonSearchbar, IonList, IonItem, IonLabel, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, IonInfiniteScroll, ScrollDetail,IonInfiniteScrollContent, IonThumbnail} from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import { arrowBack } from 'ionicons/icons';
+
 import './tab.css';
 
 // This page shows what a generic browse restaurant page would look like.
 
-const Tab2: React.FC = () => {
+const Tab4: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -19,20 +20,20 @@ const Tab2: React.FC = () => {
 
       <IonContent fullscreen>
       <IonCard className='item'>
-        <IonButton href='/tab1'> 
+      <IonButton href='/tab1'> 
         <IonIcon icon={arrowBack} />
         </IonButton>
-          <img className='image' alt="Subway" src="https://order.subway.com/en-ca/-/media/northamerica/Canada/HomePageLogOut/Catering_Hockey-Night_3369-S.jpg?la=en-CA&h=640&w=640&mw=1280&hash=8360841CC2C4395EC39094BEF225FDC0" />
+          <img className='image' alt="Jugo Juice" src="https://kaleandkrunches.com/wp-content/uploads/2017/11/IMG_0391.jpg" />
          <IonCardHeader className='title'>
-            SUBWAY
+            JUGO JUICE
           </IonCardHeader>
 
     <IonList className='productsAvailable' class='scroll-content' lines="none">
-      <IonItem button detail lines="full" href='/tab6'>
-        <IonThumbnail slot="start" >
-          <img alt="Soup" src="https://assets3.thrillist.com/v1/image/3110984/1584x1054/crop;webp=auto;jpeg_quality=60.jpg" />
+      <IonItem button detail lines="full">
+        <IonThumbnail slot="start">
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
         </IonThumbnail>
-        <IonLabel>Brocolli Cheddar Soup | $0.85/serving  | Available: 6 servings</IonLabel>
+        <IonLabel>Custom Item</IonLabel>
       </IonItem>
 
       <IonItem button detail lines="full">
@@ -70,4 +71,4 @@ const Tab2: React.FC = () => {
   );
 };
 
-export default Tab2;
+export default Tab4;

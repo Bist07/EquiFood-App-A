@@ -1,0 +1,148 @@
+.logo {
+    height: 80px;
+    width: 80px;
+}
+.card {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;   
+    /* margin-bottom: 20%; */
+    bottom:auto;
+}
+.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;   
+    height: 250px;
+    width: 500px;
+}
+
+.button {
+    color: rgb(7, 161, 7);
+    font-weight: bold;
+    font-size: larger;
+
+}
+
+/*  Tab 2 continued: */
+.card {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;   
+    /* margin-bottom: 20%; */
+    bottom:auto;
+}
+.title {
+    color: rgb(7, 161, 7);
+    font-weight: bold;
+    font-size: larger;
+    text-align: center;
+    text-decoration: underline;
+
+}
+
+.productsAvailable {
+
+}
+
+.scroll-content{
+    margin-bottom: 150px;
+}
+
+ion-item {
+    --border-radius: 10px;
+
+    --detail-icon-opacity: 70;
+    --detail-icon-font-size: 40px;
+    margin-bottom: 0.7%;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align:center;
+    color: rgb(7, 161, 7);
+  }
+
+  ion-button {
+    --background: white;
+    --border-radius: 100px;
+  }
+
+  .foodHeader {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: black;
+  }
+  .foodOptions {
+    height: 150px;
+    width: 150x;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+
+  .reserve{
+    --border-radius: 10px;
+
+
+    display: block;
+    margin-left: 30%;
+    margin-right: 30%; 
+    text-align:center;
+    color: rgb(7, 161, 7);
+    font-size: 25px;
+  }
+
+/* .card {
+
+    width: 20;
+    height: 20;
+    
+} */
+
+/* ion-card-header {
+    display: flex;
+    flex-flow: column-reverse; */
+    /* width: 20;
+    height: 20; */
+  /* } */ 
+
+   /* .card {
+    border-radius: 1em;
+        padding: 1em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+} 
+
+.title {
+    color: rgb(7, 161, 7);
+    font-weight: bold;
+    font-size: larger;
+    align-items: center;
+
+}
+
+.image {
+    height: 150px;
+    width: 400px;
+}
+
+.logo {
+    height: 80px;
+    width: 80px;
+}
+
+.user {
+    height: 75px;
+    display: flex; 
+    justify-content: flex-end;
+}
+.b1 {
+/* user profile button */

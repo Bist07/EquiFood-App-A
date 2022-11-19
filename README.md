@@ -76,7 +76,6 @@ Milestone 4: Extensively test, document, and prepare for handoff
 <br>
 
 # User Groups:
-<br>
 
 ### The administrators, the individuals in ownership of Equifood. 
 Their purpose in using the app will be monitoring that restaurant owners are using Equifood as per their guidelines. They will have the option to approve, deny, or remove restaurants from this app. 
@@ -92,3 +91,10 @@ They will update total donations collected from their restaurant.
 ### Individuals.
 Will be able to use the app to view available restaurants and food options.
 <br>
+<br>
+
+# How to Run locally:
+
+1. Make your way to Code Directory (../EquiFood-App-A/Code)<br>
+1. In terminal, run ```ionic serve``` to host the website using Ionic
+1. Open browser and navigate to http://localhost:8100
