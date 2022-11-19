@@ -99,3 +99,15 @@ Will be able to use the app to view available restaurants and food options.
 1. Make your way to Code Directory (../EquiFood-App-A/Code)<br>
 1. In terminal, run ```ionic serve``` to host the website using Ionic
 1. Open browser and navigate to http://localhost:8100
+
+
+# UI Features:
+
+    - Browsing Restaurant page
+    - Browsing Food Options from Restaurant page
+    - Detailed product page
+        - Can reserve item
+    - View Cart page
+        - Can remove items 
+    - User profile page
+        - Just a mock up, still working on
