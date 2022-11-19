@@ -1,7 +1,0 @@
-{
-  "name": "equifood",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
-}
