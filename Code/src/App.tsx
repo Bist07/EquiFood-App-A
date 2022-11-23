@@ -82,4 +82,10 @@ const App: React.FC = () => (
   </IonApp>
 );
 
+<<<<<<< Updated upstream
 export default App;
+=======
+
+
+export default App;
+>>>>>>> Stashed changes
