@@ -1,4 +1,4 @@
-import { Navigate, Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
   IonIcon,
@@ -44,26 +44,26 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/tab1">
+          <Route exact path="/tab1">
             <Tab1 />
           </Route>
-          <Route path="/tab2">
+          <Route exact path="/tab2">
             <Tab2 />
           </Route>
-          <Route path="/tab3">
+          <Route exact path="/tab3">
             <Tab3 />
           </Route>
-          <Route path="/tab4">
+          <Route exact path="/tab4">
             <Tab4 />
           </Route>
-          <Route path="/tab5">
+          <Route exact path="/tab5">
             <Tab5 />
           </Route>
-          <Route path="/tab6">
+          <Route exact path="/tab6">
             <Tab6 />
           </Route>
-          <Route path="/">
-            <Navigate to="/tab1" />
+          <Route exact path="/">
+            <Redirect exact from="/" to="/tab1" />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
