@@ -20,7 +20,7 @@ const Tab3: React.FC = () => {
 
       <IonContent fullscreen>
       <IonCard className='item'>
-      <IonButton href='/tab1'> 
+      <IonButton className='back' href='/tab1'> 
         <IonIcon icon={arrowBack} />
         </IonButton>
           <img className='image' alt="Freshii" src="https://www.qsrmagazine.com/sites/default/files/styles/story_page/public/2021-10/1200x800.jpg?itok=MdGv3Hwg" />

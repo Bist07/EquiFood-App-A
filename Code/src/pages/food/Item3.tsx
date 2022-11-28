@@ -3,42 +3,23 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonIcon, IonToolbar, IonSearc
 // import reserveFood from '../components/reserveFood'
 import { arrowBack } from 'ionicons/icons';
 import '../tab.css';
+import { StoreItem } from '../../components/StoreItem';
 
 const Item3: React.FC = () => {
-    return (
-        <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <img className="logo" src="https://media-exp1.licdn.com/dms/image/C560BAQGjztjyiqkEVw/company-logo_200_200/0/1623879912263?e=2147483647&v=beta&t=6Xexf0f_AOKuGeqmq25Kd99KnazSsYGi7atu1idBhRs" alt="Browse Restaurants"/>
-            {/* <button className="b1"><img className="user" src="https://cdn-icons-png.flaticon.com/128/7466/7466362.png" alt="Browse Restaurants"/></button> */}
-          </IonToolbar>
-        </IonHeader>
-
-        <IonContent fullscreen>
-        <IonCard className='item'>
-        <IonButton href='/tab2'>
-            <IonIcon icon={arrowBack} />
-        </IonButton>
-
-        <IonCardHeader>
-          <IonText className='foodHeader'>White Chocolate Macadamian Cookie </IonText>
-        </IonCardHeader>
-        <img className='foodOptions' alt="cookie" src= "https://images.chickadvisor.com/item/47200/375/i/subway-cookies.jpg?ic=3" />
-         
-        <IonText className='foodHeader'>Original Price: $2.00/serving </IonText>
-          <IonText className='foodHeader'>Discounted Price: $0.50/serving </IonText>
-        <IonText className='foodHeader'>Currently Available: 12 servings</IonText>
-        </IonCard>
-        
-        <IonCard>
-          <IonButton className='reserve' >Reserve Now</IonButton>
-          {/* onClick={reserveFood()}  */}
-        </IonCard>
-        </IonContent>
-
-        </IonPage>
-        );
-    };
+  const ItemProps = {
+    "id": 3,
+    "store": 2,
+    "name": "White Chocolate Macadamian Cookie",
+    "originalPrice": 2.00,
+    "discountPrice": 0.50,
+    "servingsLeft": 12,
+    "imgUrl": "https://images.chickadvisor.com/item/47200/375/i/subway-cookies.jpg?ic=3"
+  }
+  
+  return (
+    StoreItem(ItemProps)
+    );
+  };
     
     export default Item3;
 

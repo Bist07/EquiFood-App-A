@@ -20,7 +20,7 @@ const Tab4: React.FC = () => {
 
       <IonContent fullscreen>
       <IonCard className='item'>
-      <IonButton href='/tab1'> 
+      <IonButton className='back' href='/tab1'> 
         <IonIcon icon={arrowBack} />
         </IonButton>
           <img className='image' alt="Jugo Juice" src="https://foodgressing.com/wp-content/uploads/2018/06/jugo-juice-new-menu-lineup-2018.jpg.webp" />
