@@ -42,48 +42,52 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { ShoppingCartProvider } from './context/ShoppingCartContext';
 
 
 setupIonicReact();
 
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/tab1" component={Tab1}/>
-          <Route exact path="/tab2" component={Tab2}/>
-          <Route exact path="/tab3" component={Tab3}/>
-          <Route exact path="/tab4" component={Tab4}/>
-          <Route exact path="/Profile" component={Profile}/>
-          <Route exact path="/food/Item1" component={Item1}/>
-          <Route exact path="/food/Item2" component={Item2}/>
-          <Route exact path="/food/Item3" component={Item3}/>
-          <Route exact path="/food/Item4" component={Item4}/>
-          <Route exact path="/food/Item6" component={Item6}/>
-          <Route exact path="/food/Item7" component={Item7}/>
-          <Route exact path="/Cart" component={Cart} />
-          <Route exact path="/">
-            <Redirect exact from="/" to="/tab1" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={restaurant} />
-            <IonLabel>Browse Restaurants</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="Profile" href="/Profile">
-            <IonIcon icon={person} />
-            <IonLabel>Profile</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="cart" href="/Cart">
-            <IonIcon icon={cartOutline} />
-            <IonLabel>Cart</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
+  <ShoppingCartProvider>
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/tab1" component={Tab1}/>
+            <Route exact path="/tab2" component={Tab2}/>
+            <Route exact path="/tab3" component={Tab3}/>
+            <Route exact path="/tab4" component={Tab4}/>
+            <Route exact path="/Profile" component={Profile}/>
+            <Route exact path="/food/Item1" component={Item1}/>
+            <Route exact path="/food/Item2" component={Item2}/>
+            <Route exact path="/food/Item3" component={Item3}/>
+            <Route exact path="/food/Item4" component={Item4}/>
+            <Route exact path="/food/Item6" component={Item6}/>
+            <Route exact path="/food/Item7" component={Item7}/>
+            <Route exact path="/Cart" component={Cart} />
+            <Route exact path="/">
+              <Redirect exact from="/" to="/tab1" />
+            </Route>
+          </IonRouterOutlet>
+
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="tab1" href="/tab1">
+              <IonIcon icon={restaurant} />
+              <IonLabel>Browse Restaurants</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="Profile" href="/Profile">
+              <IonIcon icon={person} />
+              <IonLabel>Profile</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="cart" href="/Cart">
+              <IonIcon icon={cartOutline} />
+              <IonLabel>Cart</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  </ShoppingCartProvider>
 );
 
 

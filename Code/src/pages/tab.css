@@ -17,6 +17,15 @@
     width: 500px;
 }
 
+.back{
+    position: fixed;
+    margin-top: 50px;
+}
+
+.list{
+    margin-bottom: 150px;
+}
+
 .button {
     color: rgb(7, 161, 7);
     font-weight: bold;

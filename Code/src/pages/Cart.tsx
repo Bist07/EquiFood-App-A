@@ -6,10 +6,16 @@ import {
   IonSearchbar,
   IonList,
   IonItem,
+  IonContent,
+  IonText,
 } from "@ionic/react";
 import "./tab.css";
+import { useShoppingCart } from "../context/ShoppingCartContext";
+import items from '../data/items.json'
+import { CartItem } from "../components/CartItem";
 
 const Cart: React.FC = () => {
+  const { cartItems } = useShoppingCart()
     return (
         <>
           <IonHeader>
@@ -24,11 +30,24 @@ const Cart: React.FC = () => {
           </IonToolbar>
           </IonHeader>
 
-          <IonList>
-            <IonItem>
+          <IonContent class="scroll-content" className="list" role="feed">
+            {cartItems.map(item => (
+              <CartItem key={item.id} {...item} />
+            ))} 
 
-            </IonItem>
-          </IonList>
+            <h1 style={{textAlign:'center'}}>
+            Total{" "}
+            {cartItems.reduce((total, cartItem) => {
+            const item = items.find(i => i.id === cartItem.id)
+                return total + (item?.discountPrice || 0)}, 0
+                )}
+            </h1>
+          </IonContent>
+          
+          <IonText>
+              
+          
+          </IonText>
        </>
       );
 };

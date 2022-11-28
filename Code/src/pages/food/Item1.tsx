@@ -3,41 +3,22 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonIcon, IonToolbar, IonSearc
 // import reserveFood from '../components/reserveFood'
 import { arrowBack } from 'ionicons/icons';
 import '../tab.css';
+import items from '../../data/items.json'
+import { StoreItem } from '../../components/StoreItem';
 
 const Item1: React.FC = () => {
+  const ItemProps = {
+    "id": 1,
+    "store": 2,
+    "name": "Brocolli Cheddar Soup",
+    "originalPrice": 1.99,
+    "discountPrice": 0.85,
+    "servingsLeft": 6,
+    "imgUrl": "https://assets3.thrillist.com/v1/image/3110984/1584x1054/crop;webp=auto;jpeg_quality=60.jpg"
+  }
     return (
-        <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <img className="logo" src="https://media-exp1.licdn.com/dms/image/C560BAQGjztjyiqkEVw/company-logo_200_200/0/1623879912263?e=2147483647&v=beta&t=6Xexf0f_AOKuGeqmq25Kd99KnazSsYGi7atu1idBhRs" alt="Browse Restaurants"/>
-            {/* <button className="b1"><img className="user" src="https://cdn-icons-png.flaticon.com/128/7466/7466362.png" alt="Browse Restaurants"/></button> */}
-          </IonToolbar>
-        </IonHeader>
-
-        <IonContent fullscreen>
-        <IonCard className='item'>
-        <IonButton href='/tab2'>
-            <IonIcon icon={arrowBack} />
-        </IonButton>
-
-        <IonCardHeader>
-          <IonText className='foodHeader'>Brocolli Cheddar Soup </IonText>
-        </IonCardHeader>
-        <img className='foodOptions' alt="soup" src= "https://assets3.thrillist.com/v1/image/3110984/1584x1054/crop;webp=auto;jpeg_quality=60.jpg" />
-         
-        <IonText className='foodHeader'>Original Price: $2.00/serving </IonText>
-          <IonText className='foodHeader'>Discounted Price: $0.85/serving </IonText>
-        <IonText className='foodHeader'>Currently Available: 6 servings</IonText>
-        </IonCard>
-        
-        <IonCard>
-          <IonButton className='reserve' >Reserve Now</IonButton>
-          {/* onClick={reserveFood()}  */}
-        </IonCard>
-        </IonContent>
-
-        </IonPage>
-        );
+      StoreItem(ItemProps)
+      );
     };
     
     export default Item1;
