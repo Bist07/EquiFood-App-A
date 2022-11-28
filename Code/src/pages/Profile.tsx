@@ -3,7 +3,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonSearchbar, Ion
 import ExploreContainer from '../components/ExploreContainer';
 import './tab.css';
 
-const Tab5: React.FC = () => {
+const Profile: React.FC = () => {
 
   return (
     <>
@@ -23,4 +23,4 @@ const Tab5: React.FC = () => {
   );
 };
 
-export default Tab5;
+export default Profile;

@@ -1,10 +1,10 @@
 import React, { createRef } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonIcon, IonToolbar, IonSearchbar, IonList, IonItem, IonLabel, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, IonInfiniteScroll, ScrollDetail,IonInfiniteScrollContent, IonThumbnail, IonText} from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+// import reserveFood from '../components/reserveFood'
 import { arrowBack } from 'ionicons/icons';
-import './tab.css';
+import '../tab.css';
 
-const Tab6: React.FC = () => {
+const Item4: React.FC = () => {
     return (
         <IonPage>
         <IonHeader>
@@ -16,22 +16,23 @@ const Tab6: React.FC = () => {
 
         <IonContent fullscreen>
         <IonCard className='item'>
-        <IonButton href='/tab2'>
+        <IonButton href='/tab3'>
             <IonIcon icon={arrowBack} />
         </IonButton>
 
         <IonCardHeader>
-        <IonText className='foodHeader'>Brocolli Cheddar Soup </IonText>
+          <IonText className='foodHeader'>Buddha Satay Bowl </IonText>
         </IonCardHeader>
-        <img className='foodOptions' alt="soup" src= "https://assets3.thrillist.com/v1/image/3110984/1584x1054/crop;webp=auto;jpeg_quality=60.jpg" />
+        <img className='foodOptions' alt="cookie" src= "https://www.freshii.com/static/img/bowls-buddas-satay.1266cfb.jpg" />
          
-        <IonText className='foodHeader'>Original Price: $2.00/serving </IonText>
-        <IonText className='foodHeader'>Discounted Price: $0.85/serving </IonText>
-        <IonText className='foodHeader'>Currently Available: 6 servings</IonText>
+        <IonText className='foodHeader'>Original Price: $10.00/serving </IonText>
+          <IonText className='foodHeader'>Discounted Price: $6.00/serving </IonText>
+        <IonText className='foodHeader'>Currently Available: 3 servings</IonText>
         </IonCard>
         
         <IonCard>
-        <IonButton className='reserve'>Reserve Now</IonButton>
+          <IonButton className='reserve' >Reserve Now</IonButton>
+          {/* onClick={reserveFood()}  */}
         </IonCard>
         </IonContent>
 
@@ -39,4 +40,8 @@ const Tab6: React.FC = () => {
         );
     };
     
-    export default Tab6;
+    export default Item4;
+
+function reserve(): React.MouseEventHandler<HTMLIonButtonElement> | undefined {
+  throw new Error('Function not implemented.');
+}

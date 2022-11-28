@@ -28,41 +28,13 @@ const Tab3: React.FC = () => {
             FRESHII
           </IonCardHeader>
 
-    <IonList className='productsAvailable' class='scroll-content' lines="none">
-      <IonItem button detail lines="full">
-        <IonThumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </IonThumbnail>
-        <IonLabel>Custom Item</IonLabel>
-      </IonItem>
-
-      <IonItem button detail lines="full">
-      <IonThumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </IonThumbnail>
-        <IonLabel>Custom Item</IonLabel>
-      </IonItem>
-
-      <IonItem button detail lines="full">
-      <IonThumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </IonThumbnail>
-        <IonLabel>Custom Item</IonLabel>
-      </IonItem>
-
-      <IonItem button detail lines="full">
-      <IonThumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </IonThumbnail>
-        <IonLabel>Custom Item</IonLabel>
-      </IonItem>
-
-      <IonItem button detail lines="full">
-      <IonThumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </IonThumbnail>
-        <IonLabel>Custom Item</IonLabel>
-      </IonItem>
+      <IonList className='productsAvailable' class='scroll-content' lines="none">
+        <IonItem button detail lines="full" href='/food/Item4'>
+          <IonThumbnail slot="start" >
+            <img alt="Soup" src="https://www.freshii.com/static/img/bowls-buddas-satay.1266cfb.jpg" />
+          </IonThumbnail>
+          <IonLabel>Buddha Satay Bowl | $6.00/serving  | Available: 3 servings</IonLabel>
+        </IonItem>
       </IonList>
           </IonCard> 
 

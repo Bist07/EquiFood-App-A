@@ -23,47 +23,28 @@ const Tab4: React.FC = () => {
       <IonButton href='/tab1'> 
         <IonIcon icon={arrowBack} />
         </IonButton>
-          <img className='image' alt="Jugo Juice" src="https://kaleandkrunches.com/wp-content/uploads/2017/11/IMG_0391.jpg" />
+          <img className='image' alt="Jugo Juice" src="https://foodgressing.com/wp-content/uploads/2018/06/jugo-juice-new-menu-lineup-2018.jpg.webp" />
          <IonCardHeader className='title'>
             JUGO JUICE
           </IonCardHeader>
 
     <IonList className='productsAvailable' class='scroll-content' lines="none">
-      <IonItem button detail lines="full">
-        <IonThumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </IonThumbnail>
-        <IonLabel>Custom Item</IonLabel>
-      </IonItem>
 
-      <IonItem button detail lines="full">
-      <IonThumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </IonThumbnail>
-        <IonLabel>Custom Item</IonLabel>
-      </IonItem>
+        <IonItem button detail lines="full" href='/food/Item6'>
+          <IonThumbnail slot="start" >
+            <img alt="Smoothie" src="https://jugojuice.com/wp-content/uploads/2021/04/JJ21_WEB_001_SMOOTHIESnJUICES_Mocha-Protein.png" />
+          </IonThumbnail>
+          <IonLabel>Mocha Protein Smoothie | $3.50/serving  | Available: 2 servings</IonLabel>
+        </IonItem>
 
-      <IonItem button detail lines="full">
-      <IonThumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </IonThumbnail>
-        <IonLabel>Custom Item</IonLabel>
-      </IonItem>
-
-      <IonItem button detail lines="full">
-      <IonThumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </IonThumbnail>
-        <IonLabel>Custom Item</IonLabel>
-      </IonItem>
-
-      <IonItem button detail lines="full">
-      <IonThumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </IonThumbnail>
-        <IonLabel>Custom Item</IonLabel>
-      </IonItem>
-      </IonList>
+        <IonItem button detail lines="full" href='/food/Item6'>
+          <IonThumbnail slot="start" >
+            <img alt="Smoothie" src="https://jugojuice.com/wp-content/uploads/2021/04/SMOOTHIE_MightyKale-1.png" />
+          </IonThumbnail>
+          <IonLabel>Mighty Kale Smoothie | $3.50/serving  | Available: 1 servings</IonLabel>
+        </IonItem>
+        
+    </IonList>
           </IonCard> 
 
       </IonContent>
