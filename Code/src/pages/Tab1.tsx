@@ -114,7 +114,7 @@ const Tab1: React.FC = () => {
               <img
                 className="image"
                 alt="Jugo Juice"
-                src="https://kaleandkrunches.com/wp-content/uploads/2017/11/IMG_0391.jpg"
+                src="https://foodgressing.com/wp-content/uploads/2018/06/jugo-juice-new-menu-lineup-2018.jpg.webp"
               />
               <IonText className="cardText">
                 <p>4075 Gordon Drive</p>
