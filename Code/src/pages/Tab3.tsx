@@ -20,7 +20,7 @@ const Tab3: React.FC = () => {
 
       <IonContent fullscreen>
       <IonCard className='item'>
-      <IonButton className='back' href='/tab1'> 
+      <IonButton href='/tab1'> 
         <IonIcon icon={arrowBack} />
         </IonButton>
           <img className='image' alt="Freshii" src="https://www.qsrmagazine.com/sites/default/files/styles/story_page/public/2021-10/1200x800.jpg?itok=MdGv3Hwg" />
@@ -28,13 +28,41 @@ const Tab3: React.FC = () => {
             FRESHII
           </IonCardHeader>
 
-      <IonList className='productsAvailable' class='scroll-content' lines="none">
-        <IonItem button detail lines="full" href='/food/Item4'>
-          <IonThumbnail slot="start" >
-            <img alt="Soup" src="https://www.freshii.com/static/img/bowls-buddas-satay.1266cfb.jpg" />
-          </IonThumbnail>
-          <IonLabel>Buddha Satay Bowl | $6.00/serving  | Available: 3 servings</IonLabel>
-        </IonItem>
+    <IonList className='productsAvailable' class='scroll-content' lines="none">
+      <IonItem button detail lines="full">
+        <IonThumbnail slot="start">
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+        </IonThumbnail>
+        <IonLabel>Custom Item</IonLabel>
+      </IonItem>
+
+      <IonItem button detail lines="full">
+      <IonThumbnail slot="start">
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+        </IonThumbnail>
+        <IonLabel>Custom Item</IonLabel>
+      </IonItem>
+
+      <IonItem button detail lines="full">
+      <IonThumbnail slot="start">
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+        </IonThumbnail>
+        <IonLabel>Custom Item</IonLabel>
+      </IonItem>
+
+      <IonItem button detail lines="full">
+      <IonThumbnail slot="start">
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+        </IonThumbnail>
+        <IonLabel>Custom Item</IonLabel>
+      </IonItem>
+
+      <IonItem button detail lines="full">
+      <IonThumbnail slot="start">
+          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+        </IonThumbnail>
+        <IonLabel>Custom Item</IonLabel>
+      </IonItem>
       </IonList>
           </IonCard> 
 
