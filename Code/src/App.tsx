@@ -1,4 +1,4 @@
-import { Redirect, Route } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import {
   IonApp,
   IonIcon,
@@ -53,21 +53,21 @@ const App: React.FC = () => (
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route exact path="/tab1" component={Tab1}/>
-            <Route exact path="/tab2" component={Tab2}/>
-            <Route exact path="/tab3" component={Tab3}/>
-            <Route exact path="/tab4" component={Tab4}/>
-            <Route exact path="/Profile" component={Profile}/>
-            <Route exact path="/food/Item1" component={Item1}/>
-            <Route exact path="/food/Item2" component={Item2}/>
-            <Route exact path="/food/Item3" component={Item3}/>
-            <Route exact path="/food/Item4" component={Item4}/>
-            <Route exact path="/food/Item6" component={Item6}/>
-            <Route exact path="/food/Item7" component={Item7}/>
-            <Route exact path="/Cart" component={Cart} />
-            <Route exact path="/">
-              <Redirect exact from="/" to="/tab1" />
-            </Route>
+          <Route path="/tab1"><Tab1/></Route>
+          <Route path="/tab2"><Tab2/></Route>
+          <Route path="/tab3"><Tab3/></Route>
+          <Route path="/tab4"><Tab4/></Route>
+          <Route path="/Profile"><Profile/></Route>
+          <Route path="/food/Item1"><Item1/></Route>
+          <Route path="/food/Item2"><Item2/></Route>
+          <Route path="/food/Item3"><Item3/></Route>
+          <Route path="/food/Item4"><Item4/></Route>
+          <Route path="/food/Item6"><Item6/></Route>
+          <Route path="/food/Item7"><Item7/></Route>
+          <Route path="/Cart"><Cart/></Route>
+          {/* <Route path="/">
+            <Link to="/tab1" />
+          </Route> */}
           </IonRouterOutlet>
 
           <IonTabBar slot="bottom">
