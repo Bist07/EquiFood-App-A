@@ -36,7 +36,7 @@ const Cart: React.FC = () => {
             ))} 
 
             <h1 style={{textAlign:'center'}}>
-            Total{" "}
+            Total:{" $"}
             {cartItems.reduce((total, cartItem) => {
             const item = items.find(i => i.id === cartItem.id)
                 return total + (item?.discountPrice || 0)}, 0
