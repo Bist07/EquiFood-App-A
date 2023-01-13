@@ -11,16 +11,12 @@ After peer testing 2, no coding, documentation.
 - Restaurant rep page for restaurant to be able to add data
 - Donations page 
 
-Required portals from log in:
-Individuals: anyone who signs up on the app to be connected to restaurants and obtain food donations.
-Restaurant representatives: restaurant managers or their delegate who are able to post donations onto the system and manage their restaurant’s information in the EquiFood app. These users must be vetted by the administrators.
-Administrators: members of the EquiFood team who can approve restaurant managers and view the donation amounts.
-
 Amrita:
 
 Update Gantt Chart dates and add everything as Prof and TA will want to look at this each week. 
 
 Backend Tasks:
+
 - Discussing Specifics of the data base
 - Implementing the data base
 - Code to allow to app to fetch all data in real time from database. - Rough Deadline: Sunday Jan 15, 2023 - Abhiek
@@ -32,3 +28,13 @@ Backend Tasks:
 
 
 - Backend for restaurant rep to insert data to database - Rough Deadline: Sunday Jan 22, 2023 - Abhiek
+
+
+
+
+Required portals from log in:
+Individuals: anyone who signs up on the app to be connected to restaurants and obtain food donations.
+Restaurant representatives: restaurant managers or their delegate who are able to post donations onto the system and manage their restaurant’s information in the EquiFood app. These users must be vetted by the administrators.
+Administrators: members of the EquiFood team who can approve restaurant managers and view the donation amounts.
+
+
