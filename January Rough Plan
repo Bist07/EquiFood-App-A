@@ -5,6 +5,8 @@ Date: Jan 11/2023
 - Moving project to React Native - Rough Deadline: Sunday Jan 15, 2023 - Jake 
 - Improve UI on web and mobile. (TA stressed this should be really good) Rough Deadline: Sunday Jan 22, 2023 - Amrita 
 We will be able to get access to IOS development features from the prof once we reach the mobile IOS development stage. 
+Send email with our emails to prof. 
+After peer testing 2, no coding, documentation. 
 
 - Restaurant rep page for restaurant to be able to add data
 - Donations page 
@@ -12,11 +14,21 @@ We will be able to get access to IOS development features from the prof once we 
 Required portals from log in:
 Individuals: anyone who signs up on the app to be connected to restaurants and obtain food donations.
 Restaurant representatives: restaurant managers or their delegate who are able to post donations onto the system and manage their restaurant’s information in the EquiFood app. These users must be vetted by the administrators.
-Administrators: members of the EquiFood team who can approve restaurant managers and view the donation amounts
+Administrators: members of the EquiFood team who can approve restaurant managers and view the donation amounts.
+
+Amrita:
+
+Update Gantt Chart dates and add everything as Prof and TA will want to look at this each week. 
 
 Backend Tasks:
 - Discussing Specifics of the data base
 - Implementing the data base
 - Code to allow to app to fetch all data in real time from database. - Rough Deadline: Sunday Jan 15, 2023 - Abhiek
+- By Sunday - App will be able to fetch restaurants from DB. - Abhiek
+        - Fix server.js file.
+        - Write code to select tables, get data.
+        - Working on it Saturday and Sunday.
+        - Connect locally for now. Research MariaDB costs.
+
 
 - Backend for restaurant rep to insert data to database - Rough Deadline: Sunday Jan 22, 2023 - Abhiek
