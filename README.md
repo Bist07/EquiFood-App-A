@@ -4,11 +4,23 @@ Griffin Wilchuk - Client Liaison <br>
 Jake Daongam - QA Leader <br>
 
 # EquiFood-App-A - Develop Branch
-#### All important team documents saved in this development branch. 
+#### All important team documents and initial code saved in this development branch. 
 <br>
 
-#### Currently includes Team Agreement and a early draft of requirements, client questions, user scenarios, and prototype. 
+#### Currently includes:
+- Team Agreement 
+- Early draft of requirements
+- Client questions 
+- User scenarios
+- Prototype(s)
+- Gantt Chart. 
+- List of Usability Tasks
+- Front End Aspects:
+    - Initial Ionic Build
 
+- Back End Aspects:
+    - Rough draft of DDL for Food Table
+    - Rough draft of DDL for Restaurant Table
 
 <br>
 
@@ -23,17 +35,38 @@ Equifood administrators manually keep track of the money amount Equifood has sav
 
 Our software will allow restaurant owners to post their discounted/free offers for individuals to see and will automatically keep track of donation amounts.
 
-
 # Tech Stack:
-The current stack used for the project is a MERN (MongoDB, Express, React Native, NodeJS) stack. This is due to the low cost and abundance of documentation for this popular stack.
+Our client preferred we use one of the two MERN stack variations (MariaDB or MongoDB)
+The current stack chosen for the project is a MERN (MariaDB, Express, React Native, NodeJS) stack. This is due to the low cost and abundance of documentation for this popular stack. Our team decided to use the MariaDB variation. We prefer MariaDB as its relational model is crucial for our queries and additions of new available products. 
 <br>
 
+ <br>
+Information for setting up the MERN stack can be found in the following links 
+<br>
+[Nodejs](https://nodejs.org/en/download/)
+<br>
+<br>
+[Ionic Setup](https://ionicframework.com/docs/intro/cli)
+<br>
+<br>
+[Ionic + React Setup](https://ionicframework.com/docs/intro/cdn#ionic--react)
+<br>
+<br>
+[MariaDB Setup](https://mariadb.com/get-started-with-mariadb/)
+<br>
+<br>
+[Expressjs](https://expressjs.com/en/starter/installing.html)
+<br>
+<br>
+[VSCode Extension](https://ionicframework.com/docs/intro/vscode-extension)
+<br>
+
+
 # Project Milestones:
-Milestone 1: Basic Front End (Allow users to see restaurant and food options) <br>
-Milestone 2: Create Databases, implement backend, improve navigation (Clicking things bring you to the proper pages and show proper values) <br>
+Milestone 1: Basic Front End and back end (Allow users to see restaurant and food options) <br>
+Milestone 2: Create Databases, improve navigation (Clicking things bring you to the proper pages and show proper values) <br>
 Milestone 3: Deploy and populate databases <br>
 Milestone 4: Extensively test, document, and prepare for handoff
-
 
 
 
@@ -44,7 +77,6 @@ Milestone 4: Extensively test, document, and prepare for handoff
 <br>
 
 # User Groups:
-<br>
 
 ### The administrators, the individuals in ownership of Equifood. 
 Their purpose in using the app will be monitoring that restaurant owners are using Equifood as per their guidelines. They will have the option to approve, deny, or remove restaurants from this app. 
@@ -60,3 +92,22 @@ They will update total donations collected from their restaurant.
 ### Individuals.
 Will be able to use the app to view available restaurants and food options.
 <br>
+<br>
+
+# How to Run locally:
+
+1. Make your way to Code Directory (../EquiFood-App-A/Code)<br>
+1. In terminal, run ```ionic serve``` to host the website using Ionic
+1. Open browser and navigate to http://localhost:8100
+
+
+# UI Features:
+
+    - Browsing Restaurant page
+    - Browsing Food Options from Restaurant page
+    - Detailed product page
+        - Can reserve item
+    - View Cart page
+        - Can remove items 
+    - User profile page
+        - Just a mock up, still working on
