@@ -12,7 +12,7 @@ const StackNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen}  options={{headerShown:false}}/>
-        <Stack.Screen name="RestaurantPage" component={RestaurantPage}/>
+        <Stack.Screen name="RestaurantPage" component={RestaurantPage} options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

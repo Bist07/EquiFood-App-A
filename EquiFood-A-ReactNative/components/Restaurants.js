@@ -1,11 +1,18 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const Restaurants = (props) => {
   const restaurant = props.restaurant;
+  const navigation = useNavigation();
   return (
-    <Pressable onPress={()=>console.warn("You clicked on",restaurant.name)}>
+    <Pressable onPress={() => navigation.navigate("RestaurantPage",{
+      id:restaurant.id,
+      name:restaurant.name,
+      address:restaurant.address,
+      cuisines:restaurant.cuisines,
+    })}>
       <View style={{ margin: 5, marginBottom: 0, borderColor: "green",
             borderWidth:1,
             overflow:"hidden",borderTopLeftRadius: 7,
