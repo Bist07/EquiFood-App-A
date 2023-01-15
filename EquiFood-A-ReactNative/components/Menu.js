@@ -10,7 +10,10 @@ const Menu = (props) => {
     <View style={{marginBottom:20, marginTop:10, flexDirection:"row", alignItems:"center", justifyContent:"space-between"}}>
         <View style={{margin:10, flex:1}}>
             <Text style={{fontSize:18, fontWeight:"bold", marginBottom:10}}>{menu.name}</Text>
-            <Text style={{fontSize:20, fontWeight:"bold"}}>${(Math.round(menu.discountPrice*100)/100).toFixed(2)}</Text>
+            <View style={{flexDirection:"column", }}>
+                <Text style={{fontSize:20, textDecorationLine:"line-through"}}>${(Math.round(menu.originalPrice*100)/100).toFixed(2)}</Text>
+                <Text style={{fontSize:20, fontWeight:"bold"}}>${(Math.round(menu.discountPrice*100)/100).toFixed(2)}</Text>
+            </View>
             <Text style={{fontSize:18, marginTop:10}}>Servings Left: {menu.servingsLeft}</Text>
         </View>
         <View style={{marginRight:15}}>
@@ -25,7 +28,7 @@ const Menu = (props) => {
                     backgroundColor: "#17B169",
                     borderRadius:5,
                 }}>
-                <Pressable onPress={() => additems>0? setAddItems(additems-1): setAddItems(0)}>
+                <Pressable onPress={() => additems>0 ? setAddItems(additems-1): setAddItems(0)}>
                     <Text style={{fontSize:25, color:"white", paddingHorizontal:10}}>
                         -
                     </Text>

@@ -1,6 +1,6 @@
 export default [
     {
-        id: "0",
+        id: 0,
         name: "Subway",
         logo: "https://francorpbaltic.com/wp-content/uploads/2020/10/SUBWAY-LOGO-2.png",
         cuisines: "Sandwiches",
@@ -11,7 +11,7 @@ export default [
         hours: "Monday - Sunday: 8AM - 2AM",
     },
     {
-        id: "1",
+        id: 1,
         name: "Freshii",
         logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Freshii_logo.svg/500px-Freshii_logo.svg.png",
         cuisines: "Healthy",
@@ -22,7 +22,7 @@ export default [
         hours: "Monday - Sunday: 8AM - 8PM",
     },
     {
-        id: "3",
+        id: 2,
         name: "Jugo Juice",
         logo: "https://scontent-ord5-2.xx.fbcdn.net/v/t1.6435-9/127154850_4174562302594841_4174389664354802097_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=AZixSTKNy6UAX_iwtqC&_nc_ht=scontent-ord5-2.xx&oh=00_AfDjl_2b4P3Hz1HZ0jDqkOaCswuTyu5nVr_19ONbra6OuQ&oe=63EADFB8",
         cuisines: "Drink",

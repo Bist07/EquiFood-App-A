@@ -11,7 +11,7 @@ const RestaurantPage = () => {
   const route = useRoute();
   const navigation = useNavigation();
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{marginTop:30}}>
       <Pressable
         style={{
           flexDirection: "row",
@@ -79,7 +79,7 @@ const RestaurantPage = () => {
           <Text style={{borderColor:"gray", borderWidth:2, height:2, width:45}}/>
       </View>
       <View>
-        {data.map((item) => <Menu menu={item}/>)}
+        {data.map((item) => (item.store==route.params.id) ? <Menu menu={item}/>:<></>)}
       </View>
       
 

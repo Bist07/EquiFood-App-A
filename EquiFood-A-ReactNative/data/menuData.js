@@ -51,6 +51,6 @@ export default [
         "originalPrice": 6.00,
         "discountPrice": 3.50,
         "servingsLeft": 3,
-        "imgUrl": "https://www.freshii.com/static/img/bowls-buddas-satay.1266cfb.jpg"
+        "imgUrl": "https://jugojuice.com/wp-content/uploads/2021/04/SMOOTHIE_MightyKale-1.png"
     },
 ]
