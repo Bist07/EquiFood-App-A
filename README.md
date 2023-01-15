@@ -40,16 +40,14 @@ Our client preferred we use one of the two MERN stack variations (MariaDB or Mon
 The current stack chosen for the project is a MERN (MariaDB, Express, React Native, NodeJS) stack. This is due to the low cost and abundance of documentation for this popular stack. Our team decided to use the MariaDB variation. We prefer MariaDB as its relational model is crucial for our queries and additions of new available products. 
 <br>
 
- <br>
+<br>
 Information for setting up the MERN stack can be found in the following links 
+<br>
 <br>
 [Nodejs](https://nodejs.org/en/download/)
 <br>
 <br>
-[Ionic Setup](https://ionicframework.com/docs/intro/cli)
-<br>
-<br>
-[Ionic + React Setup](https://ionicframework.com/docs/intro/cdn#ionic--react)
+[React Native](https://reactnative.dev/docs/environment-setup)
 <br>
 <br>
 [MariaDB Setup](https://mariadb.com/get-started-with-mariadb/)
@@ -57,8 +55,6 @@ Information for setting up the MERN stack can be found in the following links
 <br>
 [Expressjs](https://expressjs.com/en/starter/installing.html)
 <br>
-<br>
-[VSCode Extension](https://ionicframework.com/docs/intro/vscode-extension)
 <br>
 
 
@@ -96,9 +92,14 @@ Will be able to use the app to view available restaurants and food options.
 
 # How to Run locally:
 
-1. Make your way to Code Directory (../EquiFood-App-A/Code)<br>
-1. In terminal, run ```ionic serve``` to host the website using Ionic
-1. Open browser and navigate to http://localhost:8100
+1. Make your way to Code Directory (../EquiFood-App-A/EquiFood-A-ReactNative)
+1. Several packages may need to be installed:
+    - First ensure latest node version is being used with ```nvm use --lts```
+    - Expo: ```npm install -g expo-cli```
+    - React-Navigation: ```npm install @react-navigation/native```
+    - React: ```npm install "react@18.1.0"```
+1. In terminal, run ```npm start``` to run Expo.
+1. Either scan the QR code on your phone or run an emulator by following the menu in the terminal
 
 
 # UI Features:
