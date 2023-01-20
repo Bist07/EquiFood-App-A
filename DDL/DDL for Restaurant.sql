@@ -30,3 +30,15 @@ Values (000004, 'Boston Pizza', 'an extensive choice of gourmet pizzas with fres
 INSERT INTO Restaurant
 Values (000005, 'Wrap Zone', ' wraps, rice bowls, salads and smoothies are made-to-order from fresh, quality ingredients.',
        0, 'Wraps', '104-3320 Richter St', '10:00am - 9:00pm', 'Pictures/WrapZone/Logo', null, null, 20);
+       
+INTO Restaurant
+Values (0, 'Subway', null, 0, 'Sandwiches', '3333 University Way, Kelowna, BC', 'Monday - Sunday: 8AM - 2AM',
+         'https://francorpbaltic.com/wp-content/uploads/2020/10/SUBWAY-LOGO-2.png', 49.940049, -119.397933);
+         
+INSERT INTO Restaurant
+Values (1, 'Freshii', null, 0, 'Healthy', '5538 Airport Way, Kelowna, BC', 'Monday - Sunday: 8AM - 8PM',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Freshii_logo.svg/500px-Freshii_logo.svg.png', 49.95102, -119.38151);
+
+INSERT INTO Restaurant
+Values (2, 'Jugo Juice', null, 0, 'Drink', '4075 Gordon Drive, Kelowna, BC', 'Monday - Sunday: 8AM - 6PM', 'https://scontent-ord5-2.xx.fbcdn.net/v/t1.6435-9/127154850_4174562302594841_4174389664354802097_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=AZixSTKNy6UAX_iwtqC&_nc_ht=scontent-ord5-2.xx&oh=00_AfDjl_2b4P3Hz1HZ0jDqkOaCswuTyu5nVr_19ONbra6OuQ&oe=63EADFB8',
+         49.837789, -119.481287);
