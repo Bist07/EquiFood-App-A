@@ -21,6 +21,8 @@ Jake Daongam - QA Leader <br>
 - Back End Aspects:
     - Rough draft of DDL for Food Table
     - Rough draft of DDL for Restaurant Table
+    - Rough draft of DDL for Admin Table
+    - Rough draft of DDL for RestaurantAdmin Table
 
 <br>
 
@@ -101,6 +103,11 @@ Will be able to use the app to view available restaurants and food options.
 1. In terminal, run ```npm start``` to run Expo.
 1. Either scan the QR code on your phone or run an emulator by following the menu in the terminal
 
+# How to access the database:
+1. Login to 
+[SkySQL](https://id.mariadb.com/?next=/openid/authorize%3Fresponse_type%3Dcode%26client_id%3D480075%26redirect_uri%3Dhttps%3A//cloud.mariadb.com/navpage.do%26scope%3Dprofile%2520mariadb%2520openid%2520email%26state%3Dhttps%253A%252F%252Fcloud.mariadb.com%252Fskysql%253Fid%253Dmy_services)
+2. Add your current IP address to the "IP allowlist for service access"
+3. Download the certificate authority chain and follow the instructions under "Connect to service"
 
 # UI Features:
 
