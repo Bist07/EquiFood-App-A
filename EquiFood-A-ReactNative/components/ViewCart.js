@@ -1,7 +1,9 @@
-import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Modal, Platform, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useContext, useState } from "react";
 import { CartItems } from "../Context";
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import TimePicker from "./TimePicker";
 
 const ViewCart = (props) => {
   const { cart, setCart } = useContext(CartItems);
@@ -9,10 +11,19 @@ const ViewCart = (props) => {
   const totalPrice = cart
     .map((item) => item.discountPrice)
     .reduce((prev, curr) => prev + curr, 0);
-
+  
+  const navigation = useNavigation();
   const formattedPrice = (Math.round(totalPrice * 100) / 100).toFixed(2);
   const [modal, setModal] = useState(false);
   const restaurantName = props.restaurantName;
+
+  const placeOrder = (props) => {
+    setModal(false);
+    setCart([]);
+    navigation.navigate("OrderPage", {
+        restaurantName:restaurantName,
+    });
+  }
 
   const checkout = () => {
     return (
@@ -79,8 +90,15 @@ const ViewCart = (props) => {
             </View>
         </View>
 
-        <Pressable style={{backgroundColor:"green", padding:10}}>
-            <Text style={{textAlign:"center", fontWeight:"bold", fontSize:24, color:"white"}}> Place Order </Text>
+        <View style={{padding:10, paddingTop:0, backgroundColor:"white"}}>
+            <View style={{flexDirection:"row", alignItems:"center", justifyContent:"space-between"}}>
+                <Text style={{fontWeight:"bold", fontSize:20}}>Pickup Time: </Text>
+                <Text style={{fontWeight:"bold", fontSize:20}}><TimePicker mode="time"/> </Text>
+            </View>
+        </View>
+
+        <Pressable onPress={placeOrder} style={{backgroundColor:"green", padding:10}}>
+            <Text style={{textAlign:"center", fontWeight:"bold", fontSize:24, color:"white"}}> Checkout </Text>
         </Pressable>
 
       </View>
