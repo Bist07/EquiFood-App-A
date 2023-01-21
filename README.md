@@ -24,6 +24,8 @@ Jake Daongam - QA Leader <br>
     - Rough draft of DDL for Admin Table
     - Rough draft of DDL for RestaurantAdmin Table
 
+- A rough plan for January
+- Notes from Professor/TA meetings in Jan
 <br>
 
 # Equifood App Purpose:
@@ -96,7 +98,9 @@ Will be able to use the app to view available restaurants and food options.
 
 1. Make your way to Code Directory (../EquiFood-App-A/EquiFood-A-ReactNative)
 1. Several packages may need to be installed:
-    - First ensure latest node version is being used with ```nvm use --lts```
+    - First ensure latest node version is being used:
+            - For Apple check with ```nvm use --lts```
+            - For Android check with ```node -v```
     - Expo: ```npm install -g expo-cli```
     - React-Navigation: ```npm install @react-navigation/native```
     - React: ```npm install "react@18.1.0"```
