@@ -2,7 +2,7 @@ import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useState } from "react";
 
-const Menu = ({ menu, cart, setCart }) => {
+const Menu = ({ item, cart, setCart }) => {
   const [additems, setAddItems] = useState(0);
   return (
     <View
@@ -16,24 +16,24 @@ const Menu = ({ menu, cart, setCart }) => {
     >
       <View style={{ margin: 10, flex: 1 }}>
         <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 10 }}>
-          {menu.name}
+          {item.name}
         </Text>
         <View style={{ flexDirection: "column" }}>
           <Text style={{ fontSize: 20, textDecorationLine: "line-through" }}>
-            ${(Math.round(menu.originalPrice * 100) / 100).toFixed(2)}
+            ${(Math.round(item.originalPrice * 100) / 100).toFixed(2)}
           </Text>
           <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-            ${(Math.round(menu.discountPrice * 100) / 100).toFixed(2)}
+            ${(Math.round(item.discountPrice * 100) / 100).toFixed(2)}
           </Text>
         </View>
         <Text style={{ fontSize: 18, marginTop: 10 }}>
-          Servings Left: {menu.servingsLeft}
+          Servings Left: {item.servingsLeft}
         </Text>
       </View>
       <View style={{ marginRight: 15 }}>
         <Image
           style={{ width: 100, height: 100, borderRadius: 8 }}
-          source={{ uri: menu.imgUrl }}
+          source={{ uri: item.imgUrl }}
         />
         <Pressable
           style={{
@@ -48,7 +48,7 @@ const Menu = ({ menu, cart, setCart }) => {
         >
           <Pressable
             onPress={() => {
-                setCart(cart.filter((cartItem) => cartItem.id !== menu.id));
+                setCart(cart.filter((cartItem) => cartItem.id !== item.id));
                 setAddItems(Math.max(0,additems-1))
             }
 
@@ -70,10 +70,10 @@ const Menu = ({ menu, cart, setCart }) => {
           </Pressable>
           <Pressable
             onPress={() => {
-              setCart([...cart, menu])
-              setAddItems(Math.min(menu.servingsLeft,additems+1))
-            //   additems < menu.servingsLeft
-            //     ? setCart([...cart,menu]) setAddItems(additems + 1)
+              setCart([...cart, item])
+              setAddItems(Math.min(item.servingsLeft,additems+1))
+            //   additems < item.servingsLeft
+            //     ? setCart([...cart,item]) setAddItems(additems + 1)
             //     : setAddItems(additems)
             }}>
             <Text

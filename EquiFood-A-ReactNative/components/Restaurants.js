@@ -12,6 +12,7 @@ const Restaurants = (props) => {
       name:restaurant.name,
       address:restaurant.address,
       cuisines:restaurant.cuisines,
+      menu:restaurant.menu,
     })}>
       <View style={{ margin: 5, marginBottom: 0, borderColor: "green",
             borderWidth:1,

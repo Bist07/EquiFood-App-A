@@ -31,7 +31,6 @@ const HomeScreen = () => {
         </View>
 
         <View>
-
           {storeData.map((store, index) => <Restaurants key={index} restaurant={store}/>)}
         </View>
       </View>

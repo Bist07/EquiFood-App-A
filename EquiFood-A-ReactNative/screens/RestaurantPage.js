@@ -3,13 +3,11 @@ import React, { useContext } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import menuData from "../data/menuData";
 import Menu from "../components/Menu";
 import { CartItems } from "../Context";
 import ViewCart from "../components/ViewCart";
 
 const RestaurantPage = () => {
-  const foodData = menuData;
   const route = useRoute();
   const navigation = useNavigation();
   const { cart, setCart } = useContext(CartItems);
@@ -99,14 +97,19 @@ const RestaurantPage = () => {
         <View>
           {/* Used conditional to either create menu item if food store id matched restaurant id */}
           {/* {filteredData = foodData.filter(food => food.store == route.params.id)} */}
-          {foodData.map((food, index) =>
+          
+          {route.params.menu.map((item, index) => (
+            <Menu item={item} key={index}/>
+          ))}
+          
+          {/* {foodData.map((food, index) =>
             food.store == route.params.id ? (
               <Menu cart={cart} setCart={setCart} key={index + food.id} menu={food} />
             ) : (
               //Find a way to actually do nothing
               <></>
             )
-          )}
+          )} */}
         </View>
       </ScrollView>
 
