@@ -5,15 +5,16 @@ import { StatusBar } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import StackNavigator from './StackNavigator';
+import { CartContext } from './Context';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <CartContext>
       <StackNavigator />
       <StatusBar style="auto" />
-    </View>
+    </CartContext>
   );
 }
 
