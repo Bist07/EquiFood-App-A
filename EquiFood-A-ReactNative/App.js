@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { View } from 'react-native'
 import { StatusBar } from 'expo-status-bar';
@@ -11,8 +11,8 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <View style={styles.container}>
-      <StackNavigator/>
-      <StatusBar style="auto"/>
+      <StackNavigator />
+      <StatusBar style="auto" />
     </View>
   );
 }
