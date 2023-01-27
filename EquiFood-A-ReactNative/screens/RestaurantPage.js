@@ -7,6 +7,7 @@ import menuData from "../data/menuData";
 import Menu from "../components/Menu";
 import { CartItems } from "../Context";
 import ViewCart from "../components/ViewCart";
+import Header from "../components/header";
 
 const RestaurantPage = () => {
   const foodData = menuData;
@@ -16,6 +17,11 @@ const RestaurantPage = () => {
   return (
     <>
       <ScrollView style={{ marginTop: 30 }}>
+      <View style={{width: '100%' }}>
+          <View id="header">
+            <Header />
+          </View>
+        </View>
         <View
           style={{
             flexDirection: "row",
