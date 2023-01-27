@@ -1,51 +1,36 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useState } from "react";
+import stylesR from './stylesR'
 
 const Menu = ({ menu, cart, setCart }) => {
   const [additems, setAddItems] = useState(0);
   return (
     <View
-      style={{
-        marginBottom: 20,
-        marginTop: 10,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
+      style= {stylesR.itemDisplay}>
       <View style={{ margin: 10, flex: 1 }}>
-        <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 10 }}>
+        <Text style= {stylesR.itemName}>
           {menu.name}
         </Text>
         <View style={{ flexDirection: "column" }}>
-          <Text style={{ fontSize: 20, textDecorationLine: "line-through" }}>
+          <Text style= {stylesR.originalPrice}>
             ${(Math.round(menu.originalPrice * 100) / 100).toFixed(2)}
           </Text>
-          <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+          <Text style= {stylesR.currentPrice}>
             ${(Math.round(menu.discountPrice * 100) / 100).toFixed(2)}
           </Text>
         </View>
-        <Text style={{ fontSize: 18, marginTop: 10 }}>
+        <Text style= {stylesR.servingsCount}>
           Servings Left: {menu.servingsLeft}
         </Text>
       </View>
       <View style={{ marginRight: 15 }}>
         <Image
-          style={{ width: 100, height: 100, borderRadius: 8 }}
+          style= {stylesR.itemImage}
           source={{ uri: menu.imgUrl }}
         />
         <Pressable
-          style={{
-            position: "absolute",
-            left: 2,
-            top: 90,
-            flexDirection: "row",
-            alignItems: "center",
-            backgroundColor: "#17B169",
-            borderRadius: 5,
-          }}
-        >
+          style= {stylesR.itemIncrement}>
           <Pressable
             onPress={() => {
                 setCart(cart.filter((cartItem) => cartItem.id !== menu.id));
@@ -56,15 +41,13 @@ const Menu = ({ menu, cart, setCart }) => {
             }
           >
             <Text
-              style={{ fontSize: 25, color: "white", paddingHorizontal: 10 }}
-            >
+              style= {stylesR.decreaseItem}>
               -
             </Text>
           </Pressable>
           <Pressable>
             <Text
-              style={{ fontSize: 20, color: "white", paddingHorizontal: 10 }}
-            >
+              style= {stylesR.itemCount}>
               {additems}
             </Text>
           </Pressable>
@@ -77,8 +60,7 @@ const Menu = ({ menu, cart, setCart }) => {
             //     : setAddItems(additems)
             }}>
             <Text
-              style={{ fontSize: 20, color: "white", paddingHorizontal: 10 }}
-            >
+              style= {stylesR.increaseItem}>
               +
             </Text>
           </Pressable>

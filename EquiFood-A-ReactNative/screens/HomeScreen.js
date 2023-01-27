@@ -5,11 +5,19 @@ import Categories from "../components/Categories";
 import ItemComponent from "../components/ItemComponent";
 import RestaurantData from "../data/RestaurantData";
 import Restaurants from "../components/Restaurants";
+import Header from "../components/header";
+import ProfilePage from "./ProfilePage";
+// This page displays all restaurant data in one page.
 
 const HomeScreen = () => {
   const storeData = RestaurantData;
   return (
     <ScrollView style={{marginTop:45, backgroundColor:"#F0F0F0"}}>
+     <View style={{width: '100%' }}>
+        <View id="header">
+          <Header />
+        </View>
+     </View>
       <View style={{margin:10}}>
         <View id="searchbar"
           style={{

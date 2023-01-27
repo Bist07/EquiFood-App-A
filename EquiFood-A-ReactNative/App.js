@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import StackNavigator from './StackNavigator';
 import { CartContext } from './Context';
+import { NavigationContainer } from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,3 +25,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
+
