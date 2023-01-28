@@ -11,8 +11,10 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import Menu from "../components/Menu";
+
 import CartScreen from "./CartScreen";
 import { useSelector } from "react-redux";
+import Header from "../components/header";
 
 const RestaurantPage = () => {
   const cart = useSelector((state) => state.cart.cart);
@@ -29,6 +31,11 @@ const RestaurantPage = () => {
   return (
     <>
       <ScrollView style={{ marginTop: 30 }}>
+      <View style={{width: '100%' }}>
+          <View id="header">
+            <Header />
+          </View>
+        </View>
         <View
           style={{
             flexDirection: "row",

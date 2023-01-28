@@ -3,35 +3,30 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart, decrementQuantity, incrementQuantity, removeFromCart } from "../redux/CartReducer";
+import stylesR from './stylesR'
 
 const Menu = ({ food }) => {
   const dispatch = useDispatch();
   // console.log(food)
-  const [additems, setAddItems] = useState(0);
+  const [itemCount, setCount] = useState(0);
   const [selected, setSelected] = useState(false);
   return (
     <View
-      style={{
-        marginBottom: 20,
-        marginTop: 10,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
+      style= {stylesR.itemDisplay}>
       <View style={{ margin: 10, flex: 1 }}>
-        <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 10 }}>
+
+        <Text style={stylesR.itemName}>
           {food.name}
         </Text>
         <View style={{ flexDirection: "column" }}>
-          <Text style={{ fontSize: 20, textDecorationLine: "line-through" }}>
+          <Text style={stylesR.originalPrice}>
             ${(Math.round(food.originalPrice * 100) / 100).toFixed(2)}
           </Text>
-          <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+          <Text style={stylesR.currentPrice}>
             ${(Math.round(food.discountPrice * 100) / 100).toFixed(2)}
           </Text>
         </View>
-        <Text style={{ fontSize: 18, marginTop: 10 }}>
+        <Text style={stylesR.servingsCount}>
           Servings Left: {food.servingsLeft}
         </Text>
       </View>
@@ -41,38 +36,18 @@ const Menu = ({ food }) => {
           source={{ uri: food.imgUrl }}
         />
           {selected ? (
-            <Pressable
-              style={{
-                position: "absolute",
-                top: 90,
-                left: 15,
-
-                flexDirection: "row",
-                paddingHorizontal: 10,
-                paddingVertical: 5,
-                alignItems: "center",
-                backgroundColor: "white",
-                borderRadius: 5,
-              }}
-            >
+            <Pressable style={stylesR.itemImage}>
               <Pressable onPress={() => {
-                if(additems === 1){
+                if(itemCount === 1){
                   dispatch(removeFromCart(food))
                   setSelected(false)
-                  setAddItems(0);
+                  setCount(0);
                 }else{
-                  setAddItems((c) => c - 1);
+                  setCount((c) => c - 1);
                   dispatch(decrementQuantity(food))
-
                 }
               }}>
-                <Text
-                  style={{
-                    fontSize: 25,
-                    color: "green",
-                    paddingHorizontal: 6,
-                  }}
-                >
+                <Text style={stylesR.decreaseItem}>
                   -
                 </Text>
               </Pressable>
@@ -85,21 +60,15 @@ const Menu = ({ food }) => {
                     paddingHorizontal: 6,
                   }}
                 >
-                  {additems}
+                  {itemCount}
                 </Text>
               </Pressable>
 
               <Pressable onPress={() => {
-                setAddItems((c) => c + 1);
+                setCount((c) => c + 1);
                 dispatch(incrementQuantity(food))
               }}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    color: "green",
-                    paddingHorizontal: 6,
-                  }}
-                >
+                <Text style={stylesR.increaseItem}>
                   +
                 </Text>
               </Pressable>
@@ -109,7 +78,7 @@ const Menu = ({ food }) => {
               onPress={() => {
                 setSelected(true);
                 if (additems == 0) {
-                  setAddItems((c) => c + 1);
+                  setCount((c) => c + 1);
                 }
                 dispatch(addToCart(food));
               }}
@@ -138,6 +107,7 @@ const Menu = ({ food }) => {
             </Pressable>
           )}
       </Pressable>
+
     </View>
   );
 };
