@@ -1,9 +1,14 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart, decrementQuantity, incrementQuantity, removeFromCart } from "../redux/CartReducer";
 
-const Menu = ({ item, cart, setCart }) => {
+const Menu = ({ food }) => {
+  const dispatch = useDispatch();
+  // console.log(food)
   const [additems, setAddItems] = useState(0);
+  const [selected, setSelected] = useState(false);
   return (
     <View
       style={{
@@ -16,74 +21,123 @@ const Menu = ({ item, cart, setCart }) => {
     >
       <View style={{ margin: 10, flex: 1 }}>
         <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 10 }}>
-          {item.name}
+          {food.name}
         </Text>
         <View style={{ flexDirection: "column" }}>
           <Text style={{ fontSize: 20, textDecorationLine: "line-through" }}>
-            ${(Math.round(item.originalPrice * 100) / 100).toFixed(2)}
+            ${(Math.round(food.originalPrice * 100) / 100).toFixed(2)}
           </Text>
           <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-            ${(Math.round(item.discountPrice * 100) / 100).toFixed(2)}
+            ${(Math.round(food.discountPrice * 100) / 100).toFixed(2)}
           </Text>
         </View>
         <Text style={{ fontSize: 18, marginTop: 10 }}>
-          Servings Left: {item.servingsLeft}
+          Servings Left: {food.servingsLeft}
         </Text>
       </View>
-      <View style={{ marginRight: 15 }}>
+      <Pressable style={{ marginRight: 15 }}>
         <Image
-          style={{ width: 100, height: 100, borderRadius: 8 }}
-          source={{ uri: item.imgUrl }}
+          style={{ width: 120, height: 120, borderRadius: 8 }}
+          source={{ uri: food.imgUrl }}
         />
-        <Pressable
-          style={{
-            position: "absolute",
-            left: 2,
-            top: 90,
-            flexDirection: "row",
-            alignItems: "center",
-            backgroundColor: "#17B169",
-            borderRadius: 5,
-          }}
-        >
-          <Pressable
-            onPress={() => {
-                setCart(cart.filter((cartItem) => cartItem.id !== item.id));
-                setAddItems(Math.max(0,additems-1))
-            }
+          {selected ? (
+            <Pressable
+              style={{
+                position: "absolute",
+                top: 90,
+                left: 15,
 
-            //   additems > 0 ? setAddItems(additems - 1) : setAddItems(0)
-            }
-          >
-            <Text
-              style={{ fontSize: 25, color: "white", paddingHorizontal: 10 }}
+                flexDirection: "row",
+                paddingHorizontal: 10,
+                paddingVertical: 5,
+                alignItems: "center",
+                backgroundColor: "white",
+                borderRadius: 5,
+              }}
             >
-              -
-            </Text>
-          </Pressable>
-          <Pressable>
-            <Text
-              style={{ fontSize: 20, color: "white", paddingHorizontal: 10 }}
+              <Pressable onPress={() => {
+                if(additems === 1){
+                  dispatch(removeFromCart(food))
+                  setSelected(false)
+                  setAddItems(0);
+                }else{
+                  setAddItems((c) => c - 1);
+                  dispatch(decrementQuantity(food))
+
+                }
+              }}>
+                <Text
+                  style={{
+                    fontSize: 25,
+                    color: "green",
+                    paddingHorizontal: 6,
+                  }}
+                >
+                  -
+                </Text>
+              </Pressable>
+
+              <Pressable>
+                <Text
+                  style={{
+                    fontSize: 20,
+                    color: "green",
+                    paddingHorizontal: 6,
+                  }}
+                >
+                  {additems}
+                </Text>
+              </Pressable>
+
+              <Pressable onPress={() => {
+                setAddItems((c) => c + 1);
+                dispatch(incrementQuantity(food))
+              }}>
+                <Text
+                  style={{
+                    fontSize: 20,
+                    color: "green",
+                    paddingHorizontal: 6,
+                  }}
+                >
+                  +
+                </Text>
+              </Pressable>
+            </Pressable>
+          ) : (
+            <Pressable
+              onPress={() => {
+                setSelected(true);
+                if (additems == 0) {
+                  setAddItems((c) => c + 1);
+                }
+                dispatch(addToCart(food));
+              }}
+              style={{
+                position: "absolute",
+                top: 90,
+                left: 15,
+
+                flexDirection: "row",
+                paddingHorizontal: 25,
+                paddingVertical: 10,
+                alignItems: "center",
+                backgroundColor: "white",
+                borderRadius: 5,
+              }}
             >
-              {additems}
-            </Text>
-          </Pressable>
-          <Pressable
-            onPress={() => {
-              setCart([...cart, item])
-              setAddItems(Math.min(item.servingsLeft,additems+1))
-            //   additems < item.servingsLeft
-            //     ? setCart([...cart,item]) setAddItems(additems + 1)
-            //     : setAddItems(additems)
-            }}>
-            <Text
-              style={{ fontSize: 20, color: "white", paddingHorizontal: 10 }}
-            >
-              +
-            </Text>
-          </Pressable>
-        </Pressable>
-      </View>
+              <Text
+                style={{
+                  fontSize: 18,
+                  fontWeight: "600",
+                  color: "#018749",
+                }}
+              >
+                ADD
+              </Text>
+            </Pressable>
+          )}
+      </Pressable>
     </View>
   );
 };

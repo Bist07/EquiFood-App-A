@@ -37,7 +37,7 @@ export default [
                 "servingsLeft": 12,
                 "imgUrl": "https://images.chickadvisor.com/item/47200/375/i/subway-cookies.jpg?ic=3"
             },
-        ]
+        ],
     },
     {
         id: 1,
@@ -59,7 +59,7 @@ export default [
                 "servingsLeft": 3,
                 "imgUrl": "https://www.freshii.com/static/img/bowls-buddas-satay.1266cfb.jpg"
             },
-        ]
+        ],
     },
     {
         id: 2,
@@ -90,6 +90,6 @@ export default [
                 "servingsLeft": 3,
                 "imgUrl": "https://jugojuice.com/wp-content/uploads/2021/04/SMOOTHIE_MightyKale-1.png"
             },
-        ]
+        ],
     },
 ];

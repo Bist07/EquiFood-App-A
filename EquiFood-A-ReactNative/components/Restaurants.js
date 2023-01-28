@@ -3,13 +3,14 @@ import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-const Restaurants = (props) => {
-  const restaurant = props.restaurant;
+const Restaurants = (data) => {
   const navigation = useNavigation();
+  const restaurant = data.item
   return (
     <Pressable onPress={() => navigation.navigate("RestaurantPage",{
       id:restaurant.id,
       name:restaurant.name,
+      uri:restaurant.logo,
       address:restaurant.address,
       cuisines:restaurant.cuisines,
       menu:restaurant.menu,

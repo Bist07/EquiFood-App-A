@@ -1,8 +1,6 @@
 import { StyleSheet, View, SafeAreaView, TextInput, Image, Pressable, ScrollView, Text } from "react-native";
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
-import Categories from "../components/Categories";
-import ItemComponent from "../components/ItemComponent";
 import RestaurantData from "../data/RestaurantData";
 import Restaurants from "../components/Restaurants";
 
@@ -23,15 +21,12 @@ const HomeScreen = () => {
           <AntDesign name="search1" size={20} color="#008B8B" />
           <TextInput style={{paddingLeft:5}} placeholder="Restaurant name, cuisines, or a dish"></TextInput>
         </View>
-
-        {/* <Categories/> */}
-        {/* <ItemComponent/> */}
         <View>
           <Text style={{fontSize:17, fontWeight:'bold', padding:4 }}>Restaurants</Text>
         </View>
 
         <View>
-          {storeData.map((store, index) => <Restaurants key={index} restaurant={store}/>)}
+          {storeData.map((item, index) => <Restaurants key={index} item={item}/>)}
         </View>
       </View>
     </ScrollView>
