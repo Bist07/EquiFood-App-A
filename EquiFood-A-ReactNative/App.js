@@ -5,16 +5,16 @@ import { StatusBar } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import StackNavigator from './StackNavigator';
-import { CartContext } from './Context';
+import { Provider } from "react-redux";
+import store from './store';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <CartContext>
+    <Provider store={store}>
       <StackNavigator/>
-      <StatusBar style="auto"/>
-    </CartContext>
+    </Provider>
   );
 }
 
@@ -24,3 +24,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
+
