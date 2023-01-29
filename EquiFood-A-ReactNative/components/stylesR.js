@@ -15,6 +15,14 @@ const stylesR = StyleSheet.create({
         borderTopLeftRadius: 7,
         borderTopRightRadius: 7
     },
+    adminBorders:{
+        margin: 5,
+        marginBottom: 0,
+        borderColor: "green",
+        borderWidth:1,
+        overflow:"hidden",
+        borderRadius:7,
+    },
 
     imageStyle:{
         width: "100%",
@@ -22,6 +30,7 @@ const stylesR = StyleSheet.create({
         borderTopLeftRadius: 7,
         borderTopRightRadius: 7,
     },
+
     descriptionCard:{
         marginLeft: 5,
         marginRight: 5,

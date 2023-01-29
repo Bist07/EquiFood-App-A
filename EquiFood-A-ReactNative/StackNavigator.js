@@ -12,12 +12,26 @@ import AccountSettings from './screens/AccountSettings';
 import Help from './screens/Help';
 import Privacy from './screens/Privacy';
 import About from './screens/About';
+import LogIn from './screens/LogIn';
+import Register from './screens/Register';
+import ForgotPassword from './screens/ForgotPassword';
+import AdminLogIn from './screens/AdminLogIn';
+import RestaurantOwnerLogIn from './screens/RestaurantOwnerLogIn';
+import Admin from './screens/Admin';
+import Donations from './screens/Donations';
 const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="LogIn" component={LogIn}  options={{headerShown:false}}/>
+        <Stack.Screen name="Register" component={Register}  options={{headerShown:false}}/>
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword}  options={{headerShown:false}}/>
+        <Stack.Screen name="RestaurantOwnerLogIn" component={RestaurantOwnerLogIn}  options={{headerShown:false}}/>
+        <Stack.Screen name="AdminLogIn" component={AdminLogIn}  options={{headerShown:false}}/>
+        <Stack.Screen name="Admin" component={Admin}  options={{headerShown:false}}/>
+        <Stack.Screen name="Donations" component={Donations}  options={{headerShown:false}}/>
         <Stack.Screen name="Home" component={HomeScreen}  options={{headerShown:false}}/>
         <Stack.Screen name="RestaurantPage" component={RestaurantPage} options={{headerShown:false}}/>
         <Stack.Screen name="OrderPage" component={OrderPage} options={{headerShown:false}}/>
