@@ -2,8 +2,6 @@ import { StyleSheet, View, SafeAreaView, TextInput, Image, Pressable, ScrollView
 import React from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
-import Categories from "../components/Categories";
-import ItemComponent from "../components/ItemComponent";
 import RestaurantData from "../data/RestaurantData";
 import Restaurants from "../components/Restaurants";
 import Header from "../components/header";
