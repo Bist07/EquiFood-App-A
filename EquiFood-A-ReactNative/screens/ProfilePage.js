@@ -63,7 +63,7 @@ const ProfilePage = (props) => {
             <TouchableOpacity style={styles.profileItem}
                 onPress={() => navigation.navigate('Privacy')}>
                 <View style={styles.innerContent}>
-                    <Text style={styles.textStyle}> PRIVACY </Text>
+                    <Text style={styles.textStyle}> Terms & Conditions </Text>
                 </View>
             </TouchableOpacity>
             <View

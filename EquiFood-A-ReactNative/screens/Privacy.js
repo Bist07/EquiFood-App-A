@@ -12,7 +12,7 @@ export default function Privacy(){
     return(
         <View>
             <View>
-                <Text> Privacy Policy </Text>
+                <Text> Terms & Conditions </Text>
             </View>
         </View>
     )
