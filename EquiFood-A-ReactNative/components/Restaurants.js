@@ -6,15 +6,17 @@ import stylesR from './stylesR'
 
 // This is the functionality and design of each restaurant CARD (for the page that lists all restaurants).
 
-const Restaurants = (props) => {
-  const restaurant = props.restaurant;
+const Restaurants = (data) => {
   const navigation = useNavigation();
+  const restaurant = data.item
   return (
     <Pressable onPress={() => navigation.navigate("RestaurantPage",{
       id:restaurant.id,
       name:restaurant.name,
+      uri:restaurant.logo,
       address:restaurant.address,
       cuisines:restaurant.cuisines,
+      menu:restaurant.menu,
     })}>
       <View style= {stylesR.borders}>
         <Image style= {stylesR.imageStyle}
