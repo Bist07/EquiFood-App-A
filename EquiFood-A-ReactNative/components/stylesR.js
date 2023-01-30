@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
-import Restaurants from "./Restaurants";
 // import { styleProps } from "react-native-web/dist/cjs/modules/forwardedProps";
 
 
