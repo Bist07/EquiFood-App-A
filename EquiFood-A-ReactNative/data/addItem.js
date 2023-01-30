@@ -24,4 +24,8 @@ function createRestaurant(){
     if (conn) return conn.end();
 }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> develop

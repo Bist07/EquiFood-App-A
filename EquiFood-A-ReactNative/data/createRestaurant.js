@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+//Connect to database - MUST HAVE SERVER RUNNING LOCALLY FOR NOW
+>>>>>>> develop
 const mariadb = require('mariadb')
 const Pool = mariadb.createPool({  
     host: "equifooda-db00009090.mdb0002659.db1.skysql.net",//process.env.DB_HOST,
@@ -22,4 +26,8 @@ function createRestaurant(){
     if (conn) return conn.end();
 }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> develop

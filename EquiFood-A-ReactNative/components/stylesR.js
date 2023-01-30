@@ -15,6 +15,14 @@ const stylesR = StyleSheet.create({
         borderTopLeftRadius: 7,
         borderTopRightRadius: 7
     },
+    adminBorders:{
+        margin: 5,
+        marginBottom: 0,
+        borderColor: "green",
+        borderWidth:1,
+        overflow:"hidden",
+        borderRadius:7,
+    },
 
     imageStyle:{
         width: "100%",
@@ -22,6 +30,7 @@ const stylesR = StyleSheet.create({
         borderTopLeftRadius: 7,
         borderTopRightRadius: 7,
     },
+
     descriptionCard:{
         marginLeft: 5,
         marginRight: 5,
@@ -93,33 +102,41 @@ const stylesR = StyleSheet.create({
         fontSize: 18,
         marginTop: 10
     },
-    itemImage:{
-        width: 100,
-        height: 100,
-        borderRadius: 8 
-    },
     itemIncrement:{
         position: "absolute",
-        left: 2,
+        left: 15,
         top: 90,
         flexDirection: "row",
+        paddingHorizontal: 10,
+        paddingVertical: 5,
         alignItems: "center",
-        backgroundColor: "#17B169",
+        backgroundColor: "white",
+        borderRadius: 5,
+    },
+    addButton:{
+        position: "absolute",
+        top: 90,
+        left: 15,
+        flexDirection: "row",
+        paddingHorizontal: 25,
+        paddingVertical: 10,
+        alignItems: "center",
+        backgroundColor: "white",
         borderRadius: 5,
     },
     decreaseItem:{
-        fontSize: 25, 
-        color: "white", 
-        paddingHorizontal: 10
+        fontSize: 20, 
+        color: "green", 
+        paddingHorizontal: 6
     },
     itemCount:{
         fontSize: 20,
-        color: "white", 
-        paddingHorizontal: 10
+        color: "green", 
+        paddingHorizontal: 6
     },
     increaseItem:{
         fontSize: 20, 
-        color: "white", 
+        color: "green", 
         paddingHorizontal: 10
     }
     /*Continued for ViewCart.js page */

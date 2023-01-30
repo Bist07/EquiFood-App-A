@@ -1,19 +1,33 @@
-import { Pressable, SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Pressable,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React, { useContext } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import menuData from "../data/menuData";
 import Menu from "../components/Menu";
-import { CartItems } from "../Context";
-import ViewCart from "../components/ViewCart";
+
+import CartScreen from "./CartScreen";
+import { useSelector } from "react-redux";
 import Header from "../components/header";
 
 const RestaurantPage = () => {
-  const foodData = menuData;
+  const cart = useSelector((state) => state.cart.cart);
+  const total = cart
+    .map((item) => item.discountPrice * item.quantity)
+    .reduce((curr, prev) => curr + prev, 0);
+  cart.map((item) => console.log(item));
+  console.log(total);
   const route = useRoute();
   const navigation = useNavigation();
-  const { cart, setCart } = useContext(CartItems);
+  // console.log(route.params);
+  const foods = route.params.menu;
+
   return (
     <>
       <ScrollView style={{ marginTop: 30 }}>
@@ -99,24 +113,43 @@ const RestaurantPage = () => {
         <View style={{ margin: 10 }}>
           <Text style={{ fontSize: 17 }}>Menu</Text>
           <Text
-            style={{ borderColor: "gray", borderWidth: 2, height: 2, width: 45 }}
+            style={{
+              borderColor: "gray",
+              borderWidth: 2,
+              height: 2,
+              width: 45,
+            }}
           />
         </View>
         <View>
-          {/* Used conditional to either create menu item if food store id matched restaurant id */}
-          {/* {filteredData = foodData.filter(food => food.store == route.params.id)} */}
-          {foodData.map((food, index) =>
-            food.store == route.params.id ? (
-              <Menu cart={cart} setCart={setCart} key={index + food.id} menu={food} />
-            ) : (
-              //Find a way to actually do nothing
-              <></>
-            )
-          )}
+          {foods.map((item, i) => (
+            <Menu food={item} key={i} />
+          ))}
         </View>
       </ScrollView>
-
-      <ViewCart restaurantName={route.params.name}/>
+      {/* {total === 0 ? null : (
+        <Pressable
+          style={{
+            backgroundColor: "#00A877",
+            width: "90%",
+            padding: 13,
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginBottom: 30,
+            position: "absolute",
+            left: 20,
+            bottom: 10,
+          }}
+        >
+          <View>
+            <View>
+              <Text>{cart.length} items | ${total}</Text>
+            </View>
+          </View>
+        </Pressable>
+      )} */}
+      
+      <CartScreen restaurantName={route.params.name}/>
     </>
   );
 };

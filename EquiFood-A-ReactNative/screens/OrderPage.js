@@ -28,7 +28,10 @@ const OrderPage = () => {
           >
           <Ionicons name="chevron-back-outline" size={24} color="white" />
       </Pressable>
-      <View style={{paddingTop:200}}>
+      <View style={{alignItems: 'center', justifyContent: 'center', marginTop:150}}>
+        <Text style={{fontSize:20, fontWeight:'bold', textAlign:"center"}}>
+          Your reservation is set to 12:34PM
+        </Text>
         <Text style={{fontSize:20, fontWeight:'bold', textAlign:"center"}}>
           Your code is 1234
         </Text>
