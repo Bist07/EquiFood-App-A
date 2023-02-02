@@ -6,7 +6,7 @@ import stylesR from './stylesR'
 
 // This is the functionality and design of each restaurant CARD (for the page that lists all restaurants).
 
-const Restaurants = (data) => {
+const RestaurantCard = (data) => {
   const navigation = useNavigation();
   const restaurant = data.item
   return (
@@ -56,6 +56,6 @@ const Restaurants = (data) => {
   );
 };
 
-export default Restaurants;
+export default RestaurantCard;
 
 const styles = StyleSheet.create({});

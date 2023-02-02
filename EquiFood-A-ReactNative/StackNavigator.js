@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './screens/HomeScreen';
+import RestaurantsView from './screens/RestaurantsView';
 import RestaurantPage from './screens/RestaurantPage';
 import OrderPage from './screens/OrderPage';
 import Header from './components/header';
@@ -32,7 +32,7 @@ const StackNavigator = () => {
         <Stack.Screen name="AdminLogIn" component={AdminLogIn}  options={{headerShown:false}}/>
         <Stack.Screen name="Admin" component={Admin}  options={{headerShown:false}}/>
         <Stack.Screen name="Donations" component={Donations}  options={{headerShown:false}}/>
-        <Stack.Screen name="Home" component={HomeScreen}  options={{headerShown:false}}/>
+        <Stack.Screen name="RestaurantsView" component={RestaurantsView}  options={{headerShown:false}}/>
         <Stack.Screen name="RestaurantPage" component={RestaurantPage} options={{headerShown:false}}/>
         <Stack.Screen name="OrderPage" component={OrderPage} options={{headerShown:false}}/>
         <Stack.Screen name="ProfilePage" component={ProfilePage} options={{headerShown:false}}/>

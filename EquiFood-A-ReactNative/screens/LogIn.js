@@ -54,7 +54,7 @@ const LogIn = ({onPress, text}) => {
             </View>
 
             <TouchableOpacity style={styles.signInButton}
-            onPress={() => navigation.navigate('Home')}>
+            onPress={() => navigation.navigate('RestaurantsView')}>
                 <Text style ={styles.signInText}>Sign In</Text>
             </TouchableOpacity>
 
