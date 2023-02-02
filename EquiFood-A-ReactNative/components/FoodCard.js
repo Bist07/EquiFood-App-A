@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { addToCart, decrementQuantity, incrementQuantity, removeFromCart } from "../redux/CartReducer";
 import stylesR from './stylesR'
 
-const Menu = ({ food }) => {
+const FoodCard = ({ food }) => {
   const dispatch = useDispatch();
   // console.log(food)
   const [itemCount, setCount] = useState(0);
@@ -101,6 +101,6 @@ const Menu = ({ food }) => {
   );
 };
 
-export default Menu;
+export default FoodCard;
 
 const styles = StyleSheet.create({});
