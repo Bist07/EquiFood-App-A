@@ -2,12 +2,12 @@ import { StyleSheet, View, SafeAreaView, TextInput, Image, Pressable, ScrollView
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import RestaurantData from "../data/RestaurantData";
-import Restaurants from "../components/Restaurants";
+import RestaurantCard from "../components/RestaurantCard";
 import Header from "../components/header";
 import ProfilePage from "./ProfilePage";
 // This page displays all restaurant data in one page.
 
-const HomeScreen = () => {
+const RestaurantsView = () => {
   const storeData = RestaurantData;
   return (
     <ScrollView style={{marginTop:45, backgroundColor:"#F0F0F0"}}>
@@ -34,13 +34,13 @@ const HomeScreen = () => {
         </View>
 
         <View>
-          {storeData.map((item, index) => <Restaurants key={index} item={item}/>)}
+          {storeData.map((item, index) => <RestaurantCard key={index} item={item}/>)}
         </View>
       </View>
     </ScrollView>
   );
 };
 
-export default HomeScreen;
+export default RestaurantsView;
 
 const styles = StyleSheet.create({});

@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import RestaurantData from "../data/RestaurantData";
-import Restaurants from "../components/Restaurants";
+import RestaurantCard from "../components/RestaurantCard";
 import Header from "../components/header";
 import Profile from "../components/Profile";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
