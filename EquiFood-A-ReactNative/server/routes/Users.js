@@ -15,6 +15,21 @@ router.get('/:Username', async function(req,res){
 
 
     //res.status(200).json({Username:req.params.Username})
-} )
+} );
+
+
+router.post('/register',  async function(req,res){
+    try {
+       
+        const {Email, Password} = req.body;
+
+        const sqlQuery = 'INSERT INTO Users (Email, Password) VALUES (?,?)';
+        const result = await pool.query(sqlQuery, [Email, Password]);
+        
+        res.status(200).json({Username: result.insertUsername});
+    } catch (error) {
+        res.status(400).send(error.message)
+}
+})
 
 module.exports = router;
