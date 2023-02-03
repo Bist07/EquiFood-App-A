@@ -1,8 +1,10 @@
-const express = require('express')
-const dotenv = require('dotenv').config(); //might need to provide path to env file
+const express = require('express');
+const dotenv = require('dotenv'); //had .config() //might need to provide path to env file
 
-const app = express()
+dotenv.config({path: '.env'});
 
+const app = express();
+ 
 /**
  * Middleware
  */
@@ -17,9 +19,13 @@ app.use(express.urlencoded({ extended: false }));
 app.get('/', (request, response) => {
     response.status(200).send("Hello world")
 })
-
+//creates connection router for Restaurant table
 const restaurantRouter = require('./routes/Restaurant');
 app.use('/Restaurant', restaurantRouter);
+
+//crteates connection router for user table
+const userRouter = require('./routes/Users');
+app.use('/Users', userRouter);
 
 
 /**
