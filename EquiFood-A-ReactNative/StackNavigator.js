@@ -19,6 +19,12 @@ import AdminLogIn from './screens/AdminLogIn';
 import RestaurantOwnerLogIn from './screens/RestaurantOwnerLogIn';
 import Admin from './screens/Admin';
 import Donations from './screens/Donations';
+import RestaurantOwnerView from './screens/RestaurantOwnerView';
+import RestaurantInfoEditView from './screens/RestaurantInfoEditView';
+import FoodEditView from './screens/FoodEditView';
+import FoodInsertView from './screens/FoodInsertView';
+import FoodEditForm from './components/FoodEditForm';
+
 const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
@@ -29,6 +35,11 @@ const StackNavigator = () => {
         <Stack.Screen name="Register" component={Register}  options={{headerShown:false}}/>
         <Stack.Screen name="ForgotPassword" component={ForgotPassword}  options={{headerShown:false}}/>
         <Stack.Screen name="RestaurantOwnerLogIn" component={RestaurantOwnerLogIn}  options={{headerShown:false}}/>
+        <Stack.Screen name="RestaurantOwnerView" component={RestaurantOwnerView}  options={{headerShown:false}}/>
+        <Stack.Screen name="RestaurantInfoEditView" component={RestaurantInfoEditView}  options={{headerShown:false}}/>
+        <Stack.Screen name="FoodEditView" component={FoodEditView}  options={{headerShown:false}}/>
+        <Stack.Screen name="FoodEditForm" component={FoodEditForm}  options={{headerShown:false}}/>
+        <Stack.Screen name="FoodInsertView" component={FoodInsertView}  options={{headerShown:false}}/>
         <Stack.Screen name="AdminLogIn" component={AdminLogIn}  options={{headerShown:false}}/>
         <Stack.Screen name="Admin" component={Admin}  options={{headerShown:false}}/>
         <Stack.Screen name="Donations" component={Donations}  options={{headerShown:false}}/>

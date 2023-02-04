@@ -8,11 +8,12 @@ const stylesR = StyleSheet.create({
     borders:{
         margin: 5,
         marginBottom: 0,
+        width:"100%",
         borderColor: "green",
         borderWidth:1,
         overflow:"hidden",
-        borderTopLeftRadius: 7,
-        borderTopRightRadius: 7
+        // borderTopLeftRadius: 7,
+        // borderTopRightRadius: 7
     },
     adminBorders:{
         margin: 5,
@@ -25,9 +26,9 @@ const stylesR = StyleSheet.create({
 
     imageStyle:{
         width: "100%",
-        aspectRatio: 1,
-        borderTopLeftRadius: 7,
-        borderTopRightRadius: 7,
+        aspectRatio: 1.5,
+        // borderTopLeftRadius: 7,
+        // borderTopRightRadius: 7,
     },
 
     descriptionCard:{
@@ -40,19 +41,19 @@ const stylesR = StyleSheet.create({
         justifyContent: "space-between",
     },
     restaurantName:{
-        fontSize: 24, 
+        fontSize: 20, 
         fontWeight: "600" 
     },
     restaurantHours:{
-        fontSize: 15,
+        fontSize: 14,
         color: "gray",
-        marginVertical: 7
+        // marginVertical: 7
     },
     rating:{
         flexDirection: "row",
         alignItems: "center",
         backgroundColor: "#17B169",
-        padding: 5,
+        padding: 4,
         borderRadius: 6,
     },
     ratingText:{
@@ -137,8 +138,51 @@ const stylesR = StyleSheet.create({
         fontSize: 20, 
         color: "green", 
         paddingHorizontal: 10
-    }
+    },
     /*Continued for ViewCart.js page */
+
+    // For RestaurantOwnerView page
+    ROButtons:{
+        backgroundColor: '#50C878',
+        width: '75%',
+        padding: 15,
+        marginVertical: 5,
+        marginTop:5,
+        alignSelf: "center",
+        alignItems: 'center',
+        borderRadius: 5
+    },
+
+    ROButtonText:{
+        fontSize:20,
+        fontWeight: "bold",
+        marginTop:10,
+        marginBottom:10,
+        color:"white",
+    },
+
+    FoodInsertView:{
+        margin:10,
+    },
+
+    inputForm: {
+        flexDirection:'row',
+        borderColor:'#ccc', 
+        borderWidth:2, 
+        padding:8, 
+        marginBottom:25,
+    },
+
+    inputButton:{
+        backgroundColor: '#50C878',
+        width: '50%',
+        padding: 15,
+        marginVertical: 5,
+        marginTop:5,
+        alignSelf: "center",
+        alignItems: 'center',
+        borderRadius: 5
+    }
 })
 
 

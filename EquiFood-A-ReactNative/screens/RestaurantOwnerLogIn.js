@@ -72,7 +72,7 @@ const RestaurantOwnerLogIn = ({onPress, text}) => {
             </View>
 
             <TouchableOpacity style={styles.signInButton}
-            onPress={() => navigation.navigate('')}>
+            onPress={() => navigation.navigate('RestaurantOwnerView')}>
                 <Text style ={styles.signInText}>Sign In as Restaurant Owner</Text>
             </TouchableOpacity>
 

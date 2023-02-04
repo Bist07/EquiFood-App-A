@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
         color:'grey',
     },
     ROButton:{
-        marginTop:90,
+        marginTop:30,
     },
     ROText:{
         color: '#50C878',
