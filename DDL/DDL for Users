@@ -1,9 +1,0 @@
-CREATE TABLE IF NOT EXISTS Users (
-Username varchar(255),
-FirstName varchar(255),
-LastName varchar(255),
-Email varchar(255),
-Password varchar(255), --This data type will be changed and encrypted, this is just for now
-created datetime default CURRENT_TIMESTAMP,
-PRIMARY KEY (Username)
-);
