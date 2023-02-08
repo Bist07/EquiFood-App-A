@@ -173,7 +173,7 @@ const stylesR = StyleSheet.create({
         marginBottom:25,
     },
 
-    inputButton:{
+    inputFormButton:{
         backgroundColor: '#50C878',
         width: '50%',
         padding: 15,
@@ -182,7 +182,18 @@ const stylesR = StyleSheet.create({
         alignSelf: "center",
         alignItems: 'center',
         borderRadius: 5
-    }
+    },
+
+    ROFormButtons:{
+        backgroundColor: '#50C878',
+        width: '40%',
+        padding: 15,
+        marginVertical: 5,
+        margin:5,
+        alignSelf: "center",
+        alignItems: 'center',
+        borderRadius: 5
+    },
 })
 
 
