@@ -2,10 +2,10 @@ const express = require('express');
 const pool = require('../helpers/database');  // define connection pool
 const router = express.Router();
 
-router.get('/', async function(req,res){
+router.get('/:id', async function(req,res){
     try {
-        const sqlQuery = 'SELECT * FROM customer'; //defines query
-        const rows = await pool.query(sqlQuery, req.params.first_name); //rows = your returned query data
+        const sqlQuery = 'SELECT * FROM customer WHERE id=?'; //defines query
+        const rows = await pool.query(sqlQuery, req.params.id); //rows = your returned query data
         console.log(rows.slice(rows.indexOf('}'))); // print row data minus all the fluff
         res.status(200).json(rows); //display row data on local host
      
