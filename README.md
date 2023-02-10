@@ -26,6 +26,7 @@ Jake Daongam - QA Leader <br>
 
 - A rough plan for January
 - Notes from Professor/TA meetings in Jan
+- Equifood Priority Tasks Document 
 <br>
 
 #### Will include:
