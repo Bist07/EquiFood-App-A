@@ -16,7 +16,13 @@ const FoodEditCard = ({ food }) => {
   return (
     <Pressable
       style= {stylesR.itemDisplay}
-      onPress={() => navigation.navigate('FoodEditForm')}>
+      onPress={() => navigation.navigate('FoodEditForm', {
+        name: food.name,
+        originalPrice: food.originalPrice,
+        discountPrice: food.discountPrice,
+        servingsLeft: food.servingsLeft,
+        imgUrl: food.imgUrl,
+      })}>
       <View style={{ marginLeft: 10, flex: 1 }}>
 
         <Text style={stylesR.itemName}>

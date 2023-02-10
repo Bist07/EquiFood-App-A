@@ -24,8 +24,8 @@ const restaurantRouter = require('./routes/Restaurant');
 app.use('/Restaurant', restaurantRouter);
 
 //crteates connection router for user table
-const userRouter = require('./routes/Users');
-app.use('/Users', userRouter);
+const customerRouter = require('./routes/customer');
+app.use('/customer', customerRouter);
 
 
 /**
