@@ -26,7 +26,13 @@ Jake Daongam - QA Leader <br>
 
 - A rough plan for January
 - Notes from Professor/TA meetings in Jan
+- Equifood Priority Tasks Document 
 <br>
+
+#### Will include:
+
+    - TA demo meeting suggestions
+    - Screens navigation chart on Lucid Chart for us and future developers.
 
 # Equifood App Purpose:
 The purpose of Equifood is to aid in reducing food wastage of restaurants. This app presents restaurant owners the idea of giving away excess food they have at the end of each day at discounted prices, or for free. 
