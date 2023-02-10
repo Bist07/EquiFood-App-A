@@ -28,23 +28,19 @@ const FoodInsertView = () => {
         <Ionicons name="chevron-back-outline" size={24} color="white" />
       </Pressable>   
       <ScrollView style={stylesR.FoodInsertView}>
-        <InputForm placeholder="Food Name"/>
-        <InputForm placeholder="Original Price"/>
-        <InputForm placeholder="Discounted Price"/>
-        <InputForm placeholder="Servings Available"/>
-        <InputForm placeholder="Image URL"/>
+        <InputForm placeholder="Food Name" title="Food Name"/>
+        <InputForm placeholder="Original Price" title="Original Price"/>
+        <InputForm placeholder="Discounted Price" title="Discounted Price"/>
+        <InputForm placeholder="Servings Available" title="Servings Available"/>
+        <InputForm placeholder="Image URL" title="Image URL"/>
         <View>
 
-        <View style={{display:'flex'}}>
-          <TouchableOpacity style={stylesR.ROButtons}
-              // onPress={() => navigation.navigate('')}
-              >
-              <Text style={stylesR.ROButtonText}> Insert New Food </Text>
+        <View style={{display:'flex', flexDirection:2, justifyContent:"space-evenly"}}>
+          <TouchableOpacity style={stylesR.ROFormButtons}>
+              <Text style={stylesR.ROButtonText}>Insert Food</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={stylesR.ROButtons}
-              // onPress={() => navigation.navigate('FoodInsertView')}
-              >
-              <Text style={stylesR.ROButtonText}> Reset </Text>
+          <TouchableOpacity style={stylesR.ROFormButtons}>
+              <Text style={stylesR.ROButtonText}>Reset</Text>
           </TouchableOpacity>
         </View>
         </View>

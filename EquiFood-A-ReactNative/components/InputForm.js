@@ -3,10 +3,11 @@ import React from 'react'
 import stylesR from './stylesR'
 
 const InputForm = (props) => {
-  const placeholder = props.placeholder
+  const title = props.title;
+  const placeholder = props.placeholder;
   return (
     <View>
-        <Text>{placeholder}</Text>
+        <Text style={{marginBottom:5}}>{title}</Text>
         <View style={stylesR.inputForm}>
             <TextInput placeholder={placeholder}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
         </View>
