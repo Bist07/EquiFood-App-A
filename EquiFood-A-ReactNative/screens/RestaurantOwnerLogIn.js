@@ -5,9 +5,10 @@ import CustomInput from '../components/CustomInput'
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import {MaterialIcons} from '@expo/vector-icons';
+import { Ionicons, Feather } from "@expo/vector-icons";
 
 
-const LogIn = ({onPress, text}) => {
+const RestaurantOwnerLogIn = ({onPress, text}) => {
     const [username, setUsername] = useState('');    
     const [password, setPassword] = useState('');
     const route = useRoute();
@@ -33,7 +34,24 @@ const LogIn = ({onPress, text}) => {
 
 
     return (
-        <View style={styles.root}>            
+        <View style={styles.root}>  
+
+               <View style={{alignSelf: "flex-start", marginTop: 70}}>
+        <Pressable
+            onPress={() => navigation.goBack()}
+            style={{
+              backgroundColor: '#50C878',
+              width: 35,
+              height: 35,
+              borderRadius: 20,
+              justifyContent: "center",
+              alignItems: "center",
+              marginLeft: 10,
+            }}
+          >
+            <Ionicons name="chevron-back-outline" size={20} color="white"  />
+          </Pressable>
+          </View>          
  
             <Image style={ styles.logo}
             source = {Logo} />
@@ -50,12 +68,12 @@ const LogIn = ({onPress, text}) => {
 
             <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25}}>
                 <MaterialIcons name="lock" size={20} color='#ccc' style={{marginRight:5}}/>
-                <TextInput placeholder = 'Password' style={{ flex:1, paddingVertical:0}} secureTextEntry={true} />
+                <TextInput placeholder = 'Password' style={{ flex:1, paddingVertical:0}} secureTextEntry="true" />
             </View>
 
             <TouchableOpacity style={styles.signInButton}
-            onPress={() => navigation.navigate('RestaurantsView')}>
-                <Text style ={styles.signInText}>Sign In</Text>
+            onPress={() => navigation.navigate('RestaurantOwnerView')}>
+                <Text style ={styles.signInText}>Sign In as Restaurant Owner</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.passwordButton}
@@ -68,23 +86,13 @@ const LogIn = ({onPress, text}) => {
                 <Text style ={styles.passwordText}>Register</Text>
             </TouchableOpacity>
 
-            
-            <TouchableOpacity style={styles.ROButton}
-             onPress={() => navigation.navigate('RestaurantOwnerLogIn')}>
-                <Text style ={styles.ROText}>Log In as Restaurant Owner</Text>
-            </TouchableOpacity>
-            
-            <TouchableOpacity style={styles.AdminButton}
-             onPress={() => navigation.navigate('AdminLogIn')}>
-                <Text style ={styles.AdminText}>Log In as Admin</Text>
-            </TouchableOpacity>
 
         
         </View>
     )
 }
 
-export default LogIn;
+export default RestaurantOwnerLogIn;
 
 
 
@@ -105,11 +113,11 @@ const styles = StyleSheet.create({
         width: '100%', 
         height: 150,
         resizeMode : 'contain', 
-        marginTop: 120, 
+        marginTop: 45, 
         borderRadius: 70,
         padding: 20,
         paddingBottom: 40,
-        marginBottom:50,
+        marginBottom:70,
   
     },
     signInButton:{
@@ -117,7 +125,7 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: 15,
         marginVertical: 5,
-        marginTop:20,
+        marginTop:40,
 
         alignItems: 'center',
         borderRadius: 5
@@ -127,13 +135,13 @@ const styles = StyleSheet.create({
         color:'white'
     },
     passwordButton:{
-        marginTop: 13,
+        marginTop: 15,
     },
     passwordText:{
         color:'grey',
     },
     ROButton:{
-        marginTop:30,
+        marginTop:90,
     },
     ROText:{
         color: '#50C878',
@@ -148,4 +156,3 @@ const styles = StyleSheet.create({
     }
 
 });
-

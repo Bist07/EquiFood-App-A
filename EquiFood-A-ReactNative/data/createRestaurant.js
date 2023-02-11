@@ -17,10 +17,9 @@ function createRestaurant(){
         conn =  mariadb.getConnection()
         const rest = conn.query("INSERT INTO Restuarant value (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [8, "PizzaHut", "fast pizza and sides", 0, "pizza", "1234 Road drive", "11am - 8pm", "imagePathGoesHere", 20, 123.9303, 232.033])
         prompt(conn.query("SELECT * FROM Restaurant"));
-} catch (err){
-    throw err;
-} finally {
-    if (conn) return conn.end();
-}
-
+    } catch (err){
+        throw err;
+    } finally {
+        if (conn) return conn.end();
+    }
 }

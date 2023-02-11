@@ -2,10 +2,8 @@ import { StyleSheet, View, SafeAreaView, TextInput, Image, Pressable, ScrollView
 import React from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
-import Categories from "../components/Categories";
-import ItemComponent from "../components/ItemComponent";
 import RestaurantData from "../data/RestaurantData";
-import Restaurants from "../components/Restaurants";
+import RestaurantCard from "../components/RestaurantCard";
 import Header from "../components/header";
 import Profile from "../components/Profile";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
@@ -63,7 +61,7 @@ const ProfilePage = (props) => {
             <TouchableOpacity style={styles.profileItem}
                 onPress={() => navigation.navigate('Privacy')}>
                 <View style={styles.innerContent}>
-                    <Text style={styles.textStyle}> PRIVACY </Text>
+                    <Text style={styles.textStyle}> Terms & Conditions </Text>
                 </View>
             </TouchableOpacity>
             <View

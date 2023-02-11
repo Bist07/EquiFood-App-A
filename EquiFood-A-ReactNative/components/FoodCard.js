@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { addToCart, decrementQuantity, incrementQuantity, removeFromCart } from "../redux/CartReducer";
 import stylesR from './stylesR'
 
-const Menu = ({ food }) => {
+const FoodCard = ({ food }) => {
   const dispatch = useDispatch();
   // console.log(food)
   const [itemCount, setCount] = useState(0);
@@ -36,7 +36,7 @@ const Menu = ({ food }) => {
           source={{ uri: food.imgUrl }}
         />
           {selected ? (
-            <Pressable style={stylesR.itemImage}>
+            <Pressable style={stylesR.itemIncrement}>
               <Pressable onPress={() => {
                 if(itemCount === 1){
                   dispatch(removeFromCart(food))
@@ -77,23 +77,12 @@ const Menu = ({ food }) => {
             <Pressable
               onPress={() => {
                 setSelected(true);
-                if (additems == 0) {
+                if (itemCount == 0) {
                   setCount((c) => c + 1);
                 }
                 dispatch(addToCart(food));
               }}
-              style={{
-                position: "absolute",
-                top: 90,
-                left: 15,
-
-                flexDirection: "row",
-                paddingHorizontal: 25,
-                paddingVertical: 10,
-                alignItems: "center",
-                backgroundColor: "white",
-                borderRadius: 5,
-              }}
+              style={stylesR.addButton}
             >
               <Text
                 style={{
@@ -112,6 +101,6 @@ const Menu = ({ food }) => {
   );
 };
 
-export default Menu;
+export default FoodCard;
 
 const styles = StyleSheet.create({});

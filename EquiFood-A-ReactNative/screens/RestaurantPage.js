@@ -10,7 +10,7 @@ import React, { useContext } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import Menu from "../components/Menu";
+import FoodCard from "../components/FoodCard";
 
 import CartScreen from "./CartScreen";
 import { useSelector } from "react-redux";
@@ -123,7 +123,7 @@ const RestaurantPage = () => {
         </View>
         <View>
           {foods.map((item, i) => (
-            <Menu food={item} key={i} />
+            <FoodCard food={item} key={i} />
           ))}
         </View>
       </ScrollView>

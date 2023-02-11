@@ -26,7 +26,13 @@ Jake Daongam - QA Leader <br>
 
 - A rough plan for January
 - Notes from Professor/TA meetings in Jan
+- Equifood Priority Tasks Document 
 <br>
+
+#### Will include:
+
+    - TA demo meeting suggestions
+    - Screens navigation chart on Lucid Chart for us and future developers.
 
 # Equifood App Purpose:
 The purpose of Equifood is to aid in reducing food wastage of restaurants. This app presents restaurant owners the idea of giving away excess food they have at the end of each day at discounted prices, or for free. 
@@ -38,6 +44,21 @@ Equifood administrators manually keep track of the money amount Equifood has sav
 # About our Software:
 
 Our software will allow restaurant owners to post their discounted/free offers for individuals to see and will automatically keep track of donation amounts.
+
+# Sign in Portals Included: 
+
+    - Customer View
+        - Includes Restaurants, Restaurant specifics, add / delete to cart, cart, reserve, timepicker, searchbar, header navigation portion, profile with various setting options. 
+        Profile Includes:
+            - View Recent Orders
+            - Edit Account
+            - Help
+            - Privacy
+            - About
+    - Restaurant Owner View:
+        - Includes the restaurant ownerr view
+    - Admin View
+        - Includes donations, restaurant requests, add / remove restaurants / the ability to navigate into and look at restaurants deeply. 
 
 # Tech Stack:
 Our client preferred we use one of the two MERN stack variations (MariaDB or MongoDB)
