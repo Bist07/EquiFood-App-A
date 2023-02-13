@@ -30,8 +30,9 @@ const RestaurantPage = () => {
 
   return (
     <>
-      <ScrollView style={{ marginTop: 30 }}>
-      <View style={{width: '100%' }}>
+    <View style={{  backgroundColor:"#fff" }}>
+      <ScrollView style={{ marginTop: 30, }}>
+      <View style={{width: '100%' ,  backgroundColor:"#fff"  }}>
           <View id="header">
             <Header />
           </View>
@@ -41,24 +42,27 @@ const RestaurantPage = () => {
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
+            
           }}
         >
           <Pressable
             onPress={() => navigation.goBack()}
             style={{
-              backgroundColor: "#006A4E",
-              width: 40,
-              height: 40,
+              backgroundColor: "#17B169",
+              width: 37,
+              height: 37,
               borderRadius: 20,
               justifyContent: "center",
               alignItems: "center",
               marginLeft: 10,
+              marginTop: 20,
+              marginBottom: 15
             }}
           >
             <Ionicons name="chevron-back-outline" size={24} color="white" />
           </Pressable>
 
-          <Pressable style={{ flexDirection: "row", alignItems: "center" }}>
+          {/* <Pressable style={{ flexDirection: "row", alignItems: "center" }}>
             <Feather name="bookmark" size={28} color="black" />
             <Feather
               style={{ marginLeft: 5 }}
@@ -66,8 +70,10 @@ const RestaurantPage = () => {
               size={28}
               color="black"
             />
-          </Pressable>
+          </Pressable> */}
         </View>
+
+        <View style={{margin:30, marginTop:7}}>
         <View
           style={{
             flexDirection: "row",
@@ -105,19 +111,20 @@ const RestaurantPage = () => {
                 borderRadius: 6,
               }}
             >
-              <Text style={{ color: "white" }}>Rating</Text>
-              <AntDesign name="star" size={24} color="gold" />
+              <Text style={{ color: "white", marginRight: 2 }}>Rating</Text>
+              <AntDesign name="star" size={22} color="gold" />
             </View>
           </View>
         </View>
-        <View style={{ margin: 10 }}>
-          <Text style={{ fontSize: 17 }}>Menu</Text>
+        <View style={{ marginTop: 20, margin: 10, alignItems: "center", justifyContent: "center",}}>
+          <Text style={{ fontSize: 20 }}>Menu</Text>
           <Text
             style={{
               borderColor: "gray",
               borderWidth: 2,
               height: 2,
-              width: 45,
+              width: 43,
+              marginTop:1
             }}
           />
         </View>
@@ -126,7 +133,9 @@ const RestaurantPage = () => {
             <FoodCard food={item} key={i} />
           ))}
         </View>
+        </View>
       </ScrollView>
+      </View>
       {/* {total === 0 ? null : (
         <Pressable
           style={{

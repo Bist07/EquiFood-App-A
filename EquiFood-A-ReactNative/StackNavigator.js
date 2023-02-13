@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// import { createDrawerNavigator } from 'react-navigation-drawer';
 import RestaurantsView from './screens/RestaurantsView';
 import RestaurantPage from './screens/RestaurantPage';
 import OrderPage from './screens/OrderPage';
@@ -26,6 +27,19 @@ import FoodInsertView from './screens/FoodInsertView';
 import FoodEditForm from './components/FoodEditForm';
 
 const Stack = createNativeStackNavigator();
+
+// const Drawer = createDrawerNavigator();
+
+// function DrawerRoutes() {
+//   return (
+//     <NavigationContainer>
+//     <Drawer.Navigator initialRouteName = "RestaurantOwnerView">
+//       <Drawer.Screen name="ProfilePage" component={Profile} />
+//     </Drawer.Navigator>
+//     </NavigationContainer>
+//   );
+// }
+
 
 const StackNavigator = () => {
   return (

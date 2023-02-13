@@ -1,3 +1,4 @@
+import { createEntityAdapter } from "@reduxjs/toolkit";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 // import { styleProps } from "react-native-web/dist/cjs/modules/forwardedProps";
 
@@ -6,19 +7,20 @@ const stylesR = StyleSheet.create({
 
     /*Restaurants.js page */
     borders:{
-        margin: 5,
         marginBottom: 0,
         width:"100%",
-        borderColor: "green",
+        borderColor: "#17B169",
         borderWidth:1,
         overflow:"hidden",
+        borderRadius: 15,
+        padding:1.5
         // borderTopLeftRadius: 7,
         // borderTopRightRadius: 7
     },
     adminBorders:{
         margin: 5,
         marginBottom: 0,
-        borderColor: "green",
+        borderColor: "17B169",
         borderWidth:1,
         overflow:"hidden",
         borderRadius:7,
@@ -26,22 +28,25 @@ const stylesR = StyleSheet.create({
 
     imageStyle:{
         width: "100%",
-        aspectRatio: 1.5,
+        aspectRatio: 1.6,
+        borderRadius: 15,
         // borderTopLeftRadius: 7,
         // borderTopRightRadius: 7,
     },
 
     descriptionCard:{
-        marginLeft: 5,
-        marginRight: 5,
+        marginLeft: 0,
+        marginRight: -3,
         padding: 8,
         backgroundColor: "white",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
+        alignContent: "center", 
     },
     restaurantName:{
-        fontSize: 20, 
+        fontSize: 25,
+        
         fontWeight: "600" 
     },
     restaurantHours:{
@@ -64,7 +69,7 @@ const stylesR = StyleSheet.create({
     },
     foodCount:{
         position: "absolute",
-        right: 20,
+        right: 10,
         top: 20,
         backgroundColor: "white",
         padding: 5,
@@ -75,10 +80,14 @@ const stylesR = StyleSheet.create({
         marginRight: 5,
         backgroundColor: "white",
         padding: 5,
-        marginBottom: 6,
+        marginBottom: 9,
     },
     /*Continued for Menu.js page */
     itemDisplay:{
+        backgroundColor:"#fff",
+        borderColor: "#17B169",
+        borderWidth:1,
+        borderRadius: 18,
         marginBottom: 20,
         marginTop: 10,
         flexDirection: "row",
@@ -86,26 +95,29 @@ const stylesR = StyleSheet.create({
         justifyContent: "space-between",
     },
     itemName:{
-        fontSize: 18,
+        fontSize: 15,
         fontWeight: "bold", 
         marginBottom: 10
     },
     originalPrice:{
-        fontSize: 20, 
+        fontSize: 17, 
+        marginLeft: 63,
         textDecorationLine: "line-through"
     },
     currentPrice:{
-        fontSize: 20, 
+        fontSize: 18, 
+        marginLeft: 60,
         fontWeight: "bold" 
     },
     servingsCount:{
         fontSize: 18,
+        marginLeft: 30,
         marginTop: 10
     },
     itemIncrement:{
         position: "absolute",
-        left: 15,
-        top: 90,
+        left: 7,
+        top: 60,
         flexDirection: "row",
         paddingHorizontal: 10,
         paddingVertical: 5,
@@ -115,11 +127,11 @@ const stylesR = StyleSheet.create({
     },
     addButton:{
         position: "absolute",
-        top: 90,
-        left: 15,
+        top: 60,
+        left: 7,
         flexDirection: "row",
         paddingHorizontal: 25,
-        paddingVertical: 10,
+        paddingVertical: 5,
         alignItems: "center",
         backgroundColor: "white",
         borderRadius: 5,

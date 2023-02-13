@@ -14,7 +14,8 @@ const ProfilePage = (props) => {
   const navigation = useNavigation();
   const ProfileData = ProfileData;
   return (
-    <ScrollView style={{marginTop:45, backgroundColor:"#F0F0F0"}}>
+    <View style={{ backgroundColor:"#fff"}}>
+    <ScrollView style={{marginTop:45, backgroundColor:"#fff"}}>
      <View style={{width: '100%' }}>
         <View id="header">
           <Header />
@@ -77,6 +78,7 @@ const ProfilePage = (props) => {
         </ScrollView>
     </View>
     </ScrollView>
+    </View>
   );
 };
 

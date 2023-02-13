@@ -11,6 +11,7 @@ const FoodCard = ({ food }) => {
   const [itemCount, setCount] = useState(0);
   const [selected, setSelected] = useState(false);
   return (
+    
     <View
       style= {stylesR.itemDisplay}>
       <View style={{ margin: 10, flex: 1 }}>
@@ -30,9 +31,9 @@ const FoodCard = ({ food }) => {
           Servings Left: {food.servingsLeft}
         </Text>
       </View>
-      <Pressable style={{ marginRight: 15 }}>
+      <Pressable style={{ marginRight: 17 }}>
         <Image
-          style={{ width: 120, height: 120, borderRadius: 8 }}
+          style={{ width: 100, height: 70, borderRadius: 8 }}
           source={{ uri: food.imgUrl }}
         />
           {selected ? (
@@ -55,7 +56,7 @@ const FoodCard = ({ food }) => {
               <Pressable>
                 <Text
                   style={{
-                    fontSize: 20,
+                    fontSize: 18,
                     color: "green",
                     paddingHorizontal: 6,
                   }}
@@ -86,7 +87,7 @@ const FoodCard = ({ food }) => {
             >
               <Text
                 style={{
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: "600",
                   color: "#018749",
                 }}
@@ -98,6 +99,7 @@ const FoodCard = ({ food }) => {
       </Pressable>
 
     </View>
+    
   );
 };
 
