@@ -3,9 +3,9 @@ const pool = require('../helpers/database')
 const router = express.Router()
 
 //getting all
-router.get('/id:', async function (req, res) {
+router.get('/:id', async function (req, res) {
     try {
-        const sqlQuery = 'SELECT * FROM menu_item WHERE restaurant_id=?'; //defines query
+        const sqlQuery = 'SELECT * FROM menu_item WHERE id=?'; //defines query
         const rows = await pool.query(sqlQuery, req.params.id); //rows = your returned query data
         res.status(200).json(rows);
     } catch (error) {

@@ -32,6 +32,14 @@ app.use('/customer', customerRouter);
 const menuRouter = require('./routes/Menu');
 app.use('/Menu', menuRouter);
 
+//creates connection router for admin table
+const adminRouter = require('./routes/admin');
+app.use('/admin', adminRouter);
+
+//creates connection router for restaurant_admin table
+const resadminRouter = require('./routes/resadmin');
+app.use('/admin', resadminRouter);
+
 
 /**
  * Start listening
