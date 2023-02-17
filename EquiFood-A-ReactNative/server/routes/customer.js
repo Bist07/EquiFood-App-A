@@ -33,6 +33,25 @@ router.post('/register',  async function(req,res){
     } catch (error) {
         res.status(400).send(error.message)
 }
-})
+});
+
+uter.post('/login', async function(req,res){
+     try{
+         const {id, Password} = req.body; //change to email in future
+
+         const sqlGetUser = 'SELECT password FROM user WHERE id=?';
+         const rows = await pool.query(sqlGetUser, id); //pulls user id
+         if(rows){
+             res.status(200).json(rows[0]) //returns json rows
+         }
+         res.status(200).send('User with id ${id} was not found') //also need to change to email in future
+     }catch(error){
+         res.status(400).send(error.message)
+     }
+
+ });
+
+
+
 
 module.exports = router;
