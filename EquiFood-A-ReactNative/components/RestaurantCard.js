@@ -31,43 +31,49 @@ const RestaurantCard = (data) => {
       uri: restaurant.img_id,
       address: restaurant.address,
       cuisines: restaurant.cuisine,
+      hours: restaurant.hours,
       // menu: restaurant.menu,
       menu: RestaurantData[0].menu
     })}>
-      <View style={stylesR.borders}>
-        <Image style={stylesR.imageStyle}
-          source={{ uri: restaurant.img_id }} />
-      </View>
 
-      <View style={stylesR.descriptionCard}>
-        <View>
-          <Text style={stylesR.restaurantName}>
-            {restaurant.name}
-          </Text>
-          <Text style={stylesR.restaurantHours}>
-            {restaurant.hours}
-          </Text>
+      <View style={stylesR.card}>
+        <View style={stylesR.borders}>
+
+
+
+          <Image style={stylesR.imageStyle} source={{ uri: restaurant.img_id }} />
+          <View style={stylesR.rating}>
+            <Text style={stylesR.ratingText}> ??? </Text>
+            <AntDesign name="star" size={18} color="gold" />
+          </View>
+
+
         </View>
 
-        <View style={stylesR.rating}>
 
-          <Text
-            style={stylesR.ratingText}>
-            ???
-          </Text>
-          <AntDesign name="star" size={24} color="gold" />
+        <View style={stylesR.descriptionCard}>
+          <View>
+            <Text style={stylesR.restaurantName}>
+              {restaurant.name}
+            </Text>
+            <Text style={stylesR.restaurantHours}>
+              {restaurant.hours}
+            </Text>
+          </View>
+
+
+        </View>
+
+        <View
+          style={stylesR.foodCount}>
+          <Text># of Food Placeholder</Text>
         </View>
       </View>
 
-      <View
-        style={stylesR.foodCount}>
-        <Text># of Food Placeholder</Text>
-      </View>
-
-      <View
-        style={stylesR.betweenCardBreak}>
+      {/* <View
+        style= {stylesR.betweenCardBreak}>
         <Text style={{ height: 1, borderColor: "#D3D3D3", borderWidth: 1 }} />
-      </View>
+      </View> */}
     </Pressable>
   );
 };

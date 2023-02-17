@@ -7,6 +7,7 @@ import RestaurantCard from "../components/RestaurantCard";
 import Header from "../components/header";
 import Profile from "../components/Profile";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
+import { Ionicons, Feather } from "@expo/vector-icons";
 
 const ProfilePage = (props) => {
 
@@ -14,13 +15,35 @@ const ProfilePage = (props) => {
   const navigation = useNavigation();
   const ProfileData = ProfileData;
   return (
-    <ScrollView style={{marginTop:45, backgroundColor:"#F0F0F0"}}>
+    <View style={{ backgroundColor:"#fff"}}>
+    <ScrollView style={{marginTop:45, backgroundColor:"#fff"}}>
      <View style={{width: '100%' }}>
         <View id="header">
           <Header />
         </View>
     </View>
     <View style={styles.container}>
+
+
+    <Pressable
+            onPress={() => navigation.goBack()}
+            style={{
+              backgroundColor: "#50c864",
+              width: 37,
+              height: 37,
+              borderRadius: 15,
+              justifyContent: "center",
+              alignItems: "center",
+              marginLeft: 10,
+              marginTop: 20,
+              marginBottom: 15
+            }}
+          >
+            <Ionicons name="chevron-back-outline" size={22} color="white" />
+          </Pressable>
+
+
+
         <ScrollView>
                 <View style={styles.profile}>
                     <AntDesign name="user" size={120} color="black" />
@@ -77,6 +100,7 @@ const ProfilePage = (props) => {
         </ScrollView>
     </View>
     </ScrollView>
+    </View>
   );
 };
 
@@ -87,6 +111,9 @@ const styles = StyleSheet.create({
         paddingTop:80,
         height: 250,
         alignItems: "center",
+        borderColor: "gray",
+        // borderWidth:3,
+        // borderRadius:130,
 
     },
     profileText:{
@@ -98,6 +125,7 @@ const styles = StyleSheet.create({
     },
     firstBreak:{
         padding: 25,
+        
     },
     container:{
         flow: 1,
@@ -105,22 +133,31 @@ const styles = StyleSheet.create({
         padding:15,
         width: "100%",
         //alignItems: "center",
+        
     },
     profileItem:{
-        backgroundColor: "#50C878",
-        width: '100%',
-        padding:15,
+        backgroundColor: "#50c864",
+        // width: '100%',
+        paddingTop:15,
+        paddingBottom:15,
+        marginLeft:30,
+        marginRight:30,
+        marginBottom:6,
         borderTopLeftRadius:50,
         borderTopRightRadius: 50,
         borderBottomLeftRadius: 50,
         borderBottomEndRadius: 50,
         alignItems: "center",
+        borderRadius: 18,
+        shadowOpacity: 0.1, 
+        
     },
     innerContent:{
         flex:1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         //alignItems: 'center',
+        
     },
     textStyle:{
         fontSize:15,
