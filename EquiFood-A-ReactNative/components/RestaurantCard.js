@@ -18,10 +18,20 @@ const RestaurantCard = (data) => {
       cuisines:restaurant.cuisines,
       menu:restaurant.menu,
     })}>
+      <View style= {stylesR.card}>
       <View style= {stylesR.borders}>
-        <Image style= {stylesR.imageStyle}
-        source={{ uri: restaurant.logo }}/>
+
+
+
+      <Image style= {stylesR.imageStyle} source={{ uri: restaurant.logo }} />
+      <View style= {stylesR.rating}>
+      <Text style= {stylesR.ratingText}> ??? </Text>
+        <AntDesign name="star" size={18} color="gold" />
       </View>
+
+        
+      </View>
+
 
       <View style= {stylesR.descriptionCard}>
           <View>
@@ -33,25 +43,18 @@ const RestaurantCard = (data) => {
             </Text>
           </View>
 
-          <View style= {stylesR.rating}>
-  
-          <Text
-            style= {stylesR.ratingText}>
-            ???
-          </Text>
-          <AntDesign name="star" size={24} color="gold" />
-        </View>
       </View>
 
       <View
         style= {stylesR.foodCount}>
         <Text># of Food Placeholder</Text>
       </View>
+      </View>
 
-      <View
+      {/* <View
         style= {stylesR.betweenCardBreak}>
         <Text style={{ height: 1, borderColor: "#D3D3D3", borderWidth: 1 }} />
-      </View>
+      </View> */}
     </Pressable>
   );
 };
