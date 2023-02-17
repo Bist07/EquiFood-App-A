@@ -125,7 +125,8 @@ Will be able to use the app to view available restaurants and food options.
     - Expo: ```npm install -g expo-cli```
     - React-Navigation: ```npm install @react-navigation/native```
     - React: ```npm install "react@18.1.0"```
-    - Additonaly: ```"npm i react-navigation-drawer"```
+    - Additionally: ```"npm i react-navigation-drawer"```
+1. Start server by going into server directory (../EquiFood-App-A/EquiFood-A-ReactNative/server) and run ```nodemon server```
 1. In terminal, run ```npm start``` to run Expo.
 1. Either scan the QR code on your phone or run an emulator by following the menu in the terminal
 
