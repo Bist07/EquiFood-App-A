@@ -4,6 +4,8 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import stylesR from './stylesR'
 import RestaurantData from "../data/RestaurantData";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 // This is the functionality and design of each restaurant CARD (for the page that lists all restaurants).
 
@@ -13,7 +15,7 @@ const RestaurantCard = (data) => {
   const [storeMenu, setStoreMenu] = useState([]);
   const getMenu = async () => {
     try {
-      const response = await axios.get('http://192.168.0.36:5001/Menu', { params: { id: restaurant.id } });
+      const response = await axios.get('http://localhost:5001/Menu', { params: { id: restaurant.id } });
       setStoreMenu(response.data);
     } catch (error) {
       console.error(error);
