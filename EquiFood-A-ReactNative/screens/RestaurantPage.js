@@ -48,10 +48,10 @@ const RestaurantPage = () => {
           <Pressable
             onPress={() => navigation.goBack()}
             style={{
-              backgroundColor: "#17B169",
+              backgroundColor: "#50c864",
               width: 37,
               height: 37,
-              borderRadius: 20,
+              borderRadius: 15,
               justifyContent: "center",
               alignItems: "center",
               marginLeft: 10,
@@ -59,7 +59,7 @@ const RestaurantPage = () => {
               marginBottom: 15
             }}
           >
-            <Ionicons name="chevron-back-outline" size={24} color="white" />
+            <Ionicons name="chevron-back-outline" size={22} color="white" />
           </Pressable>
 
           {/* <Pressable style={{ flexDirection: "row", alignItems: "center" }}>
@@ -81,40 +81,49 @@ const RestaurantPage = () => {
             justifyContent: "space-between",
           }}
         >
-          <View style={{ marginLeft: 10, marginTop: 10 }}>
-            <Text style={{ fontSize: 24, fontWeight: "bold" }}>
+          <View style={{ marginLeft: 0, marginTop: 10 }}>
+            <Text style={{ marginLeft: 130, marginRight: 60, marginBottom: 5, fontSize: 24, fontWeight: "bold" }}>
               {route.params.name}
             </Text>
-            <Text
+            
+            {/* <Text
               style={{
-                fontSize: 16,
+                fontSize: 13,
                 color: "gray",
                 fontWeight: "500",
                 marginVertical: 1,
               }}
             >
               {route.params.cuisines}
-            </Text>
-            <Text style={{ fontSize: 16, color: "gray", fontWeight: "500" }}>
+            </Text> */}
+    
+            <Text style={{ marginLeft: 50, fontSize: 16, color: "gray", fontWeight: "500" }}>
               {route.params.address}
             </Text>
-          </View>
-          <View>
+            <View>
             <View
               style={{
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: "#17B169",
+                backgroundColor: "white",
                 padding: 5,
-                width: 80,
-                borderRadius: 6,
+                width: 160,
+                borderRadius: 13,
+                shadowOpacity: 0.12,
+                shadowRadius: 4.65,
+                marginTop: 20,
+                marginLeft: 110
               }}
             >
-              <Text style={{ color: "white", marginRight: 2 }}>Rating</Text>
+              <Text style={{ color: "black", fontWeight: "bold",marginRight: 8 }}>4.5</Text>
               <AntDesign name="star" size={22} color="gold" />
+              <Text style={{ color: "black", fontWeight: "bold",marginRight: 8 }}>(25+)</Text>
             </View>
           </View>
+          </View>
+          
+
         </View>
         <View style={{ marginTop: 20, margin: 10, alignItems: "center", justifyContent: "center",}}>
           <Text style={{ fontSize: 20 }}>Menu</Text>
@@ -128,6 +137,7 @@ const RestaurantPage = () => {
             }}
           />
         </View>
+        
         <View>
           {foods.map((item, i) => (
             <FoodCard food={item} key={i} />

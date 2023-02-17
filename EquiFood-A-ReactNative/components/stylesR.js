@@ -6,16 +6,31 @@ import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 const stylesR = StyleSheet.create({
 
     /*Restaurants.js page */
-    borders:{
-        marginBottom: 0,
+    card:{
         width:"100%",
-        borderColor: "#17B169",
+        borderColor: "white",
         borderWidth:1,
+        borderRadius: 15,
+        // margin:7,
+        shadowOpacity: 0.1,
+        shadowRadius: 10,
+        marginBottom: 23,
+
+    },
+    borders:{
+        // marginBottom: 0,
+        width:"100%",
+        borderColor: "white",
+        // borderWidth:1,
         overflow:"hidden",
         borderRadius: 15,
-        padding:1.5
+        borderBottomEndRadius: 0,
+        borderBottomLeftRadius:0,
+        // padding:1.5,
         // borderTopLeftRadius: 7,
         // borderTopRightRadius: 7
+        shadowOpacity: 0,
+        shadowRadius: 0,
     },
     adminBorders:{
         margin: 5,
@@ -28,49 +43,75 @@ const stylesR = StyleSheet.create({
 
     imageStyle:{
         width: "100%",
-        aspectRatio: 1.6,
+        aspectRatio: 2,
         borderRadius: 15,
+        borderBottomLeftRadius: 0,
+        borderBottomEndRadius: 0,
         // borderTopLeftRadius: 7,
         // borderTopRightRadius: 7,
+        shadowOpacity: 0,
+        shadowRadius: 0,
     },
 
     descriptionCard:{
         marginLeft: 0,
-        marginRight: -3,
+        // marginRight: -3,
         padding: 8,
         backgroundColor: "white",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between",
-        alignContent: "center", 
+        borderTopLeftRadius:0,
+        borderTopEndRadius:0,
+        borderRadius: 15,
+        // justifyContent: "space-between",
+        // textAlign: "center",
+        shadowOpacity: 0,
+        shadowRadius: 0,
     },
     restaurantName:{
         fontSize: 25,
-        
-        fontWeight: "600" 
+        textAlign: "center",
+        fontWeight: "600",
+        shadowOpacity: 0,
+        shadowRadius: 0,
+        left: 37,
+        marginBottom: 2,
+
     },
     restaurantHours:{
         fontSize: 14,
         color: "gray",
         // marginVertical: 7
+        shadowOpacity: 0,
+        shadowRadius: 0,
+        textAlign: "center",
+        left: 40,
     },
     rating:{
+
+        position: "absolute",
+        left : 10,
+        top: 15,
+        backgroundColor: "white",
+        borderRadius: 20,
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: "#17B169",
         padding: 4,
-        borderRadius: 6,
+        shadowOpacity: 0.17,
+        shadowRadius: 4.65,
+
+
     },
     ratingText:{
-        fontSize: 16,
+        fontSize: 13,
         fontWeight: "bold",
         paddingRight: 5,
-        color: "white",
+        color: "black",
     },
     foodCount:{
         position: "absolute",
-        right: 10,
-        top: 20,
+        right: 7,
+        top: 16,
         backgroundColor: "white",
         padding: 5,
         borderRadius: 10,

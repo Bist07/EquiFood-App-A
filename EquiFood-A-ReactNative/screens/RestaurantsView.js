@@ -17,24 +17,28 @@ const RestaurantsView = () => {
           <Header />
         </View>
      </View>
-      <View style={{margin:50, marginTop: 30, }}>
+      <View style={{marginTop: 30, }}>
         <View id="searchbar"
           style={{
             flexDirection: "row",
             alignItems: "center",
             backgroundColor: "#FAF9F6",
+            borderWidth: 0.2,
+            borderColor: "#e8e8e8",
             padding:11,
-            borderRadius:15,
+            borderRadius:12,
+            marginLeft: 27,
+            marginRight: 27,
           }}
         >
-          <AntDesign name="search1" size={20} color="#17B169" />
+          <AntDesign name="search1" size={20} color="gray" />
           <TextInput style={{paddingLeft:5}} placeholder="Restaurant name, cuisines, or a dish"></TextInput>
         </View>
         <View>
           {/* <Text style={{fontSize:17, fontWeight:'bold', padding:4 }}>Restaurants</Text> */}
         </View>
 
-        <View style={{marginTop:30}}>
+        <View style={{marginLeft: 40, marginRight: 40, marginTop:30}}>
           {storeData.map((item, index) => <RestaurantCard key={index} item={item}/>)}
         </View>
       </View>
