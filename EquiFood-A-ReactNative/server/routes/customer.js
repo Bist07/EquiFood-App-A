@@ -35,7 +35,7 @@ router.post('/register',  async function(req,res){
 }
 });
 
-uter.post('/login', async function(req,res){
+router.post('/login', async function(req,res){
      try{
          const {id, Password} = req.body; //change to email in future
 
