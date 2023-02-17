@@ -57,7 +57,7 @@ const FoodCard = ({ food }) => {
                 <Text
                   style={{
                     fontSize: 18,
-                    color: "green",
+                    color: "#50c864",
                     paddingHorizontal: 6,
                   }}
                 >
@@ -89,7 +89,8 @@ const FoodCard = ({ food }) => {
                 style={{
                   fontSize: 16,
                   fontWeight: "600",
-                  color: "#018749",
+                  color: "#50c864",
+                  
                 }}
               >
                 ADD

@@ -123,73 +123,87 @@ const stylesR = StyleSheet.create({
         padding: 5,
         marginBottom: 9,
     },
+
+
     /*Continued for Menu.js page */
     itemDisplay:{
         backgroundColor:"#fff",
-        borderColor: "#17B169",
-        borderWidth:1,
+        borderColor: "#50c864",
+        borderWidth:0.5,
         borderRadius: 18,
+        shadowOpacity: 0.1, 
+        shadowRadius: 2,
         marginBottom: 20,
         marginTop: 10,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
+        paddingBottom: 20,
     },
     itemName:{
-        fontSize: 15,
+        fontSize: 13,
         fontWeight: "bold", 
-        marginBottom: 10
+        marginBottom: 10,
+        alignItems: "center",
+        textAlign: "center",
     },
     originalPrice:{
         fontSize: 17, 
-        marginLeft: 63,
-        textDecorationLine: "line-through"
+        textDecorationLine: "line-through",
+        alignItems: "center",
+        textAlign: "center",
     },
     currentPrice:{
         fontSize: 18, 
-        marginLeft: 60,
+        alignItems: "center",
+        textAlign: "center",
         fontWeight: "bold" 
     },
     servingsCount:{
         fontSize: 18,
-        marginLeft: 30,
+        alignItems: "center",
+        textAlign: "center",
         marginTop: 10
     },
     itemIncrement:{
         position: "absolute",
-        left: 7,
-        top: 60,
+        left: 4,
+        top: 75,
         flexDirection: "row",
         paddingHorizontal: 10,
         paddingVertical: 5,
         alignItems: "center",
         backgroundColor: "white",
         borderRadius: 5,
+        shadowOpacity: 0.1, 
+        shadowRadius: 2,
     },
     addButton:{
         position: "absolute",
-        top: 60,
-        left: 7,
+        top: 75,
+        left: 4,
         flexDirection: "row",
         paddingHorizontal: 25,
         paddingVertical: 5,
         alignItems: "center",
         backgroundColor: "white",
         borderRadius: 5,
+        shadowOpacity: 0.08, 
+        shadowRadius: 4,
     },
     decreaseItem:{
         fontSize: 20, 
-        color: "green", 
+        color: "#50c864", 
         paddingHorizontal: 6
     },
     itemCount:{
         fontSize: 20,
-        color: "green", 
+        color: "#50c864", 
         paddingHorizontal: 6
     },
     increaseItem:{
         fontSize: 20, 
-        color: "green", 
+        color: "#50c864", 
         paddingHorizontal: 10
     },
     /*Continued for ViewCart.js page */

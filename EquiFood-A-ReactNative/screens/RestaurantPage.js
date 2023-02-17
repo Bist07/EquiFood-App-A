@@ -118,30 +118,34 @@ const RestaurantPage = () => {
             >
               <Text style={{ color: "black", fontWeight: "bold",marginRight: 8 }}>4.5</Text>
               <AntDesign name="star" size={22} color="gold" />
-              <Text style={{ color: "black", fontWeight: "bold",marginRight: 8 }}>(25+)</Text>
+              <Text style={{ color: "black", fontWeight: "bold",marginRight: 8 }}>  (25+)</Text>
             </View>
           </View>
           </View>
           
 
         </View>
-        <View style={{ marginTop: 20, margin: 10, alignItems: "center", justifyContent: "center",}}>
-          <Text style={{ fontSize: 20 }}>Menu</Text>
+        <View  style={{ marginTop:20, borderColor: "gray", borderWidth:0.4, borderRadius:25, padding: 20 }}>
+        <View style={{ marginTop: 0, margin: 10, alignItems: "center", justifyContent: "center",}}>
+          <Text style={{ marginTop: 0, fontSize: 20 }}>Available Items</Text>
           <Text
             style={{
               borderColor: "gray",
               borderWidth: 2,
               height: 2,
-              width: 43,
-              marginTop:1
+              width: 59,
+              marginTop:3
             }}
           />
         </View>
         
+        <View  style={{  }}>
         <View>
           {foods.map((item, i) => (
             <FoodCard food={item} key={i} />
           ))}
+        </View>
+        </View>
         </View>
         </View>
       </ScrollView>
