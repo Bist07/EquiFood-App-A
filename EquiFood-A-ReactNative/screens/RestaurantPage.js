@@ -125,7 +125,7 @@ const RestaurantPage = () => {
           
 
         </View>
-        <View  style={{ marginTop:20, borderColor: "gray", borderWidth:0.4, borderRadius:25, padding: 20 }}>
+        <View  style={{ marginTop:20, borderTopColor: "gray", borderWidth:0.4, borderRadius:25, padding: 20 }}>
         <View style={{ marginTop: 0, margin: 10, alignItems: "center", justifyContent: "center",}}>
           <Text style={{ marginTop: 0, fontSize: 20 }}>Available Items</Text>
           <Text
