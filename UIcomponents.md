@@ -28,3 +28,5 @@
 
 
 # Implementing with Ionic
+
+    - We are no longer implementing with Ionic, now working with react native 
