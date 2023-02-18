@@ -36,3 +36,18 @@
 
     - Working on react native drawer implementation with stack navigation. 
     - Worst case scenario: will implement tab navigation 
+
+    - Design Layout based on Figma initial design
+    - CSS 
+
+Pages:
+
+    - Log in Screens
+        - Restauarant, options, cart, reserve
+        - Profile
+        - Restaurant Owner
+        - Admin:
+            - Donations
+            - View all restaurants and items 
+            - Add / Delete restaurants
+            - Price changes
