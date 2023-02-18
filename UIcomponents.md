@@ -29,4 +29,10 @@
 
 # Implementing with Ionic
 
-    - We are no longer implementing with Ionic, now working with react native 
+    - We are no longer implementing with Ionic, now working with react native.
+
+
+## React Native  Components List - Amrita:
+
+    - Working on react native drawer implementation with stack navigation. 
+    - Worst case scenario: will implement tab navigation 
