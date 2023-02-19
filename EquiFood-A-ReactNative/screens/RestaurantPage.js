@@ -10,7 +10,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import FoodCard from "../components/FoodCard";
-import axios from "axios";
+import { getMenu } from "../API/Menu";
 
 import CartScreen from "./CartScreen";
 import { useSelector } from "react-redux";
@@ -25,26 +25,15 @@ const RestaurantPage = () => {
   console.log(total);
   const route = useRoute();
   const navigation = useNavigation();
-  // console.log(route.params);
 
   const restaurant_id = route.params.id;
 
   const [storeMenu, setStoreMenu] = useState([]);
 
-  const getMenu = async () => {
-    try {
-      const response = await axios.get(`http://192.168.0.36:5001/Menu/${restaurant_id}`);
-      setStoreMenu(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  useEffect(() => {
-    getMenu();
+  useEffect(async () => {
+    const result = await getMenu(restaurant_id);
+    setStoreMenu(result)
   }, []);
-
-
 
   return (
     <>

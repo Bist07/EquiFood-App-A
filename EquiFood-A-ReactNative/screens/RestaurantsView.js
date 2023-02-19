@@ -1,25 +1,18 @@
 import { StyleSheet, View, SafeAreaView, TextInput, Image, Pressable, ScrollView, Text } from "react-native";
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { AntDesign } from "@expo/vector-icons";
 import RestaurantCard from "../components/RestaurantCard";
 import Header from "../components/header";
 import ProfilePage from "./ProfilePage";
+import { getRestaurants } from "../API/RestaurantAPI";
 // This page displays all restaurant data in one page.
 
 const RestaurantsView = () => {
   const [storeData, setStoreData] = useState([]);
-  const getRestaurants = async () => {
-    try {
-      const response = await axios.get('http://192.168.0.36:5001/Restaurant');
-      setStoreData(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
-  useEffect(() => {
-    getRestaurants();
+  useEffect(async () => {
+    const result = await getRestaurants();
+    setStoreData(result);
   }, []);
 
   return (
