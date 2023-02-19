@@ -3,7 +3,14 @@ const dotenv = require('dotenv'); //had .config() //might need to provide path t
 
 dotenv.config({ path: '.env' });
 
+var ip_address = "";
+
 const app = express();
+
+function json(url) {
+    return fetch(url).then(res => res.json());
+}
+
 
 /**
  * Middleware
@@ -28,6 +35,9 @@ app.use('/Restaurant', restaurantRouter);
 const customerRouter = require('./routes/customer');
 app.use('/customer', customerRouter);
 
+//creates connection router for user table
+const menuRouter = require('./routes/Menu');
+app.use('/Menu', menuRouter);
 
 /**
  * Start listening

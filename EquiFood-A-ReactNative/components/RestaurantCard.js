@@ -3,39 +3,24 @@ import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import stylesR from './stylesR'
-import RestaurantData from "../data/RestaurantData";
-import { useState, useEffect } from "react";
-import axios from "axios";
 
 // This is the functionality and design of each restaurant CARD (for the page that lists all restaurants).
 
 const RestaurantCard = (data) => {
   const navigation = useNavigation();
   const restaurant = data.item
-  const [storeMenu, setStoreMenu] = useState([]);
-  const getMenu = async () => {
-    try {
-      const response = await axios.get('http://localhost:5001/Menu', { params: { id: restaurant.id } });
-      setStoreMenu(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
-  useEffect(() => {
-    getMenu();
-  }, []);
 
   return (
     <Pressable onPress={() => navigation.navigate("RestaurantPage", {
       id: restaurant.id,
       name: restaurant.name,
-      uri: restaurant.img_id,
-      address: restaurant.address,
-      cuisines: restaurant.cuisine,
-      hours: restaurant.hours,
+      // uri: restaurant.img_id,
+      // address: restaurant.address,
+      // cuisines: restaurant.cuisine,
+      // hours: restaurant.hours,
+      // rating: restaurant.rating,
       // menu: restaurant.menu,
-      menu: RestaurantData[0].menu
     })}>
 
       <View style={stylesR.card}>
@@ -45,7 +30,7 @@ const RestaurantCard = (data) => {
 
           <Image style={stylesR.imageStyle} source={{ uri: restaurant.img_id }} />
           <View style={stylesR.rating}>
-            <Text style={stylesR.ratingText}> ??? </Text>
+            <Text style={stylesR.ratingText}> {restaurant.rating} </Text>
             <AntDesign name="star" size={18} color="gold" />
           </View>
 

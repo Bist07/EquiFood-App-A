@@ -11,7 +11,7 @@ const RestaurantsView = () => {
   const [storeData, setStoreData] = useState([]);
   const getRestaurants = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/Restaurant');
+      const response = await axios.get('http://192.168.0.36:5001/Restaurant');
       setStoreData(response.data);
     } catch (error) {
       console.error(error);
