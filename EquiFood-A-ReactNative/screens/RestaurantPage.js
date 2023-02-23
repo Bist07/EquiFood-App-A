@@ -10,7 +10,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import FoodCard from "../components/FoodCard";
-import { getMenu } from "../API/Menu";
+import { getMenu } from "../API/MenuAPI";
 
 import CartScreen from "./CartScreen";
 import { useSelector } from "react-redux";
