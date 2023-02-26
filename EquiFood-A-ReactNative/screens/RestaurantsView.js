@@ -10,9 +10,12 @@ import { getRestaurants } from "../API/RestaurantAPI";
 const RestaurantsView = () => {
   const [storeData, setStoreData] = useState([]);
 
-  useEffect(async () => {
-    const result = await getRestaurants();
-    setStoreData(result);
+  useEffect(() => {
+    async function fetchData() {
+      const result = await getRestaurants();
+      setStoreData(result);
+    }
+    fetchData();
   }, []);
 
   return (
