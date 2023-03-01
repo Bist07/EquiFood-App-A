@@ -210,17 +210,24 @@ const stylesR = StyleSheet.create({
 
     // For RestaurantOwnerView page
     ROButtons:{
-        backgroundColor: '#50C878',
-        width: '75%',
-        padding: 15,
-        marginVertical: 5,
-        marginTop:5,
-        alignSelf: "center",
-        alignItems: 'center',
-        borderRadius: 5
+        backgroundColor: "#50c864",
+        // width: '100%',
+        paddingTop:10,
+        paddingBottom:10,
+        marginLeft:30,
+        marginRight:30,
+        marginBottom:12,
+        borderTopLeftRadius:50,
+        borderTopRightRadius: 50,
+        borderBottomLeftRadius: 50,
+        borderBottomEndRadius: 50,
+        alignItems: "center",
+        borderRadius: 18,
+        shadowOpacity: 0.1, 
     },
 
     ROButtonText:{
+        
         fontSize:20,
         fontWeight: "bold",
         marginTop:10,

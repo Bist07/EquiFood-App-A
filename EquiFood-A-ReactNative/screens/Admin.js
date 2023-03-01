@@ -9,6 +9,8 @@ import { Ionicons, Feather } from "@expo/vector-icons";
 import Header from '../components/header';
 import RestaurantData from "../data/RestaurantData";
 import AdminRestaurantView from '../components/AdminRestaurantView';
+import RestaurantRequests from './RestaurantRequests';
+import ViewCurrentRestaurants from './ViewCurrentRestaurants';
 
 
 const Admin = ({onPress, text}) => {
@@ -20,38 +22,56 @@ const Admin = ({onPress, text}) => {
     // const restaurant = props.restaurant;
     
     return (
+        <View style={styles.root}>
 
-        <ScrollView style={{marginTop:45, backgroundColor:"#F0F0F0"}}>
-        <View style={{width: '100%' }}>
+        <ScrollView style={{marginTop:45, backgroundColor:"white"}}>
+        <View style={{width: '100%', paddingTop:70 }}>
            <View id="header">
-             <Header />
+             {/* <Header /> */}
            </View>        
            <View style={styles.adminBackground}>
 
-           <TouchableOpacity
+           <View style={styles.container}>
+
+           <TouchableOpacity style={styles.AdminItem}
                 onPress={() => navigation.navigate('Donations')}>
-                <Text style={{fontSize:20, fontWeight: "bold", marginTop:20, marginBottom:10}}> View Donations </Text>
-                <Text> To be developed... </Text>
+                <Text style={styles.textStyle}> View Donations </Text>
+                {/* <Text> To be developed... </Text> */}
             </TouchableOpacity>
 
-            <View>
-            <Text style={{fontSize:20, fontWeight: "bold", marginTop:20, marginBottom:10}}> Restaurant Requests </Text>
-            <Text> To be developed... </Text>
+
+            <TouchableOpacity style={styles.AdminItem}
+                onPress={() => navigation.navigate('RestaurantRequests')}>
+                <View style={styles.innerContent}>
+                <Text style={styles.textStyle}> Restaurant Requests </Text>
+                </View>
+                {/* <Text> To be developed... </Text> */}
+            </TouchableOpacity>
+
+
+            <TouchableOpacity style={styles.AdminItem}
+                onPress={() => navigation.navigate('ViewCurrentRestaurants')}>
+                <Text style={styles.textStyle}> View Current Restaurants </Text>
+                {/* <Text> To be developed... </Text> */}
+            </TouchableOpacity>
             </View>
 
-            <View > 
+            {/* <View > 
                 <Text style={{fontSize:20, fontWeight: "bold", marginTop:20, marginBottom:10}}>Current Restaurants</Text>
-            </View>
+            </View> */}
 
             <View>
                 
-            <Pressable onPress={() => navigation.navigate("RestaurantPage",{
+            {/* <Pressable onPress={() => navigation.navigate("RestaurantPage",{
                 id:restaurant.id,
                 name:restaurant.name,
                 address:restaurant.address,
                 cuisines:restaurant.cuisines,
             })}></Pressable>
              {storeData.map((store, index) => <AdminRestaurantView key={index} restaurant={store}/>)}
+            
+             */}
+            
             </View>
 
 
@@ -60,6 +80,7 @@ const Admin = ({onPress, text}) => {
         
         </View>
         </ScrollView>
+        </View>
     )
 }
 
@@ -68,13 +89,52 @@ export default Admin;
 
 
 const styles = StyleSheet.create({
-    adminBackground:{
+
+    root:{
         alignItems: 'center',
         padding: 20,
+        backgroundColor: 'white',
         flex:1,
+        // borderTopLeftRadius:50,
+        // borderTopRightRadius: 50,
+        // borderBottomLeftRadius: 50,
+        // borderBottomEndRadius: 50
+    },
+
+    adminBackground:{
+        alignItems: 'center',
+        padding: 40,
+        flex:1,
+        backgroundColor: 'white',
         
 
     },
+
+    AdminItem:{
+        backgroundColor: "#50c864",
+        // width: '100%',
+        paddingTop:15,
+        paddingBottom:15,
+        marginBottom:15,
+        borderTopLeftRadius:50,
+        borderTopRightRadius: 50,
+        borderBottomLeftRadius: 50,
+        borderBottomEndRadius: 50,
+        alignItems: "center",
+        borderRadius: 18,
+        shadowOpacity: 0.1, 
+        
+    },
+    textStyle:{
+        fontSize:20,
+        color: "white",
+        textAlign: "center",
+        padding:4,
+        paddingLeft:10,
+        paddingRight:10,
+    },
+    
+
 
     signInButton:{
         backgroundColor: '#50C878',

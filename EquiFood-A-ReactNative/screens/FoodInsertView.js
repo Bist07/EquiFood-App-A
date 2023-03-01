@@ -11,7 +11,7 @@ const FoodInsertView = () => {
   return (
     <>
       <View style={{paddingTop:20}} id="header">
-             <Header />
+             {/* <Header /> */}
       </View>
       <Pressable
         onPress={() => navigation.goBack()}

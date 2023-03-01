@@ -40,12 +40,11 @@ const RestaurantPage = () => {
 
   return (
     <>
-      <View style={{ backgroundColor: "#fff" }}>
-        <ScrollView style={{ marginTop: 30, }}>
-          <View style={{ width: '100%', backgroundColor: "#fff" }}>
-            <View id="header">
-              <Header />
-            </View>
+    <View style={{  backgroundColor:"#fff" }}>
+      <ScrollView style={{ marginTop: 30, }}>
+      <View style={{width: '100%' ,  backgroundColor:"#fff"  }}>
+          <View id="header">
+            {/* <Header /> */}
           </View>
           <View
             style={{
