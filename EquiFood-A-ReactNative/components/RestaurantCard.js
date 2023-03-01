@@ -3,32 +3,33 @@ import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import stylesR from './stylesR'
+import { Buffer } from 'buffer';
 
 // This is the functionality and design of each restaurant CARD (for the page that lists all restaurants).
+
 
 const RestaurantCard = (data) => {
   const navigation = useNavigation();
   const restaurant = data.item
 
+  var img = Buffer.from(restaurant.Img.data).toString('base64')
+  let imageUri = "data:image/png;base64," + img;
 
   return (
     <Pressable onPress={() => navigation.navigate("RestaurantPage", {
       id: restaurant.id,
       name: restaurant.name,
-      // uri: restaurant.img_id,
-      // address: restaurant.address,
-      // cuisines: restaurant.cuisine,
-      // hours: restaurant.hours,
-      // rating: restaurant.rating,
-      // menu: restaurant.menu,
+      uri: imageUri,
+      address: restaurant.address,
+      cuisines: restaurant.cuisine,
+      hours: restaurant.hours,
+      rating: restaurant.rating,
+      //menu: restaurant.menu,
     })}>
 
       <View style={stylesR.card}>
         <View style={stylesR.borders}>
-
-
-
-          <Image style={stylesR.imageStyle} source={{ uri: restaurant.img_id }} />
+          <Image style={stylesR.imageStyle} source={{ uri: imageUri }} />
           <View style={stylesR.rating}>
             <Text style={stylesR.ratingText}> {restaurant.rating} </Text>
             <AntDesign name="star" size={18} color="gold" />

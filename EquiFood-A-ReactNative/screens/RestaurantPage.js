@@ -22,7 +22,7 @@ const RestaurantPage = () => {
     .map((item) => item.discountPrice * item.quantity)
     .reduce((curr, prev) => curr + prev, 0);
   cart.map((item) => console.log(item));
-  console.log(total);
+  // console.log(total);
   const route = useRoute();
   const navigation = useNavigation();
 
@@ -30,9 +30,12 @@ const RestaurantPage = () => {
 
   const [storeMenu, setStoreMenu] = useState([]);
 
-  useEffect(async () => {
-    const result = await getMenu(restaurant_id);
-    setStoreMenu(result)
+  useEffect(() => {
+    async function fetchData() {
+      const result = await getMenu(restaurant_id);
+      setStoreMenu(result)
+    }
+    fetchData();
   }, []);
 
   return (
