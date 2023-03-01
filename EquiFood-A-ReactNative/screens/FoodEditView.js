@@ -17,7 +17,7 @@ const FoodEditView = () => {
 
   return (
     <View style={{paddingTop:25}}>
-      <Header/>
+      {/* <Header/> */}
       <Pressable
         onPress={() => navigation.goBack()}
         style={{

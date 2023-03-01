@@ -34,7 +34,7 @@ const RestaurantPage = () => {
       <ScrollView style={{ marginTop: 30, }}>
       <View style={{width: '100%' ,  backgroundColor:"#fff"  }}>
           <View id="header">
-            <Header />
+            {/* <Header /> */}
           </View>
         </View>
         <View

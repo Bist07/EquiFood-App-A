@@ -15,11 +15,10 @@ const ProfilePage = (props) => {
   const navigation = useNavigation();
   const ProfileData = ProfileData;
   return (
-    <View style={{ backgroundColor:"#fff"}}>
-    <ScrollView style={{marginTop:45, backgroundColor:"#fff"}}>
+    <ScrollView style={{ backgroundColor:"#fff"}}>
      <View style={{width: '100%' }}>
         <View id="header">
-          <Header />
+          {/* <Header /> */}
         </View>
     </View>
     <View style={styles.container}>
@@ -35,7 +34,7 @@ const ProfilePage = (props) => {
               justifyContent: "center",
               alignItems: "center",
               marginLeft: 10,
-              marginTop: 20,
+              marginTop: 5,
               marginBottom: 15
             }}
           >
@@ -100,7 +99,7 @@ const ProfilePage = (props) => {
         </ScrollView>
     </View>
     </ScrollView>
-    </View>
+
   );
 };
 

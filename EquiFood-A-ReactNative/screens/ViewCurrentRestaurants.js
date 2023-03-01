@@ -11,7 +11,7 @@ import RestaurantData from "../data/RestaurantData";
 import AdminRestaurantView from '../components/AdminRestaurantView';
 
 
-const Donations = ({onPress, text}) => {
+const ViewCurrentRestaurants = ({onPress, text}) => {
     const [username, setUsername] = useState('');    
     const [password, setPassword] = useState('');
     const route = useRoute();
@@ -35,4 +35,4 @@ const Donations = ({onPress, text}) => {
     )
 }
 
-export default Donations;
+export default ViewCurrentRestaurants;
