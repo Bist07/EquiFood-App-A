@@ -1,58 +1,132 @@
-import { Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import FoodCard from '../components/FoodCard'
-import Header from '../components/header'
-import { useNavigation } from '@react-navigation/native'
-import { Ionicons } from "@expo/vector-icons";
-import stylesR from '../components/stylesR'
-import InputForm from '../components/InputForm'
-import RestaurantData from '../data/RestaurantData'
+import React, { Component } from 'react'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
 
-const RestaurantInfoEditView = () => {
-  const navigation = useNavigation();
+class Inputs extends Component {
+   state = {
+      name: '',
+      description: '',
+      cuisine: '',
+      address: '',
+      hours: ''
+   }
+   handleName = (text) => {
+      this.setState({ name: text })
+   }
+   handleDescription = (text) => {
+      this.setState({ description: text })
+   }
+   handleAddress = (text) => {
+    this.setState({address: text})
+   }
+   handleCuisine = (text) => {
+    this.setState({cuisine: text})
+   }
+   handleHours = (text) => {
+    this.setState({hours: text})
+   }
 
-  //Get data from json file, id=0 for subway
-  const data = RestaurantData[0];
-  return (
-    <View>
-      <View style={{paddingTop:20}} id="header">
-             {/* <Header /> */}
-      </View>
-      <Pressable
-        onPress={() => navigation.goBack()}
-        style={{
-          backgroundColor: "#006A4E",
-          width: 40,
-          height: 40,
-          borderRadius: 20,
-          justifyContent: "center",
-          alignItems: "center",
-          marginLeft: 10,
-        }}
-      >
-        <Ionicons name="chevron-back-outline" size={24} color="white" />
-      </Pressable>
-      <ScrollView style={stylesR.FoodInsertView}>
-        <InputForm placeholder="Restaurant Name" title={"Food Name (Currently: "+ data.name+")"} />
-        <InputForm placeholder="Address" title={"Address (Currently: "+ data.address+")"}/>
-        <InputForm placeholder="Cuisines" title={"Cuisines (Currently: "+ data.cuisines+")"}/>
-        <InputForm placeholder="Hours" title={"Hours (Currently: "+ data.hours+")"}/>
-        <View>
+   login = (name, description, address, cuisine, hours) => {
+      alert('name: ' + name + 
+      ', description: ' + description +
+      ', address: ' + address +
+      ', cuisine: ' + cuisine +
+      ', hours: ' + hours)
+   }
+   render() {
+      return (
 
-        <View style={{display:'flex', flexDirection:2, justifyContent:"space-evenly"}}>
-          <TouchableOpacity style={stylesR.ROFormButtons}>
-              <Text style={stylesR.ROButtonText}>Insert Food</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesR.ROFormButtons}>
-              <Text style={stylesR.ROButtonText}>Reset</Text>
-          </TouchableOpacity>
-        </View>
-        </View>
-      </ScrollView>
-    </View>
-  )
+
+         <View style = {styles.container}>
+          <Text style={{
+              flexDirection: "row",
+              alignItems: "center",
+              backgroundColor: "#FAF9F6",
+              textAlign: 'center',
+              borderWidth: 2,
+              borderColor: "#50c864",
+              fontSize: 20,
+              padding: 11,
+              color: '#50c864',
+              fontWeight:'bold',
+              marginLeft: 27,
+              marginRight: 27,
+              marginTop:20,
+            }}
+          >Input Restaurant Info</Text>
+
+            <TextInput style = {styles.input}
+               underlineColorAndroid = "transparent"
+               placeholder = "Restaurant Name"
+               placeholderTextColor = "#50c864"
+               autoCapitalize = "none"
+               onChangeText = {this.handleName}/>
+            
+            <TextInput style = {styles.input}
+               underlineColorAndroid = "transparent"
+               placeholder = "Restaurant Description"
+               placeholderTextColor = "#50c864"
+               autoCapitalize = "none"
+               onChangeText = {this.handleDescription}/>
+
+            <TextInput style = {styles.input}
+               underlineColorAndroid = "transparent"
+               placeholder = "Cuisine Style Description"
+               placeholderTextColor = "#50c864"
+               autoCapitalize = "none"
+               onChangeText = {this.handleCuisine}/>
+
+            <TextInput style = {styles.input}
+               underlineColorAndroid = "transparent"
+               placeholder = "Restaurant Address"
+               placeholderTextColor = "#50c864"
+               autoCapitalize = "none"
+               onChangeText = {this.handleAddress}/>
+
+            <TextInput style = {styles.input}
+               underlineColorAndroid = "transparent"
+               placeholder = "Restaurant Hours of Operation"
+               placeholderTextColor = "#50c864"
+               autoCapitalize = "none"
+               onChangeText = {this.handleHours}/>
+            
+            <TouchableOpacity
+               style = {styles.submitButton}
+               onPress = {
+                  () => this.login(this.state.name, this.state.description, this.state.address, this.state.cuisine, this.state.hours)
+               }>
+               <Text style = {{
+                textAlign: 'center',
+                color: 'white',
+               }}
+               > Submit </Text>
+            </TouchableOpacity>
+         </View>
+      )
+   }
 }
+export default Inputs
 
-export default RestaurantInfoEditView
-
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+   container: {
+      paddingTop: 23
+   },
+   input: {
+      margin: 15,
+      marginLeft: 10,
+      paddingLeft: 10,
+      height: 40,
+      fontWeight: 'bold',
+      borderColor: '#50c864',
+      borderWidth: 1
+   },
+   submitButton: {
+      backgroundColor: '#50c864',
+      padding: 10,
+      fontWeight: 'bold',
+      margin: 15,
+      height: 40,
+   },
+   submitButtonText:{
+      color: 'white'
+   }
+})
