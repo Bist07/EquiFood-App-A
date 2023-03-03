@@ -46,6 +46,7 @@ const RestaurantPage = () => {
           <View id="header">
             {/* <Header /> */}
           </View>
+          </View>
           <View
             style={{
               flexDirection: "row",
