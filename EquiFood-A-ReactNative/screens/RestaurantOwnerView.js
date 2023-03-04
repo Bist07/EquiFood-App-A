@@ -35,7 +35,7 @@ const RestaurantOwnerView = (props) => {
             </TouchableOpacity>
 
             <TouchableOpacity style={stylesR.ROButtons}
-                onPress={() => navigation.navigate('RestaurantInserView')}>
+                onPress={() => navigation.navigate('RestaurantInsertView')}>
                 <Text style={stylesR.ROButtonText}> Insert New Restaurant </Text>
             </TouchableOpacity>
 
