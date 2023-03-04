@@ -136,4 +136,15 @@ Will be able to use the app to view available restaurants and food options.
 2. Add your current IP address to the "IP allowlist for service access"
 3. Download the certificate authority chain and follow the instructions under "Connect to service"
 
+# UI Features:
 
+    - Browsing Restaurant page
+    - Browsing Food Options from Restaurant page
+    - Detailed product page
+        - Can reserve item
+    - View Cart page
+        - Can remove items 
+    - User profile page
+        - Just a mock up, still working on
+    - Drawer navigation and tabs
+    - Color scheme of green and white (to match logo)
