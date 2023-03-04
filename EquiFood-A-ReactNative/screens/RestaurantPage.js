@@ -181,8 +181,9 @@ const RestaurantPage = () => {
           </View>
         </Pressable>
       )} */}
-
+      
       <CartScreen restaurantName={route.params.name} />
+      
     </>
   );
 };

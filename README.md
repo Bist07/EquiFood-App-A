@@ -146,3 +146,5 @@ Will be able to use the app to view available restaurants and food options.
         - Can remove items 
     - User profile page
         - Just a mock up, still working on
+    - Drawer navigation and tabs
+    - Color scheme of green and white (to match logo)
