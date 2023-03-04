@@ -23,7 +23,7 @@ import RestaurantOwnerLogIn from './screens/RestaurantOwnerLogIn';
 import Admin from './screens/Admin';
 import Donations from './screens/Donations';
 import RestaurantOwnerView from './screens/RestaurantOwnerView';
-import RestaurantInfoEditView from './screens/RestaurantInfoEditView';
+import RestaurantInserView from './screens/RestaurantInserView';
 import FoodEditView from './screens/FoodEditView';
 import FoodInsertView from './screens/FoodInsertView';
 import FoodEditForm from './components/FoodEditForm';
@@ -168,7 +168,7 @@ function ROView() {
             ),
       }}/>    
 
-      <Drawer.Screen name="Edit Restaurant Info" component={RestaurantInfoEditView} options={{
+      <Drawer.Screen name="Edit Restaurant Info" component={RestaurantInserView} options={{
             drawerIcon: ({ color }) => (
                 <AntDesign name={"edit"} size={20} color={color} />
             ),
@@ -265,7 +265,7 @@ const StackNavigator = () => {
         <Stack.Screen name="ForgotPassword" component={ForgotPassword}  options={{headerShown:false}}/>
         <Stack.Screen name="RestaurantOwnerLogIn" component={RestaurantOwnerLogIn}  options={{headerShown:false}}/>
         <Stack.Screen name="RestaurantOwnerView" component={ROView}  options={{headerShown:false}}/>
-        <Stack.Screen name="RestaurantInfoEditView" component={RestaurantInfoEditView}  options={{headerShown:false}}/>
+        <Stack.Screen name="RestaurantInserView" component={RestaurantInserView}  options={{headerShown:false}}/>
         <Stack.Screen name="FoodEditView" component={FoodEditView}  options={{headerShown:false}}/>
         <Stack.Screen name="FoodEditForm" component={FoodEditForm}  options={{headerShown:false}}/>
         <Stack.Screen name="FoodInsertView" component={FoodInsertView}  options={{headerShown:false}}/>
