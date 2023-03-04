@@ -1,0 +1,31 @@
+#### Plan for Feb 18 - Feb 25
+
+Note: Peer Testing will be in the second week of March! 
+
+#### Front End Tasks:
+
+    - Try to perfect UI display. (Research by looking at other food apps.)
+    - All navigation
+    - Double check all navigation
+    - Remove the ability to just slide back to the previous page on IOS display.
+        To disable swipe back to previous screen:
+            - https://www.google.com/search?q=react+native+stop+being+able+to+go+to+prvious+screen+by+swipe&rlz=1C1SQJL_enCA873CA873&oq=react+native+stop+being+able+to+go+to+prvious+screen+by+swipe&aqs=chrome..69i57j69i64.17172j0j7&sourceid=chrome&ie=UTF-8 
+            - https://stackoverflow.com/questions/64012470/react-navigation-v6-and-v5-disable-swipe-back-action 
+            - https://www.google.com/search?q=disable+back+swipe+gesture+react+navigation&rlz=1C1SQJL_enCA873CA873&sxsrf=AJOqlzVchdcZYsfC2zsehUinVinvScdVOQ%3A1675881535729&ei=P-zjY9-BLPjP0PEPu5e3kAo&oq=Disable+back+swipe+gesture&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQARgAMgoIABBHENYEELADMgoIABBHENYEELADMgoIABBHENYEELADMgoIABBHENYEELADMgoIABBHENYEELADMgoIABBHENYEELADMgoIABBHENYEELADMgoIABBHENYEELADOgQIABBHSgQIQRgASgQIRhgAUABYAGDqEmgBcAJ4AIABAIgBAJIBAJgBAMgBCMABAQ&sclient=gws-wiz-serp 
+
+#### Tasks of all:
+
+Based on Meeting with Anubhav on 02/17.2023:
+
+    - Integration Part:
+        - Front end place order
+        - stored in DB and captured on restaurant side. 
+
+    - Log in User and DB connect.
+    - Removing local storage.
+
+
+
+#### Back End Tasks:
+
+- Integration with front end
