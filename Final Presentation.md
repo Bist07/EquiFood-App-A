@@ -1,4 +1,6 @@
-Final Presentation Date: April 12th/2023
+Final Presentation 
+Date: Wednesday April 12th/2023 (last day of classes)
+Time: 
 
 To include in final presentation video:
 
@@ -7,3 +9,4 @@ To include in final presentation video:
 
 
         - Struggles and how we overcame them 
+        
