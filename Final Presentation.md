@@ -4,3 +4,6 @@ To include in final presentation video:
 
         - Working demo of each page.
         - Select code?
+
+
+        - Struggles and how we overcame them 
