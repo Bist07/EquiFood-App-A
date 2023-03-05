@@ -1,12 +1,8 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import stylesR from '../components/stylesR'
-import Header from '../components/header'
-import InputForm from '../components/InputForm'
 import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from "@expo/vector-icons";
 import RestaurantData from '../data/RestaurantData'
-import FoodCard from '../components/FoodCard'
 import FoodEditCard from '../components/FoodEditCard'
 
 const FoodEditView = () => {
@@ -16,7 +12,7 @@ const FoodEditView = () => {
   console.log(foods);
 
   return (
-    <View style={{paddingTop:25}}>
+    <View style={{ paddingTop: 25 }}>
       {/* <Header/> */}
       <Pressable
         onPress={() => navigation.goBack()}
@@ -31,12 +27,12 @@ const FoodEditView = () => {
         }}
       >
         <Ionicons name="chevron-back-outline" size={24} color="white" />
-      </Pressable>   
+      </Pressable>
 
       <View>
-          {foods.map((item, i) => (
-            <FoodEditCard food={item} key={i} />
-          ))}
+        {foods.map((item, i) => (
+          <FoodEditCard food={item} key={i} />
+        ))}
       </View>
 
     </View>

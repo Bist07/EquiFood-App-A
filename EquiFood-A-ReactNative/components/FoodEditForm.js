@@ -16,8 +16,8 @@ const FoodEditView = (item) => {
   console.log(route.params.discountPrice);
 
   return (
-    <View style={{paddingTop:25}}>
-      <Header/>
+    <View style={{ paddingTop: 25 }}>
+      <Header />
       <Pressable
         onPress={() => navigation.goBack()}
         style={{
@@ -31,24 +31,25 @@ const FoodEditView = (item) => {
         }}
       >
         <Ionicons name="chevron-back-outline" size={24} color="white" />
-      </Pressable>   
+      </Pressable>
 
       <ScrollView style={stylesR.FoodInsertView}>
-        <InputForm title={"Food Name (Currently: "+ route.params.name+")"} placeholder="New Food Name"/>
-        <InputForm title={"Original Price (Currently: $"+route.params.originalPrice+")"} placeholder="New Original Price"/>
-        <InputForm title={"Discount Price (Currently: $"+route.params.discountPrice+")"} placeholder="New Discounted Price"/>
-        <InputForm title={"Discount Price (Currently: "+route.params.servingsLeft+")"} placeholder="New Servings Available"/>
-        <InputForm title="Image URL" placeholder="New Image URL"/>
+        <InputForm title={"Food Name (Currently: " + route.params.name + ")"} placeholder="New Food Name" />
+        <InputForm title={"Original Price (Currently: $" + route.params.originalPrice + ")"} placeholder="New Original Price" />
+        <InputForm title={"Discount Price (Currently: $" + route.params.discountPrice + ")"} placeholder="New Discounted Price" />
+        <InputForm title={"Discount Price (Currently: " + route.params.servingsLeft + ")"} placeholder="New Servings Available" />
+        <InputForm title="Image URL" placeholder="New Image URL" />
+        <ImagePickerButton />
         <View>
 
-        <View style={{display:'flex', flexDirection:2, justifyContent:"space-evenly"}}>
-          <TouchableOpacity style={stylesR.ROFormButtons}>
+          <View style={{ display: 'flex', flexDirection: 2, justifyContent: "space-evenly" }}>
+            <TouchableOpacity style={stylesR.ROFormButtons}>
               <Text style={stylesR.ROButtonText}> Confirm  </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={stylesR.ROFormButtons}>
+            </TouchableOpacity>
+            <TouchableOpacity style={stylesR.ROFormButtons}>
               <Text style={stylesR.ROButtonText}> Reset </Text>
-          </TouchableOpacity>
-        </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
 

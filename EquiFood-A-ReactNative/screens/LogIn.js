@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Text, Image, Pressable, TouchableOpacity, TouchableHighlight, TextInput } from 'react-native'
 import Logo from '../assets/logos/Equifood_Logo.png'
-import CustomInput from '../components/CustomInput'
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { MaterialIcons } from '@expo/vector-icons';
-import ImagePicker from '../components/ImagePicker';
+
 
 
 const LogIn = ({ onPress, text }) => {
@@ -38,8 +36,6 @@ const LogIn = ({ onPress, text }) => {
 
             <Image style={styles.logo}
                 source={Logo} />
-            <ImagePicker>
-            </ImagePicker>
             {/* <Text>Equifood</Text> */}
 
             {/* <CustomInput placeholder="Username" value= {username} setValue={setUsername} />
