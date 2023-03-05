@@ -68,7 +68,7 @@ const AdminLogIn = ({onPress, text}) => {
 
             <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25}}>
                 <MaterialIcons name="lock" size={20} color='#ccc' style={{marginRight:5}}/>
-                <TextInput placeholder = 'Password' style={{ flex:1, paddingVertical:0}} secureTextEntry="true" />
+                <TextInput placeholder = 'Password' style={{ flex:1, paddingVertical:0}} secureTextEntry={true}/>
             </View>
 
             <TouchableOpacity style={styles.signInButton}

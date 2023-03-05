@@ -43,12 +43,12 @@ export default function Register(){
 
             <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25}}>
                 <MaterialIcons name="lock" size={20} color='#ccc' style={{marginRight:5}}/>
-                <TextInput placeholder = 'Password' style={{ flex:1, paddingVertical:0}} secureTextEntry="true" />
+                <TextInput placeholder = 'Password' style={{ flex:1, paddingVertical:0}} secureTextEntry={true} />
             </View>
             
             <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:45}}>
                 <MaterialIcons name="verified-user" size={20} color='#ccc' style={{marginRight:5}}/>
-                <TextInput placeholder = 'Confirm Password' style={{ flex:1, paddingVertical:0}} secureTextEntry="true" />
+                <TextInput placeholder = 'Confirm Password' style={{ flex:1, paddingVertical:0}} secureTextEntry={true} />
             </View>
 
             <TouchableOpacity
