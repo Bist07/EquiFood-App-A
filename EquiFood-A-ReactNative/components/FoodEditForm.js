@@ -1,8 +1,8 @@
 import { Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
 import stylesR from '../components/stylesR'
 import Header from '../components/header'
 import InputForm from '../components/InputForm'
+import React, { useState } from "react";
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { Ionicons } from "@expo/vector-icons";
 import ImagePickerButton from './ImagePicker'
@@ -10,7 +10,7 @@ import ImagePickerButton from './ImagePicker'
 const FoodEditForm = (item) => {
   const navigation = useNavigation();
   const route = useRoute();
-
+  const [image, setImage] = useState(null);
   return (
     <View style={{ paddingTop: 25 }}>
       <Header />
@@ -35,6 +35,7 @@ const FoodEditForm = (item) => {
         <InputForm title={"Discount Price (Currently: $" + route.params.discountPrice + ")"} placeholder="New Discounted Price" />
         <InputForm title={"Discount Price (Currently: " + route.params.servingsLeft + ")"} placeholder="New Servings Available" />
         <InputForm title="Image URL" placeholder="New Image URL" />
+        <ImagePickerButton image={image} callback={setImage} />
         <View>
 
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
