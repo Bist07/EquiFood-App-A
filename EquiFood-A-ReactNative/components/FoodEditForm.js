@@ -5,12 +5,10 @@ import Header from '../components/header'
 import InputForm from '../components/InputForm'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { Ionicons } from "@expo/vector-icons";
-import RestaurantData from '../data/RestaurantData'
 import ImagePickerButton from './ImagePicker'
 
-const FoodEditView = (item) => {
+const FoodEditForm = (item) => {
   const navigation = useNavigation();
-  const restaurantData = RestaurantData[0];
   const route = useRoute();
 
   return (
@@ -39,7 +37,7 @@ const FoodEditView = (item) => {
         <InputForm title="Image URL" placeholder="New Image URL" />
         <View>
 
-          <View style={{ display: 'flex', flexDirection: 2, justifyContent: "space-evenly" }}>
+          <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
             <TouchableOpacity style={stylesR.ROFormButtons}>
               <Text style={stylesR.ROButtonText}> Confirm  </Text>
             </TouchableOpacity>
@@ -54,6 +52,6 @@ const FoodEditView = (item) => {
   )
 }
 
-export default FoodEditView
+export default FoodEditForm
 
 const styles = StyleSheet.create({})
