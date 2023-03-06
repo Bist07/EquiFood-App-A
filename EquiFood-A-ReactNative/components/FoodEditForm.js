@@ -35,7 +35,8 @@ const FoodEditForm = (item) => {
         <InputForm title={"Discount Price (Currently: $" + route.params.discountPrice + ")"} placeholder="New Discounted Price" />
         <InputForm title={"Discount Price (Currently: " + route.params.servingsLeft + ")"} placeholder="New Servings Available" />
         <InputForm title="Image URL" placeholder="New Image URL" />
-        <ImagePickerButton image={image} callback={setImage} />
+        <ImagePickerButton callback={setImage} />
+        {/* <ImagePickerButton image={image} callback={setImage} /> */}
         <View>
 
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Button, Image, View, Platform } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
-export default function ImagePickerButton({ image, callback }) {
-    // const [image, setImage] = useState(null);
+export default function ImagePickerButton({ callback }) {
+    const [image, setImage] = useState(null);
 
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
@@ -15,7 +15,10 @@ export default function ImagePickerButton({ image, callback }) {
         });
 
         if (!result.canceled) {
-            callback(result.assets[0].uri);
+            setImage(result.assets[0].uri);
+            // Convert to blob data
+            const blobImage =
+                callback(blobImage);
         }
     };
 
