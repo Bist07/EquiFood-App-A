@@ -6,14 +6,12 @@ import InputForm from '../components/InputForm'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { Ionicons } from "@expo/vector-icons";
 import RestaurantData from '../data/RestaurantData'
-import FoodCard from '../components/FoodCard'
+import ImagePickerButton from './ImagePicker'
 
 const FoodEditView = (item) => {
   const navigation = useNavigation();
   const restaurantData = RestaurantData[0];
   const route = useRoute();
-  console.log(route.params);
-  console.log(route.params.discountPrice);
 
   return (
     <View style={{ paddingTop: 25 }}>
@@ -39,7 +37,6 @@ const FoodEditView = (item) => {
         <InputForm title={"Discount Price (Currently: $" + route.params.discountPrice + ")"} placeholder="New Discounted Price" />
         <InputForm title={"Discount Price (Currently: " + route.params.servingsLeft + ")"} placeholder="New Servings Available" />
         <InputForm title="Image URL" placeholder="New Image URL" />
-        <ImagePickerButton />
         <View>
 
           <View style={{ display: 'flex', flexDirection: 2, justifyContent: "space-evenly" }}>

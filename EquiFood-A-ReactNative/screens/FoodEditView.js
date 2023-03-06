@@ -1,15 +1,28 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from "@expo/vector-icons";
 import RestaurantData from '../data/RestaurantData'
 import FoodEditCard from '../components/FoodEditCard'
+import React, { useState, useEffect } from "react";
+import { getMenu } from '../API/MenuAPI';
 
 const FoodEditView = () => {
   const navigation = useNavigation();
-  const restaurantData = RestaurantData[0];
-  const foods = restaurantData.menu;
-  console.log(foods);
+  var fake_id = 2;
+
+  //Should be getting id from login. maybe store in redux store?
+  const restaurant_id = fake_id;
+
+  const [foods, setFoods] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await getMenu(restaurant_id);
+      setFoods(result)
+    }
+    fetchData();
+  }, []);
+
 
   return (
     <View style={{ paddingTop: 25 }}>
