@@ -15,8 +15,7 @@ const FoodInsertView = () => {
   const [ogPrice, setOgPrice] = useState(0);
   const [discPrice, setDiscPrice] = useState(0);
   const [servings, setServings] = useState(0);
-  const [image, setImage] = useState('');
-
+  const [img, setImage] = useState('iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==');
   const restaurantId = 1;
 
   // const axios = require('axios');
@@ -61,6 +60,7 @@ const FoodInsertView = () => {
         item_name:foodName,
         price:discPrice,
         restaurant_id:restaurantId,
+        img: "iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==",
         original_price: ogPrice,
         quantity: servings,
       };
@@ -141,7 +141,7 @@ const FoodInsertView = () => {
         <View>
           <Text style={{marginBottom:5}}>Image</Text>
           <View style={stylesR.inputForm}>
-              <TextInput placeholder={"Image URL"} value={image} onChangeText={setImage}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
+              <TextInput placeholder={"Image URL"} value={img} onChangeText={setImage}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
           </View>
         </View>
         <View>
