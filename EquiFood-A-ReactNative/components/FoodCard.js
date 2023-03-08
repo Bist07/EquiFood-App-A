@@ -23,7 +23,7 @@ const FoodCard = ({ food }) => {
         </Text>
         <View style={{ flexDirection: "column" }}>
           <Text style={stylesR.originalPrice}>
-            ${(Math.round(food.orignal_price * 100) / 100).toFixed(2)}
+            ${(Math.round(food.original_price * 100) / 100).toFixed(2)}
           </Text>
           <Text style={stylesR.currentPrice}>
             ${(Math.round(food.price * 100) / 100).toFixed(2)}

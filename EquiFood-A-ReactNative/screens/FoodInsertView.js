@@ -34,11 +34,11 @@ const FoodInsertView = () => {
   };
 
   const onChangePriceHandler = (price) => {
-    setOgPrice(parseInt(price));
+    setOgPrice(parseFloat(price));
   };
 
   const onChangeDiscPriceHandler = (dPrice) => {
-    setDiscPrice(parseInt(dPrice));
+    setDiscPrice(parseFloat(dPrice));
   };
 
   const onChangeServingsHandler = (servings) => {
@@ -75,15 +75,15 @@ const FoodInsertView = () => {
            },
           // body: JSON.stringify(data),
           });
-      if (response.status === 201) {
-        alert(` You have created: ${JSON.stringify(response.data)}`);
-        setFoodName('');
-        setOgPrice(0);
-        setDiscPrice(0);
-        setServings(0);
-      } else {
-        throw new Error("An error has occurred");
-      }
+      // if (response.status === 201) {
+      //   alert(` You have created: ${JSON.stringify(response.data)}`);
+      //   setFoodName('');
+      //   setOgPrice(0);
+      //   setDiscPrice(0);
+      //   setServings(0);
+      // } else {
+        // throw new Error("An error has occurred from response");
+      
     } catch (error) {
       console.log(error);
       alert("An error has occurred");
