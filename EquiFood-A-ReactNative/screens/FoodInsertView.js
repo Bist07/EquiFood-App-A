@@ -57,10 +57,10 @@ const FoodInsertView = () => {
     try {
       const data = {
         item_name:foodName,
-        discPrice:discPrice,
-        restaurantId:restaurantId,
-        ogPrice: ogPrice,
-        servings: servings,
+        price:discPrice,
+        restaurant_id:restaurantId,
+        original_price: ogPrice,
+        quantity: servings,
       };
       console.log(JSON.stringify(data));
       // const response = await axios.post(`${config.local.url}:${config.local.port}/FoodInsert`, data );
@@ -68,11 +68,17 @@ const FoodInsertView = () => {
         url: `${config.local.url}:${config.local.port}/FoodInsert`,
         method:'post',
         data:data,
-        headers: {'Authorization': 'ASDFG'}} );
+        headers: {
+          'Content-Type': 'application/json'
+           },
+          body: JSON.stringify(data),
+          });
       if (response.status === 201) {
         alert(` You have created: ${JSON.stringify(response.data)}`);
-        setFullName('');
-        setEmail('');
+        setFoodName('');
+        setOgPrice(0);
+        setDiscPrice(0);
+        setServings(0);
       } else {
         throw new Error("An error has occurred");
       }
