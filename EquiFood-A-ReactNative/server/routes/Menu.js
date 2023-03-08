@@ -14,20 +14,15 @@ router.get('/:id', async function (req, res) {
 })
 
 
-// item_name:foodName,
-//         discPrice:discPrice,
-//         restaurantId:restaurantId,
-//         ogPrice: ogPrice,
-//         servings: servings,
 
 router.post('/FoodInsert', async function (req, res) {
     try {
-        // const {item_name, price, restaurant_id, original_price, quantity} = req.body;
-        const item_name = req.body.item_name;
-        const price = req.body.price;
-        const restaurant_id = req.body.restaurant_id;
-        const original_price = req.body.original_price;
-        const quantity = req.body.quantity;
+        const {item_name, price, restaurant_id, original_price, quantity} = req.body;
+        // const item_name = req.body.item_name;
+        // const price = req.body.price;
+        // const restaurant_id = req.body.restaurant_id;
+        // const original_price = req.body.original_price;
+        // const quantity = req.body.quantity;
         const sqlQuery = "INSERT INTO menu_item (item_name, price, restaurant_id, original_price, quantity) VALUES (?,?,?,?,?)";
         const result = await pool.query(sqlQuery, [item_name, price, restaurant_id, original_price, quantity]);
 
