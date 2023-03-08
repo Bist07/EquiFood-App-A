@@ -13,8 +13,6 @@ router.get('/:id', async function (req, res) {
 
         res.status(400).send(error.message)
     }
-
-
     //res.status(200).json({Username:req.params.Username})
 });
 
