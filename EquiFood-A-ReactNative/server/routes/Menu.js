@@ -15,6 +15,18 @@ router.get('/:id', async function (req, res) {
 
 
 
+router.post('/FoodInsert', async function (req, res) {
+    try {
+        const {item_name, price, restaurant_id, original_price, quantity} = req.body;
+        const sqlQuery = "INSERT INTO menu_item (item_name, price, restaurant_id, original_price, quantity) VALUES (?,?,?,?,?)";
+        const result = await pool.query(sqlQuery, [item_name, price, restaurant_id, original_price, quantity]);
+
+        res.status(200).send("Food Added");
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+})
+
 
 
 module.exports = router;
