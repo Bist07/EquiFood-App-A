@@ -25,12 +25,13 @@ class Inputs extends Component {
     this.setState({hours: text})
    }
 
-   login = (name, description, address, cuisine, hours) => {
+   insert = (name, description, address, cuisine, hours) => {
       alert('name: ' + name + 
       ', description: ' + description +
       ', address: ' + address +
       ', cuisine: ' + cuisine +
       ', hours: ' + hours)
+      console.log(this.state);
    }
    render() {
       return (
@@ -55,6 +56,7 @@ class Inputs extends Component {
           >Input Restaurant Info</Text>
 
             <TextInput style = {styles.input}
+               
                underlineColorAndroid = "transparent"
                placeholder = "Restaurant Name"
                placeholderTextColor = "#50c864"
@@ -62,6 +64,7 @@ class Inputs extends Component {
                onChangeText = {this.handleName}/>
             
             <TextInput style = {styles.input}
+              
                underlineColorAndroid = "transparent"
                placeholder = "Restaurant Description"
                placeholderTextColor = "#50c864"
@@ -69,6 +72,7 @@ class Inputs extends Component {
                onChangeText = {this.handleDescription}/>
 
             <TextInput style = {styles.input}
+          
                underlineColorAndroid = "transparent"
                placeholder = "Cuisine Style Description"
                placeholderTextColor = "#50c864"
@@ -76,6 +80,7 @@ class Inputs extends Component {
                onChangeText = {this.handleCuisine}/>
 
             <TextInput style = {styles.input}
+              
                underlineColorAndroid = "transparent"
                placeholder = "Restaurant Address"
                placeholderTextColor = "#50c864"
@@ -92,7 +97,8 @@ class Inputs extends Component {
             <TouchableOpacity
                style = {styles.submitButton}
                onPress = {
-                  () => this.login(this.state.name, this.state.description, this.state.address, this.state.cuisine, this.state.hours)
+                  () => this.insert(this.state.name, this.state.description, this.state.address, this.state.cuisine, this.state.hours)
+                 
                }>
                <Text style = {{
                 textAlign: 'center',
