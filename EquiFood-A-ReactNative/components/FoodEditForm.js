@@ -37,6 +37,7 @@ const FoodEditForm = (item) => {
         <InputForm title="Image URL" placeholder="New Image URL" />
         <ImagePickerButton callback={setImage} />
         {/* <ImagePickerButton image={image} callback={setImage} /> */}
+
         <View>
 
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>

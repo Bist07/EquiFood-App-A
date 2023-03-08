@@ -17,8 +17,7 @@ export default function ImagePickerButton({ callback }) {
         if (!result.canceled) {
             setImage(result.assets[0].uri);
             // Convert to blob data
-            const blobImage =
-                callback(blobImage);
+            const blobImage = callback(blobImage).blob();
         }
     };
 
