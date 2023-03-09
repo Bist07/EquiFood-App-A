@@ -64,7 +64,6 @@ const FoodInsertView = () => {
         img: "iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==",
         original_price: ogPrice,
         quantity: servings,
-        image: image
       };
       console.log(JSON.stringify(data));
       // const response = await axios.post(`${config.local.url}:${config.local.port}/FoodInsert`, data );
