@@ -16,8 +16,7 @@ const FoodInsertView = () => {
   const [ogPrice, setOgPrice] = useState(0);
   const [discPrice, setDiscPrice] = useState(0);
   const [servings, setServings] = useState(0);
-  const [image, setImage] = useState('');
-
+  const [img, setImage] = useState('iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==');
   const restaurantId = 1;
 
   // const axios = require('axios');
@@ -59,9 +58,16 @@ const FoodInsertView = () => {
     // }
     try {
       const data = {
+<<<<<<< HEAD
         item_name: foodName,
         price: discPrice,
         restaurant_id: restaurantId,
+=======
+        item_name:foodName,
+        price:discPrice,
+        restaurant_id:restaurantId,
+        img: "iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==",
+>>>>>>> e5b7dc669b5d70ddb6eafffb8e68feba0e7257b3
         original_price: ogPrice,
         quantity: servings,
         image: image
@@ -143,7 +149,11 @@ const FoodInsertView = () => {
         <View>
           <Text style={{ marginBottom: 5 }}>Image</Text>
           <View style={stylesR.inputForm}>
+<<<<<<< HEAD
             <ImagePickerButton callback={setImage} />
+=======
+              <TextInput placeholder={"Image URL"} value={img} onChangeText={setImage}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
+>>>>>>> e5b7dc669b5d70ddb6eafffb8e68feba0e7257b3
           </View>
         </View>
         <View>
