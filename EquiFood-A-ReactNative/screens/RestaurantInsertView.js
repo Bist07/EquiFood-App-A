@@ -13,7 +13,6 @@ import { restaurant } from '../API/MenuAPI'
 
 const RestaurantInsertView = () => {
   const navigation = useNavigation();
-  const [id, setId] = useState(0);
   const [hours, setHours] = useState('');
   const [address, setAddress] = useState('');
   const [cuisine, setCuisine] = useState('');
@@ -34,9 +33,7 @@ const RestaurantInsertView = () => {
   // data.append('original_price', ogPrice);
   // data.append('quantity', servings);
 
-  const onChangeIdHandler = (id) => { //int
-    setId(id);
-  };
+  
 
   const onChangeHoursHandler = (hours) => {
    setHours(hours);
@@ -83,7 +80,7 @@ const RestaurantInsertView = () => {
     // }
     try {
       const data = {
-        id:id,
+        
         address:address,
         hours:hours,
         cuisine:cuisine,
@@ -139,12 +136,7 @@ const RestaurantInsertView = () => {
         <Ionicons name="chevron-back-outline" size={24} color="white" />
       </Pressable>   
       <ScrollView style={stylesR.FoodInsertView}>
-        <View>
-          <Text style={{marginBottom:5}}>Restaurant ID</Text>
-          <View style={stylesR.inputForm}>
-              <TextInput placeholder={"Restaurant ID"} value={id} onChangeText={onChangeIdHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
-          </View>
-        </View>
+       
 
         <View>
           <Text style={{marginBottom:5}}>Address</Text>
@@ -214,6 +206,7 @@ const RestaurantInsertView = () => {
             <TouchableOpacity style={stylesR.ROFormButtons}>
               
                 {/* <Text style={stylesR.ROButtonText}>Insert Food</Text> */}
+                
             </TouchableOpacity>
             <TouchableOpacity style={stylesR.ROFormButtons}
             onPress={() => navigation.navigate('RestaurantInsertView')}> 

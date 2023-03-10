@@ -27,9 +27,9 @@ router.get('/:id', async function (req, res) {
 router.post('/insertRestaurant', async function(req, res){
     try {
        // const {id, address, hours, cuisine, rating, img_id, longitude, latitude, name, Img} = req.body;
-       const {id, address, hours, cuisine, rating, img_id, longitude, latitude, name} = req.body;
-        const sqlQuery = "INSERT INTO restaurant (id, address, hours, cuisine, rating, img_id, longitude, latitude, name) VALUES (?,?,?,?,?,?,?,?,?)";
-        const result = await pool.query(sqlQuery, [id, address, hours, cuisine, rating, img_id, longitude, latitude, name]);
+       const {address, hours, cuisine, rating, img_id, longitude, latitude, name} = req.body;
+        const sqlQuery = "INSERT INTO restaurant (address, hours, cuisine, rating, img_id, longitude, latitude, name) VALUES (?,?,?,?,?,?,?,?)";
+        const result = await pool.query(sqlQuery, [address, hours, cuisine, rating, img_id, longitude, latitude, name]);
 
         console.log(sqlQuery);
         res.status(200).send("Restaurant added")
