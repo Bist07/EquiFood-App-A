@@ -8,7 +8,7 @@ import axios from 'axios';
 import config from '../config';
 import { restaurant } from '../API/MenuAPI'
 
-const navigation = useNavigation();
+
 
 
 const RestaurantInsertView = () => {
@@ -44,13 +44,13 @@ const RestaurantInsertView = () => {
 
    const onChangeAddressHandler = (address) => {
   setAddress(address);
-};
+ };
 
    const onChangeCuisineHandler = (cuisine) => {
    setCuisine(cuisine);
-};
+ };
 
-const onChangeRatingHandler = (rating) => {
+ const onChangeRatingHandler = (rating) => {
    setRating(rating);
   };
 
@@ -58,7 +58,7 @@ const onChangeRatingHandler = (rating) => {
    setImg_Id(img_id);
    };
 
- const onChangelongitudeHandler = (longitude) => { //int
+ const onChangeLongitudeHandler = (longitude) => { //int
    setLongitude(longitude);
    };
 
@@ -216,7 +216,7 @@ const onChangeRatingHandler = (rating) => {
                 {/* <Text style={stylesR.ROButtonText}>Insert Food</Text> */}
             </TouchableOpacity>
             <TouchableOpacity style={stylesR.ROFormButtons}
-            onPress={() => navigation.navigate('RestaurantInsertView')}> //may have to fix this *********
+            onPress={() => navigation.navigate('RestaurantInsertView')}> 
                 <Button title="Reset" style={stylesR.ROButtonText}></Button>
             </TouchableOpacity> 
           </View>
