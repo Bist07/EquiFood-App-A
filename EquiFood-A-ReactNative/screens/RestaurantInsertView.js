@@ -17,7 +17,7 @@ const RestaurantInsertView = () => {
   const [address, setAddress] = useState('');
   const [cuisine, setCuisine] = useState('');
   const [rating, setRating] = useState('');
-  const [img_id, setImg_Id] = useState('');
+ 
   const [longitude, setLongitude] = useState(0);
   const [latitude, setLatitude] = useState(0);
   const [name, setName] = useState('');
@@ -51,9 +51,7 @@ const RestaurantInsertView = () => {
    setRating(rating);
   };
 
-  const onChangeImg_IdHandler = (img_id) => { //int
-   setImg_Id(img_id);
-   };
+
 
  const onChangeLongitudeHandler = (longitude) => { //int
    setLongitude(longitude);
@@ -85,7 +83,6 @@ const RestaurantInsertView = () => {
         hours:hours,
         cuisine:cuisine,
         rating: rating,
-        img_id: img_id,
         longitude: longitude,
         latitude: latitude,
         name: name
@@ -166,12 +163,7 @@ const RestaurantInsertView = () => {
           </View>
         </View>
 
-        <View>
-          <Text style={{marginBottom:5}}>Restaurant Image ID</Text>
-          <View style={stylesR.inputForm}>
-              <TextInput placeholder={"Image ID"} value={img_id} onChangeText={onChangeImg_IdHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
-          </View>
-        </View>
+        
 
         <View>
           <Text style={{marginBottom:5}}>Longitude</Text>
@@ -196,18 +188,15 @@ const RestaurantInsertView = () => {
 
         <View>
           
-          <Button
-              title="Submit"
-              onPress={onSubmitFormHandler}
-              style={{"backgroundColor": "gray", "margin":2}}
-            />
+          
+           
+              <TouchableOpacity style={stylesR.ROFormButtons}
+            onPress={() =>    onPress={onSubmitFormHandler}}> 
+                <Button title="Submit" style={stylesR.ROButtonText}></Button>
+            </TouchableOpacity> 
           
           <View style={{display:'flex', flexDirection:2, justifyContent:"space-evenly"}}>
-            <TouchableOpacity style={stylesR.ROFormButtons}>
-              
-                {/* <Text style={stylesR.ROButtonText}>Insert Food</Text> */}
-                
-            </TouchableOpacity>
+           
             <TouchableOpacity style={stylesR.ROFormButtons}
             onPress={() => navigation.navigate('RestaurantInsertView')}> 
                 <Button title="Reset" style={stylesR.ROButtonText}></Button>
