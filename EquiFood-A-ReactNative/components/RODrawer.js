@@ -6,6 +6,9 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import LogIn from '../screens/LogIn';
 
+
+// Design for the drawer view in the Restaurant Owner portal:
+
 const RODrawer = (props) => {
 
     const route = useRoute();
