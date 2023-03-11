@@ -17,7 +17,7 @@ router.get('/:id', async function (req, res) {
 
 router.post('/FoodInsert', async function (req, res) {
     try {
-        const {item_name, price, restaurant_id, img, original_price, quantity} = req.body;
+        const { item_name, price, restaurant_id, img, original_price, quantity } = req.body;
         const sqlQuery = "INSERT INTO menu_item (item_name, price, restaurant_id, img, original_price, quantity) VALUES (?,?,?,?,?,?)";
         const result = await pool.query(sqlQuery, [item_name, price, restaurant_id, img, original_price, quantity]);
 

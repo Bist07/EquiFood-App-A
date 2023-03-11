@@ -8,6 +8,7 @@ import { Ionicons } from "@expo/vector-icons";
 import axios from 'axios';
 import config from '../config';
 import { insertFood } from '../API/MenuAPI'
+import ImagePickerButton from '../components/ImagePicker'
 
 const FoodInsertView = () => {
   const navigation = useNavigation();
@@ -57,9 +58,9 @@ const FoodInsertView = () => {
     // }
     try {
       const data = {
-        item_name:foodName,
-        price:discPrice,
-        restaurant_id:restaurantId,
+        item_name: foodName,
+        price: discPrice,
+        restaurant_id: restaurantId,
         img: "iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==",
         original_price: ogPrice,
         quantity: servings,
@@ -68,13 +69,13 @@ const FoodInsertView = () => {
       // const response = await axios.post(`${config.local.url}:${config.local.port}/FoodInsert`, data );
       const response = await axios({
         url: `${config.local.url}:${config.local.port}/Menu/FoodInsert`,
-        method:'post',
-        data:data,
+        method: 'post',
+        data: data,
         headers: {
           'Content-Type': 'application/json'
-           },
-          // body: JSON.stringify(data),
-          });
+        },
+        // body: JSON.stringify(data),
+      });
       // if (response.status === 201) {
       //   alert(` You have created: ${JSON.stringify(response.data)}`);
       //   setFoodName('');
@@ -82,18 +83,18 @@ const FoodInsertView = () => {
       //   setDiscPrice(0);
       //   setServings(0);
       // } else {
-        // throw new Error("An error has occurred from response");
-      
+      // throw new Error("An error has occurred from response");
+
     } catch (error) {
       console.log(error);
       alert("An error has occurred");
     }
   }
-  
+
   return (
     <>
-      <View style={{paddingTop:20}} id="header">
-             {/* <Header /> */}
+      <View style={{ paddingTop: 20 }} id="header">
+        {/* <Header /> */}
       </View>
       <Pressable
         onPress={() => navigation.goBack()}
@@ -108,60 +109,61 @@ const FoodInsertView = () => {
         }}
       >
         <Ionicons name="chevron-back-outline" size={24} color="white" />
-      </Pressable>   
+      </Pressable>
       <ScrollView style={stylesR.FoodInsertView}>
         <View>
-          <Text style={{marginBottom:5}}>Food Name</Text>
+          <Text style={{ marginBottom: 5 }}>Food Name</Text>
           <View style={stylesR.inputForm}>
-              <TextInput placeholder={"Food Name"} value={foodName} onChangeText={onChangeNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
+            <TextInput placeholder={"Food Name"} value={foodName} onChangeText={onChangeNameHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
           </View>
         </View>
 
         <View>
-          <Text style={{marginBottom:5}}>Original Price</Text>
+          <Text style={{ marginBottom: 5 }}>Original Price</Text>
           <View style={stylesR.inputForm}>
-              <TextInput placeholder={"Original Price"} value={ogPrice} onChangeText={onChangePriceHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
+            <TextInput placeholder={"Original Price"} value={ogPrice} onChangeText={onChangePriceHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
           </View>
         </View>
 
         <View>
-          <Text style={{marginBottom:5}}>Discounted Price</Text>
+          <Text style={{ marginBottom: 5 }}>Discounted Price</Text>
           <View style={stylesR.inputForm}>
-              <TextInput placeholder={"Discounted Price"} value={discPrice} onChangeText={onChangeDiscPriceHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
+            <TextInput placeholder={"Discounted Price"} value={discPrice} onChangeText={onChangeDiscPriceHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
           </View>
         </View>
 
         <View>
-          <Text style={{marginBottom:5}}>Servings Available</Text>
+          <Text style={{ marginBottom: 5 }}>Servings Available</Text>
           <View style={stylesR.inputForm}>
-              <TextInput placeholder={"Servings Available"} value={servings} onChangeText={onChangeServingsHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
+            <TextInput placeholder={"Servings Available"} value={servings} onChangeText={onChangeServingsHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
           </View>
         </View>
 
         <View>
-          <Text style={{marginBottom:5}}>Image</Text>
+          <Text style={{ marginBottom: 5 }}>Image</Text>
           <View style={stylesR.inputForm}>
-              <TextInput placeholder={"Image URL"} value={img} onChangeText={setImage}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
+            <ImagePickerButton callback={setImage} />
           </View>
         </View>
         <View>
-          
+
           <Button
-              title="Submit"
-              onPress={onSubmitFormHandler}
-              style={{"backgroundColor": "gray", "margin":2}}
-            />
-          
-          <View style={{display:'flex', flexDirection:2, justifyContent:"space-evenly"}}>
+            title="Submit"
+            onPress={onSubmitFormHandler}
+            style={{ "backgroundColor": "gray", "margin": 2 }}
+          />
+
+          <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
             <TouchableOpacity style={stylesR.ROFormButtons}>
-              
-                {/* <Text style={stylesR.ROButtonText}>Insert Food</Text> */}
+
+              {/* <Text style={stylesR.ROButtonText}>Insert Food</Text> */}
             </TouchableOpacity>
             <TouchableOpacity style={stylesR.ROFormButtons}
-            onPress={() => navigation.navigate('FoodInsertView')}>
-                <Button title="Reset" style={stylesR.ROButtonText}></Button>
-            </TouchableOpacity> 
+              onPress={() => navigation.navigate('FoodInsertView')}>
+              <Button title="Reset" style={stylesR.ROButtonText}></Button>
+            </TouchableOpacity>
           </View>
+
 
         </View>
       </ScrollView>
