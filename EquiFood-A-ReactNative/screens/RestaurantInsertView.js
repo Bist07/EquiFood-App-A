@@ -133,32 +133,34 @@ const RestaurantInsertView = () => {
         <Ionicons name="chevron-back-outline" size={24} color="white" />
       </Pressable>   
       <ScrollView style={stylesR.FoodInsertView}>
+
+         <Text style={styles.title}>Enter Restraunt Information</Text>
        
 
         <View>
           <Text style={{marginBottom:5}}>Address</Text>
-          <View style={stylesR.inputForm}>
+          <View style={styles.input}>
               <TextInput placeholder={"Address"} value={address} onChangeText={onChangeAddressHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
           </View>
         </View>
 
         <View>
           <Text style={{marginBottom:5}}>Hours of Operation</Text>
-          <View style={stylesR.inputForm}>
+          <View style={styles.input}>
               <TextInput placeholder={"Hours"} value={hours} onChangeText={onChangeHoursHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
           </View>
         </View>
 
         <View>
           <Text style={{marginBottom:5}}>Cuisine Style</Text>
-          <View style={stylesR.inputForm}>
+          <View style={styles.input}>
               <TextInput placeholder={"Cusine"} value={cuisine} onChangeText={onChangeCuisineHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
           </View>
         </View>
 
         <View>
           <Text style={{marginBottom:5}}>Rating</Text>
-          <View style={stylesR.inputForm}>
+          <View style={styles.input}>
               <TextInput placeholder={"Rating"} value={rating} onChangeText={onChangeRatingHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
           </View>
         </View>
@@ -167,21 +169,21 @@ const RestaurantInsertView = () => {
 
         <View>
           <Text style={{marginBottom:5}}>Longitude</Text>
-          <View style={stylesR.inputForm}>
+          <View style={styles.input}>
               <TextInput placeholder={"Longitude"} value={longitude} onChangeText={onChangeLongitudeHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
           </View>
         </View>
 
         <View>
           <Text style={{marginBottom:5}}>Latitude</Text>
-          <View style={stylesR.inputForm}>
+          <View style={styles.input}>
               <TextInput placeholder={"Latitude"} value={latitude} onChangeText={onChangeLatitudeHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
           </View>
         </View>
 
         <View>
           <Text style={{marginBottom:5}}>Restaurant's Name</Text>
-          <View style={stylesR.inputForm}>
+          <View style={styles.input}>
               <TextInput placeholder={"Name"} value={name} onChangeText={onChangeNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
           </View>
         </View>
@@ -223,7 +225,7 @@ const styles = StyleSheet.create({
       height: 40,
       fontWeight: 'bold',
       borderColor: '#50c864',
-      borderWidth: 1
+      borderWidth: 2
    },
    submitButton: {
       backgroundColor: '#50c864',
@@ -234,6 +236,18 @@ const styles = StyleSheet.create({
    },
    submitButtonText:{
       color: 'white'
+   },
+   title:{
+      color:'#50c864',
+      fontWeight: 'bold',
+      textAlign: "center",
+      marginTop: 50,
+      borderColor: '#50c864',
+      borderWidth: 4,
+      borderRadius: 10,
+      padding: 10,
+      marginBottom: 10
+    
    }
 })
 
