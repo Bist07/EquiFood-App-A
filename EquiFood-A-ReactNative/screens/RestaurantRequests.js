@@ -10,6 +10,8 @@ import Header from '../components/header';
 import RestaurantData from "../data/RestaurantData";
 import AdminRestaurantView from '../components/AdminRestaurantView';
 
+// View of Restaurant Requests to be implemented
+
 
 const RestaurantRequests = ({onPress, text}) => {
     const [username, setUsername] = useState('');    
@@ -27,7 +29,7 @@ const RestaurantRequests = ({onPress, text}) => {
              {/* <Header /> */}
            </View>        
             <View>
-                <Text> View of Restaurant Requests to be implementeds.</Text>
+                <Text> View of Restaurant Requests to be implemented.</Text>
             </View>
         
         </View>
