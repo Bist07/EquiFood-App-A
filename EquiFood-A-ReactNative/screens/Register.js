@@ -13,6 +13,7 @@ import config from '../config';
        const [first_name, setFirstname] = useState('');
        const [last_name, setLastName] = useState('');
        const [email, setEmail] = useState('');
+       const [passwordHash, setPassword] = useState('');
 
       
         // const axios = require('axios');
@@ -38,6 +39,10 @@ import config from '../config';
             const onChangeEmailHandler = (email) => {
             setEmail(email);
           };
+
+          const onChangePasswordHandler = (passwordHash) => {
+            setPassword(passwordHash);
+          };
         
     
       
@@ -54,7 +59,9 @@ import config from '../config';
             const data = {
                 first_name: first_name,
                 last_name: last_name,
-                email: email
+                email: email,
+                passwordHash: passwordHash
+                
             };
             console.log(JSON.stringify(data));
             const response = await axios({
@@ -118,6 +125,13 @@ import config from '../config';
                     <TextInput placeholder={"Email"} value={email} onChangeText={onChangeEmailHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
                 </View>
               </View>
+
+              <View>
+                <Text style={{marginBottom:5}}>Password</Text>
+                <View style={styles.input}>
+                    <TextInput placeholder={"Password"} value={passwordHash} onChangeText={onChangePasswordHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
+                </View>
+              </View>
       
               
       
@@ -131,8 +145,7 @@ import config from '../config';
                    <Button
                    title="Submit"
                    onPress={onSubmitFormHandler}
-                   
-                 />
+                   />
                    </TouchableOpacity>   
             
                 
