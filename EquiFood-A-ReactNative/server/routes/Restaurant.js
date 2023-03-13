@@ -31,7 +31,8 @@ router.post('/insertRestaurant', async function(req, res){
         const sqlQuery = "INSERT INTO restaurant (address, hours, cuisine, rating, longitude, latitude, name) VALUES (?,?,?,?,?,?,?)";
         const result = await pool.query(sqlQuery, [address, hours, cuisine, rating, longitude, latitude, name]);
 
-        console.log(sqlQuery);
+        console.log(result);
+        console.log(sqlQuery)
         res.status(200).send("Restaurant added")
     } catch (error) {
         res.status(400).send(error.message)

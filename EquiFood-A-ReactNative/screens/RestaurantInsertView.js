@@ -6,7 +6,7 @@ import stylesR from '../components/stylesR'
 import { Ionicons } from "@expo/vector-icons";
 import axios from 'axios';
 import config from '../config';
-import { restaurant } from '../API/MenuAPI'
+
 
 
 
