@@ -29,14 +29,18 @@ const ViewCart = (props) => {
     .map((item) => item.price * item.quantity)
     .reduce((prev, curr) => prev + curr, 0);
 
-  const formattedPrice = (Math.round(totalPrice * 100) / 100).toFixed(2);
-  const dispatch = useDispatch();
-
-  const [modal, setModal] = useState(false);
-  const restaurantName = props.restaurantName;
+  console.log(cart)
 
   const [date, setDate] = useState(new Date());
+  const [show, setShow] = useState(false);
+  const [buttonShow, setButtonShow] = useState(true);
+  const [modal, setModal] = useState(false);
+
+  const formattedPrice = (Math.round(totalPrice * 100) / 100).toFixed(2);
   let formattedTime = date.getHours() + ':' + date.getMinutes();
+  const dispatch = useDispatch();
+
+  const restaurantName = props.restaurantName;
 
   const onTimeChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
@@ -53,6 +57,11 @@ const ViewCart = (props) => {
     if(orderDate > tempDate){
       alert("You have selected a time in the past. Please don't");
     }
+  }
+
+  const showTimePicker = () => {
+    setButtonShow(false);
+    setShow(true);
   }
 
   const placeOrder = () => {
@@ -86,31 +95,31 @@ const ViewCart = (props) => {
                 <Text style={styles.cartItemText}>
                   {item.item_name}
                 </Text>
-                <Pressable style={styles.itemCounterBox}>
-                  <Pressable
+                {/* <Pressable style={styles.itemCounterBox}> */}
+                  {/* <Pressable
                     onPress={() => {
                       dispatch(decrementQuantity(item));
                     }}>
                     <Text style={styles.itemCountButtons}>
                       -
                     </Text>
-                  </Pressable>
+                  </Pressable> */}
 
-                  <Pressable>
-                    <Text style={styles.itemCount}>
-                      {item.quantity}
+                  {/* <Pressable> */}
+                    <Text style={styles.cartItemText}>
+                      Quantity: {item.quantity}
                     </Text>
-                  </Pressable>
+                  {/* </Pressable> */}
 
-                  <Pressable
+                  {/* <Pressable
                     onPress={() => {
                       dispatch(incrementQuantity(item));
                     }}>
                     <Text style={styles.itemCountButtons}>
                       +
                     </Text>
-                  </Pressable>
-                </Pressable>
+                  </Pressable> */}
+                {/* </Pressable> */}
                 <Text style={styles.cartItemText}>
                   ${(Math.round(item.price * 100) / 100).toFixed(2)}
                 </Text>
@@ -136,7 +145,8 @@ const ViewCart = (props) => {
           <Text style={{ fontWeight: "bold", fontSize: 20 }}>
             Pickup Time: 
           </Text>
-          <DateTimePicker
+          {buttonShow && (<Button id="timeButton" onPress={showTimePicker} title="Click to pick a Time!" />)}
+          {show && (<DateTimePicker
             testID='dateTimePicker'
             value={date}
             mode={'time'}
@@ -145,6 +155,7 @@ const ViewCart = (props) => {
             onChange={onTimeChange}
             minuteInterval={15}
           />
+          )}
         </View>
 
         <Pressable
@@ -245,10 +256,12 @@ const styles = StyleSheet.create({
   },
 
   cartItems: {
-    marginTop:10,
+    marginTop:5,
+    display: "flex",
     flexDirection: "row",
-    alignContent: "center",
-    justifyContent: "space-between",
+    // flexBasis: "30%",
+    // alignContent: "center",
+    // justifyContent: "space-between",
     padding: 10,
   },
 
@@ -256,7 +269,8 @@ const styles = StyleSheet.create({
     color: "green", 
     paddingTop:6, 
     fontWeight: "500", 
-    fontSize: 16 
+    fontSize: 16,
+    flex: '1 1 auto',
   },
 
   itemCounterBox: {

@@ -9,7 +9,6 @@ const TimePicker = () => {
   // Straight from https://www.npmjs.com/package/@react-native-community/datetimepicker#getting-started
 
     const [date, setDate] = useState(new Date());
-    const [mode, setMode] = useState('time');
     const [text, setText] = useState('Empty');
   
     const onChange = (event, selectedDate) => {
@@ -31,7 +30,6 @@ const TimePicker = () => {
       if(orderDate < tempDate){
         this.props.parentCallback(date);
       }
-
     }
 
   return (
@@ -43,7 +41,7 @@ const TimePicker = () => {
           <DateTimePicker
             testID='dateTimePicker'
             value={date}
-            mode={mode}
+            mode={'time'}
             is24Hour={false}
             display='default'
             onChange={onChange}
