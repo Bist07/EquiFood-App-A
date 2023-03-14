@@ -22,7 +22,7 @@ const RestaurantPage = () => {
   const total = cart
     .map((item) => item.discountPrice * item.quantity)
     .reduce((curr, prev) => curr + prev, 0);
-  cart.map((item) => console.log(item));
+  // cart.map((item) => console.log(item));
   // console.log(total);
   const route = useRoute();
   const navigation = useNavigation();
@@ -73,15 +73,6 @@ const RestaurantPage = () => {
               <Ionicons name="chevron-back-outline" size={22} color="white" />
             </Pressable>
 
-            {/* <Pressable style={{ flexDirection: "row", alignItems: "center" }}>
-            <Feather name="bookmark" size={28} color="black" />
-            <Feather
-              style={{ marginLeft: 5 }}
-              name="share"
-              size={28}
-              color="black"
-            />
-          </Pressable> */}
           </View>
 
           <View style={{ margin: 30, marginTop: 7 }}>
@@ -92,8 +83,8 @@ const RestaurantPage = () => {
                 justifyContent: "space-between",
               }}
             >
-              <View style={{ marginLeft: 0, marginTop: 10 }}>
-                <Text style={{ marginLeft: 130, marginRight: 60, marginBottom: 5, fontSize: 24, fontWeight: "bold" }}>
+              <View style={{ marginLeft: 75, marginTop: 10, alignItems:'center' }}>
+                <Text style={{ marginBottom: 5, fontSize: 24, fontWeight: "bold" }}>
                   {route.params.name}
                 </Text>
 
@@ -108,7 +99,7 @@ const RestaurantPage = () => {
               {route.params.cuisines}
             </Text> */}
 
-                <Text style={{ marginLeft: 50, fontSize: 16, color: "gray", fontWeight: "500" }}>
+                <Text style={{ fontSize: 16, color: "gray", fontWeight: "500" }}>
                   {route.params.address}
                 </Text>
                 <View>
@@ -124,7 +115,7 @@ const RestaurantPage = () => {
                       shadowOpacity: 0.12,
                       shadowRadius: 4.65,
                       marginTop: 20,
-                      marginLeft: 110
+                      marginLeft: 0
                     }}
                   >
                     <Text style={{ color: "black", fontWeight: "bold", marginRight: 8 }}>4.5</Text>
