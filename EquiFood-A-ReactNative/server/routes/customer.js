@@ -23,14 +23,22 @@ router.post('/register', async function(req, res){
 
 router.post('/login', async function (req, res) {
     try {
-        const { id, Password } = req.body; //change to email in future
-
-        const sqlGetUser = 'SELECT password FROM user WHERE id=?';
-        const rows = await pool.query(sqlGetUser, id); //pulls user id
+        const { email, enteredPassword } = req.body; //change to email in future
+        const sqlGetUser = 'SELECT passwordHash FROM customer WHERE email = ?';
+        const rows = await pool.query(sqlGetUser, [email]); //pulls user id
+       
+       
         if (rows) {
-            res.status(200).json(rows[0]) //returns json rows
+            const isValid = false;
+            if(enteredPassword == rows[0].passwordHash){
+                isValid == true;
+            }
+            //res.status(200).json(rows[0])
+            res.status(200).json({isValid: isValid}) //returns json rows
+         
         }
-        res.status(200).send('User with id ${id} was not found') //also need to change to email in future
+        res.status(200).send() //also need to change to email in future
+
     } catch (error) {
         res.status(400).send(error.message)
     }

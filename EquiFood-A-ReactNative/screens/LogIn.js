@@ -3,16 +3,26 @@ import { StyleSheet, View, Text, Image, Pressable, TouchableOpacity, TouchableHi
 import Logo from '../assets/logos/Equifood_Logo.png'
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { MaterialIcons } from '@expo/vector-icons';
+import axios from 'axios';
+import config from '../config';
 
 
 
-const LogIn = ({ onPress, text }) => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const route = useRoute();
+const LogIn = () => {
+    const [email, setEmail] = useState('');
+    const [enteredPassword, setenteredPassword] = useState('');
+    
     const navigation = useNavigation();
 
     // function for signing in:
+
+
+    const onChangeEmailHandler = (email) => {
+        setEmail(email);
+    };
+    const onChangeenteredPasswordHandler = (enteredPassword) => {
+        setenteredPassword(enteredPassword);
+    };
 
     const onSignInPressed = () => {
         console.warn('Sign In');
@@ -30,7 +40,34 @@ const LogIn = ({ onPress, text }) => {
         console.warn('Admin Page');
     };
 
+    const onSubmitFormHandler = async (e) => {
 
+    try {
+        const data = {
+            
+            email: email,
+            enteredPassword: enteredPassword
+            
+        };
+        console.log(JSON.stringify(data));
+        const response = await axios({
+          url: `${config.local.url}:${config.local.port}/customer/login`,
+          method:'post',
+          data:data,
+          headers: {
+            'Content-Type': 'application/json'
+             },
+            });
+    
+
+        
+      } catch (error) {
+        console.log(error);
+        alert("An error has occurred");
+      }
+
+
+    }
     return (
         <View style={styles.root}>
 
@@ -43,16 +80,17 @@ const LogIn = ({ onPress, text }) => {
         */}
             <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25 }}>
                 <MaterialIcons name='email' size={20} color='#ccc' style={{ marginRight: 5 }} />
-                <TextInput placeholder='Email' style={{ flex: 1, paddingVertical: 0 }} keyboardType="email-address" />
+                <TextInput placeholder='Email' value={email} onChangeText={onChangeEmailHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="email-address" />
             </View>
 
             <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25 }}>
                 <MaterialIcons name="lock" size={20} color='#ccc' style={{ marginRight: 5 }} />
-                <TextInput placeholder='Password' style={{ flex: 1, paddingVertical: 0 }} secureTextEntry={true} />
+                <TextInput placeholder='Password' value={enteredPassword} onChangeText={onChangeenteredPasswordHandler} style={{ flex: 1, paddingVertical: 0 }} secureTextEntry={true}  />
             </View>
 
             <TouchableOpacity style={styles.signInButton}
-                onPress={() => navigation.navigate('RestaurantsView')}>
+                onPress={() => {navigation.navigate('RestaurantsView'); onSubmitFormHandler();}}>
+               
                 <Text style={styles.signInText}>Sign In</Text>
             </TouchableOpacity>
 
