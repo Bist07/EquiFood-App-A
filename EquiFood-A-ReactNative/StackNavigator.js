@@ -41,6 +41,9 @@ const Stack = createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator();
 
+
+// Drawer Navigation for the Individual Customer Portal:
+
 function IndividualView() {
   return (
     <Drawer.Navigator drawerContent={ props => <RestaurantsDrawer{...props} />}
@@ -77,6 +80,7 @@ function IndividualView() {
           // fontSize: 25,
       // },
     }}
+
     
     initialRouteName = "RestaurantsView">
 
@@ -106,6 +110,8 @@ function IndividualView() {
   );
 }
 
+
+// Drawer Navigation for the Restaurant Owner Portal:
 
 function ROView() {
   return (
@@ -176,6 +182,9 @@ function ROView() {
     </Drawer.Navigator>
   );
 }
+
+
+// Drawer Navigation for the Administrator Portal:
 
 function AdminView() {
   return (
@@ -255,6 +264,9 @@ function AdminView() {
 //       <AntDesign name={"calendar"} size={20} color={color} />
 //   ),
 // }}
+
+
+// Drawer Navigator works through the Stack Navigator. It is referenced through the component portion of certain pages. 
 
 const StackNavigator = () => {
   return (
