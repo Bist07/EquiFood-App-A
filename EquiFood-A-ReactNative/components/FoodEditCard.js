@@ -22,7 +22,7 @@ const FoodEditCard = ({ food }) => {
       style={stylesR.itemDisplay}
       onPress={() => navigation.navigate('FoodEditForm', {
         name: food.item_name,
-        originalPrice: food.orignal_price,
+        originalPrice: food.original_price,
         discountPrice: food.price,
         servingsLeft: food.quantity,
         imgSrc: imageUri,
@@ -31,11 +31,11 @@ const FoodEditCard = ({ food }) => {
       <View style={{ marginLeft: 10, flex: 1 }}>
 
         <Text style={stylesR.itemName}>
-          {food.name}
+          {food.item_name}
         </Text>
         <View style={{ flexDirection: "column" }}>
           <Text style={stylesR.originalPrice}>
-            ${(Math.round(food.orignal_price * 100) / 100).toFixed(2)}
+            ${(Math.round(food.original_price * 100) / 100).toFixed(2)}
           </Text>
           <Text style={stylesR.currentPrice}>
             ${(Math.round(food.price * 100) / 100).toFixed(2)}
