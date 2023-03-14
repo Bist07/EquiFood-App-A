@@ -29,15 +29,16 @@ router.post('/login', async function (req, res) {
        
        
         if (rows) {
-            const isValid = false;
+            var isValid = false;
            
             if(enteredPassword == rows[0].passwordHash){
-                isValid = true;
-                console.log("my guess")
-            }
-            console.log(PasswordGood); 
+              isValid = true;
+                
+            };
+          
             console.log(rows[0].passwordHash)
             console.log(enteredPassword)
+            console.log(isValid)
             res.status(200).json({PasswordGood: isValid})
     
          

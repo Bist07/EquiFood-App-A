@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Text, Image, Pressable, TouchableOpacity, TouchableHighlight, TextInput } from 'react-native'
+import { StyleSheet, View, Text, Image, Pressable, TouchableOpacity, TouchableHighlight, TextInput, Alert } from 'react-native'
 import Logo from '../assets/logos/Equifood_Logo.png'
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { MaterialIcons } from '@expo/vector-icons';
@@ -60,14 +60,29 @@ const LogIn = () => {
             });
     
 
-        
+            console.log(response.data.PasswordGood); 
+            var passwordValid = response.data.PasswordGood;
+
+            if(passwordValid == true){
+                navigation.navigate('RestaurantsView');
+            }else{
+                alert("Email or Password Incorrect")
+            }
+
       } catch (error) {
         console.log(error);
         alert("An error has occurred");
       }
 
 
+
+
     }
+
+
+  
+
+    
     return (
         <View style={styles.root}>
 
@@ -80,16 +95,17 @@ const LogIn = () => {
         */}
             <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25 }}>
                 <MaterialIcons name='email' size={20} color='#ccc' style={{ marginRight: 5 }} />
-                <TextInput placeholder='Email' value={email} onChangeText={onChangeEmailHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="email-address" />
+                <TextInput placeholder='Email' autoCapitalize='none' autoCorrect={false}  value={email} onChangeText={onChangeEmailHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="email-address" />
             </View>
 
             <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25 }}>
                 <MaterialIcons name="lock" size={20} color='#ccc' style={{ marginRight: 5 }} />
-                <TextInput placeholder='Password' value={enteredPassword} onChangeText={onChangeenteredPasswordHandler} style={{ flex: 1, paddingVertical: 0 }} secureTextEntry={true}  />
+                <TextInput placeholder='Password' autoCapitalize='none' autoCorrect={false}  value={enteredPassword} onChangeText={onChangeenteredPasswordHandler} style={{ flex: 1, paddingVertical: 0 }} secureTextEntry={true}  />
             </View>
 
             <TouchableOpacity style={styles.signInButton}
-                onPress={() => {navigation.navigate('RestaurantsView'); onSubmitFormHandler();}}>
+
+                onPress={() => {onSubmitFormHandler();}}>
                
                 <Text style={styles.signInText}>Sign In</Text>
             </TouchableOpacity>
