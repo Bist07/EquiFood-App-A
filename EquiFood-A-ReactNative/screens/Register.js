@@ -14,6 +14,7 @@ import config from '../config';
        const [last_name, setLastName] = useState('');
        const [email, setEmail] = useState('');
        const [passwordHash, setPassword] = useState('');
+       const [passwordCheck, setPasswordCheck] = useState('');
 
       
         // const axios = require('axios');
@@ -44,6 +45,9 @@ import config from '../config';
             setPassword(passwordHash);
           };
         
+          const onChangePasswordCheckHandler = (passwordCheck) => {
+            setPasswordCheck(passwordCheck);
+          };
     
       
       
@@ -54,7 +58,7 @@ import config from '../config';
 
 
 
-
+        if(passwordCheck == passwordHash ){
           try {
             const data = {
                 first_name: first_name,
@@ -79,8 +83,12 @@ import config from '../config';
             console.log(error);
             alert("An error has occurred");
           }
-        }
+        }else(alert("Passwords do not match")
         
+        
+            );
+    }
+
         return (
           <>
             <View style={{paddingTop:20}} id="header">
@@ -96,6 +104,7 @@ import config from '../config';
                 justifyContent: "center",
                 alignItems: "center",
                 marginLeft: 10,
+                marginTop: 30,
               }}
             >
               <Ionicons name="chevron-back-outline" size={24} color="white" />
@@ -108,28 +117,35 @@ import config from '../config';
               <View>
                 <Text style={{marginBottom:5}}>First Name</Text>
                 <View style={styles.input}>
-                    <TextInput placeholder={"First Name"} value={first_name} onChangeText={onChangeFirstNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
+                    <TextInput placeholder={"First Name"} value={first_name} onChangeText={onChangeFirstNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
                 </View>
               </View>
       
               <View>
                 <Text style={{marginBottom:5}}>Last Name</Text>
                 <View style={styles.input}>
-                    <TextInput placeholder={"Last Name"} value={last_name} onChangeText={onChangeLastNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
+                    <TextInput placeholder={"Last Name"} value={last_name} onChangeText={onChangeLastNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
                 </View>
               </View>
       
               <View>
                 <Text style={{marginBottom:5}}>Email</Text>
                 <View style={styles.input}>
-                    <TextInput placeholder={"Email"} value={email} onChangeText={onChangeEmailHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
+                    <TextInput placeholder={"Email"} value={email} onChangeText={onChangeEmailHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="email-address" />
                 </View>
               </View>
 
               <View>
                 <Text style={{marginBottom:5}}>Password</Text>
                 <View style={styles.input}>
-                    <TextInput placeholder={"Password"} value={passwordHash} onChangeText={onChangePasswordHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="numeric" />
+                    <TextInput placeholder={"Password"} value={passwordHash} onChangeText={onChangePasswordHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
+                </View>
+              </View>
+
+              <View>
+                <Text style={{marginBottom:5}}>Verify Password</Text>
+                <View style={styles.input}>
+                    <TextInput placeholder={"Verify Password"} value={passwordCheck} onChangeText={onChangePasswordCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
                 </View>
               </View>
       
