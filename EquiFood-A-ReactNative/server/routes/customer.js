@@ -30,11 +30,16 @@ router.post('/login', async function (req, res) {
        
         if (rows) {
             const isValid = false;
+           
             if(enteredPassword == rows[0].passwordHash){
-                isValid == true;
+                isValid = true;
+                console.log("my guess")
             }
-            //res.status(200).json(rows[0])
-            res.status(200).json({isValid: isValid}) //returns json rows
+            console.log(PasswordGood); 
+            console.log(rows[0].passwordHash)
+            console.log(enteredPassword)
+            res.status(200).json({PasswordGood: isValid})
+    
          
         }
         res.status(200).send() //also need to change to email in future
