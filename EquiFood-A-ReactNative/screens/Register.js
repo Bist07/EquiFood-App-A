@@ -81,7 +81,9 @@ import config from '../config';
                 });
         
 
-            
+                navigation.navigate('LogIn');
+                alert("Account Created!");
+                
           } catch (error) {
             console.log(error);
             alert("An error has occurred");
@@ -94,6 +96,7 @@ import config from '../config';
         }else(alert("Passwords do not match")
             );
       
+            
     
     }
 
