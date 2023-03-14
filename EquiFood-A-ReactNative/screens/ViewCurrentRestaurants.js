@@ -10,6 +10,11 @@ import Header from '../components/header';
 import RestaurantData from "../data/RestaurantData";
 import AdminRestaurantView from '../components/AdminRestaurantView';
 
+// View of current donations
+
+// Process:
+// We will calculate donations as the difference from the original amount subtracted by the discounted amount
+
 
 const ViewCurrentRestaurants = ({onPress, text}) => {
     const [username, setUsername] = useState('');    
