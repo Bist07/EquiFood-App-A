@@ -3,65 +3,55 @@ import React from "react";
 import { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import DateTimePicker from '@react-native-community/datetimepicker';
+import RNDateTimePicker from "@react-native-community/datetimepicker";
 
 const TimePicker = () => {
   // Straight from https://www.npmjs.com/package/@react-native-community/datetimepicker#getting-started
 
+    const [date, setDate] = useState(new Date());
+    const [mode, setMode] = useState('time');
+    const [text, setText] = useState('Empty');
+  
+    const onChange = (event, selectedDate) => {
+      const currentDate = selectedDate || date;
+      setDate(currentDate);
+  
+      let tempDate = new Date(currentDate);
+      let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear();
+      let fTime = tempDate.getHours() + ':' + tempDate.getMinutes();
+      setText('')
+  
+      const orderDate = new Date();
+      console.log(orderDate);
+      console.log(tempDate);
 
-  const [date, setDate] = useState(new Date(1598051730000));
-  const [mode, setMode] = useState("time");
-  const [show, setShow] = useState(false);
+      if(orderDate > tempDate){
+        alert("You have selected a time in the past. Please don't");
+      }
+      if(orderDate < tempDate){
+        this.props.parentCallback(date);
+      }
 
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate;
-    setShow(false);
-    setDate(currentDate);
-  };
-
-  const showMode = (currentMode) => {
-    if (Platform.OS === "android") {
-      setShow(false);
     }
-    if (Platform.OS === "ios"){
-        <Pressable
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          marginBottom: 10,
-        }}
-        onPress={() => showMode(false)}
-      >
-        <AntDesign name="closecircle" size={36} color="black" />
-      </Pressable>
-    }
-    // for iOS, add a button that closes the picker
-    setMode(currentMode);
-  };
-
-  const showDatepicker = () => {
-    showMode("date");
-  };
-
-  const showTimepicker = () => {
-    showMode("time");
-  };
 
   return (
-    <View>
-      
-      <Button onPress={showTimepicker} title="Show time picker!" />
-      <Text>selected: {date.toLocaleString()}</Text>
-      {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={date}
-          mode={mode}
-          is24Hour={true}
-          onChange={onChange}
-          minuteInterval={15}
-        />
-      )}
-    </View>
+        <View style={{ padding: 10, paddingTop: 0, backgroundColor: "white", flexDirection:"row", justifyContent:'space-between' }}>
+          <Text style={{ fontWeight: "bold", fontSize: 20 }}>
+            Pickup Time: {text}
+          </Text>
+
+          <DateTimePicker
+            testID='dateTimePicker'
+            value={date}
+            mode={mode}
+            is24Hour={false}
+            display='default'
+            onChange={onChange}
+            minuteInterval={5}
+          />
+
+          
+        </View>
   );
 };
 

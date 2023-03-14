@@ -8,6 +8,8 @@ import Profile from "../components/Profile";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { Ionicons, Feather } from "@expo/vector-icons";
 
+// View of profile page 
+
 const ProfilePage = (props) => {
 
     const route = useRoute();
