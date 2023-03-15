@@ -65,6 +65,7 @@ const FoodInsertView = () => {
         original_price: ogPrice,
         quantity: servings,
       };
+      await axios.post("/api/posts", img, { headers: { 'Content-Type': 'multipart/form-data' } })
       console.log(JSON.stringify(data));
       // const response = await axios.post(`${config.local.url}:${config.local.port}/FoodInsert`, data );
       const response = await axios({
