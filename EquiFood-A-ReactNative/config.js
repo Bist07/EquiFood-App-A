@@ -1,7 +1,9 @@
 import { Platform } from "react-native";
 
 if(Platform.OS === 'ios'){
-    var url = "http://localhost";  
+    var url = "http://192.168.1.71";  
+
+    // var url = "http://localhost";  
 }
 if(Platform.OS === 'android'){
     var url = "http://192.168.0.36";  
