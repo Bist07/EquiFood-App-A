@@ -36,7 +36,7 @@ const ProfilePage = (props) => {
                         justifyContent: "center",
                         alignItems: "center",
                         marginLeft: 10,
-                        marginTop: 5,
+                        marginTop: 70,
                         marginBottom: 15
                     }}
                 >

@@ -49,16 +49,19 @@ import config from '../config';
             setPasswordCheck(passwordCheck);
           };
     
-      
-      
+          var hasNumber = /\d/;
+
+
       
         const onSubmitFormHandler = async (e) => {
        
           
 
 
-
+        
         if(passwordCheck == passwordHash ){
+            if(passwordCheck.length > 4){
+                if(hasNumber.test(passwordCheck) == true){
           try {
             const data = {
                 first_name: first_name,
@@ -78,15 +81,23 @@ import config from '../config';
                 });
         
 
-            
+                navigation.navigate('LogIn');
+                alert("Account Created!");
+                
           } catch (error) {
             console.log(error);
             alert("An error has occurred");
           }
+
+        }else(alert("Password must include a number"));
+
+        }else(alert("Password must be atleast 5 characters"));
+
         }else(alert("Passwords do not match")
-        
-        
             );
+      
+            
+    
     }
 
         return (

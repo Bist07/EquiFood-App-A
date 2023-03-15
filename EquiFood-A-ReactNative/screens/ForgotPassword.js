@@ -44,7 +44,9 @@ export default function ForgotPassword(){
 
 
             <TouchableOpacity style={styles.linkButton}
-                onPress={() => navigation.navigate('ProfilePage')}>
+                // Functionality to be added that sends a link to change password:
+                // onPress={() => navigation.navigate('')}
+                >
                 <Text style ={styles.linkText}>Recieve Link</Text>
             </TouchableOpacity>
         </View>
