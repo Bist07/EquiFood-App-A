@@ -23,8 +23,13 @@ const RestaurantOwnerView = (props) => {
            <View style={styles.adminBackground}>
           
            {/* <Text style={{alignSelf: "center", fontSize:"24px", marginBottom:10}}> RESTAURANT OWNER VIEW </Text> */}
+           
+            <TouchableOpacity style={stylesR.ROButtons}
+                onPress={() => navigation.navigate('RestaurantOwnerOrders')}>
+                <Text style={stylesR.ROButtonText}> View my Orders </Text>
+            </TouchableOpacity>
 
-           <TouchableOpacity style={stylesR.ROButtons}
+            <TouchableOpacity style={stylesR.ROButtons}
                 onPress={() => navigation.navigate('FoodEditView')}>
                 <Text style={stylesR.ROButtonText}> Edit My Food Options </Text>
             </TouchableOpacity>

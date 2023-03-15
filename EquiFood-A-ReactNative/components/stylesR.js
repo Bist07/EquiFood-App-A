@@ -268,6 +268,16 @@ const stylesR = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 5
     },
+
+    backArrow:{
+        backgroundColor: "#006A4E",
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        justifyContent: "center",
+        alignItems: "center",
+        marginLeft: 10,
+    }
 })
 
 

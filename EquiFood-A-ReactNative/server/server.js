@@ -39,6 +39,10 @@ app.use('/customer', customerRouter);
 const menuRouter = require('./routes/Menu');
 app.use('/Menu', menuRouter);
 
+//creates connection router for Orders table
+const ordersRouter = require('./routes/Orders');
+app.use('/Orders', ordersRouter);
+
 
 /**
  * Start listening
