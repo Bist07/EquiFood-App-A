@@ -37,7 +37,7 @@ const TimePicker = () => {
           <Text style={{ fontWeight: "bold", fontSize: 20 }}>
             Pickup Time: {text}
           </Text>
-
+          <Button onPress={showTimepicker} title="Show time picker!" />
           <DateTimePicker
             testID='dateTimePicker'
             value={date}
