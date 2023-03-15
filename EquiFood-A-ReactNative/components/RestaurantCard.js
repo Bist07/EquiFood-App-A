@@ -52,10 +52,10 @@ const RestaurantCard = (data) => {
 
         </View>
 
-        <View
+        {/* <View
           style={stylesR.foodCount}>
           <Text># of Food Placeholder</Text>
-        </View>
+        </View> */}
       </View>
 
       {/* <View
