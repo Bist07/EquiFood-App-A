@@ -17,6 +17,7 @@ const RestaurantsView = () => {
     }
     fetchData();
   }, []);
+  console.log(storeData);
 
   return (
     <View style={{ backgroundColor: "#fff" }}>
