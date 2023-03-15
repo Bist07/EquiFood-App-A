@@ -106,6 +106,7 @@ const FoodInsertView = () => {
           justifyContent: "center",
           alignItems: "center",
           marginLeft: 10,
+          marginTop:30,
         }}
       >
         <Ionicons name="chevron-back-outline" size={24} color="white" />
