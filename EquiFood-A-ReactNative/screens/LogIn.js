@@ -42,6 +42,10 @@ const LogIn = () => {
 
     const onSubmitFormHandler = async (e) => {
 
+
+
+
+    if(email.length !=0 && enteredPassword.length !=0){
     try {
         const data = {
             
@@ -78,7 +82,8 @@ const LogIn = () => {
 
 
     }
-
+    else(alert("Please enter both an Email and a Password"));
+}
 
   
 
