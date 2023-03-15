@@ -1,6 +1,6 @@
-const express = require('express')
-const pool = require('../helpers/database')
-const router = express.Router()
+import express from "express";
+import { pool } from '../helpers/database.js'
+export const router = express.Router()
 
 //getting all
 router.get('/', async function (req, res) {
@@ -39,4 +39,4 @@ router.post('/insertRestaurant', async function (req, res) {
     }
 });
 
-module.exports = router;
+// module.exports = router;

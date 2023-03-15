@@ -18,8 +18,6 @@ export default function ImagePickerButton({ callback }) {
         if (!result.canceled) {
             setImage(result.assets[0].uri)
             callback(image);
-
-
         }
     };
 

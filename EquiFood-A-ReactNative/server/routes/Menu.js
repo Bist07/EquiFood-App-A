@@ -1,6 +1,6 @@
-const express = require('express')
-const pool = require('../helpers/database')
-const router = express.Router()
+import express from 'express'
+import { pool } from '../helpers/database.js'
+export const router = express.Router()
 
 //get by id
 router.get('/:id', async function (req, res) {
@@ -26,5 +26,3 @@ router.post('/FoodInsert', async function (req, res) {
 })
 
 
-
-module.exports = router;

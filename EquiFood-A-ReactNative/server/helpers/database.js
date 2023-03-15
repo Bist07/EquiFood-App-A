@@ -1,17 +1,18 @@
-const mariadb = require('mariadb');
+import mariadb from 'mariadb';
 
-//require('dotenv').config();
-require('dotenv').config();
+
+import dotenv from 'dotenv';
+dotenv.config();
 
 // 1.) Access the Node File System package
-const fs = require("fs");
+import fs from 'fs';
 
 // 2.) Retrieve the Certificate Authority chain file (wherever you placed it - notice it's just in the Node project root here)
 const serverCert = [fs.readFileSync("aws_skysql_chain.pem", "utf8")];
 
 
 // Create a connection pool
-var pool =
+export const pool =
     mariadb.createPool({
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
@@ -45,5 +46,3 @@ pool.getConnection((err, connection) => {
 
     return;
 })
-
-module.exports = pool;

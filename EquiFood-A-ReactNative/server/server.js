@@ -1,9 +1,11 @@
 import { GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
-
-const express = require('express');
-const dotenv = require('dotenv'); //had .config() //might need to provide path to env file
+import express from "express";
+import { router as restaurantRouter } from './routes/Restaurant.js'
+import { router as customerRouter } from './routes/customer.js'
+import { router as menuRouter } from './routes/Menu.js'
+import dotenv from 'dotenv' //had .config() //might need to provide path to env file
 
 dotenv.config({ path: '.env' });
 
@@ -32,15 +34,15 @@ app.get('/', (request, response) => {
 })
 
 //creates connection router for Restaurant table
-const restaurantRouter = require('./routes/Restaurant');
+//const restaurantRouter = require('./routes/Restaurant');
 app.use('/Restaurant', restaurantRouter);
 
 //creates connection router for user table
-const customerRouter = require('./routes/customer');
+//const customerRouter = require('./routes/customer');
 app.use('/customer', customerRouter);
 
 //connection router for user table
-const menuRouter = require('./routes/Menu');
+//const menuRouter = require('./routes/Menu');
 app.use('/Menu', menuRouter);
 
 //Images S3
