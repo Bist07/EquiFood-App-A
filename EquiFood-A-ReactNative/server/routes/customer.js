@@ -9,7 +9,6 @@ router.post('/register', async function (req, res) {
         const sqlQuery = "INSERT INTO customer (first_name, last_name, email, passwordHash) VALUES (?,?,?,?)";
         const result = await pool.query(sqlQuery, [first_name, last_name, email, passwordHash]);
 
-
         console.log(result);
         console.log(sqlQuery);
         res.status(200).send("Registered!")

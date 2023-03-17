@@ -1,6 +1,3 @@
-import { GetObjectCommand } from "@aws-sdk/client-s3";
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import express from "express";
 import { router as restaurantRouter } from './routes/Restaurant.js'
 import { router as customerRouter } from './routes/customer.js'
@@ -28,25 +25,21 @@ app.use(express.urlencoded({ extended: false }));
  * Routes
  */
 
-//getting all
 app.get('/', (request, response) => {
     response.status(200).send("Hello world")
 })
 
-//creates connection router for Restaurant table
-//const restaurantRouter = require('./routes/Restaurant');
 app.use('/Restaurant', restaurantRouter);
-
-//creates connection router for user table
-//const customerRouter = require('./routes/customer');
 app.use('/customer', customerRouter);
-
-//connection router for user table
-//const menuRouter = require('./routes/Menu');
 app.use('/Menu', menuRouter);
 
 //Images S3
 //import crypto from 'crypto';
+import { GetObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import multer from 'multer';
+import prisma from '@prisma/client';
 
 const bucketName = process.env.AWS_BUCKET_NAME
 const region = process.env.AWS_BUCKET_REGION
@@ -94,7 +87,7 @@ app.post('/posts', upload.single('image'), async (req, res) => {
     res.send(post)
 })
 
-app.get("/", async (req, res) => {
+app.get("/images", async (req, res) => {
     const posts = await prisma.posts.findMany({ orderBy: [{ created: 'desc' }] }) // Get all posts from the database
 
     for (let post of posts) { // For each post, generate a signed URL and save it to the post object
