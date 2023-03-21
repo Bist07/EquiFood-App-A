@@ -14,7 +14,6 @@ function json(url) {
     return fetch(url).then(res => res.json());
 }
 
-
 /**
  * Middleware
  */
@@ -41,6 +40,10 @@ import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import multer from 'multer';
 import prisma from '@prisma/client';
 
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage })
+
+
 const bucketName = process.env.AWS_BUCKET_NAME
 const region = process.env.AWS_BUCKET_REGION
 const accessKeyId = process.env.AWS_ACCESS_KEY
@@ -60,9 +63,7 @@ app.post('/posts', upload.single('image'), async (req, res) => {
     const file = req.file
     const caption = req.body.caption
 
-    const fileBuffer = await sharp(file.buffer)
-        .resize({ height: 1920, width: 1080, fit: "contain" })
-        .toBuffer()
+    const fileBuffer = await sharp(file.buffer).toBuffer()
 
     // Configure the upload details to send to S3
     const fileName = "generateFileName()"
