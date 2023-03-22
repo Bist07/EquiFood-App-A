@@ -32,6 +32,7 @@ app.use('/Restaurant', restaurantRouter);
 app.use('/customer', customerRouter);
 app.use('/Menu', menuRouter);
 
+<<<<<<< HEAD
 //Images S3
 //import crypto from 'crypto';
 import { GetObjectCommand } from "@aws-sdk/client-s3";
@@ -105,6 +106,11 @@ app.get("/images", async (req, res) => {
     res.send(posts)
 })
 
+=======
+//creates connection router for Orders table
+const ordersRouter = require('./routes/Orders');
+app.use('/Orders', ordersRouter);
+>>>>>>> f8fcef1b375810a33fe4726b862ce01656ee9e68
 
 
 /**

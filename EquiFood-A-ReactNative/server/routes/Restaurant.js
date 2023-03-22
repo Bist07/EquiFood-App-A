@@ -32,7 +32,7 @@ router.post('/insertRestaurant', async function (req, res) {
         const result = await pool.query(sqlQuery, [address, hours, cuisine, rating, longitude, latitude, name]);
 
         console.log(result);
-        console.log(sqlQuery)
+        console.log(sqlQuery);
         res.status(200).send("Restaurant added")
     } catch (error) {
         res.status(400).send(error.message)
