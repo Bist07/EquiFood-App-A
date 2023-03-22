@@ -93,7 +93,7 @@ const FoodInsertView = () => {
 
   return (
     <>
-      <View style={{ paddingTop: 20 }} id="header">
+      <View style={{ paddingTop: 50 }} id="header">
         {/* <Header /> */}
       </View>
       <Pressable
@@ -148,16 +148,16 @@ const FoodInsertView = () => {
         </View>
         <View>
 
-          <Button
-            title="Submit"
-            onPress={onSubmitFormHandler}
-            style={{ "backgroundColor": "gray", "margin": 2 }}
-          />
+          
 
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
             <TouchableOpacity style={stylesR.ROFormButtons}>
 
-              {/* <Text style={stylesR.ROButtonText}>Insert Food</Text> */}
+            <Button
+            title="Submit"
+            onPress={onSubmitFormHandler}
+            style={{ "backgroundColor": "gray", "margin": 2 }}
+          />
             </TouchableOpacity>
             <TouchableOpacity style={stylesR.ROFormButtons}
               onPress={() => navigation.navigate('FoodInsertView')}>
