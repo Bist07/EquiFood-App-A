@@ -2,6 +2,7 @@ import express from "express";
 import { router as restaurantRouter } from './routes/Restaurant.js'
 import { router as customerRouter } from './routes/customer.js'
 import { router as menuRouter } from './routes/Menu.js'
+import { router as ordersRouter } from './routes/Orders.js'
 import dotenv from 'dotenv' //had .config() //might need to provide path to env file
 
 dotenv.config({ path: '.env' });
@@ -32,7 +33,6 @@ app.use('/Restaurant', restaurantRouter);
 app.use('/customer', customerRouter);
 app.use('/Menu', menuRouter);
 
-<<<<<<< HEAD
 //Images S3
 //import crypto from 'crypto';
 import { GetObjectCommand } from "@aws-sdk/client-s3";
@@ -106,11 +106,8 @@ app.get("/images", async (req, res) => {
     res.send(posts)
 })
 
-=======
 //creates connection router for Orders table
-const ordersRouter = require('./routes/Orders');
 app.use('/Orders', ordersRouter);
->>>>>>> f8fcef1b375810a33fe4726b862ce01656ee9e68
 
 
 /**

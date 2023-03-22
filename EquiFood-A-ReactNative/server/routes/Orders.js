@@ -1,7 +1,6 @@
-const express = require('express')
-const pool = require('../helpers/database')
-const router = express.Router()
-
+import express from 'express'
+import { pool } from '../helpers/database.js'
+export const router = express.Router()
 //get all by id and pending/accepted orders
 
 router.get('/:id', async function (req, res) {
@@ -35,5 +34,3 @@ router.post('/OrderInsert', async function (req, res) {
         res.status(400).send(error.message)
     }
 })
-
-module.exports = router;
