@@ -39,7 +39,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons'; 
 import { Ionicons } from '@expo/vector-icons'; 
 import RestaurantOwnerOrders from './screens/RestaurantOwnerOrders';
-import ROOrderDetails from './screens/ROOrderDetails';
+import ROOrderDetailView from './screens/ROOrderDetailView';
 
 const Stack = createNativeStackNavigator();
 
@@ -281,7 +281,7 @@ const StackNavigator = () => {
         <Stack.Screen name="ForgotPassword" component={ForgotPassword}  options={{headerShown:false}}/>
         <Stack.Screen name="RestaurantOwnerLogIn" component={RestaurantOwnerLogIn}  options={{headerShown:false}}/>
         <Stack.Screen name="RestaurantOwnerOrders" component={RestaurantOwnerOrders}  options={{headerShown:false}}/>
-        <Stack.Screen name="ROOrderDetails" component={ROOrderDetails} options={{headerShown:false}}/>
+        <Stack.Screen name="ROOrderDetailView" component={ROOrderDetailView} options={{headerShown:false}}/>
         <Stack.Screen name="RestaurantOwnerView" component={ROView}  options={{headerShown:false}}/>
         <Stack.Screen name="RestaurantInsertView" component={RestaurantInsertView}  options={{headerShown:false}}/>
         <Stack.Screen name="FoodEditView" component={FoodEditView}  options={{headerShown:false}}/>
