@@ -19,7 +19,7 @@ import config from '../config';
 
       
         
-      
+      //These functions update the constants as data is entered into the input forms
         const onChangeFirstNameHandler = (first_name) => {
             setFirstname(first_name);
           };
@@ -53,11 +53,15 @@ import config from '../config';
           
 
 
-        
+        //checking if password is valid
         if(passwordCheck == passwordHash ){
             if(passwordCheck.length > 4){
                 if(hasNumber.test(passwordCheck) == true){
-                    if(CompanyCode == "0000"){
+                    if(CompanyCode == "0000"){ 
+                      /*Company code is a preset code set by Equifood, 
+                      it is used to ensure only members of the equifood team 
+                      are able to register as and admin.
+                      It can be set here*/
           try {
             const data = {
                 first_name: first_name,
@@ -67,6 +71,7 @@ import config from '../config';
                 company_code: CompanyCode
                 
             };
+            //sending form data to router
             console.log(JSON.stringify(data));
             const response = await axios({
               url: `${config.local.url}:${config.local.port}/admin/AdminRegister`,
@@ -98,7 +103,7 @@ import config from '../config';
             
     
     }
-
+        //Page Front end and styling below
         return (
           <>
             <View style={{paddingTop:20}} id="header">
@@ -162,7 +167,7 @@ import config from '../config';
                 </View>
               </View>
 
-
+              
               <View>
                 <Text style={styles.subtitles}>Company Code</Text>
                 <View style={styles.input}>
