@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Image, View, Platform } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import multer from 'multer';
 
 export default function ImagePickerButton({ callback }) {
     const [image, setImage] = useState(null);
@@ -17,7 +16,15 @@ export default function ImagePickerButton({ callback }) {
 
         if (!result.canceled) {
             setImage(result.assets[0].uri)
-            callback(image);
+            const imagePath = result.assets[0].uri;
+            const imageExt = result.assets[0].uri.split('.').pop();
+            const imageMime = `image/${imageExt}`;
+            let picture = await fetch(imagePath);
+            picture = await picture.blob();
+            console.log(picture)
+            const imageData = new File([picture], `photo.${imageExt}`);
+
+            callback(picture);
         }
     };
 

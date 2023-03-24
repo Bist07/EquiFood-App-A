@@ -1,13 +1,10 @@
 import { Button, Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import stylesR from '../components/stylesR'
-import Header from '../components/header'
-import InputForm from '../components/InputForm'
 import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from "@expo/vector-icons";
 import axios from 'axios';
 import config from '../config';
-import { insertFood } from '../API/MenuAPI'
 import ImagePickerButton from '../components/ImagePicker'
 
 const FoodInsertView = () => {
@@ -16,7 +13,7 @@ const FoodInsertView = () => {
   const [ogPrice, setOgPrice] = useState(0);
   const [discPrice, setDiscPrice] = useState(0);
   const [servings, setServings] = useState(0);
-  const [img, setImage] = useState('iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==');
+  const [file, setFile] = useState();
   const restaurantId = 1;
 
   // const axios = require('axios');
@@ -48,14 +45,6 @@ const FoodInsertView = () => {
 
 
   const onSubmitFormHandler = async (e) => {
-    // if (!foodName.length == 0) {
-    //   alert("Food Name is blank");
-    //   return;
-    // }
-    // if (discPrice < 0 || ogPrice < 0 || servings < 0) {
-    //   alert("Numbers can't be negative");
-    //   return;
-    // }
     try {
       const data = {
         item_name: foodName,
@@ -65,9 +54,22 @@ const FoodInsertView = () => {
         original_price: ogPrice,
         quantity: servings,
       };
-      await axios.post("/api/posts", img, { headers: { 'Content-Type': 'multipart/form-data' } })
-      console.log(JSON.stringify(data));
-      // const response = await axios.post(`${config.local.url}:${config.local.port}/FoodInsert`, data );
+
+      const formData = new FormData();
+
+      if (file) {
+        formData.append("image", file)
+      }
+
+      const image_S3 = await axios({
+        url: `${config.local.url}:${config.local.port}/Images/posts`,
+        method: 'post',
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+      });
+
       const response = await axios({
         url: `${config.local.url}:${config.local.port}/Menu/FoodInsert`,
         method: 'post',
@@ -75,16 +77,8 @@ const FoodInsertView = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        // body: JSON.stringify(data),
+
       });
-      // if (response.status === 201) {
-      //   alert(` You have created: ${JSON.stringify(response.data)}`);
-      //   setFoodName('');
-      //   setOgPrice(0);
-      //   setDiscPrice(0);
-      //   setServings(0);
-      // } else {
-      // throw new Error("An error has occurred from response");
 
     } catch (error) {
       console.log(error);
@@ -143,28 +137,25 @@ const FoodInsertView = () => {
         <View>
           <Text style={{ marginBottom: 5 }}>Image</Text>
           <View style={stylesR.inputForm}>
-            <ImagePickerButton callback={setImage} />
+            <ImagePickerButton callback={setFile} />
           </View>
         </View>
         <View>
 
-          
-
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
             <TouchableOpacity style={stylesR.ROFormButtons}>
 
-            <Button
-            title="Submit"
-            onPress={onSubmitFormHandler}
-            style={{ "backgroundColor": "gray", "margin": 2 }}
-          />
+              <Button
+                title="Submit"
+                onPress={onSubmitFormHandler}
+                style={{ "backgroundColor": "gray", "margin": 2 }}
+              />
             </TouchableOpacity>
             <TouchableOpacity style={stylesR.ROFormButtons}
               onPress={() => navigation.navigate('FoodInsertView')}>
               <Button title="Reset" style={stylesR.ROButtonText}></Button>
             </TouchableOpacity>
           </View>
-
 
         </View>
       </ScrollView>
