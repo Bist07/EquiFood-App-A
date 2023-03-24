@@ -81,6 +81,11 @@ const AdminLogIn = ({onPress, text}) => {
                 <Text style ={styles.passwordText}>Forgot Password</Text>
             </TouchableOpacity>
 
+            <TouchableOpacity style={styles.passwordButton}
+                onPress={() => navigation.navigate('RegisterAdmin')}>
+                <Text style={styles.passwordText}>Register</Text>
+            </TouchableOpacity>
+
         
         </View>
     )
