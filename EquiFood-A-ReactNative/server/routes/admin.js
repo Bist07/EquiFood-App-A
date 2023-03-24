@@ -5,17 +5,27 @@ const router = express.Router();
 
 
 
-router.post('/register', async function(req, res){
+router.post('/AdminRegister', async function(req, res){
     try {
        // const {id, address, hours, cuisine, rating, img_id, longitude, latitude, name, Img} = req.body;
-       const {first_name, last_name, email, passwordHash} = req.body;
-        const sqlQuery = "INSERT INTO admin (first_name, last_name, email, passwordHash) VALUES (?,?,?,?)";
-        const result = await pool.query(sqlQuery, [first_name, last_name, email, passwordHash]);
+       const {first_name, last_name, email, passwordHash, company_code} = req.body;
+        const sqlQuery = "INSERT INTO admin (first_name, last_name, email, passwordHash, company_code) VALUES (?,?,?,?,?)";
+        const result = await pool.query(sqlQuery, [first_name, last_name, email, passwordHash, company_code]);
 
       
         console.log(result);
         console.log(sqlQuery);
         res.status(200).send("Registered!")
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+});
+
+router.get('/:id', async function (req, res) {
+    try {
+        const sqlQuery = 'SELECT * FROM admin WHERE id=?';
+        const rows = await pool.query(sqlQuery, req.params.id);
+        res.status(200).json(rows);
     } catch (error) {
         res.status(400).send(error.message)
     }

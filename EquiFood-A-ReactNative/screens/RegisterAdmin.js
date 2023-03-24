@@ -15,6 +15,7 @@ import config from '../config';
        const [email, setEmail] = useState('');
        const [passwordHash, setPassword] = useState('');
        const [passwordCheck, setPasswordCheck] = useState('');
+       const [CompanyCode, setCompanyCode] = useState('');
 
       
         
@@ -38,6 +39,10 @@ import config from '../config';
           const onChangePasswordCheckHandler = (passwordCheck) => {
             setPasswordCheck(passwordCheck);
           };
+
+          const onChangeCompanyCodeCheckHandler = (CompanyCode) => {
+            setCompanyCode(CompanyCode);
+          };
     
           var hasNumber = /\d/;
 
@@ -52,17 +57,19 @@ import config from '../config';
         if(passwordCheck == passwordHash ){
             if(passwordCheck.length > 4){
                 if(hasNumber.test(passwordCheck) == true){
+                    if(CompanyCode == "0000"){
           try {
             const data = {
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
-                passwordHash: passwordHash
+                passwordHash: passwordHash,
+                company_code: CompanyCode
                 
             };
             console.log(JSON.stringify(data));
             const response = await axios({
-              url: `${config.local.url}:${config.local.port}/admin/register`,
+              url: `${config.local.url}:${config.local.port}/admin/AdminRegister`,
               method:'post',
               data:data,
               headers: {
@@ -78,6 +85,8 @@ import config from '../config';
             console.log(error);
             alert("An error has occurred");
           }
+
+        }else(alert("Company code incorrect"));
 
         }else(alert("Password must include a number"));
 
@@ -150,6 +159,14 @@ import config from '../config';
                 <Text style={styles.subtitles}>Verify Password</Text>
                 <View style={styles.input}>
                     <TextInput placeholder={"Verify Password"} value={passwordCheck} onChangeText={onChangePasswordCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
+                </View>
+              </View>
+
+
+              <View>
+                <Text style={styles.subtitles}>Company Code</Text>
+                <View style={styles.input}>
+                    <TextInput placeholder={"Company Code"} value={CompanyCode} onChangeText={onChangeCompanyCodeCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
                 </View>
               </View>
       
