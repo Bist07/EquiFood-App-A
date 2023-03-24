@@ -76,6 +76,7 @@ const FoodInsertView = () => {
         },
         // body: JSON.stringify(data),
       });
+      alert("Food has been inserted into your restaurant.")
       // if (response.status === 201) {
       //   alert(` You have created: ${JSON.stringify(response.data)}`);
       //   setFoodName('');

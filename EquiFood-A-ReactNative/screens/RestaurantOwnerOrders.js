@@ -10,12 +10,9 @@ const RestaurantOwnerOrders = () => {
 
   const navigation = useNavigation();
   const [orders, setOrders] = useState([]);
-  const [orderDetails, setOrderDetails] = useState([]);
 
   //Set to rest_id to Burger Hub for now
   const restaurant_id = 1;
-
-
 
   useEffect(() => {
     async function fetchData() {
@@ -25,12 +22,6 @@ const RestaurantOwnerOrders = () => {
     fetchData();
   }, []);
 
-  // Parse through each of restaurants order to call order_menu_item table
-  // orders.forEach((order) => {
-  //   console.log(order);
-  // })
-
-  // const order_id = orders.id;
   const pending = orders.filter(order => order.order_status == 0);
   const accepted = orders.filter(order => order.order_status == 1);
   
