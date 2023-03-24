@@ -6,15 +6,26 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import {MaterialIcons} from '@expo/vector-icons';
 import { Ionicons, Feather } from "@expo/vector-icons";
+import axios from 'axios';
+import config from '../config';
 
 
-const AdminLogIn = ({onPress, text}) => {
-    const [username, setUsername] = useState('');    
-    const [password, setPassword] = useState('');
-    const route = useRoute();
-    const navigation = useNavigation();
+
+const AdminLogIn = () => {
+    const [email, setEmail] = useState('');
+    const [enteredAdminPassword, setenteredAdminPassword] = useState('');
     
+    const navigation = useNavigation();
+
     // function for signing in:
+
+
+    const onChangeEmailHandler = (email) => {
+        setEmail(email);
+    };
+    const onChangeenteredAdminPasswordHandler = (enteredAdminPassword) => {
+        setenteredAdminPassword(enteredAdminPassword);
+    };
 
     const onSignInPressed = () => {
         console.warn('Sign In');
@@ -32,7 +43,52 @@ const AdminLogIn = ({onPress, text}) => {
         console.warn('Admin Page');
     };
 
+    const onSubmitFormHandler = async (e) => {
 
+
+//Validating entered password against the on in the database
+//if they match, send the request and log in
+
+    if(email.length !=0 && enteredAdminPassword.length !=0){
+    try {
+        const data = {
+            
+            email: email,
+            enteredAdminPassword: enteredAdminPassword
+            
+        };
+        console.log(JSON.stringify(data));
+        const response = await axios({
+          url: `${config.local.url}:${config.local.port}/admin/login`,
+          method:'post',
+          data:data,
+          headers: {
+            'Content-Type': 'application/json'
+             },
+            });
+    
+
+            console.log(response.data.PasswordGood); 
+            var passwordValid = response.data.PasswordGood;
+
+            if(passwordValid == true){
+                navigation.navigate('Admin');
+            }else{
+                alert("Email or Password Incorrect")
+            }
+
+      } catch (error) {
+        console.log(error);
+        alert("An error has occurred");
+      }
+
+
+
+
+    }
+    else(alert("Please enter both an Email and a Password"));
+}
+//Front end and styling below
     return (
         <View style={styles.root}>  
 
@@ -63,16 +119,16 @@ const AdminLogIn = ({onPress, text}) => {
         */}
             <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25}}>
                 <MaterialIcons name='email' size={20} color='#ccc' style={{marginRight:5}}/>
-                <TextInput placeholder = 'Email' style={{ flex:1, paddingVertical:0}} keyboardType="email-address" />
-            </View>
+                <TextInput placeholder = 'Email' style={{ flex:1, paddingVertical:0}} keyboardType="email-address" autoCapitalize='none' autoCorrect={false} value={email} onChangeText={onChangeEmailHandler} />
+            </View> 
 
             <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25}}>
                 <MaterialIcons name="lock" size={20} color='#ccc' style={{marginRight:5}}/>
-                <TextInput placeholder = 'Password' style={{ flex:1, paddingVertical:0}} secureTextEntry={true}/>
+                <TextInput placeholder = 'Password' style={{ flex:1, paddingVertical:0}} secureTextEntry={true} autoCapitalize='none' autoCorrect={false} value={enteredAdminPassword} onChangeText={onChangeenteredAdminPasswordHandler}/>
             </View>
 
             <TouchableOpacity style={styles.signInButton}
-            onPress={() => navigation.navigate('Admin')}>
+           onPress={() => {onSubmitFormHandler();}}>
                 <Text style ={styles.signInText}>Sign In as Admin</Text>
             </TouchableOpacity>
 

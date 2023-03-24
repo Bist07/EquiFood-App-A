@@ -21,33 +21,25 @@ router.post('/AdminRegister', async function(req, res){
     }
 });
 
-router.get('/:id', async function (req, res) {
-    try {
-        const sqlQuery = 'SELECT * FROM admin WHERE id=?';
-        const rows = await pool.query(sqlQuery, req.params.id);
-        res.status(200).json(rows);
-    } catch (error) {
-        res.status(400).send(error.message)
-    }
-});
+
 
 router.post('/login', async function (req, res) {
     try {
-        const { email, enteredPassword } = req.body; //change to email in future
-        const sqlGetUser = 'SELECT passwordHash FROM customer WHERE email = ?';
+        const { email, enteredAdminPassword } = req.body; //change to email in future
+        const sqlGetUser = 'SELECT passwordHash FROM admin WHERE email = ?';
         const rows = await pool.query(sqlGetUser, [email]); //pulls user id
        
        
         if (rows) {
             var isValid = false;
            
-            if(enteredPassword == rows[0].passwordHash){
+            if(enteredAdminPassword == rows[0].passwordHash){
               isValid = true;
                 
             };
           
-            console.log(rows[0].passwordHash)
-            console.log(enteredPassword)
+            console.log("DB pass: " + rows[0].passwordHash)
+            console.log("enter pass: " + enteredAdminPassword)
             console.log(isValid)
             res.status(200).json({PasswordGood: isValid})
             
