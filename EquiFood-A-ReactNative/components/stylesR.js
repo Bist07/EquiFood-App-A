@@ -227,7 +227,7 @@ const stylesR = StyleSheet.create({
     },
 
     ROButtonText:{
-        
+        backgroundcolor:"white",
         fontSize:20,
         fontWeight: "bold",
         marginTop:10,
@@ -277,7 +277,16 @@ const stylesR = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         marginLeft: 10,
-    }
+    },
+
+    centeredBoldText:{
+        fontSize: 13,
+        fontWeight: "bold", 
+        marginTop: 10,
+        marginBottom: 10,
+        alignItems: "center",
+        textAlign: "center",
+    },
 })
 
 

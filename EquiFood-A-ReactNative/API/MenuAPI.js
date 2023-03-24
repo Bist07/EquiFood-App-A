@@ -9,3 +9,12 @@ export const getMenu = async (restaurant_id) => {
         console.error(error);
     }
 }
+
+export const getFoodItem = async (menu_item_id) => {
+    try {
+        const response = await axios.get(`${config.local.url}:${config.local.port}/Menu/${menu_item_id}`);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
