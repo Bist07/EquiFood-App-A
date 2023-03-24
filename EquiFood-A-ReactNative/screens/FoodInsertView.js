@@ -76,6 +76,7 @@ const FoodInsertView = () => {
         },
         // body: JSON.stringify(data),
       });
+      alert("Food has been inserted into your restaurant.")
       // if (response.status === 201) {
       //   alert(` You have created: ${JSON.stringify(response.data)}`);
       //   setFoodName('');
@@ -93,7 +94,7 @@ const FoodInsertView = () => {
 
   return (
     <>
-      <View style={{ paddingTop: 20 }} id="header">
+      <View style={{ paddingTop: 50 }} id="header">
         {/* <Header /> */}
       </View>
       <Pressable
@@ -106,6 +107,7 @@ const FoodInsertView = () => {
           justifyContent: "center",
           alignItems: "center",
           marginLeft: 10,
+          marginTop:30,
         }}
       >
         <Ionicons name="chevron-back-outline" size={24} color="white" />
@@ -147,16 +149,16 @@ const FoodInsertView = () => {
         </View>
         <View>
 
-          <Button
-            title="Submit"
-            onPress={onSubmitFormHandler}
-            style={{ "backgroundColor": "gray", "margin": 2 }}
-          />
+          
 
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
             <TouchableOpacity style={stylesR.ROFormButtons}>
 
-              {/* <Text style={stylesR.ROButtonText}>Insert Food</Text> */}
+            <Button
+            title="Submit"
+            onPress={onSubmitFormHandler}
+            style={{ "backgroundColor": "gray", "margin": 2 }}
+          />
             </TouchableOpacity>
             <TouchableOpacity style={stylesR.ROFormButtons}
               onPress={() => navigation.navigate('FoodInsertView')}>

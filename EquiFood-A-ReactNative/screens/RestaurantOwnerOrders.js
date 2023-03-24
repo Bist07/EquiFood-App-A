@@ -10,7 +10,6 @@ const RestaurantOwnerOrders = () => {
 
   const navigation = useNavigation();
   const [orders, setOrders] = useState([]);
-  const [orderDetails, setOrderDetails] = useState([]);
 
   //Set to rest_id to Burger Hub for now
   const restaurant_id = 1;

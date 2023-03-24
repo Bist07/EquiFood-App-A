@@ -115,7 +115,7 @@ const RestaurantInsertView = () => {
   
   return (
     <>
-      <View style={{paddingTop:20}} id="header">
+      <View style={{paddingTop:50}} id="header">
              {/* <Header /> */}
       </View>
       <Pressable
@@ -128,13 +128,14 @@ const RestaurantInsertView = () => {
           justifyContent: "center",
           alignItems: "center",
           marginLeft: 10,
+          marginTop:30,
         }}
       >
         <Ionicons name="chevron-back-outline" size={24} color="white" />
       </Pressable>   
       <ScrollView style={stylesR.FoodInsertView}>
 
-         <Text style={styles.title}>Enter Restraunt Information</Text>
+         <Text style={styles.title}>Enter Restaurant Information</Text>
        
 
         <View>

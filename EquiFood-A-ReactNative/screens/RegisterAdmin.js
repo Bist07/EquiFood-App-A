@@ -8,27 +8,18 @@ import config from '../config';
 
 
 
-    const Register = () => {
+    const RegisterAdmin = () => {
         const navigation = useNavigation();
        const [first_name, setFirstname] = useState('');
        const [last_name, setLastName] = useState('');
        const [email, setEmail] = useState('');
        const [passwordHash, setPassword] = useState('');
        const [passwordCheck, setPasswordCheck] = useState('');
+       const [CompanyCode, setCompanyCode] = useState('');
 
       
-        // const axios = require('axios');
-      
-        // Tried using formData, didn't work :(
-        // var data = new FormData();
-        // data.append('item_name', foodName);
-        // data.append('price', discPrice);
-        // data.append('restaurant', 1);
-        // data.append('original_price', ogPrice);
-        // data.append('quantity', servings);
-      
         
-      
+      //These functions update the constants as data is entered into the input forms
         const onChangeFirstNameHandler = (first_name) => {
             setFirstname(first_name);
           };
@@ -48,6 +39,10 @@ import config from '../config';
           const onChangePasswordCheckHandler = (passwordCheck) => {
             setPasswordCheck(passwordCheck);
           };
+
+          const onChangeCompanyCodeCheckHandler = (CompanyCode) => {
+            setCompanyCode(CompanyCode);
+          };
     
           var hasNumber = /\d/;
 
@@ -58,21 +53,28 @@ import config from '../config';
           
 
 
-        
+        //checking if password is valid
         if(passwordCheck == passwordHash ){
             if(passwordCheck.length > 4){
                 if(hasNumber.test(passwordCheck) == true){
+                    if(CompanyCode == "0000"){ 
+                      /*Company code is a preset code set by Equifood, 
+                      it is used to ensure only members of the equifood team 
+                      are able to register as and admin.
+                      It can be set here*/
           try {
             const data = {
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
-                passwordHash: passwordHash
+                passwordHash: passwordHash,
+                company_code: CompanyCode
                 
             };
+            //sending form data to router
             console.log(JSON.stringify(data));
             const response = await axios({
-              url: `${config.local.url}:${config.local.port}/customer/register`,
+              url: `${config.local.url}:${config.local.port}/admin/AdminRegister`,
               method:'post',
               data:data,
               headers: {
@@ -89,6 +91,8 @@ import config from '../config';
             alert("An error has occurred");
           }
 
+        }else(alert("Company code incorrect"));
+
         }else(alert("Password must include a number"));
 
         }else(alert("Password must be at least 5 characters"));
@@ -99,7 +103,7 @@ import config from '../config';
             
     
     }
-
+        //Page Front end and styling below
         return (
           <>
             <View style={{paddingTop:20}} id="header">
@@ -122,7 +126,7 @@ import config from '../config';
             </Pressable>   
             <ScrollView style={stylesR.FoodInsertView}>
       
-               <Text style={styles.title}>Enter Your Information</Text>
+               <Text style={styles.title}>Enter Your ADMIN Information</Text>
              
       
               <View>
@@ -162,6 +166,14 @@ import config from '../config';
                     <TextInput placeholder={"Verify Password"} value={passwordCheck} onChangeText={onChangePasswordCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
                 </View>
               </View>
+
+              
+              <View>
+                <Text style={styles.subtitles}>Company Code</Text>
+                <View style={styles.input}>
+                    <TextInput placeholder={"Company Code"} value={CompanyCode} onChangeText={onChangeCompanyCodeCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
+                </View>
+              </View>
       
               
       
@@ -193,7 +205,7 @@ import config from '../config';
         )
       }
       
-      export default Register;
+      export default RegisterAdmin;
       
       
       const styles = StyleSheet.create({
@@ -235,5 +247,3 @@ import config from '../config';
           fontWeight: 'bold'
          }
       })
-      
-      

@@ -21,14 +21,37 @@ const Donations = ({onPress, text}) => {
     
     return (
 
-        <ScrollView style={{marginTop:45, backgroundColor:"#F0F0F0"}}>
+        <ScrollView style={{backgroundColor:"#FFF"}}>
+                      <Pressable
+                        onPress={() => navigation.goBack()}
+                        style={{
+                            backgroundColor: "#50c864",
+                            width: 30,
+                            height: 30,
+                            borderRadius: 15,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            marginLeft: 10,
+                            marginTop: 30,
+                            marginBottom: 15
+                        }}
+                    >
+                    <Ionicons name="chevron-back-outline" size={22} color="white" />
+            </Pressable>
         <View style={{width: '100%' }}>
-           <View id="header">
-             {/* <Header /> */}
-           </View>        
-            <View>
-                <Text> View of Donations to be implementeds.</Text>
-            </View>
+
+
+        <View style={styles.container}>
+                <Text  style={styles.title}> March 2023 </Text>
+                <Text  style={styles.title}> Donation Amounts </Text>
+                <View style={styles.innerContainer}>
+                    <Text style={{ textAlign: "center", marginTop: 50, fontSize:20, fontWeight: "220"}}> {" Freshie - $379.00\nJugo Juice - $240.00\nBurger Baron - $121.00\nSubway - $358.00\n" }</Text>
+                </View>
+                <View style={{ borderBottomColor: "#50c864", borderBottomWidth:10,}}>
+                    <Text style={{  textAlign: "center", marginTop: 70, fontSize:27, fontWeight: "300"}}>March 2023 Total Donations: </Text>
+                    <Text style={{ textAlign: "center", marginTop: 14, fontSize:30, fontWeight: "250"}}>$1,098.00</Text>
+                </View>
+        </View>
         
         </View>
         </ScrollView>
@@ -36,3 +59,52 @@ const Donations = ({onPress, text}) => {
 }
 
 export default Donations;
+
+const styles = StyleSheet.create({
+
+
+
+    container: {
+        flow: 1,
+        // backgroundColor:"white",
+        padding: 10,
+        width: "100%",
+        alignItems: "center",
+        
+
+    },
+
+    innerContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        borderBottomColor: "red",
+        //alignItems: 'center',
+
+    },
+
+    title: {
+        marginTop: 1,
+        // fontWeight: "bold",
+        fontSize: 30,
+        textAlign: "center",
+    }, 
+    linkButton:{
+        backgroundColor: '#50C878',
+        width: '70%',
+        padding: 15,
+        marginVertical: 5,
+        marginTop:70,    
+        alignItems: 'center',
+        borderRadius: 14
+    },
+    linkText:{
+        fontWeight:'bold',
+        color:'white',
+        textAlign: "center"
+    },
+
+
+
+});
+
