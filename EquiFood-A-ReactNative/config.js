@@ -2,7 +2,6 @@ import { Platform } from "react-native";
 
 if (Platform.OS === 'ios') {
     // var url = "http://192.168.1.71";  //Amrita's IP
-
     var url = "http://localhost";
 }
 if (Platform.OS === 'android') {

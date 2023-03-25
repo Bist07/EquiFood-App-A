@@ -5,7 +5,7 @@ import { router as menuRouter } from './routes/Menu.js'
 import { router as ordersRouter } from './routes/Orders.js'
 import { router as imageRouter } from './routes/Image.js'
 import { router as RestaurantOwnerRouter } from './routes/RestaurantOwner.js'
-import { router as adminRouter } from './routes/admin'
+import { router as adminRouter } from './routes/admin.js'
 import dotenv from 'dotenv' //had .config() //might need to provide path to env file
 
 dotenv.config({ path: '.env' });
@@ -51,7 +51,6 @@ app.use('/admin', adminRouter);
 
 //creates connection router for restaurant admin table
 app.use('/RestaurantOwner', RestaurantOwnerRouter);
-
 
 /**
  * Start listening
