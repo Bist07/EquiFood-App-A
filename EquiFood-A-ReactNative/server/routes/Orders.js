@@ -3,6 +3,18 @@ import { pool } from '../helpers/database.js'
 export const router = express.Router()
 //get all by id and pending/accepted orders
 
+//get customer id, order id, cost, discount, status, reservation from tables
+router.get("/:id", async function (req, res) {
+  try {
+    const sqlQuery =
+      "SELECT F.customer_id, F.id, F.total_amount, F.reservation_datetime, O.status_value FROM food_order F JOIN order_status O ON F.order_status_id = O.id WHERE O.status_value<2 AND restaurant_id=?"; //defines query
+    const rows = await pool.query(sqlQuery, req.params.id);
+    res.status(200).json(rows);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
 // Get all menu items based on food order id
 router.get("/OrderDetails/:id", async function (req, res) {
   try {
