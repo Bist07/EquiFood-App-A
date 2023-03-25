@@ -1,19 +1,28 @@
-import React, {useState} from 'react'
-import { StyleSheet, View, Text, Image, Pressable, TouchableOpacity, TouchableHighlight, TextInput} from 'react-native'
+import React, { useState } from 'react'
+import { StyleSheet, View, Text, Image, Pressable, TouchableOpacity, TouchableHighlight, TextInput, Alert } from 'react-native'
 import Logo from '../assets/logos/Equifood_Logo.png'
-import CustomInput from '../components/CustomInput'
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
-import {MaterialIcons} from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+import axios from 'axios';
+import config from '../config';
 
 
-const LogIn = ({onPress, text}) => {
-    const [username, setUsername] = useState('');    
-    const [password, setPassword] = useState('');
-    const route = useRoute();
-    const navigation = useNavigation();
+
+const LogIn = () => {
+    const [email, setEmail] = useState('');
+    const [enteredPassword, setenteredPassword] = useState('');
     
+    const navigation = useNavigation();
+
     // function for signing in:
+
+
+    const onChangeEmailHandler = (email) => {
+        setEmail(email);
+    };
+    const onChangeenteredPasswordHandler = (enteredPassword) => {
+        setenteredPassword(enteredPassword);
+    };
 
     const onSignInPressed = () => {
         console.warn('Sign In');
@@ -31,55 +40,103 @@ const LogIn = ({onPress, text}) => {
         console.warn('Admin Page');
     };
 
+    const onSubmitFormHandler = async (e) => {
 
-    return (
-        <View style={styles.root}>            
- 
-            <Image style={ styles.logo}
-            source = {Logo} />
+
+
+
+    if(email.length !=0 && enteredPassword.length !=0){
+    try {
+        const data = {
             
+            email: email,
+            enteredPassword: enteredPassword
+            
+        };
+        console.log(JSON.stringify(data));
+        const response = await axios({
+          url: `${config.local.url}:${config.local.port}/customer/login`,
+          method:'post',
+          data:data,
+          headers: {
+            'Content-Type': 'application/json'
+             },
+            });
+    
+
+            console.log(response.data.PasswordGood); 
+            var passwordValid = response.data.PasswordGood;
+
+            if(passwordValid == true){
+                navigation.navigate('RestaurantsView');
+            }else{
+                alert("Email or Password Incorrect")
+            }
+
+      } catch (error) {
+        console.log(error);
+        alert("An error has occurred");
+      }
+
+
+
+
+    }
+    else(alert("Please enter both an Email and a Password"));
+}
+
+  
+
+    
+    return (
+        <View style={styles.root}>
+
+            <Image style={styles.logo}
+                source={Logo} />
             {/* <Text>Equifood</Text> */}
-        
+
             {/* <CustomInput placeholder="Username" value= {username} setValue={setUsername} />
             <CustomInput placeholder="Password" value={password} setValue={setPassword} secureTextEntry ={true}/>
         */}
-            <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25}}>
-                <MaterialIcons name='email' size={20} color='#ccc' style={{marginRight:5}}/>
-                <TextInput placeholder = 'Email' style={{ flex:1, paddingVertical:0}} keyboardType="email-address" />
+            <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25 }}>
+                <MaterialIcons name='email' size={20} color='#ccc' style={{ marginRight: 5 }} />
+                <TextInput placeholder='Email' autoCapitalize='none' autoCorrect={false}  value={email} onChangeText={onChangeEmailHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="email-address" />
             </View>
 
-            <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25}}>
-                <MaterialIcons name="lock" size={20} color='#ccc' style={{marginRight:5}}/>
-                <TextInput placeholder = 'Password' style={{ flex:1, paddingVertical:0}} secureTextEntry={true} />
+            <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25 }}>
+                <MaterialIcons name="lock" size={20} color='#ccc' style={{ marginRight: 5 }} />
+                <TextInput placeholder='Password' autoCapitalize='none' autoCorrect={false}  value={enteredPassword} onChangeText={onChangeenteredPasswordHandler} style={{ flex: 1, paddingVertical: 0 }} secureTextEntry={true}  />
             </View>
 
             <TouchableOpacity style={styles.signInButton}
-            onPress={() => navigation.navigate('RestaurantsView')}>
-                <Text style ={styles.signInText}>Sign In</Text>
+
+                onPress={() => {onSubmitFormHandler();}}>
+               
+                <Text style={styles.signInText}>Sign In</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.passwordButton}
-             onPress={() => navigation.navigate('ForgotPassword')}>
-                <Text style ={styles.passwordText}>Forgot Password</Text>
+                onPress={() => navigation.navigate('ForgotPassword')}>
+                <Text style={styles.passwordText}>Forgot Password</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.passwordButton}
-             onPress={() => navigation.navigate('Register')}>
-                <Text style ={styles.passwordText}>Register</Text>
+                onPress={() => navigation.navigate('Register')}>
+                <Text style={styles.passwordText}>Register</Text>
             </TouchableOpacity>
 
-            
+
             <TouchableOpacity style={styles.ROButton}
-             onPress={() => navigation.navigate('RestaurantOwnerLogIn')}>
-                <Text style ={styles.ROText}>Log In as Restaurant Owner</Text>
-            </TouchableOpacity>
-            
-            <TouchableOpacity style={styles.AdminButton}
-             onPress={() => navigation.navigate('AdminLogIn')}>
-                <Text style ={styles.AdminText}>Log In as Admin</Text>
+                onPress={() => navigation.navigate('RestaurantOwnerLogIn')}>
+                <Text style={styles.ROText}>Log In as Restaurant Owner</Text>
             </TouchableOpacity>
 
-        
+            <TouchableOpacity style={styles.AdminButton}
+                onPress={() => navigation.navigate('AdminLogIn')}>
+                <Text style={styles.AdminText}>Log In as Admin</Text>
+            </TouchableOpacity>
+
+
         </View>
     )
 }
@@ -89,61 +146,61 @@ export default LogIn;
 
 
 const styles = StyleSheet.create({
-    root:{
+    root: {
         alignItems: 'center',
         padding: 20,
         backgroundColor: 'white',
-        flex:1,
+        flex: 1,
         // borderTopLeftRadius:50,
         // borderTopRightRadius: 50,
         // borderBottomLeftRadius: 50,
         // borderBottomEndRadius: 50
     },
 
-    logo:{
+    logo: {
         // backgroundColor: "blue",
-        width: '100%', 
+        width: '100%',
         height: 150,
-        resizeMode : 'contain', 
-        marginTop: 120, 
+        resizeMode: 'contain',
+        marginTop: 120,
         borderRadius: 70,
         padding: 20,
         paddingBottom: 40,
-        marginBottom:50,
-  
+        marginBottom: 50,
+
     },
-    signInButton:{
-        backgroundColor: '#50C878',
+    signInButton: {
+        backgroundColor: '#50c864',
         width: '100%',
         padding: 15,
         marginVertical: 5,
-        marginTop:20,
+        marginTop: 20,
 
         alignItems: 'center',
         borderRadius: 5
     },
-    signInText:{
-        fontWeight:'bold',
-        color:'white'
+    signInText: {
+        fontWeight: 'bold',
+        color: 'white'
     },
-    passwordButton:{
+    passwordButton: {
         marginTop: 13,
     },
-    passwordText:{
-        color:'grey',
+    passwordText: {
+        color: 'grey',
     },
-    ROButton:{
-        marginTop:30,
+    ROButton: {
+        marginTop: 30,
     },
-    ROText:{
-        color: '#50C878',
+    ROText: {
+        color: '#50c864',
         fontSize: 18,
     },
-    AdminButton:{
-        marginTop:20,
+    AdminButton: {
+        marginTop: 20,
     },
-    AdminText:{
-        color: '#50C878',
+    AdminText: {
+        color: '#50c864',
         fontSize: 18,
     }
 

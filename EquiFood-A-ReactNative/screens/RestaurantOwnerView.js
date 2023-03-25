@@ -14,16 +14,22 @@ const RestaurantOwnerView = (props) => {
   const navigation = useNavigation();
   const storeData = RestaurantData;
   return (
-    <ScrollView style={{marginTop:20, backgroundColor:"#F0F0F0"}}>
-        <View style={{width: '100%' }}>
+    
+    <ScrollView style={{ backgroundColor:"#fff"}}>
+        <View style={{width: '100%', marginTop:200, flow:1, padding:15 }}>
            <View id="header">
-             <Header />
+             {/* <Header /> */}
            </View>        
            <View style={styles.adminBackground}>
           
-           <Text style={{alignSelf: "center", fontSize:"24px", marginBottom:10}}> RESTAURANT OWNER VIEW </Text>
+           {/* <Text style={{alignSelf: "center", fontSize:"24px", marginBottom:10}}> RESTAURANT OWNER VIEW </Text> */}
+           
+            <TouchableOpacity style={stylesR.ROButtons}
+                onPress={() => navigation.navigate('RestaurantOwnerOrders')}>
+                <Text style={stylesR.ROButtonText}> View my Orders </Text>
+            </TouchableOpacity>
 
-           <TouchableOpacity style={stylesR.ROButtons}
+            <TouchableOpacity style={stylesR.ROButtons}
                 onPress={() => navigation.navigate('FoodEditView')}>
                 <Text style={stylesR.ROButtonText}> Edit My Food Options </Text>
             </TouchableOpacity>
@@ -34,8 +40,8 @@ const RestaurantOwnerView = (props) => {
             </TouchableOpacity>
 
             <TouchableOpacity style={stylesR.ROButtons}
-                onPress={() => navigation.navigate('RestaurantInfoEditView')}>
-                <Text style={stylesR.ROButtonText}> Edit My Restaurant Info </Text>
+                onPress={() => navigation.navigate('RestaurantInsertView')}>
+                <Text style={stylesR.ROButtonText}> Insert New Restaurant </Text>
             </TouchableOpacity>
 
 

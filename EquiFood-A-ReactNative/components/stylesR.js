@@ -1,3 +1,4 @@
+import { createEntityAdapter } from "@reduxjs/toolkit";
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 // import { styleProps } from "react-native-web/dist/cjs/modules/forwardedProps";
 
@@ -5,20 +6,36 @@ import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 const stylesR = StyleSheet.create({
 
     /*Restaurants.js page */
-    borders:{
-        margin: 5,
-        marginBottom: 0,
+    card:{
         width:"100%",
-        borderColor: "green",
+        borderColor: "white",
         borderWidth:1,
+        borderRadius: 15,
+        // margin:7,
+        shadowOpacity: 0.1,
+        shadowRadius: 10,
+        marginBottom: 23,
+
+    },
+    borders:{
+        // marginBottom: 0,
+        width:"100%",
+        borderColor: "white",
+        // borderWidth:1,
         overflow:"hidden",
+        borderRadius: 15,
+        borderBottomEndRadius: 0,
+        borderBottomLeftRadius:0,
+        // padding:1.5,
         // borderTopLeftRadius: 7,
         // borderTopRightRadius: 7
+        shadowOpacity: 0,
+        shadowRadius: 0,
     },
     adminBorders:{
         margin: 5,
         marginBottom: 0,
-        borderColor: "green",
+        borderColor: "17B169",
         borderWidth:1,
         overflow:"hidden",
         borderRadius:7,
@@ -26,46 +43,75 @@ const stylesR = StyleSheet.create({
 
     imageStyle:{
         width: "100%",
-        aspectRatio: 1.5,
+        aspectRatio: 2,
+        borderRadius: 15,
+        borderBottomLeftRadius: 0,
+        borderBottomEndRadius: 0,
         // borderTopLeftRadius: 7,
         // borderTopRightRadius: 7,
+        shadowOpacity: 0,
+        shadowRadius: 0,
     },
 
     descriptionCard:{
-        marginLeft: 5,
-        marginRight: 5,
+        marginLeft: 0,
+        // marginRight: -3,
         padding: 8,
         backgroundColor: "white",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between",
+        borderTopLeftRadius:0,
+        borderTopEndRadius:0,
+        borderRadius: 15,
+        // justifyContent: "space-between",
+        // textAlign: "center",
+        shadowOpacity: 0,
+        shadowRadius: 0,
     },
     restaurantName:{
-        fontSize: 20, 
-        fontWeight: "600" 
+        fontSize: 25,
+        textAlign: "center",
+        fontWeight: "600",
+        shadowOpacity: 0,
+        shadowRadius: 0,
+        left: 37,
+        marginBottom: 2,
+
     },
     restaurantHours:{
         fontSize: 14,
         color: "gray",
         // marginVertical: 7
+        shadowOpacity: 0,
+        shadowRadius: 0,
+        textAlign: "center",
+        left: 40,
     },
     rating:{
+
+        position: "absolute",
+        left : 10,
+        top: 15,
+        backgroundColor: "white",
+        borderRadius: 20,
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: "#17B169",
         padding: 4,
-        borderRadius: 6,
+        shadowOpacity: 0.17,
+        shadowRadius: 4.65,
+
+
     },
     ratingText:{
-        fontSize: 16,
+        fontSize: 13,
         fontWeight: "bold",
         paddingRight: 5,
-        color: "white",
+        color: "black",
     },
     foodCount:{
         position: "absolute",
-        right: 20,
-        top: 20,
+        right: 7,
+        top: 16,
         backgroundColor: "white",
         padding: 5,
         borderRadius: 10,
@@ -75,85 +121,113 @@ const stylesR = StyleSheet.create({
         marginRight: 5,
         backgroundColor: "white",
         padding: 5,
-        marginBottom: 6,
+        marginBottom: 9,
     },
+
+
     /*Continued for Menu.js page */
     itemDisplay:{
+        backgroundColor:"#fff",
+        borderColor: "#50c864",
+        borderWidth:0.5,
+        borderRadius: 18,
+        shadowOpacity: 0.1, 
+        shadowRadius: 2,
         marginBottom: 20,
         marginTop: 10,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
+        paddingBottom: 20,
     },
     itemName:{
-        fontSize: 18,
+        fontSize: 13,
         fontWeight: "bold", 
-        marginBottom: 10
+        marginBottom: 10,
+        alignItems: "center",
+        textAlign: "center",
     },
     originalPrice:{
-        fontSize: 20, 
-        textDecorationLine: "line-through"
+        fontSize: 17, 
+        textDecorationLine: "line-through",
+        alignItems: "center",
+        textAlign: "center",
     },
     currentPrice:{
-        fontSize: 20, 
+        fontSize: 18, 
+        alignItems: "center",
+        textAlign: "center",
         fontWeight: "bold" 
     },
     servingsCount:{
         fontSize: 18,
+        alignItems: "center",
+        textAlign: "center",
         marginTop: 10
     },
     itemIncrement:{
         position: "absolute",
-        left: 15,
-        top: 90,
+        left: 4,
+        top: 75,
         flexDirection: "row",
         paddingHorizontal: 10,
         paddingVertical: 5,
         alignItems: "center",
         backgroundColor: "white",
         borderRadius: 5,
+        shadowOpacity: 0.1, 
+        shadowRadius: 2,
     },
     addButton:{
         position: "absolute",
-        top: 90,
-        left: 15,
+        top: 75,
+        left: 4,
         flexDirection: "row",
         paddingHorizontal: 25,
-        paddingVertical: 10,
+        paddingVertical: 5,
         alignItems: "center",
         backgroundColor: "white",
         borderRadius: 5,
+        shadowOpacity: 0.08, 
+        shadowRadius: 4,
     },
     decreaseItem:{
         fontSize: 20, 
-        color: "green", 
+        color: "#50c864", 
         paddingHorizontal: 6
     },
     itemCount:{
         fontSize: 20,
-        color: "green", 
+        color: "#50c864", 
         paddingHorizontal: 6
     },
     increaseItem:{
         fontSize: 20, 
-        color: "green", 
+        color: "#50c864", 
         paddingHorizontal: 10
     },
     /*Continued for ViewCart.js page */
 
     // For RestaurantOwnerView page
     ROButtons:{
-        backgroundColor: '#50C878',
-        width: '75%',
-        padding: 15,
-        marginVertical: 5,
-        marginTop:5,
-        alignSelf: "center",
-        alignItems: 'center',
-        borderRadius: 5
+        backgroundColor: "#50c864",
+        // width: '100%',
+        paddingTop:10,
+        paddingBottom:10,
+        marginLeft:30,
+        marginRight:30,
+        marginBottom:12,
+        borderTopLeftRadius:50,
+        borderTopRightRadius: 50,
+        borderBottomLeftRadius: 50,
+        borderBottomEndRadius: 50,
+        alignItems: "center",
+        borderRadius: 18,
+        shadowOpacity: 0.1, 
     },
 
     ROButtonText:{
+        backgroundcolor:"white",
         fontSize:20,
         fontWeight: "bold",
         marginTop:10,
@@ -193,6 +267,25 @@ const stylesR = StyleSheet.create({
         alignSelf: "center",
         alignItems: 'center',
         borderRadius: 5
+    },
+
+    backArrow:{
+        backgroundColor: "#006A4E",
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        justifyContent: "center",
+        alignItems: "center",
+        marginLeft: 10,
+    },
+
+    centeredBoldText:{
+        fontSize: 13,
+        fontWeight: "bold", 
+        marginTop: 10,
+        marginBottom: 10,
+        alignItems: "center",
+        textAlign: "center",
     },
 })
 
