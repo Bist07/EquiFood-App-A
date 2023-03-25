@@ -20,11 +20,10 @@ export default function ImagePickerButton({ callback }) {
             const imageExt = result.assets[0].uri.split('.').pop();
             const imageMime = `image/${imageExt}`;
             let picture = await fetch(imagePath);
-            picture = await picture.blob();
-            console.log(picture)
-            const imageData = new File([picture], `photo.${imageExt}`);
 
-            callback(picture);
+            picture = await picture.blob();
+            const imageData = new File([picture], `photo.${imageExt}`);
+            callback(imageData);
         }
     };
 

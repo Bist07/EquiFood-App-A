@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Router } from "express";
 import { GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
@@ -8,6 +8,7 @@ export const router = express.Router()
 import sharp from 'sharp'
 import crypto from 'crypto';
 import dotenv from 'dotenv' //had .config() //might need to provide path to env file
+
 
 dotenv.config({ path: '.env' });
 
@@ -31,8 +32,8 @@ const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex
 
 router.post('/posts', upload.single('image'), async (req, res) => {
 
-    const file = req.body
-    console.log(file)
+    const file = req.file
+    console.log(JSON.stringify(file))
     const fileBuffer = await sharp(file.buffer).toBuffer()
 
     // Configure the upload details to send to S3

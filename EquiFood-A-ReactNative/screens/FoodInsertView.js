@@ -16,16 +16,6 @@ const FoodInsertView = () => {
   const [file, setFile] = useState();
   const restaurantId = 1;
 
-  // const axios = require('axios');
-
-  // Tried using formData, didn't work :(
-  // var data = new FormData();
-  // data.append('item_name', foodName);
-  // data.append('price', discPrice);
-  // data.append('restaurant', 1);
-  // data.append('original_price', ogPrice);
-  // data.append('quantity', servings);
-
   const onChangeNameHandler = (name) => {
     setFoodName(name);
   };
@@ -41,7 +31,6 @@ const FoodInsertView = () => {
   const onChangeServingsHandler = (servings) => {
     setServings(parseInt(servings));
   };
-
 
 
   const onSubmitFormHandler = async (e) => {
@@ -60,6 +49,9 @@ const FoodInsertView = () => {
       if (file) {
         formData.append("image", file)
       }
+
+      console.log(JSON.stringify(formData))
+
 
       const image_S3 = await axios({
         url: `${config.local.url}:${config.local.port}/Images/posts`,
@@ -81,7 +73,7 @@ const FoodInsertView = () => {
       });
 
     } catch (error) {
-      console.log(error);
+      console.log(error.image_S3.data);
       alert("An error has occurred");
     }
   }
@@ -137,7 +129,7 @@ const FoodInsertView = () => {
         <View>
           <Text style={{ marginBottom: 5 }}>Image</Text>
           <View style={stylesR.inputForm}>
-            <ImagePickerButton callback={setFile} />
+            {<ImagePickerButton callback={setFile} />}
           </View>
         </View>
         <View>
