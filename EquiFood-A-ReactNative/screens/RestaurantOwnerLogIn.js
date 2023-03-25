@@ -1,20 +1,27 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Text, Image, Pressable, TouchableOpacity, TouchableHighlight, TextInput } from 'react-native'
+import { StyleSheet, View, Text, Image, Pressable, TouchableOpacity, TextInput } from 'react-native'
 import Logo from '../assets/logos/Equifood_Logo.png'
-import CustomInput from '../components/CustomInput'
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
+import { useNavigation} from "@react-navigation/native";
 import { MaterialIcons } from '@expo/vector-icons';
-import { Ionicons, Feather } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import axios from 'axios';
+import config from '../config'
 
 
-const RestaurantOwnerLogIn = ({ onPress, text }) => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const route = useRoute();
+const RestaurantOwnerLogIn = () => {
+
+    const [email, setEmail] = useState('');
+    const [enteredRestaurantOwnerPassword, setenteredRestaurantOwnerPassword] = useState('');
+    
     const navigation = useNavigation();
 
     // function for signing in:
+    const onChangeEmailHandler = (email) => {
+        setEmail(email);
+    };
+    const onChangeenteredRestaurantOwnerPasswordHandler = (enteredRestaurantOwnerPassword) => {
+        setenteredRestaurantOwnerPassword(enteredRestaurantOwnerPassword);
+    };
 
     const onSignInPressed = () => {
         console.warn('Sign In');
@@ -32,7 +39,47 @@ const RestaurantOwnerLogIn = ({ onPress, text }) => {
         console.warn('Admin Page');
     };
 
+    const onSubmitFormHandler = async (e) => {
+    //Validating entered password against the on in the database
+    //if they match, send the request and log in
 
+        if(email.length !=0 && enteredRestaurantOwnerPassword.length !=0){
+        try {
+            const data = {
+                
+                email: email,
+                enteredRestaurantOwnerPassword: enteredRestaurantOwnerPassword
+                
+            };
+            console.log(JSON.stringify(data));
+            const response = await axios({
+                url: `${config.local.url}:${config.local.port}/RestaurantOwner/login`,
+                method:'post',
+                data:data,
+                headers: {
+                'Content-Type': 'application/json'
+                    },
+                });
+        
+
+                console.log(response.data.PasswordGood); 
+                var passwordValid = response.data.PasswordGood;
+
+                if(passwordValid == true){
+                    navigation.navigate('RestaurantOwnerView');
+                }else{
+                    alert("Email or Password Incorrect")
+                }
+
+            } catch (error) {
+            console.log(error);
+            alert("An error has occurred");
+            }
+        }
+        else(alert("Please enter both an Email and a Password"));
+    }
+
+//front end and styling below
     return (
         <View style={styles.root}>
 
@@ -56,23 +103,19 @@ const RestaurantOwnerLogIn = ({ onPress, text }) => {
             <Image style={styles.logo}
                 source={Logo} />
 
-            {/* <Text>Equifood</Text> */}
-
-            {/* <CustomInput placeholder="Username" value= {username} setValue={setUsername} />
-            <CustomInput placeholder="Password" value={password} setValue={setPassword} secureTextEntry ={true}/>
-        */}
+         
             <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25 }}>
                 <MaterialIcons name='email' size={20} color='#ccc' style={{ marginRight: 5 }} />
-                <TextInput placeholder='Email' style={{ flex: 1, paddingVertical: 0 }} keyboardType="email-address" />
+                <TextInput placeholder='Email' style={{ flex: 1, paddingVertical: 0 }} keyboardType="email-address" autoCapitalize='none' autoCorrect={false} value={email} onChangeText={onChangeEmailHandler} />
             </View>
 
             <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25 }}>
                 <MaterialIcons name="lock" size={20} color='#ccc' style={{ marginRight: 5 }} />
-                <TextInput placeholder='Password' style={{ flex: 1, paddingVertical: 0 }} secureTextEntry={true} />
+                <TextInput placeholder='Password' style={{ flex: 1, paddingVertical: 0 }} secureTextEntry={true} autoCapitalize='none' autoCorrect={false} value={enteredRestaurantOwnerPassword} onChangeText={onChangeenteredRestaurantOwnerPasswordHandler}/>
             </View>
 
             <TouchableOpacity style={styles.signInButton}
-                onPress={() => navigation.navigate('RestaurantOwnerView')}>
+                         onPress={() => {onSubmitFormHandler();}}>
                 <Text style={styles.signInText}>Sign In as Restaurant Owner</Text>
             </TouchableOpacity>
 

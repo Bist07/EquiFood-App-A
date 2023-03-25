@@ -2,7 +2,7 @@ const express = require('express')
 const pool = require('../helpers/database')
 const router = express.Router()
 
-//get by id
+//get restaurant menu items by id
 router.get('/:id', async function (req, res) {
     try {
         const sqlQuery = 'SELECT * FROM menu_item WHERE restaurant_id=?'; //defines query
@@ -13,8 +13,18 @@ router.get('/:id', async function (req, res) {
     }
 })
 
+//get menu item information based on menu_id
+router.get('/:menu_id', async function (req, res) {
+    try {
+        const sqlQuery = 'SELECT * FROM menu_item WHERE id=?'; //defines query
+        const rows = await pool.query(sqlQuery, req.params.menu_id); //rows = your returned query data
+        res.status(200).json(rows);
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+})
 
-
+// Insert food menu items
 router.post('/FoodInsert', async function (req, res) {
     try {
         const { item_name, price, restaurant_id, img, original_price, quantity } = req.body;
