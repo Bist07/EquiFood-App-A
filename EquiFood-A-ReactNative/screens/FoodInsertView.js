@@ -71,6 +71,15 @@ const FoodInsertView = () => {
         },
 
       });
+      alert("Food has been inserted into your restaurant.")
+      // if (response.status === 201) {
+      //   alert(` You have created: ${JSON.stringify(response.data)}`);
+      //   setFoodName('');
+      //   setOgPrice(0);
+      //   setDiscPrice(0);
+      //   setServings(0);
+      // } else {
+      // throw new Error("An error has occurred from response");
 
     } catch (error) {
       console.log(error.image_S3.data);
@@ -93,6 +102,7 @@ const FoodInsertView = () => {
           justifyContent: "center",
           alignItems: "center",
           marginLeft: 10,
+          marginTop: 30,
         }}
       >
         <Ionicons name="chevron-back-outline" size={24} color="white" />

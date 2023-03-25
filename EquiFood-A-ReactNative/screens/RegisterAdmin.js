@@ -8,27 +8,18 @@ import config from '../config';
 
 
 
-    const Register = () => {
+    const RegisterAdmin = () => {
         const navigation = useNavigation();
        const [first_name, setFirstname] = useState('');
        const [last_name, setLastName] = useState('');
        const [email, setEmail] = useState('');
        const [passwordHash, setPassword] = useState('');
        const [passwordCheck, setPasswordCheck] = useState('');
+       const [CompanyCode, setCompanyCode] = useState('');
 
       
-        // const axios = require('axios');
-      
-        // Tried using formData, didn't work :(
-        // var data = new FormData();
-        // data.append('item_name', foodName);
-        // data.append('price', discPrice);
-        // data.append('restaurant', 1);
-        // data.append('original_price', ogPrice);
-        // data.append('quantity', servings);
-      
         
-      
+      //These functions update the constants as data is entered into the input forms
         const onChangeFirstNameHandler = (first_name) => {
             setFirstname(first_name);
           };
@@ -48,6 +39,10 @@ import config from '../config';
           const onChangePasswordCheckHandler = (passwordCheck) => {
             setPasswordCheck(passwordCheck);
           };
+
+          const onChangeCompanyCodeCheckHandler = (CompanyCode) => {
+            setCompanyCode(CompanyCode);
+          };
     
           var hasNumber = /\d/;
 
@@ -58,21 +53,28 @@ import config from '../config';
           
 
 
-        
+        //checking if password is valid
         if(passwordCheck == passwordHash ){
             if(passwordCheck.length > 4){
                 if(hasNumber.test(passwordCheck) == true){
+                    if(CompanyCode == "0000"){ 
+                      /*Company code is a preset code set by Equifood, 
+                      it is used to ensure only members of the equifood team 
+                      are able to register as and admin.
+                      It can be set here*/
           try {
             const data = {
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
-                passwordHash: passwordHash
+                passwordHash: passwordHash,
+                company_code: CompanyCode
                 
             };
+            //sending form data to router
             console.log(JSON.stringify(data));
             const response = await axios({
-              url: `${config.local.url}:${config.local.port}/customer/register`,
+              url: `${config.local.url}:${config.local.port}/admin/AdminRegister`,
               method:'post',
               data:data,
               headers: {
@@ -89,6 +91,8 @@ import config from '../config';
             alert("An error has occurred");
           }
 
+        }else(alert("Company code incorrect"));
+
         }else(alert("Password must include a number"));
 
         }else(alert("Password must be at least 5 characters"));
@@ -99,7 +103,7 @@ import config from '../config';
             
     
     }
-
+        //Page Front end and styling below
         return (
           <>
             <View style={{paddingTop:20}} id="header">
@@ -108,62 +112,47 @@ import config from '../config';
             <Pressable
               onPress={() => navigation.goBack()}
               style={{
-                backgroundColor: '#50C878',
-                width: 37,
-                height: 37,
+                backgroundColor: "#006A4E",
+                width: 40,
+                height: 40,
                 borderRadius: 20,
                 justifyContent: "center",
                 alignItems: "center",
-                marginLeft: 14,
-                marginTop:60,
+                marginLeft: 10,
+                marginTop: 30,
               }}
             >
               <Ionicons name="chevron-back-outline" size={24} color="white" />
             </Pressable>   
             <ScrollView style={stylesR.FoodInsertView}>
       
-               <Text style={styles.title}>Register</Text>
+               <Text style={styles.title}>Enter Your ADMIN Information</Text>
              
       
               <View>
-
-                <Text style={{marginTop: 20, marginBottom:0, fontWeight: "bold"}}>Name</Text>
-
-            //    <Text style={styles.subtitles}>First Name</Text>
-
+                <Text style={styles.subtitles}>First Name</Text>
                 <View style={styles.input}>
                     <TextInput placeholder={"First Name"} value={first_name} onChangeText={onChangeFirstNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
                 </View>
               </View>
       
               <View>
-
-                <Text style={{marginTop:-20}}></Text>
-
-               // <Text style={styles.subtitles}>Last Name</Text>
-
+                <Text style={styles.subtitles}>Last Name</Text>
                 <View style={styles.input}>
                     <TextInput placeholder={"Last Name"} value={last_name} onChangeText={onChangeLastNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
                 </View>
               </View>
       
               <View>
-
-                <Text style={{marginTop: 15, marginBottom:0, fontWeight: "bold"}}>Email</Text>
-
-              //  <Text style={styles.subtitles}>Email</Text>
-
+                <Text style={styles.subtitles}>Email</Text>
                 <View style={styles.input}>
-                    <TextInput placeholder={"Email"} value={email} onChangeText={onChangeEmailHandler}  style={{ flex:1, paddingVertical:0,}} keyboardType="email-address" />
+                    <TextInput placeholder={"Email"} value={email} onChangeText={onChangeEmailHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="email-address" />
                 </View>
               </View>
 
               <View>
-
-                <Text style={{marginTop:10, fontWeight: "bold"}}>Password</Text>
-
-          //      <Text style={styles.subtitles}>Password</Text>
-
+                <Text style={styles.subtitles}>Password</Text>
+                
                 <View style={styles.input}>
                     <TextInput placeholder={"Password"} value={passwordHash} onChangeText={onChangePasswordHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
                 </View>
@@ -172,13 +161,17 @@ import config from '../config';
               </View>
 
               <View>
-
-                <Text style={{marginTop:-20}}></Text>
-
-             //   <Text style={styles.subtitles}>Verify Password</Text>
-
+                <Text style={styles.subtitles}>Verify Password</Text>
                 <View style={styles.input}>
                     <TextInput placeholder={"Verify Password"} value={passwordCheck} onChangeText={onChangePasswordCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
+                </View>
+              </View>
+
+              
+              <View>
+                <Text style={styles.subtitles}>Company Code</Text>
+                <View style={styles.input}>
+                    <TextInput placeholder={"Company Code"} value={CompanyCode} onChangeText={onChangeCompanyCodeCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
                 </View>
               </View>
       
@@ -186,26 +179,25 @@ import config from '../config';
       
               
       
-              <View style={{marginTop:20}}>
-
-                   <TouchableOpacity style={styles.formButtons}>
-                   <Text style={styles.buttonText}>Submit</Text>
-
-                   </TouchableOpacity>   
-{/* 
+              <View>
+                
+                
+                 
+                   <TouchableOpacity style={stylesR.ROFormButtons}>
                    <Button
                    title="Submit"
                    onPress={onSubmitFormHandler}
-                   /> */}
+                   />
+                   </TouchableOpacity>   
             
                 
-                {/* <View style={{display:'flex', flexDirection:2, justifyContent:"space-evenly"}}> */}
-                 {/* Reset Button?: */}
-                  {/* <TouchableOpacity style={styles.formButtons}
-                  onPress={() => navigation.navigate('Register')}>  
-                      <Text style={styles.buttonText}>Reset</Text>
-                  </TouchableOpacity>  */}
-                {/* </View> */}
+                <View style={{display:'flex', flexDirection:2, justifyContent:"space-evenly"}}>
+                 
+                  <TouchableOpacity style={stylesR.ROFormButtons}
+                  onPress={() => navigation.navigate('RestaurantInsertView')}> 
+                      <Button title="Reset" style={stylesR.ROButtonText}></Button>
+                  </TouchableOpacity> 
+                </View>
       
               </View>
             </ScrollView>
@@ -213,7 +205,7 @@ import config from '../config';
         )
       }
       
-      export default Register;
+      export default RegisterAdmin;
       
       
       const styles = StyleSheet.create({
@@ -222,57 +214,36 @@ import config from '../config';
          },
          input: {
             margin: 15,
-            marginLeft: 30,
-            marginRight:30,
+            marginLeft: 10,
             paddingLeft: 10,
             height: 40,
             fontWeight: 'bold',
             borderColor: '#50c864',
-            borderWidth: 0.75
+            borderWidth: 2
          },
-         formButtons: {
-            backgroundColor: '#50C878',
-            // width: '100%',
-            padding: 6,
-            // marginVertical: 5,
-            marginTop:35,
-            marginLeft: 60,
-            marginRight:60,
-            // alignItems: 'center',
-            borderRadius: 5
-            
+         submitButton: {
+            backgroundColor: '#50c864',
+            padding: 10,
+            fontWeight: 'bold',
+            margin: 15,
+            height: 40,
          },
-         buttonText:{
-          padding: 10,
-          textAlign: "center",
-          fontWeight:'bold',
-          color:'white',
+         submitButtonText:{
+            color: 'white'
          },
          title:{
-            // color:'#50c864',
-            // fontWeight: 'bold',
+            color:'#50c864',
+            fontWeight: 'bold',
             textAlign: "center",
-
-            marginTop: 25,
-            fontSize:30,
-            // borderColor: '#50c864',
-            // borderWidth: 4,
-            // borderRadius: 10,
+            marginTop: 20,
+            borderColor: '#50c864',
+            borderWidth: 4,
+            borderRadius: 10,
             padding: 10,
-            marginBottom: 15
-          
-        //    marginTop: 20,
-        //    borderColor: '#50c864',
-        //    borderWidth: 4,
-       //     borderRadius: 10,
-        //    padding: 10,
-       //     marginBottom: 10
-      //   },
-      //   subtitles: {
-      //    marginTop:15,
-      //    fontWeight: 'bold'
-
+            marginBottom: 10
+         },
+         subtitles: {
+          marginTop:15,
+          fontWeight: 'bold'
          }
       })
-      
-      

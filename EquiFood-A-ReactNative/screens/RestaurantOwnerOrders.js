@@ -1,21 +1,18 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useState, useEffect }  from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { getOrders } from '../API/OrdersAPI';
 import { Ionicons } from "@expo/vector-icons";
-import OrderCard from '../components/OrderCard';
+import OrderSummaryCard from '../components/OrderSummaryCard';
 import stylesR from '../components/stylesR';
 
 const RestaurantOwnerOrders = () => {
 
   const navigation = useNavigation();
   const [orders, setOrders] = useState([]);
-  const [orderDetails, setOrderDetails] = useState([]);
 
   //Set to rest_id to Burger Hub for now
   const restaurant_id = 1;
-
-
 
   useEffect(() => {
     async function fetchData() {
@@ -25,23 +22,14 @@ const RestaurantOwnerOrders = () => {
     fetchData();
   }, []);
 
-  // Parse through each of restaurants order to call order_menu_item table
-  // orders.forEach((order) => {
-  //   console.log(order);
-  // })
-
-  // const order_id = orders.id;
-  const pending = orders.filter(order => order.order_status == 0);
-  const accepted = orders.filter(order => order.order_status == 1);
+  const pending = orders.filter(order => order.status_value == 0);
+  const accepted = orders.filter(order => order.status_value == 1);
   
-  console.log("pending");
-  console.log(pending);
-  
-  console.log("accepted");
-  console.log(accepted);
+  console.log("pending: "+ JSON.stringify(pending));
+  console.log("accepted: "+ JSON.stringify(accepted));
 
   return (
-    <View style={{ paddingTop: 50 }}>
+    <ScrollView style={{ paddingTop: 50 }}>
       {/* <Header/> */}
       <Pressable
         onPress={() => navigation.goBack()}
@@ -53,17 +41,17 @@ const RestaurantOwnerOrders = () => {
         <Text style={{ marginTop: 0, fontSize: 20 }}>Pending Orders</Text>
       </View>
       <View style={{ marginLeft: 40, marginRight: 40, marginTop: 0 }}>
-        {pending.map((item, index) => <OrderCard key={index} item={item} />)}
+        {pending.map((item, index) => <OrderSummaryCard key={index} item={item} />)}
       </View>
 
       <View style={{ marginTop: 0, margin: 10, marginBottom:0, alignItems: "center", justifyContent: "center", }}>
         <Text style={{ marginTop: 0, fontSize: 20 }}>Accepted Orders</Text>
       </View>
       <View style={{ marginLeft: 40, marginRight: 40, marginTop: 0 }}>
-        {accepted.map((item, index) => <OrderCard key={index} item={item} />)}
+        {accepted.map((item, index) => <OrderSummaryCard key={index} item={item} />)}
       </View>
 
-    </View>
+    </ScrollView>
   )
 }
 
