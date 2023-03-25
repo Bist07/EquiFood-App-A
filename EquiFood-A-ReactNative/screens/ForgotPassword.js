@@ -20,10 +20,12 @@ export default function ForgotPassword(){
               backgroundColor: '#50C878',
               width: 35,
               height: 35,
-              borderRadius: 20,
+              borderRadius: 17,
               justifyContent: "center",
               alignItems: "center",
-              marginLeft: 10,
+              marginLeft: 2,
+              marginTop:-10,
+              marginBottom:10,
             }}
           >
             <Ionicons name="chevron-back-outline" size={20} color="white"  />

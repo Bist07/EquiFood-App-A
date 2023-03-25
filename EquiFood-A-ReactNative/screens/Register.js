@@ -108,47 +108,62 @@ import config from '../config';
             <Pressable
               onPress={() => navigation.goBack()}
               style={{
-                backgroundColor: "#006A4E",
-                width: 40,
-                height: 40,
+                backgroundColor: '#50C878',
+                width: 37,
+                height: 37,
                 borderRadius: 20,
                 justifyContent: "center",
                 alignItems: "center",
-                marginLeft: 10,
-                marginTop: 30,
+                marginLeft: 14,
+                marginTop:60,
               }}
             >
               <Ionicons name="chevron-back-outline" size={24} color="white" />
             </Pressable>   
             <ScrollView style={stylesR.FoodInsertView}>
       
-               <Text style={styles.title}>Enter Your Information</Text>
+               <Text style={styles.title}>Register</Text>
              
       
               <View>
-                <Text style={styles.subtitles}>First Name</Text>
+
+                <Text style={{marginTop: 20, marginBottom:0, fontWeight: "bold"}}>Name</Text>
+
+            //    <Text style={styles.subtitles}>First Name</Text>
+
                 <View style={styles.input}>
                     <TextInput placeholder={"First Name"} value={first_name} onChangeText={onChangeFirstNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
                 </View>
               </View>
       
               <View>
-                <Text style={styles.subtitles}>Last Name</Text>
+
+                <Text style={{marginTop:-20}}></Text>
+
+               // <Text style={styles.subtitles}>Last Name</Text>
+
                 <View style={styles.input}>
                     <TextInput placeholder={"Last Name"} value={last_name} onChangeText={onChangeLastNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
                 </View>
               </View>
       
               <View>
-                <Text style={styles.subtitles}>Email</Text>
+
+                <Text style={{marginTop: 15, marginBottom:0, fontWeight: "bold"}}>Email</Text>
+
+              //  <Text style={styles.subtitles}>Email</Text>
+
                 <View style={styles.input}>
-                    <TextInput placeholder={"Email"} value={email} onChangeText={onChangeEmailHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="email-address" />
+                    <TextInput placeholder={"Email"} value={email} onChangeText={onChangeEmailHandler}  style={{ flex:1, paddingVertical:0,}} keyboardType="email-address" />
                 </View>
               </View>
 
               <View>
-                <Text style={styles.subtitles}>Password</Text>
-                
+
+                <Text style={{marginTop:10, fontWeight: "bold"}}>Password</Text>
+
+          //      <Text style={styles.subtitles}>Password</Text>
+
                 <View style={styles.input}>
                     <TextInput placeholder={"Password"} value={passwordHash} onChangeText={onChangePasswordHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
                 </View>
@@ -157,7 +172,11 @@ import config from '../config';
               </View>
 
               <View>
-                <Text style={styles.subtitles}>Verify Password</Text>
+
+                <Text style={{marginTop:-20}}></Text>
+
+             //   <Text style={styles.subtitles}>Verify Password</Text>
+
                 <View style={styles.input}>
                     <TextInput placeholder={"Verify Password"} value={passwordCheck} onChangeText={onChangePasswordCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
                 </View>
@@ -167,25 +186,26 @@ import config from '../config';
       
               
       
-              <View>
-                
-                
-                 
-                   <TouchableOpacity style={stylesR.ROFormButtons}>
+              <View style={{marginTop:20}}>
+
+                   <TouchableOpacity style={styles.formButtons}>
+                   <Text style={styles.buttonText}>Submit</Text>
+
+                   </TouchableOpacity>   
+{/* 
                    <Button
                    title="Submit"
                    onPress={onSubmitFormHandler}
-                   />
-                   </TouchableOpacity>   
+                   /> */}
             
                 
-                <View style={{display:'flex', flexDirection:2, justifyContent:"space-evenly"}}>
-                 
-                  <TouchableOpacity style={stylesR.ROFormButtons}
-                  onPress={() => navigation.navigate('RestaurantInsertView')}> 
-                      <Button title="Reset" style={stylesR.ROButtonText}></Button>
-                  </TouchableOpacity> 
-                </View>
+                {/* <View style={{display:'flex', flexDirection:2, justifyContent:"space-evenly"}}> */}
+                 {/* Reset Button?: */}
+                  {/* <TouchableOpacity style={styles.formButtons}
+                  onPress={() => navigation.navigate('Register')}>  
+                      <Text style={styles.buttonText}>Reset</Text>
+                  </TouchableOpacity>  */}
+                {/* </View> */}
       
               </View>
             </ScrollView>
@@ -202,37 +222,56 @@ import config from '../config';
          },
          input: {
             margin: 15,
-            marginLeft: 10,
+            marginLeft: 30,
+            marginRight:30,
             paddingLeft: 10,
             height: 40,
             fontWeight: 'bold',
             borderColor: '#50c864',
-            borderWidth: 2
+            borderWidth: 0.75
          },
-         submitButton: {
-            backgroundColor: '#50c864',
-            padding: 10,
-            fontWeight: 'bold',
-            margin: 15,
-            height: 40,
+         formButtons: {
+            backgroundColor: '#50C878',
+            // width: '100%',
+            padding: 6,
+            // marginVertical: 5,
+            marginTop:35,
+            marginLeft: 60,
+            marginRight:60,
+            // alignItems: 'center',
+            borderRadius: 5
+            
          },
-         submitButtonText:{
-            color: 'white'
+         buttonText:{
+          padding: 10,
+          textAlign: "center",
+          fontWeight:'bold',
+          color:'white',
          },
          title:{
-            color:'#50c864',
-            fontWeight: 'bold',
+            // color:'#50c864',
+            // fontWeight: 'bold',
             textAlign: "center",
-            marginTop: 20,
-            borderColor: '#50c864',
-            borderWidth: 4,
-            borderRadius: 10,
+
+            marginTop: 25,
+            fontSize:30,
+            // borderColor: '#50c864',
+            // borderWidth: 4,
+            // borderRadius: 10,
             padding: 10,
-            marginBottom: 10
-         },
-         subtitles: {
-          marginTop:15,
-          fontWeight: 'bold'
+            marginBottom: 15
+          
+        //    marginTop: 20,
+        //    borderColor: '#50c864',
+        //    borderWidth: 4,
+       //     borderRadius: 10,
+        //    padding: 10,
+       //     marginBottom: 10
+      //   },
+      //   subtitles: {
+      //    marginTop:15,
+      //    fontWeight: 'bold'
+
          }
       })
       
