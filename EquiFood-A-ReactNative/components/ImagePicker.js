@@ -11,19 +11,12 @@ export default function ImagePickerButton({ callback }) {
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: true,
             aspect: [4, 3],
-            quality: 1,
+            quality: 1
         });
 
         if (!result.canceled) {
             setImage(result.assets[0].uri)
-            const imagePath = result.assets[0].uri;
-            const imageExt = result.assets[0].uri.split('.').pop();
-            const imageMime = `image/${imageExt}`;
-            let picture = await fetch(imagePath);
-
-            picture = await picture.blob();
-            const imageData = new File([picture], `photo.${imageExt}`);
-            callback(imageData);
+            callback(result);
         }
     };
 

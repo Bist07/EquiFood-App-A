@@ -7,6 +7,11 @@ import axios from 'axios';
 import config from '../config';
 import ImagePickerButton from '../components/ImagePicker'
 
+import { Amplify, Storage } from 'aws-amplify';
+import awsconfig from '../src/aws-exports.js'
+
+Amplify.configure(awsconfig);
+
 const FoodInsertView = () => {
   const navigation = useNavigation();
   const [foodName, setFoodName] = useState('');
@@ -34,57 +39,70 @@ const FoodInsertView = () => {
 
 
   const onSubmitFormHandler = async (e) => {
-    try {
-      const data = {
-        item_name: foodName,
-        price: discPrice,
-        restaurant_id: restaurantId,
-        img: "iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==",
-        original_price: ogPrice,
-        quantity: servings,
-      };
+    const data = {
+      item_name: foodName,
+      price: discPrice,
+      restaurant_id: restaurantId,
+      img: "iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==",
+      original_price: ogPrice,
+      quantity: servings,
+    };
 
-      const formData = new FormData();
-
-      if (file) {
-        formData.append("image", file)
-      }
-
-      console.log(JSON.stringify(formData))
-
-
-      const image_S3 = await axios({
-        url: `${config.local.url}:${config.local.port}/Images/posts`,
-        method: 'post',
-        data: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        },
-      });
-
-      const response = await axios({
-        url: `${config.local.url}:${config.local.port}/Menu/FoodInsert`,
-        method: 'post',
-        data: data,
-        headers: {
-          'Content-Type': 'application/json'
-        },
-
-      });
-      alert("Food has been inserted into your restaurant.")
-      // if (response.status === 201) {
-      //   alert(` You have created: ${JSON.stringify(response.data)}`);
-      //   setFoodName('');
-      //   setOgPrice(0);
-      //   setDiscPrice(0);
-      //   setServings(0);
-      // } else {
-      // throw new Error("An error has occurred from response");
-
-    } catch (error) {
-      console.log(error.image_S3.data);
-      alert("An error has occurred");
+    ///// upload image ////
+    const fetchImageUri = async (uri) => {
+      const response = await fetch(uri);
+      const blob = await response.blob();
+      return blob;
     }
+    const uploadFile = async (file) => {
+      const img = await fetchImageUri(file.uri);
+      return Storage.put(`my-image-filename${Math.random()}.jpg`, img, {
+        level: 'public',
+        contentType: file.type,
+        progressCallback(uploadProgress) {
+          console.log('PROGRESS--', uploadProgress.loaded + '/' + uploadProgress.total);
+        }
+      })
+        .then((res) => {
+          Storage.get(res.key)
+            .then((result) => {
+              //   console.log('RESULT --- ', result);
+              let awsImageUri = result.substring(0, result.indexOf('?'))
+              console.log('RESULT AFTER REMOVED URI --', awsImageUri)
+              setIsLoading(false)
+            })
+            .catch(e => {
+              console.log(e);
+            })
+        }).catch(e => {
+          console.log(e);
+        })
+    }
+    ////end upload img ////
+
+    uploadFile(file);
+
+    const response = await axios({
+      url: `${config.local.url}:${config.local.port}/Menu/FoodInsert`,
+      method: 'post',
+      data: data,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+    }).catch(function (error) {
+      console.log(error.toJSON());
+    });;
+    alert("Food has been inserted into your restaurant.")
+    // if (response.status === 201) {
+    //   alert(` You have created: ${JSON.stringify(response.data)}`);
+    //   setFoodName('');
+    //   setOgPrice(0);
+    //   setDiscPrice(0);
+    //   setServings(0);
+    // } else {
+    // throw new Error("An error has occurred from response");
+
   }
 
   return (
@@ -164,8 +182,6 @@ const FoodInsertView = () => {
     </>
   )
 }
-
-
 
 export default FoodInsertView
 
