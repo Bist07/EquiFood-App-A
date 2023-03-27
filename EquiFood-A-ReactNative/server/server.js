@@ -3,7 +3,6 @@ import { router as restaurantRouter } from './routes/Restaurant.js'
 import { router as customerRouter } from './routes/customer.js'
 import { router as menuRouter } from './routes/Menu.js'
 import { router as ordersRouter } from './routes/Orders.js'
-import { router as imageRouter } from './routes/Image.js'
 import { router as RestaurantOwnerRouter } from './routes/RestaurantOwner.js'
 import { router as adminRouter } from './routes/admin.js'
 import dotenv from 'dotenv' //had .config() //might need to provide path to env file
@@ -42,9 +41,6 @@ app.use('/Menu', menuRouter);
 
 //creates connection router for Orders table
 app.use('/Orders', ordersRouter);
-
-//creates connection router for Orders table
-app.use('/Images', imageRouter);
 
 //creates connection router for admin table
 app.use('/admin', adminRouter);

@@ -5,12 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from "@expo/vector-icons";
 import axios from 'axios';
 import config from '../config';
-import ImagePickerButton from '../components/ImagePicker'
-
-import { Amplify, Storage } from 'aws-amplify';
-import awsconfig from '../src/aws-exports.js'
-
-Amplify.configure(awsconfig);
+import ImagePickerButton, { uploadFile } from '../components/ImagePicker'
 
 const FoodInsertView = () => {
   const navigation = useNavigation();
@@ -37,7 +32,6 @@ const FoodInsertView = () => {
     setServings(parseInt(servings));
   };
 
-
   const onSubmitFormHandler = async (e) => {
     const data = {
       item_name: foodName,
@@ -47,38 +41,6 @@ const FoodInsertView = () => {
       original_price: ogPrice,
       quantity: servings,
     };
-
-    ///// upload image ////
-    const fetchImageUri = async (uri) => {
-      const response = await fetch(uri);
-      const blob = await response.blob();
-      return blob;
-    }
-    const uploadFile = async (file) => {
-      const img = await fetchImageUri(file.uri);
-      return Storage.put(`my-image-filename${Math.random()}.jpg`, img, {
-        level: 'public',
-        contentType: file.type,
-        progressCallback(uploadProgress) {
-          console.log('PROGRESS--', uploadProgress.loaded + '/' + uploadProgress.total);
-        }
-      })
-        .then((res) => {
-          Storage.get(res.key)
-            .then((result) => {
-              //   console.log('RESULT --- ', result);
-              let awsImageUri = result.substring(0, result.indexOf('?'))
-              console.log('RESULT AFTER REMOVED URI --', awsImageUri)
-              setIsLoading(false)
-            })
-            .catch(e => {
-              console.log(e);
-            })
-        }).catch(e => {
-          console.log(e);
-        })
-    }
-    ////end upload img ////
 
     uploadFile(file);
 
@@ -176,7 +138,6 @@ const FoodInsertView = () => {
               <Button title="Reset" style={stylesR.ROButtonText}></Button>
             </TouchableOpacity>
           </View>
-
         </View>
       </ScrollView>
     </>
