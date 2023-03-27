@@ -5,7 +5,8 @@ import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from "@expo/vector-icons";
 import axios from 'axios';
 import config from '../config';
-import ImagePickerButton, { uploadFile } from '../components/ImagePicker'
+import ImagePickerButton from '../components/ImagePicker'
+import { uploadFile } from '../API/ImageAPI'
 
 const FoodInsertView = () => {
   const navigation = useNavigation();
@@ -14,6 +15,7 @@ const FoodInsertView = () => {
   const [discPrice, setDiscPrice] = useState(0);
   const [servings, setServings] = useState(0);
   const [file, setFile] = useState();
+  const [imageURL, setImageURL] = useState('');
   const restaurantId = 1;
 
   const onChangeNameHandler = (name) => {
@@ -33,16 +35,16 @@ const FoodInsertView = () => {
   };
 
   const onSubmitFormHandler = async (e) => {
+    uploadFile(file, setImageURL)
+
     const data = {
       item_name: foodName,
       price: discPrice,
       restaurant_id: restaurantId,
-      img: "iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==",
+      imageURL: imageURL,
       original_price: ogPrice,
       quantity: servings,
-    };
-
-    uploadFile(file);
+    }
 
     const response = await axios({
       url: `${config.local.url}:${config.local.port}/Menu/FoodInsert`,
@@ -54,7 +56,7 @@ const FoodInsertView = () => {
 
     }).catch(function (error) {
       console.log(error.toJSON());
-    });;
+    });
     alert("Food has been inserted into your restaurant.")
     // if (response.status === 201) {
     //   alert(` You have created: ${JSON.stringify(response.data)}`);
@@ -145,5 +147,4 @@ const FoodInsertView = () => {
 }
 
 export default FoodInsertView
-
 const styles = StyleSheet.create({})

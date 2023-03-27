@@ -16,6 +16,7 @@ const FoodEditView = () => {
 
   const [foods, setFoods] = useState([]);
 
+
   useEffect(() => {
     async function fetchData() {
       const result = await getMenu(restaurant_id);
@@ -34,7 +35,7 @@ const FoodEditView = () => {
           backgroundColor: "#006A4E",
           width: 40,
           height: 40,
-          marginTop:50,
+          marginTop: 50,
           borderRadius: 20,
           justifyContent: "center",
           alignItems: "center",
