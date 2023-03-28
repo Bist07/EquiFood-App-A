@@ -14,9 +14,9 @@ export const uploadFile = async (file, imageCallback) => {
   return Storage.put(`my-image-filename${Math.random()}.jpg`, img, {
     level: 'public',
     contentType: file.type,
-    progressCallback(uploadProgress) {
-      // console.log('PROGRESS--', uploadProgress.loaded + '/' + uploadProgress.total);
-    }
+    // progressCallback(uploadProgress) {
+    //   // console.log('PROGRESS--', uploadProgress.loaded + '/' + uploadProgress.total);
+    // }
   })
     .then((res) => {
       Storage.get(res.key)

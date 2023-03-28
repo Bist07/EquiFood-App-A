@@ -4,15 +4,11 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart, decrementQuantity, incrementQuantity, removeFromCart } from "../redux/CartReducer";
 import stylesR from './stylesR'
-import { Buffer } from 'buffer';
 
 const FoodCard = ({ food }) => {
   const dispatch = useDispatch();
   const [itemCount, setCount] = useState(0);
   const [selected, setSelected] = useState(false);
-
-  var img = Buffer.from(food.Img.data).toString('base64')
-  let imageUri = "data:image/png;base64," + img;
 
   return (
     <View
@@ -36,7 +32,7 @@ const FoodCard = ({ food }) => {
       <Pressable style={{ marginRight: 17 }}>
         <Image
           style={{ width: 100, height: 70, borderRadius: 8 }}
-          source={{ uri: imageUri }}
+          source={{ uri: food.ImageURL }}
         />
         {selected ? (
           <Pressable style={stylesR.itemIncrement}>

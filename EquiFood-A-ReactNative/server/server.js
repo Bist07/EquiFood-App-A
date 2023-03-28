@@ -20,11 +20,9 @@ function json(url) {
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 
-
 /**
  * Routes
  */
-
 app.get('/', (request, response) => {
     response.status(200).send("Hello world")
 })

@@ -21,7 +21,6 @@ const RestaurantInsertView = () => {
   const [latitude, setLatitude] = useState(0);
   const [name, setName] = useState('');
 
-
   // const axios = require('axios');
 
   // Tried using formData, didn't work :(
@@ -31,8 +30,6 @@ const RestaurantInsertView = () => {
   // data.append('restaurant', 1);
   // data.append('original_price', ogPrice);
   // data.append('quantity', servings);
-
-
 
   const onChangeHoursHandler = (hours) => {
     setHours(hours);
@@ -72,17 +69,21 @@ const RestaurantInsertView = () => {
     //   return;
     // }
     try {
+
+      uploadFile(file, setImageURL)
+
       const data = {
 
         address: address,
         hours: hours,
         cuisine: cuisine,
-        rating: rating,
-        longitude: longitude,
-        latitude: latitude,
-        name: name
+        rating: 0,
+        longitude: 2,
+        latitude: 2,
+        name: name,
+        imageURL: imageURL
       };
-      console.log(JSON.stringify(data));
+
       // const response = await axios.post(`${config.local.url}:${config.local.port}/FoodInsert`, data );
       const response = await axios({
         url: `${config.local.url}:${config.local.port}/Restaurant/insertRestaurant`,
@@ -131,61 +132,37 @@ const RestaurantInsertView = () => {
       <ScrollView style={stylesR.FoodInsertView}>
 
         <Text style={styles.title}>Enter Restaurant Information</Text>
-
-
-        <View>
-          <Text style={{ marginBottom: 5 }}>Address</Text>
-          <View style={styles.input}>
-            <TextInput placeholder={"Address"} value={address} onChangeText={onChangeAddressHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-          </View>
-        </View>
-
-        <View>
-          <Text style={{ marginBottom: 5 }}>Hours of Operation</Text>
-          <View style={styles.input}>
-            <TextInput placeholder={"Hours"} value={hours} onChangeText={onChangeHoursHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-          </View>
-        </View>
-
-        <View>
-          <Text style={{ marginBottom: 5 }}>Cuisine Style</Text>
-          <View style={styles.input}>
-            <TextInput placeholder={"Cusine"} value={cuisine} onChangeText={onChangeCuisineHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-          </View>
-        </View>
-
-        <View>
-          <Text style={{ marginBottom: 5 }}>Rating</Text>
-          <View style={styles.input}>
-            <TextInput placeholder={"Rating"} value={rating} onChangeText={onChangeRatingHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
-          </View>
-        </View>
-
-
-
-        <View>
-          <Text style={{ marginBottom: 5 }}>Longitude</Text>
-          <View style={styles.input}>
-            <TextInput placeholder={"Longitude"} value={longitude} onChangeText={onChangeLongitudeHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-          </View>
-        </View>
-
-        <View>
-          <Text style={{ marginBottom: 5 }}>Latitude</Text>
-          <View style={styles.input}>
-            <TextInput placeholder={"Latitude"} value={latitude} onChangeText={onChangeLatitudeHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-          </View>
-        </View>
-
         <View>
           <Text style={{ marginBottom: 5 }}>Restaurant's Name</Text>
           <View style={styles.input}>
             <TextInput placeholder={"Name"} value={name} onChangeText={onChangeNameHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
           </View>
         </View>
-
         <View>
-
+          <Text style={{ marginBottom: 5 }}>Address</Text>
+          <View style={styles.input}>
+            <TextInput placeholder={"Address"} value={address} onChangeText={onChangeAddressHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
+          </View>
+        </View>
+        <View>
+          <Text style={{ marginBottom: 5 }}>Hours of Operation</Text>
+          <View style={styles.input}>
+            <TextInput placeholder={"Hours"} value={hours} onChangeText={onChangeHoursHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
+          </View>
+        </View>
+        <View>
+          <Text style={{ marginBottom: 5 }}>Cuisine Style</Text>
+          <View style={styles.input}>
+            <TextInput placeholder={"Cusine"} value={cuisine} onChangeText={onChangeCuisineHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
+          </View>
+        </View>
+        <View>
+          <Text style={{ marginBottom: 5 }}>Image</Text>
+          <View style={stylesR.inputForm}>
+            {<ImagePickerButton callback={setFile} />}
+          </View>
+        </View>
+        <View>
 
 
           <TouchableOpacity style={stylesR.ROFormButtons}
@@ -193,7 +170,7 @@ const RestaurantInsertView = () => {
             <Button title="Submit" style={stylesR.ROButtonText}></Button>
           </TouchableOpacity>
 
-          <View style={{ display: 'flex', flexDirection: 2, justifyContent: "space-evenly" }}>
+          <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
 
             <TouchableOpacity style={stylesR.ROFormButtons}
               onPress={() => navigation.navigate('RestaurantInsertView')}>

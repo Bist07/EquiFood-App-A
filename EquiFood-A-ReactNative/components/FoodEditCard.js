@@ -6,16 +6,12 @@ import { addToCart, decrementQuantity, incrementQuantity, removeFromCart } from 
 import stylesR from './stylesR'
 import FoodEditForm from "./FoodEditForm";
 import { useNavigation } from "@react-navigation/native";
-import { Buffer } from 'buffer';
 
 const FoodEditCard = ({ food }) => {
   const dispatch = useDispatch();
   const [itemCount, setCount] = useState(0);
   const [selected, setSelected] = useState(false);
   const navigation = useNavigation();
-
-  var img = Buffer.from(food.Img.data).toString('base64')
-  let imageUri = "data:image/png;base64," + img;
 
   return (
     <Pressable
@@ -25,7 +21,7 @@ const FoodEditCard = ({ food }) => {
         originalPrice: food.original_price,
         discountPrice: food.price,
         servingsLeft: food.quantity,
-        imgSrc: imageUri,
+        imgSrc: ImageURL,
       })}>
 
       <View style={{ marginLeft: 10, flex: 1 }}>
@@ -48,7 +44,7 @@ const FoodEditCard = ({ food }) => {
       <Pressable style={{ marginRight: 15 }}>
         <Image
           style={{ width: 100, height: 100, borderRadius: 8 }}
-          source={{ uri: imageUri }}
+          source={{ uri: food.ImageURL }}
         />
       </Pressable>
 
