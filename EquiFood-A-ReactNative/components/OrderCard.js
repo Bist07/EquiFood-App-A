@@ -3,7 +3,6 @@ import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import stylesR from './stylesR'
-import { Buffer } from 'buffer';
 
 // This is the design of each Order card. Restaurant Owner gets here by clicking on an OrderSummaryCard
 
@@ -25,7 +24,7 @@ const OrderCard = (data) => {
               {menuItem.item_name}
             </Text>
             <Text style={stylesR.restaurantHours}>
-              
+
             </Text>
           </View>
 
@@ -44,12 +43,12 @@ const OrderCard = (data) => {
 export default OrderCard;
 
 const styles = StyleSheet.create({
-    count:{
-        position: "absolute",
-        right: 7,
-        top: 25,
-        backgroundColor: "white",
-        padding: 5,
-        borderRadius: 10,
-    },
+  count: {
+    position: "absolute",
+    right: 7,
+    top: 25,
+    backgroundColor: "white",
+    padding: 5,
+    borderRadius: 10,
+  },
 });

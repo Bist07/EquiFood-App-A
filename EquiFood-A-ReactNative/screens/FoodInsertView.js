@@ -1,14 +1,12 @@
 import { Button, Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import stylesR from '../components/stylesR'
-import Header from '../components/header'
-import InputForm from '../components/InputForm'
 import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from "@expo/vector-icons";
 import axios from 'axios';
 import config from '../config';
-import { insertFood } from '../API/MenuAPI'
 import ImagePickerButton from '../components/ImagePicker'
+import { uploadFile } from '../API/ImageAPI'
 
 const FoodInsertView = () => {
   const navigation = useNavigation();
@@ -16,18 +14,9 @@ const FoodInsertView = () => {
   const [ogPrice, setOgPrice] = useState(0);
   const [discPrice, setDiscPrice] = useState(0);
   const [servings, setServings] = useState(0);
-  const [img, setImage] = useState('iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==');
+  const [file, setFile] = useState();
+  const [imageURL, setImageURL] = useState('');
   const restaurantId = 1;
-
-  // const axios = require('axios');
-
-  // Tried using formData, didn't work :(
-  // var data = new FormData();
-  // data.append('item_name', foodName);
-  // data.append('price', discPrice);
-  // data.append('restaurant', 1);
-  // data.append('original_price', ogPrice);
-  // data.append('quantity', servings);
 
   const onChangeNameHandler = (name) => {
     setFoodName(name);
@@ -45,51 +34,31 @@ const FoodInsertView = () => {
     setServings(parseInt(servings));
   };
 
-
-
   const onSubmitFormHandler = async (e) => {
-    // if (!foodName.length == 0) {
-    //   alert("Food Name is blank");
-    //   return;
-    // }
-    // if (discPrice < 0 || ogPrice < 0 || servings < 0) {
-    //   alert("Numbers can't be negative");
-    //   return;
-    // }
-    try {
-      const data = {
-        item_name: foodName,
-        price: discPrice,
-        restaurant_id: restaurantId,
-        img: "iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==",
-        original_price: ogPrice,
-        quantity: servings,
-      };
-      console.log(JSON.stringify(data));
-      // const response = await axios.post(`${config.local.url}:${config.local.port}/FoodInsert`, data );
-      const response = await axios({
-        url: `${config.local.url}:${config.local.port}/Menu/FoodInsert`,
-        method: 'post',
-        data: data,
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        // body: JSON.stringify(data),
-      });
-      alert("Food has been inserted into your restaurant.")
-      // if (response.status === 201) {
-      //   alert(` You have created: ${JSON.stringify(response.data)}`);
-      //   setFoodName('');
-      //   setOgPrice(0);
-      //   setDiscPrice(0);
-      //   setServings(0);
-      // } else {
-      // throw new Error("An error has occurred from response");
+    uploadFile(file, setImageURL)
 
-    } catch (error) {
-      console.log(error);
-      alert("An error has occurred");
+    const data = {
+      item_name: foodName,
+      price: discPrice,
+      restaurant_id: restaurantId,
+      imageURL: imageURL,
+      original_price: ogPrice,
+      quantity: servings,
     }
+
+    const response = await axios({
+      url: `${config.local.url}:${config.local.port}/Menu/FoodInsert`,
+      method: 'post',
+      data: data,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+    }).catch(function (error) {
+      console.log(error.toJSON());
+    });
+    alert("Food has been inserted into your restaurant.")
+
   }
 
   return (
@@ -107,7 +76,7 @@ const FoodInsertView = () => {
           justifyContent: "center",
           alignItems: "center",
           marginLeft: 10,
-          marginTop:30,
+          marginTop: 30,
         }}
       >
         <Ionicons name="chevron-back-outline" size={24} color="white" />
@@ -144,37 +113,30 @@ const FoodInsertView = () => {
         <View>
           <Text style={{ marginBottom: 5 }}>Image</Text>
           <View style={stylesR.inputForm}>
-            <ImagePickerButton callback={setImage} />
+            {<ImagePickerButton callback={setFile} />}
           </View>
         </View>
         <View>
 
-          
-
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
             <TouchableOpacity style={stylesR.ROFormButtons}>
 
-            <Button
-            title="Submit"
-            onPress={onSubmitFormHandler}
-            style={{ "backgroundColor": "gray", "margin": 2 }}
-          />
+              <Button
+                title="Submit"
+                onPress={onSubmitFormHandler}
+                style={{ "backgroundColor": "gray", "margin": 2 }}
+              />
             </TouchableOpacity>
             <TouchableOpacity style={stylesR.ROFormButtons}
               onPress={() => navigation.navigate('FoodInsertView')}>
               <Button title="Reset" style={stylesR.ROButtonText}></Button>
             </TouchableOpacity>
           </View>
-
-
         </View>
       </ScrollView>
     </>
   )
 }
 
-
-
 export default FoodInsertView
-
 const styles = StyleSheet.create({})

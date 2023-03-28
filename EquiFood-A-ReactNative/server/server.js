@@ -1,16 +1,18 @@
-const express = require('express');
-const dotenv = require('dotenv'); //had .config() //might need to provide path to env file
+import express from "express";
+import { router as restaurantRouter } from './routes/Restaurant.js'
+import { router as customerRouter } from './routes/customer.js'
+import { router as menuRouter } from './routes/Menu.js'
+import { router as ordersRouter } from './routes/Orders.js'
+import { router as RestaurantOwnerRouter } from './routes/RestaurantOwner.js'
+import { router as adminRouter } from './routes/admin.js'
+import dotenv from 'dotenv' //had .config() //might need to provide path to env file
 
 dotenv.config({ path: '.env' });
 
-var ip_address = "";
-
 const app = express();
-
 function json(url) {
     return fetch(url).then(res => res.json());
 }
-
 
 /**
  * Middleware
@@ -21,36 +23,27 @@ app.use(express.urlencoded({ extended: false }));
 /**
  * Routes
  */
-
-//getting all
 app.get('/', (request, response) => {
     response.status(200).send("Hello world")
 })
 
 //creates connection router for Restaurant table
-const restaurantRouter = require('./routes/Restaurant');
 app.use('/Restaurant', restaurantRouter);
 
-//creates connection router for user table
-const customerRouter = require('./routes/customer');
+//creates connection router for Customer table
 app.use('/customer', customerRouter);
 
-//connection router for user table
-const menuRouter = require('./routes/Menu');
+//creates connection router for Menu table
 app.use('/Menu', menuRouter);
 
 //creates connection router for Orders table
-const ordersRouter = require('./routes/Orders');
 app.use('/Orders', ordersRouter);
 
 //creates connection router for admin table
-const adminRouter = require('./routes/admin');
 app.use('/admin', adminRouter);
 
 //creates connection router for restaurant admin table
-const RestaurantOwnerRouter = require('./routes/RestaurantOwner');
 app.use('/RestaurantOwner', RestaurantOwnerRouter);
-
 
 /**
  * Start listening

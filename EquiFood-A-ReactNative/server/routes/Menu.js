@@ -1,6 +1,6 @@
-const express = require('express')
-const pool = require('../helpers/database')
-const router = express.Router()
+import express from 'express'
+import { pool } from '../helpers/database.js'
+export const router = express.Router()
 
 //get restaurant menu items by id
 router.get('/:id', async function (req, res) {
@@ -27,10 +27,9 @@ router.get('/:menu_id', async function (req, res) {
 // Insert food menu items
 router.post('/FoodInsert', async function (req, res) {
     try {
-        const { item_name, price, restaurant_id, img, original_price, quantity } = req.body;
-        const sqlQuery = "INSERT INTO menu_item (item_name, price, restaurant_id, img, original_price, quantity) VALUES (?,?,?,?,?,?)";
-        const result = await pool.query(sqlQuery, [item_name, price, restaurant_id, img, original_price, quantity]);
-
+        const { item_name, price, restaurant_id, ImageURL, original_price, quantity } = req.body;
+        const sqlQuery = "INSERT INTO menu_item (item_name, price, restaurant_id, imageURL, original_price, quantity) VALUES (?,?,?,?,?,?)";
+        const result = await pool.query(sqlQuery, [item_name, price, restaurant_id, ImageURL, original_price, quantity]);
         res.status(200).send("Food Added");
     } catch (error) {
         res.status(400).send(error.message)
@@ -38,5 +37,3 @@ router.post('/FoodInsert', async function (req, res) {
 })
 
 
-
-module.exports = router;

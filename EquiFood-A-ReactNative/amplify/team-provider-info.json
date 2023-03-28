@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-equifoodareactnative-dev-224922-authRole",
+      "UnauthRoleArn": "arn:aws:iam::485727910519:role/amplify-equifoodareactnative-dev-224922-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::485727910519:role/amplify-equifoodareactnative-dev-224922-authRole",
+      "Region": "ca-central-1",
+      "DeploymentBucketName": "amplify-equifoodareactnative-dev-224922-deployment",
+      "UnauthRoleName": "amplify-equifoodareactnative-dev-224922-unauthRole",
+      "StackName": "amplify-equifoodareactnative-dev-224922",
+      "StackId": "arn:aws:cloudformation:ca-central-1:485727910519:stack/amplify-equifoodareactnative-dev-224922/f6b86d70-cb99-11ed-b23c-0ee13821d210",
+      "AmplifyAppId": "dzpz75geojv31"
+    },
+    "categories": {
+      "auth": {
+        "equifoodareactnative67be69b1": {}
+      },
+      "storage": {
+        "s3f6e2da2f": {}
+      }
+    }
+  }
+}

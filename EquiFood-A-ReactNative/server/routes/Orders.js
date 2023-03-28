@@ -1,6 +1,7 @@
-const express = require("express");
-const pool = require("../helpers/database");
-const router = express.Router();
+import express from 'express'
+import { pool } from '../helpers/database.js'
+export const router = express.Router()
+//get all by id and pending/accepted orders
 
 //get customer id, order id, cost, discount, status, reservation from tables
 router.get("/:id", async function (req, res) {
@@ -17,8 +18,8 @@ router.get("/:id", async function (req, res) {
 // Get all menu items based on food order id
 router.get("/OrderDetails/:id", async function (req, res) {
   try {
-    const sqlQuery = "SELECT M.item_name, M.price, M.img_id, M.original_price, O.qty_ordered FROM order_menu_item O JOIN menu_item M ON O.menu_item_id = M.id WHERE food_order_id=?"; 
-    const rows = await pool.query(sqlQuery, req.params.id); 
+    const sqlQuery = "SELECT M.item_name, M.price, M.img_id, M.original_price, O.qty_ordered FROM order_menu_item O JOIN menu_item M ON O.menu_item_id = M.id WHERE food_order_id=?";
+    const rows = await pool.query(sqlQuery, req.params.id);
     res.status(200).json(rows);
   } catch (error) {
     res.status(400).send(error.message);
@@ -52,4 +53,3 @@ router.post("/OrderInsert", async function (req, res) {
   }
 });
 
-module.exports = router;
