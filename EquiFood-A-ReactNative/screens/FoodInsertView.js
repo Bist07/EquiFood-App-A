@@ -41,7 +41,7 @@ const FoodInsertView = () => {
       item_name: foodName,
       price: discPrice,
       restaurant_id: restaurantId,
-      imageURL: imageURL,
+      ImageURL: imageURL,
       original_price: ogPrice,
       quantity: servings,
     }
