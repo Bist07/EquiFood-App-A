@@ -1,4 +1,3 @@
-
 import { useNavigation } from '@react-navigation/native'
 import { Button, Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
@@ -14,22 +13,9 @@ const RestaurantInsertView = () => {
   const [hours, setHours] = useState('');
   const [address, setAddress] = useState('');
   const [cuisine, setCuisine] = useState('');
-  const [rating, setRating] = useState('');
   const [file, setFile] = useState();
   const [imageURL, setImageURL] = useState('');
-  const [longitude, setLongitude] = useState(0);
-  const [latitude, setLatitude] = useState(0);
   const [name, setName] = useState('');
-
-  // const axios = require('axios');
-
-  // Tried using formData, didn't work :(
-  // var data = new FormData();
-  // data.append('item_name', foodName);
-  // data.append('price', discPrice);
-  // data.append('restaurant', 1);
-  // data.append('original_price', ogPrice);
-  // data.append('quantity', servings);
 
   const onChangeHoursHandler = (hours) => {
     setHours(hours);
@@ -43,66 +29,33 @@ const RestaurantInsertView = () => {
     setCuisine(cuisine);
   };
 
-  const onChangeRatingHandler = (rating) => {
-    setRating(rating);
-  };
-
-  const onChangeLongitudeHandler = (longitude) => { //int
-    setLongitude(longitude);
-  };
-
-  const onChangeLatitudeHandler = (latitude) => { //int
-    setLatitude(latitude);
-  };
-
   const onChangeNameHandler = (name) => {
     setName(name);
   };
 
   const onSubmitFormHandler = async (e) => {
-    // if (!foodName.length == 0) {
-    //   alert("Food Name is blank");
-    //   return;
-    // }
-    // if (discPrice < 0 || ogPrice < 0 || servings < 0) {
-    //   alert("Numbers can't be negative");
-    //   return;
-    // }
     try {
 
       uploadFile(file, setImageURL)
 
       const data = {
-
         address: address,
         hours: hours,
         cuisine: cuisine,
-        rating: 0,
-        longitude: 2,
-        latitude: 2,
         name: name,
         imageURL: imageURL
       };
 
-      // const response = await axios.post(`${config.local.url}:${config.local.port}/FoodInsert`, data );
       const response = await axios({
-        url: `${config.local.url}:${config.local.port}/Restaurant/insertRestaurant`,
+        url: `${config.local.url}:${config.local.port}/Restaurant/Insert`,
         method: 'post',
         data: data,
         headers: {
           'Content-Type': 'application/json'
         },
-        // body: JSON.stringify(data),
       });
-      // if (response.status === 201) {
-      //   alert(` You have created: ${JSON.stringify(response.data)}`);
-      //   setFoodName('');
-      //   setOgPrice(0);
-      //   setDiscPrice(0);
-      //   setServings(0);
-      // } else {
-      // throw new Error("An error has occurred from response");
 
+      alert("Restaurant added");
     } catch (error) {
       console.log(error);
       alert("An error has occurred");
@@ -129,33 +82,35 @@ const RestaurantInsertView = () => {
       >
         <Ionicons name="chevron-back-outline" size={24} color="white" />
       </Pressable>
-      <ScrollView style={stylesR.FoodInsertView}>
-
-        <Text style={styles.title}>Enter Restaurant Information</Text>
+      <ScrollView style={stylesR.RestaurantInsertView}>
         <View>
-          <Text style={{ marginBottom: 5 }}>Restaurant's Name</Text>
-          <View style={styles.input}>
-            <TextInput placeholder={"Name"} value={name} onChangeText={onChangeNameHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
+          <Text style={{ marginBottom: 5 }}>Restaurant Name</Text>
+          <View style={stylesR.inputForm}>
+            <TextInput placeholder={"Restaurant Name"} value={name} onChangeText={onChangeNameHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
           </View>
         </View>
+
         <View>
           <Text style={{ marginBottom: 5 }}>Address</Text>
-          <View style={styles.input}>
+          <View style={stylesR.inputForm}>
             <TextInput placeholder={"Address"} value={address} onChangeText={onChangeAddressHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
           </View>
         </View>
+
         <View>
-          <Text style={{ marginBottom: 5 }}>Hours of Operation</Text>
-          <View style={styles.input}>
+          <Text style={{ marginBottom: 5 }}>Cuisine</Text>
+          <View style={stylesR.inputForm}>
+            <TextInput placeholder={"Cuisine"} value={cuisine} onChangeText={onChangeCuisineHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
+          </View>
+        </View>
+
+        <View>
+          <Text style={{ marginBottom: 5 }}>Hours</Text>
+          <View style={stylesR.inputForm}>
             <TextInput placeholder={"Hours"} value={hours} onChangeText={onChangeHoursHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
           </View>
         </View>
-        <View>
-          <Text style={{ marginBottom: 5 }}>Cuisine Style</Text>
-          <View style={styles.input}>
-            <TextInput placeholder={"Cusine"} value={cuisine} onChangeText={onChangeCuisineHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-          </View>
-        </View>
+
         <View>
           <Text style={{ marginBottom: 5 }}>Image</Text>
           <View style={stylesR.inputForm}>
@@ -164,20 +119,20 @@ const RestaurantInsertView = () => {
         </View>
         <View>
 
-
-          <TouchableOpacity style={stylesR.ROFormButtons}
-            onPress={() => onPress = { onSubmitFormHandler }}>
-            <Button title="Submit" style={stylesR.ROButtonText}></Button>
-          </TouchableOpacity>
-
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
+            <TouchableOpacity style={stylesR.ROFormButtons}>
 
+              <Button
+                title="Submit"
+                onPress={onSubmitFormHandler}
+                style={{ "backgroundColor": "gray", "margin": 2 }}
+              />
+            </TouchableOpacity>
             <TouchableOpacity style={stylesR.ROFormButtons}
               onPress={() => navigation.navigate('RestaurantInsertView')}>
               <Button title="Reset" style={stylesR.ROButtonText}></Button>
             </TouchableOpacity>
           </View>
-
         </View>
       </ScrollView>
     </>
@@ -185,42 +140,3 @@ const RestaurantInsertView = () => {
 }
 
 export default RestaurantInsertView;
-
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 23
-  },
-  input: {
-    margin: 15,
-    marginLeft: 10,
-    paddingLeft: 10,
-    height: 40,
-    fontWeight: 'bold',
-    borderColor: '#50c864',
-    borderWidth: 2
-  },
-  submitButton: {
-    backgroundColor: '#50c864',
-    padding: 10,
-    fontWeight: 'bold',
-    margin: 15,
-    height: 40,
-  },
-  submitButtonText: {
-    color: 'white'
-  },
-  title: {
-    color: '#50c864',
-    fontWeight: 'bold',
-    textAlign: "center",
-    marginTop: 50,
-    borderColor: '#50c864',
-    borderWidth: 4,
-    borderRadius: 10,
-    padding: 10,
-    marginBottom: 10
-
-  }
-})
-

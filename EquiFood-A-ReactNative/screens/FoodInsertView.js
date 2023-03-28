@@ -58,14 +58,6 @@ const FoodInsertView = () => {
       console.log(error.toJSON());
     });
     alert("Food has been inserted into your restaurant.")
-    // if (response.status === 201) {
-    //   alert(` You have created: ${JSON.stringify(response.data)}`);
-    //   setFoodName('');
-    //   setOgPrice(0);
-    //   setDiscPrice(0);
-    //   setServings(0);
-    // } else {
-    // throw new Error("An error has occurred from response");
 
   }
 
