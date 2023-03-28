@@ -8,8 +8,8 @@ import config from '../config';
 
 
 //declaring constants
-    const RegisterAdmin = () => {
-        const navigation = useNavigation();
+    const RegisterRO = () => {
+       const navigation = useNavigation();
        const [first_name, setFirstname] = useState('');
        const [last_name, setLastName] = useState('');
        const [email, setEmail] = useState('');
@@ -42,7 +42,7 @@ import config from '../config';
 
 
       //validates entered values and sends data to back end
-        const onSubmitFormHandler = async (e) => {
+      const onSubmitFormHandler = async (e) => {
 
         //checking if password is valid
         if(passwordCheck == passwordHash ){
@@ -55,8 +55,6 @@ import config from '../config';
                 last_name: last_name,
                 email: email,
                 passwordHash: passwordHash,
-              
-                
             };
             //sending form data to router
             console.log(JSON.stringify(data));
@@ -68,25 +66,16 @@ import config from '../config';
                 'Content-Type': 'application/json'
                  },
                 });
-        
-
-                navigation.navigate('LogIn');
+                navigation.navigate('RestaurantOwnerLogIn');
                 alert("Account Created!");
                 
           } catch (error) {
             console.log(error);
             alert("An error has occurred");
           }
-
         }else(alert("Password must include a number"));
-
         }else(alert("Password must be at least 5 characters"));
-
-        }else(alert("Passwords do not match")
-            );
-      
-            
-    
+        }else(alert("Passwords do not match"));
     }
         //Page Front end and styling below
         return (
@@ -111,7 +100,7 @@ import config from '../config';
             </Pressable>   
             <ScrollView style={stylesR.FoodInsertView}>
       
-               <Text style={styles.title}>Enter Your ADMIN Information</Text>
+              <Text style={styles.title}>Enter Your Restaurant Information</Text>
              
       
               <View>
@@ -152,12 +141,12 @@ import config from '../config';
                 </View>
               </View>
               <View>
-                   <TouchableOpacity style={stylesR.ROFormButtons}>
-                   <Button
-                   title="Submit"
-                   onPress={onSubmitFormHandler}
-                   />
-                   </TouchableOpacity>   
+                <TouchableOpacity style={stylesR.ROFormButtons}>
+                  <Button
+                  title="Submit"
+                  onPress={onSubmitFormHandler}
+                  />
+                </TouchableOpacity>   
             
                 
                 <View style={{display:'flex', flexDirection:2, justifyContent:"space-evenly"}}>
@@ -174,7 +163,7 @@ import config from '../config';
         )
       }
       
-      export default RegisterAdmin;
+      export default RegisterRO;
       
       
       const styles = StyleSheet.create({
