@@ -43,7 +43,7 @@ const RestaurantInsertView = () => {
         hours: hours,
         cuisine: cuisine,
         name: name,
-        imageURL: imageURL
+        ImageURL: imageURL
       };
 
       const response = await axios({
