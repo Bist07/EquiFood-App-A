@@ -3,8 +3,6 @@ import React, { useState } from 'react'
 import stylesR from '../components/stylesR'
 import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from "@expo/vector-icons";
-import axios from 'axios';
-import config from '../config';
 import ImagePickerButton from '../components/ImagePicker'
 import { uploadFile } from '../API/ImageAPI'
 
@@ -15,7 +13,6 @@ const FoodInsertView = () => {
   const [discPrice, setDiscPrice] = useState(0);
   const [servings, setServings] = useState(0);
   const [file, setFile] = useState();
-  const [imageURL, setImageURL] = useState('');
   const restaurantId = 1;
 
   const onChangeNameHandler = (name) => {
@@ -35,30 +32,17 @@ const FoodInsertView = () => {
   };
 
   const onSubmitFormHandler = async (e) => {
-    uploadFile(file, setImageURL)
 
     const data = {
       item_name: foodName,
       price: discPrice,
       restaurant_id: restaurantId,
-      imageURL: imageURL,
+      ImageURL: '',
       original_price: ogPrice,
       quantity: servings,
     }
 
-    const response = await axios({
-      url: `${config.local.url}:${config.local.port}/Menu/FoodInsert`,
-      method: 'post',
-      data: data,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-
-    }).catch(function (error) {
-      console.log(error.toJSON());
-    });
-    alert("Food has been inserted into your restaurant.")
-
+    await uploadFile(foodName, file, 'food', data)
   }
 
   return (
