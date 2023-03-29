@@ -129,7 +129,7 @@ import config from '../config';
 
                 <Text style={{marginTop: 20, marginBottom:0, fontWeight: "bold"}}>Name</Text>
 
-            //    <Text style={styles.subtitles}>First Name</Text>
+               {/* <Text style={styles.subtitles}>First Name</Text> */}
 
                 <View style={styles.input}>
                     <TextInput placeholder={"First Name"} value={first_name} onChangeText={onChangeFirstNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
@@ -140,7 +140,7 @@ import config from '../config';
 
                 <Text style={{marginTop:-20}}></Text>
 
-               // <Text style={styles.subtitles}>Last Name</Text>
+               {/* // <Text style={styles.subtitles}>Last Name</Text> */}
 
                 <View style={styles.input}>
                     <TextInput placeholder={"Last Name"} value={last_name} onChangeText={onChangeLastNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
@@ -151,7 +151,7 @@ import config from '../config';
 
                 <Text style={{marginTop: 15, marginBottom:0, fontWeight: "bold"}}>Email</Text>
 
-              //  <Text style={styles.subtitles}>Email</Text>
+                {/* <Text style={styles.subtitles}>Email</Text> */}
 
                 <View style={styles.input}>
                     <TextInput placeholder={"Email"} value={email} onChangeText={onChangeEmailHandler}  style={{ flex:1, paddingVertical:0,}} keyboardType="email-address" />
@@ -161,21 +161,22 @@ import config from '../config';
               <View>
 
                 <Text style={{marginTop:10, fontWeight: "bold"}}>Password</Text>
+                <Text style={{marginBottom: 10}}>Must be longer than 5 characters and have a number </Text>
+                
 
-          //      <Text style={styles.subtitles}>Password</Text>
+                {/* <Text style={styles.subtitles}>Password</Text> */}
 
                 <View style={styles.input}>
                     <TextInput placeholder={"Password"} value={passwordHash} onChangeText={onChangePasswordHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
                 </View>
-                <Text style={{marginBottom: 20}}>Must be longer than 5 characters and have a number </Text>
-                
+
               </View>
 
               <View>
 
                 <Text style={{marginTop:-20}}></Text>
 
-             //   <Text style={styles.subtitles}>Verify Password</Text>
+             {/* //   <Text style={styles.subtitles}>Verify Password</Text> */}
 
                 <View style={styles.input}>
                     <TextInput placeholder={"Verify Password"} value={passwordCheck} onChangeText={onChangePasswordCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />

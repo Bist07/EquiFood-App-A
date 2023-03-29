@@ -1,13 +1,17 @@
 import { StyleSheet, View, SafeAreaView, TextInput, Image, Pressable, ScrollView, Text } from "react-native";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { AntDesign } from "@expo/vector-icons";
 import RestaurantCard from "../components/RestaurantCard";
 import Header from "../components/header";
 import ProfilePage from "./ProfilePage";
 import { getRestaurants } from "../API/RestaurantAPI";
+import {useNavigation} from "@react-navigation/native";
 // This page displays all restaurant data in one page.
 
 const RestaurantsView = () => {
+
+  // const navigation = useNavigation();
+
   const [storeData, setStoreData] = useState([]);
 
   useEffect(() => {
@@ -17,6 +21,24 @@ const RestaurantsView = () => {
     }
     fetchData();
   }, []);
+
+  // useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     headerLargeTitle: true,
+  //     headerSearchBarOptions: {
+  //       placeholder: "Search",
+  //       onChangeText: (event) => {
+  //         console.log(event.nativeEvent.text);
+  //       }
+  //     },
+  //   })
+  // }, [navigation]);
+
+  // function handleFilter(searchTerm){
+  //   setUsers(users.filter((user) =>
+  //     user.email.ToUpperCase().includes(searchTerm.ToUpperCase())
+  //   ))
+  // }
 
   return (
     <View style={{ backgroundColor: "#fff" }}>
