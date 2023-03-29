@@ -199,7 +199,7 @@ import config from '../config';
                    /> */}
             
                 
-                {/* <View style={{display:'flex', flexDirection:2, justifyContent:"space-evenly"}}> */}
+                {/* <View style={{display:'flex', flexDirection:"row", justifyContent:"space-evenly"}}> */}
                  {/* Reset Button?: */}
                   {/* <TouchableOpacity style={styles.formButtons}
                   onPress={() => navigation.navigate('Register')}>  

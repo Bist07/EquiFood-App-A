@@ -125,7 +125,7 @@ const RestaurantOwnerLogIn = () => {
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.passwordButton}
-                onPress={() => navigation.navigate('Register')}>
+                onPress={() => navigation.navigate('RegisterRO')}>
                 <Text style={styles.passwordText}>Register</Text>
             </TouchableOpacity>
 
