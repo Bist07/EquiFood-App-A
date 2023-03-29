@@ -40,6 +40,7 @@ import { Entypo } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons'; 
 import RestaurantOwnerOrders from './screens/RestaurantOwnerOrders';
 import ROOrderDetailView from './screens/ROOrderDetailView';
+import RegisterRO from './screens/RegisterRO';
 
 const Stack = createNativeStackNavigator();
 
@@ -288,7 +289,7 @@ const StackNavigator = () => {
         <Stack.Screen name="FoodEditForm" component={FoodEditForm}  options={{headerShown:false}}/>
         <Stack.Screen name="FoodInsertView" component={FoodInsertView}  options={{headerShown:false}}/>
         <Stack.Screen name="AdminLogIn" component={AdminLogIn}  options={{headerShown:false}}/>
-        
+        <Stack.Screen name="RegisterRO" component={RegisterRO} options={{headerShown:false}}/>
         <Stack.Screen name="RegisterAdmin" component={RegisterAdmin}  options={{headerShown:false}}/>
         <Stack.Screen name="Admin" component={AdminView}  options={{headerShown:false}}/>
         <Stack.Screen name="Donations" component={Donations}  options={{headerShown:false}}/>
