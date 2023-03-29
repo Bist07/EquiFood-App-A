@@ -3,8 +3,6 @@ import { Button, Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOp
 import React, { useState } from 'react'
 import stylesR from '../components/stylesR'
 import { Ionicons } from "@expo/vector-icons";
-import axios from 'axios';
-import config from '../config';
 import ImagePickerButton from '../components/ImagePicker'
 import { uploadFile } from '../API/ImageAPI'
 
@@ -34,32 +32,14 @@ const RestaurantInsertView = () => {
   };
 
   const onSubmitFormHandler = async (e) => {
-    try {
-
-      uploadFile(file, setImageURL)
-
-      const data = {
-        address: address,
-        hours: hours,
-        cuisine: cuisine,
-        name: name,
-        ImageURL: imageURL
-      };
-
-      const response = await axios({
-        url: `${config.local.url}:${config.local.port}/Restaurant/Insert`,
-        method: 'post',
-        data: data,
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      });
-
-      alert("Restaurant added");
-    } catch (error) {
-      console.log(error);
-      alert("An error has occurred");
-    }
+    const data = {
+      address: address,
+      hours: hours,
+      cuisine: cuisine,
+      name: name,
+      ImageURL: ''
+    };
+    await uploadFile(name, file, 'restaurant', data)
   }
 
   return (
