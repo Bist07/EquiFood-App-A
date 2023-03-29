@@ -13,7 +13,6 @@ const FoodInsertView = () => {
   const [discPrice, setDiscPrice] = useState(0);
   const [servings, setServings] = useState(0);
   const [file, setFile] = useState();
-  const [imageURL, setImageURL] = useState('');
   const restaurantId = 1;
 
   const onChangeNameHandler = (name) => {

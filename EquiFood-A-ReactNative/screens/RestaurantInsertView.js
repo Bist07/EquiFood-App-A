@@ -12,7 +12,6 @@ const RestaurantInsertView = () => {
   const [address, setAddress] = useState('');
   const [cuisine, setCuisine] = useState('');
   const [file, setFile] = useState();
-  const [imageURL, setImageURL] = useState('');
   const [name, setName] = useState('');
 
   const onChangeHoursHandler = (hours) => {
