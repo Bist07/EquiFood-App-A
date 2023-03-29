@@ -191,7 +191,7 @@ import config from '../config';
                    </TouchableOpacity>   
             
                 
-                <View style={{display:'flex', flexDirection:2, justifyContent:"space-evenly"}}>
+                <View style={{display:'flex', flexDirection:"row", justifyContent:"space-evenly"}}>
                  
                   <TouchableOpacity style={stylesR.ROFormButtons}
                   onPress={() => navigation.navigate('RestaurantInsertView')}> 
