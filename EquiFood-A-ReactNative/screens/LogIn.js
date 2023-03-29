@@ -5,6 +5,8 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { MaterialIcons } from '@expo/vector-icons';
 import axios from 'axios';
 import config from '../config';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { lessThan } from 'react-native-reanimated';
 
 
 
@@ -41,10 +43,6 @@ const LogIn = () => {
     };
 
     const onSubmitFormHandler = async (e) => {
-
-
-
-
     if(email.length !=0 && enteredPassword.length !=0){
     try {
         const data = {
@@ -63,11 +61,20 @@ const LogIn = () => {
              },
             });
     
-
+            //checking data from database call
             console.log(response.data.PasswordGood); 
+            console.log(response.data.idnum);
+            console.log(response.data.name)
             var passwordValid = response.data.PasswordGood;
 
             if(passwordValid == true){
+                //Setting user State
+                   let user = {
+                   firstName: response.data.name,
+                   id: response.data.idnum,
+                   }
+               AsyncStorage.setItem('user', JSON.stringify(user));
+               //navigate to home page
                 navigation.navigate('RestaurantsView');
             }else{
                 alert("Email or Password Incorrect")
@@ -77,17 +84,11 @@ const LogIn = () => {
         console.log(error);
         alert("An error has occurred");
       }
-
-
-
-
     }
     else(alert("Please enter both an Email and a Password"));
 }
 
-  
-
-    
+   
     return (
         <View style={styles.root}>
 

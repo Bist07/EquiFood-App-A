@@ -1,5 +1,5 @@
-import { StyleSheet, View, SafeAreaView, TextInput, Image, Pressable, ScrollView, Text, TouchableOpacity, TouchableHighlight } from "react-native";
-import React from "react";
+import { StyleSheet, View, SafeAreaView, TextInput, Image, Pressable, ScrollView, Text, TouchableOpacity, TouchableHighlight, } from "react-native";
+import React, { useEffect, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import RestaurantCard from "../components/RestaurantCard";
@@ -7,16 +7,41 @@ import Header from "../components/header";
 import Profile from "../components/Profile";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { Ionicons, Feather } from "@expo/vector-icons";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 // View of profile page 
+  
 
-const ProfilePage = (props) => {
-
+const ProfilePage =  (props) => {
+    const [userName, setUsername] = useState('');
     const route = useRoute();
     const navigation = useNavigation();
     const ProfileData = ProfileData;
 
+
+    //calling getuser function to set username
+    useEffect(() => {
+        getUser();
+      }, [])
+
+  //Retrieving User state Object and parsing out userName
+   const getUser = async () => {
+    try {
+      const savedUser = await AsyncStorage.getItem('user');
+      let parsed = JSON.parse(savedUser)
+      setUsername(parsed.firstName);
+      console.log(userName);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+      
+
+
     return (
+     
         <ScrollView style={{ backgroundColor: "#fff" }}>
             <View style={{ width: '100%' }}>
                 <View id="header">
@@ -24,7 +49,7 @@ const ProfilePage = (props) => {
                 </View>
             </View>
             <View style={styles.container}>
-
+    
 
                 <Pressable
                     onPress={() => navigation.goBack()}
@@ -48,7 +73,7 @@ const ProfilePage = (props) => {
                 <ScrollView>
                     <View style={styles.profile}>
                         <AntDesign name="user" size={120} color="black" />
-                        <Text style={styles.profileText}> Jane Doe </Text>
+                        <Text style={styles.profileText}> {userName} </Text>
                     </View>
                     <View style={styles.firstBreak}>
                     </View>
@@ -104,7 +129,6 @@ const ProfilePage = (props) => {
 
     );
 };
-
 export default ProfilePage;
 
 const styles = StyleSheet.create({
