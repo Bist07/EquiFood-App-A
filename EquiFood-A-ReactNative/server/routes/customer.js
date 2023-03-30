@@ -20,7 +20,7 @@ router.post('/register', async function (req, res) {
 router.post('/login', async function (req, res) {
     try {
         const { email, enteredPassword } = req.body; //change to email in future
-        const sqlGetUser = 'SELECT passwordHash FROM customer WHERE email = ?';
+        const sqlGetUser = 'SELECT passwordHash, first_name, id FROM customer WHERE email = ?';
         const rows = await pool.query(sqlGetUser, [email]); //pulls user id
 
 
@@ -29,15 +29,15 @@ router.post('/login', async function (req, res) {
 
             if (enteredPassword == rows[0].passwordHash) {
                 isValid = true;
-
             };
 
             console.log(rows[0].passwordHash)
             console.log(enteredPassword)
             console.log(isValid)
-            res.status(200).json({ PasswordGood: isValid })
-
-
+            console.log(rows[0].id);
+            //returning appropriate values
+            res.status(200).json({ PasswordGood: isValid, idnum: rows[0].id, name: rows[0].first_name})
+          
         }
         res.status(200).send() //also need to change to email in future
 
