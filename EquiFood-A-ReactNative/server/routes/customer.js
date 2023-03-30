@@ -29,8 +29,6 @@ router.post('/login', async function (req, res) {
 
             if (enteredPassword == rows[0].passwordHash) {
                 isValid = true;
-                
-
             };
 
             console.log(rows[0].passwordHash)
@@ -39,11 +37,7 @@ router.post('/login', async function (req, res) {
             console.log(rows[0].id);
             //returning appropriate values
             res.status(200).json({ PasswordGood: isValid, idnum: rows[0].id, name: rows[0].first_name})
-            
-            //res.status(200).json({ firstName: rows[0].first_name })
-            //res.status(200).json({ id: id})
-
-
+          
         }
         res.status(200).send() //also need to change to email in future
 

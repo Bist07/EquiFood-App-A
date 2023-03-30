@@ -11,14 +11,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 // View of profile page 
-  
-
 const ProfilePage =  (props) => {
     const [userName, setUsername] = useState('');
     const route = useRoute();
     const navigation = useNavigation();
     const ProfileData = ProfileData;
-
 
     //calling getuser function to set username
     useEffect(() => {
@@ -36,10 +33,6 @@ const ProfilePage =  (props) => {
       console.log(error);
     }
   };
-
-      
-
-
     return (
      
         <ScrollView style={{ backgroundColor: "#fff" }}>
