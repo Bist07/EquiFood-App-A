@@ -14,7 +14,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons'; 
 
 
-// View of Restaurant Requests to be implemented
+// View of Restaurant Requests
 
 
 const RestaurantRequests = ({onPress, text}) => {
@@ -26,85 +26,52 @@ const RestaurantRequests = ({onPress, text}) => {
     // const restaurant = props.restaurant;
     
     return (
-        <ScrollView style={{backgroundColor:"#FFF"}}>
-                      <Pressable
-                        onPress={() => navigation.goBack()}
-                        style={{
-                            backgroundColor: "#50c864",
-                            width: 30,
-                            height: 30,
-                            borderRadius: 15,
-                            justifyContent: "center",
-                            alignItems: "center",
-                            marginLeft: 20,
-                            marginTop: 90,
-                            marginBottom: 15
-                        }}
-                    >
-                    <Ionicons name="chevron-back-outline" size={22} color="white" />
-            </Pressable>
-        <View style={{width: '100%' }}>
+        <View style={styles.root}> 
+            <View style={{alignSelf: "flex-start", marginTop: 70}}>
+            <Pressable
+                onPress={() => navigation.goBack()}
+                style={{
+                    backgroundColor: '#50C878',
+                    width: 35,
+                    height: 35,
+                    borderRadius: 17,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginLeft: 2,
+                    marginTop:-10,
+                    marginBottom:10,
+                }}
+                >
+                <Ionicons name="chevron-back-outline" size={20} color="white"  />
+                </Pressable>
+            </View>
+   
+            <Text style={{fontSize:35, marginTop:20}}> Restaurant Requests </Text>
+            <Text style={{ textAlign: "center", marginTop: 12, fontSize:15, fontWeight: "205"}}> Select restaurant to view restaurant information</Text>
 
 
-        <View style={styles.container}>
-                <Text  style={styles.title}> Restaurant Requests </Text>
+            <ScrollView style={styles.body}>
+    
+
+                <View style={{ marginTop: 40, width: "100%"}}>
+
+                <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, marginBottom:10, marginTop:20}}>
+                </View>
+
                 
-                <Text style={{ textAlign: "center", marginTop: 10, fontSize:16, fontWeight: "205"}}> Select restaurant to view restaurant information</Text>
+                <View style={styles.card}>
+                <TouchableOpacity>
+                    <Text style= {{fontWeight:"bold", padding: 20, fontSize:20}}> Restaurant Name </Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Feather name="check-square" size={22} color="#50C878" style={{margin:10, padding:10, borderColor: '#ccc', borderWidth:1}} />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <MaterialCommunityIcons name="delete-forever-outline" size={28} color="#DC143C" style={{margin:10, padding:7, borderColor: '#ccc', borderWidth:1}}   />
+                </TouchableOpacity>              
+                </View>
                 
-                <View style={{ marginTop: 40}}>
-                <TouchableOpacity style={styles.AdminItem}
-                                // onPress={() => navigation.navigate('RestaurantRequests')}
-                                >
-                                <View style={styles.innerContent}>
-                                
-                                    <Text style={styles.textStyle}> IHop </Text>
-                                    <Feather name="check-square" size={22} color="#80461B" style={styles.accept} />
-                                <MaterialCommunityIcons name="delete-forever-outline" size={28} color="#80461B" style={styles.cancel} />
-                                </View>
-                                
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.AdminItem}
-                                // onPress={() => navigation.navigate('RestaurantRequests')}
-                                >
-                                    
-                                <View style={styles.innerContent}>
-                                    <Text style={styles.textStyle}> Tim Hortons </Text>
-                                    <Feather name="check-square" size={22} color="#80461B" style={styles.accept} />
-                                <MaterialCommunityIcons name="delete-forever-outline" size={28} color="#80461B" style={styles.cancel} />
-                                </View>
-                                
-                                
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.AdminItem}
-                                // onPress={() => navigation.navigate('RestaurantRequests')}
-                                >
-                                <View style={styles.innerContent}>
-                                    <Text style={styles.textStyle}> Starbucks </Text>
-                                    <Feather name="check-square" size={22} color="#80461B" style={styles.accept} />
-                                <MaterialCommunityIcons name="delete-forever-outline" size={28} color="#80461B" style={styles.cancel} />
-                                </View>
-                                
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.AdminItem}
-                                // onPress={() => navigation.navigate('RestaurantRequests')}
-                                >
-                                <View style={styles.innerContent}>
-                                    <Text style={styles.textStyle}> OPA! of Greece </Text>
-                                    <Feather name="check-square" size={22} color="#80461B" style={styles.accept} />
-                                <MaterialCommunityIcons name="delete-forever-outline" size={28} color="#80461B" style={styles.cancel} />
-                                </View>
-                                
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.AdminItem}
-                                // onPress={() => navigation.navigate('RestaurantRequests')}
-                                >
-                                <View style={styles.innerContent}>
-                                    <Text style={styles.textStyle}> JOEY Kelowna </Text>
-                                    <Feather name="check-square" size={22} color="#80461B" style={styles.accept} />
-                                <MaterialCommunityIcons name="delete-forever-outline" size={28} color="#80461B" style={styles.cancel} />
-                                </View>
-                                
-                </TouchableOpacity>
+                
                 {/* <TouchableOpacity style={styles.AdminItem}
                                 // onPress={() => navigation.navigate('RestaurantRequests')}
                                 >
@@ -115,12 +82,12 @@ const RestaurantRequests = ({onPress, text}) => {
                                 </View>
                                 
                 </TouchableOpacity> */}
-                </View>
+              
                 
         </View>
         
-        </View>
         </ScrollView>
+        </View>
     )
 }
 
@@ -129,6 +96,27 @@ export default RestaurantRequests;
 const styles = StyleSheet.create({
 
 
+root:{
+    alignItems: 'center',
+    padding: 20,
+    backgroundColor: 'white',
+    flex:1,
+},
+body:{
+    // alignItems: 'left',
+    backgroundColor:"#FFF",
+    width:"100%",
+    // marginLeft: -110,
+},
+card:{
+    flexDirection:'row', 
+    borderBottomColor:'#ccc', 
+    borderBottomWidth:1, 
+    paddingBottom:10, 
+    paddingTop:10,
+    // marginBottom:25, 
+    // marginTop:30
+},
 
     container: {
         flow: 1,
@@ -197,8 +185,5 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
         paddingRight: 15,
     },
-
-
-
 
 });

@@ -1,14 +1,15 @@
-import React, {useState} from 'react'
-import { StyleSheet, View, Text, Image, Pressable, TouchableOpacity, TouchableHighlight, TextInput, ScrollView} from 'react-native'
-import Logo from '../assets/logos/Equifood_Logo.png'
-import CustomInput from '../components/CustomInput'
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
-import {MaterialIcons} from '@expo/vector-icons';
+import { StyleSheet, Flatlist, View, SafeAreaView, TextInput, Image, Pressable, ScrollView, Text, TouchableOpacity } from "react-native";
+import React, { useState, useEffect } from 'react';
+import { AntDesign } from "@expo/vector-icons";
+import RestaurantCard from "../components/RestaurantCard";
+import Header from "../components/header";
+import ProfilePage from "./ProfilePage";
+import { getRestaurants } from "../API/RestaurantAPI";
+import {useNavigation} from "@react-navigation/native";
+import { FlatList } from "react-native-gesture-handler";
+import stylesR from '../components/stylesR'
 import { Ionicons, Feather } from "@expo/vector-icons";
-import Header from '../components/header';
-import RestaurantData from "../data/RestaurantData";
-import AdminRestaurantView from '../components/AdminRestaurantView';
+import CurrentRestaurantsCard from "../components/CurrentRestaurantsCard";
 
 // View of current donations
 
@@ -17,15 +18,19 @@ import AdminRestaurantView from '../components/AdminRestaurantView';
 
 
 const ViewCurrentRestaurants = ({onPress, text}) => {
-    const [username, setUsername] = useState('');    
-    const [password, setPassword] = useState('');
-    const route = useRoute();
-    const navigation = useNavigation();
-    const storeData = RestaurantData;
-    // const restaurant = props.restaurant;
+    const [storeData, setStoreData] = useState([]);
+    useEffect(() => {
+      async function fetchData() {
+        const result = await getRestaurants();
+        setStoreData(result);
+      }
+      fetchData();
+    
+    }, []);
     
     return (
-<ScrollView style={{backgroundColor:"#FFF"}}>
+        <View style={{backgroundColor: 'white',}}> 
+
                       <Pressable
                         onPress={() => navigation.goBack()}
                         style={{
@@ -42,11 +47,21 @@ const ViewCurrentRestaurants = ({onPress, text}) => {
                     >
                     <Ionicons name="chevron-back-outline" size={22} color="white" />
             </Pressable>
-        
 
+            <View style={{backgroundColor: 'white', alignItems: 'center'}}>
+                <Text style={{fontSize:25, marginTop:10,}}>View Current Restaurants</Text>
+            </View>
+        
+        <ScrollView style={{backgroundColor:"#FFF"}}>
+
+                      <View style={{ marginLeft: 40, marginRight: 40, marginTop: 30 }}>
+            {storeData.map((item, index) => <CurrentRestaurantsCard key={index} item={item} />)}
+          </View>
                 
 
         </ScrollView>
+        </View>
+    
     )
 }
 
@@ -54,6 +69,12 @@ export default ViewCurrentRestaurants;
 
 const styles = StyleSheet.create({
 
+    root:{
+        // alignItems: 'center',
+        // padding: 20,
+        backgroundColor: 'white',
+        // flex:1,
+    },
 
 
     container: {

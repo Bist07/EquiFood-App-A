@@ -1,22 +1,71 @@
-import { StyleSheet, View, SafeAreaView, TextInput, Image, Pressable, ScrollView, Text } from "react-native";
+import { StyleSheet, Flatlist, View, SafeAreaView, TextInput, Image, Pressable, ScrollView, Text } from "react-native";
 import React, { useState, useEffect } from 'react';
 import { AntDesign } from "@expo/vector-icons";
 import RestaurantCard from "../components/RestaurantCard";
 import Header from "../components/header";
 import ProfilePage from "./ProfilePage";
 import { getRestaurants } from "../API/RestaurantAPI";
+import {useNavigation} from "@react-navigation/native";
+import { FlatList } from "react-native-gesture-handler";
+import stylesR from '../components/stylesR'
 // This page displays all restaurant data in one page.
 
-const RestaurantsView = () => {
-  const [storeData, setStoreData] = useState([]);
+// const navigation = useNavigation();
 
+const RestaurantsView = () => {
+  const [filteredData, setfilteredData] = useState([]);
+
+  const [input,setInput] = useState([]);
+  // console.log(input)
+
+  const navigation = useNavigation();
+  const [masterData, setmasterData] = useState([]);
+  const [search, setsearch] = useState('');
+
+  const [storeData, setStoreData] = useState([]);
   useEffect(() => {
     async function fetchData() {
       const result = await getRestaurants();
       setStoreData(result);
+      setmasterData(result);
     }
     fetchData();
+  
   }, []);
+
+  const SearchFilter = ({data, input, setInput}) => {
+    return(
+      <View>
+        {/* <Text>Search Filter</Text> */}
+        
+        <FlatList contentContainerStyle={{flexGrow: 1}} data = {data} renderItem = {({item}) => {
+          if(input === ""){
+            return(
+              <View>
+                <Text><RestaurantCard item={item}/> </Text>
+              </View>
+            )
+          }
+          if(item.name.toLowerCase().includes(input.toLowerCase())){ //.toLowerCase()
+            return(
+              <View>
+                <Text><RestaurantCard item={item}/> </Text>
+              </View>
+            )
+          }
+        }}
+        ListHeaderComponent={() => (
+          <Text style={{ fontSize: 30, textAlign: "center",marginTop:20,fontWeight:'bold',textDecorationLine: 'underline' }}>
+          </Text>
+        )}
+        ListFooterComponent={() => (
+          <Text style={{ fontSize: 30, textAlign: "center",marginBottom:20,fontWeight:'bold' }}></Text>
+        )}
+        />
+      </View>
+    )
+  
+  } 
 
   return (
     <View style={{ backgroundColor: "#fff" }}>
@@ -35,26 +84,36 @@ const RestaurantsView = () => {
             }}
           >
             <AntDesign name="search1" size={20} color="gray" />
-            <TextInput style={{ paddingLeft: 5 }} placeholder="Restaurant name, cuisines, or a dish"></TextInput>
+            <TextInput
+             style={{ paddingLeft: 5 }}
+             value = {input}
+             placeholder="Restaurant name, cuisines, or a dish"
+             onChangeText={(text) => setInput(text)}
+             />
       </View>
-      <ScrollView style={{ marginTop: 10, backgroundColor: "#fff" }}>
-        <View style={{ width: '100%', backgroundColor: "#fff" }}>
+      <View>
+      {/* <FlatList style={{ marginLeft: 40, marginRight: 40, marginTop: 30 }}
+              data = {storeData}
+              keyExtractor= {(item, index) => index.toString()}
+              ItemSeparatorComponent= {ItemSeparatorView}
+              renderItem= {ItemView}
+
+            /> */}
+      </View>
+      <View style={{ width: '80%', backgroundColor: "#fff" }}>
           <View id="header">
             {/* <Header /> */}
           </View>
         </View>
-        <View style={{ marginTop: 10, }}>
+        <View style={{ marginTop: 10,height:"90%" }}>
 
-          <View>
-            {/* <Text style={{fontSize:17, fontWeight:'bold', padding:4 }}>Restaurants</Text> */}
-          </View>
-
-          <View style={{ marginLeft: 40, marginRight: 40, marginTop: 30 }}>
+          <SearchFilter data = {storeData} input = {input} setInput = {setInput}/>
+          {/* <View style={{ marginLeft: 40, marginRight: 40, marginTop: 30 }}>
             {storeData.map((item, index) => <RestaurantCard key={index} item={item} />)}
-          </View>
-        </View>
-      </ScrollView>
-    </View>
+          </View> */}
+
+        </View>   
+    </View> 
   );
 };
 

@@ -106,101 +106,69 @@ import config from '../config';
         //Page Front end and styling below
         return (
           <>
-            <View style={{paddingTop:20}} id="header">
-                   {/* <Header /> */}
-            </View>
+          <View style={styles.root}> 
+          <View style={{alignSelf: "flex-start", marginTop: 70}}>
             <Pressable
-              onPress={() => navigation.goBack()}
-              style={{
-                backgroundColor: "#006A4E",
-                width: 40,
-                height: 40,
-                borderRadius: 20,
-                justifyContent: "center",
-                alignItems: "center",
-                marginLeft: 10,
-                marginTop: 30,
-              }}
-            >
-              <Ionicons name="chevron-back-outline" size={24} color="white" />
-            </Pressable>   
-            <ScrollView style={stylesR.FoodInsertView}>
-      
-               <Text style={styles.title}>Enter Your ADMIN Information</Text>
-             
-      
-              <View>
-                <Text style={styles.subtitles}>First Name</Text>
-                <View style={styles.input}>
-                    <TextInput placeholder={"First Name"} value={first_name} onChangeText={onChangeFirstNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
-                </View>
-              </View>
-      
-              <View>
-                <Text style={styles.subtitles}>Last Name</Text>
-                <View style={styles.input}>
-                    <TextInput placeholder={"Last Name"} value={last_name} onChangeText={onChangeLastNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
-                </View>
-              </View>
-      
-              <View>
-                <Text style={styles.subtitles}>Email</Text>
-                <View style={styles.input}>
-                    <TextInput placeholder={"Email"} value={email} onChangeText={onChangeEmailHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="email-address" />
-                </View>
-              </View>
+                onPress={() => navigation.goBack()}
+                style={{
+                  backgroundColor: '#50C878',
+                  width: 35,
+                  height: 35,
+                  borderRadius: 17,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginLeft: 2,
+                  marginTop:-10,
+                  marginBottom:10,
+                }}
+              >
+                <Ionicons name="chevron-back-outline" size={20} color="white"  />
+              </Pressable>
+        </View>
 
-              <View>
-                <Text style={styles.subtitles}>Password</Text>
-                
-                <View style={styles.input}>
-                    <TextInput placeholder={"Password"} value={passwordHash} onChangeText={onChangePasswordHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
-                </View>
-                <Text style={{marginBottom: 20}}>Must be longer than 5 characters and have a number </Text>
-                
-              </View>
+        <Text style={{fontSize:22, marginTop:35}}> Enter Your Restaurant Information</Text>
 
-              <View>
-                <Text style={styles.subtitles}>Verify Password</Text>
-                <View style={styles.input}>
-                    <TextInput placeholder={"Verify Password"} value={passwordCheck} onChangeText={onChangePasswordCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
-                </View>
-              </View>
+            <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:70}}>
+            <TextInput placeholder={"First Name"} value={first_name} onChangeText={onChangeFirstNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
+            </View>
 
-              
-              <View>
-                <Text style={styles.subtitles}>Company Code</Text>
-                <View style={styles.input}>
-                    <TextInput placeholder={"Company Code"} value={CompanyCode} onChangeText={onChangeCompanyCodeCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
-                </View>
-              </View>
-      
-              
-      
-              
-      
-              <View>
-                
-                
-                 
-                   <TouchableOpacity style={stylesR.ROFormButtons}>
-                   <Button
-                   title="Submit"
-                   onPress={onSubmitFormHandler}
-                   />
-                   </TouchableOpacity>   
-            
-                
-                <View style={{display:'flex', flexDirection:"row", justifyContent:"space-evenly"}}>
-                 
-                  <TouchableOpacity style={stylesR.ROFormButtons}
+            <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:20}}>
+            <TextInput placeholder={"Last Name"} value={last_name} onChangeText={onChangeLastNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
+            </View>
+
+            <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:20}}>
+            <TextInput placeholder={"Email"} value={email} onChangeText={onChangeEmailHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="email-address" />
+            </View>
+
+            <Text style={{fontSize:11, marginTop:16}}> Password must be longer than 5 characters and have a number. </Text>
+           
+            <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:20}}>
+            <TextInput placeholder={"Password"} value={passwordHash} onChangeText={onChangePasswordHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
+            </View>
+
+            <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:20}}>
+            <TextInput placeholder={"Verify Password"} value={passwordCheck} onChangeText={onChangePasswordCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
+            </View>
+
+            <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:20}}>
+            <TextInput placeholder={"Company Code"} value={CompanyCode} onChangeText={onChangeCompanyCodeCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
+            </View>
+
+            <View style={{display:'flex', flexDirection:"row", justifyContent:"space-evenly"}}>
+              <TouchableOpacity style={styles.formButtons} onPress={onSubmitFormHandler}>
+                <Text style={styles.buttonText}> Submit </Text>
+              </TouchableOpacity>   
+            </View>
+
+            <View style={{display:'flex', flexDirection:"row", justifyContent:"space-evenly"}}>
+                <TouchableOpacity style={styles.formButtons}
                   onPress={() => navigation.navigate('RestaurantInsertView')}> 
-                      <Button title="Reset" style={stylesR.ROButtonText}></Button>
-                  </TouchableOpacity> 
+                      <Text style={styles.buttonText}> Reset </Text>
+                 </TouchableOpacity> 
                 </View>
       
               </View>
-            </ScrollView>
+
           </>
         )
       }
@@ -209,6 +177,34 @@ import config from '../config';
       
       
       const styles = StyleSheet.create({
+
+        root:{
+          alignItems: 'center',
+          padding: 20,
+          backgroundColor: 'white',
+          flex:1,
+          // borderTopLeftRadius:50,
+          // borderTopRightRadius: 50,
+          // borderBottomLeftRadius: 50,
+          // borderBottomEndRadius: 50
+      },
+      formButtons:{
+          backgroundColor: '#50C878',
+          width: '70%',
+          padding: 7,
+          marginVertical: 5,
+          marginTop:12,
+  
+          alignItems: 'center',
+          borderRadius: 5,
+          
+      },
+      buttonText:{
+        padding: 10,
+        textAlign: "center",
+        fontWeight:'bold',
+        color:'white',
+       },
          container: {
             paddingTop: 23
          },
