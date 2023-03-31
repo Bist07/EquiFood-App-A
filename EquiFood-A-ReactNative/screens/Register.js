@@ -5,7 +5,18 @@ import stylesR from '../components/stylesR'
 import { Ionicons } from "@expo/vector-icons";
 import axios from 'axios';
 import config from '../config';
+var bcrypt = require('bcryptjs');
+import isaac from "isaac";
 
+
+//fallback for hash api
+bcrypt.setRandomFallback((len) => {
+	const buf = new Uint8Array(len);
+
+	return buf.map(() => Math.floor(isaac.random() * 256));
+});
+
+var salt = bcrypt.genSaltSync(10);
 
 
     const Register = () => {
@@ -55,7 +66,8 @@ import config from '../config';
       
         const onSubmitFormHandler = async (e) => {
        
-          
+          //hashes password
+          var hash = bcrypt.hashSync(passwordHash, salt);
 
 
         
@@ -67,7 +79,7 @@ import config from '../config';
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
-                passwordHash: passwordHash
+                passwordHash: hash
                 
             };
             console.log(JSON.stringify(data));
@@ -129,7 +141,7 @@ import config from '../config';
 
                 <Text style={{marginTop: 20, marginBottom:0, fontWeight: "bold"}}>Name</Text>
 
-            //    <Text style={styles.subtitles}>First Name</Text>
+                <Text style={styles.subtitles}>First Name</Text>
 
                 <View style={styles.input}>
                     <TextInput placeholder={"First Name"} value={first_name} onChangeText={onChangeFirstNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
@@ -140,7 +152,7 @@ import config from '../config';
 
                 <Text style={{marginTop:-20}}></Text>
 
-               // <Text style={styles.subtitles}>Last Name</Text>
+                <Text style={styles.subtitles}>Last Name</Text>
 
                 <View style={styles.input}>
                     <TextInput placeholder={"Last Name"} value={last_name} onChangeText={onChangeLastNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
@@ -151,7 +163,7 @@ import config from '../config';
 
                 <Text style={{marginTop: 15, marginBottom:0, fontWeight: "bold"}}>Email</Text>
 
-              //  <Text style={styles.subtitles}>Email</Text>
+                <Text style={styles.subtitles}>Email</Text>
 
                 <View style={styles.input}>
                     <TextInput placeholder={"Email"} value={email} onChangeText={onChangeEmailHandler}  style={{ flex:1, paddingVertical:0,}} keyboardType="email-address" />
@@ -162,7 +174,7 @@ import config from '../config';
 
                 <Text style={{marginTop:10, fontWeight: "bold"}}>Password</Text>
 
-          //      <Text style={styles.subtitles}>Password</Text>
+                <Text style={styles.subtitles}>Password</Text>
 
                 <View style={styles.input}>
                     <TextInput placeholder={"Password"} value={passwordHash} onChangeText={onChangePasswordHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
@@ -175,7 +187,7 @@ import config from '../config';
 
                 <Text style={{marginTop:-20}}></Text>
 
-             //   <Text style={styles.subtitles}>Verify Password</Text>
+               <Text style={styles.subtitles}>Verify Password</Text>
 
                 <View style={styles.input}>
                     <TextInput placeholder={"Verify Password"} value={passwordCheck} onChangeText={onChangePasswordCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
@@ -188,24 +200,18 @@ import config from '../config';
       
               <View style={{marginTop:20}}>
 
-                   <TouchableOpacity style={styles.formButtons}>
+                   <TouchableOpacity style={styles.formButtons}  onPress={onSubmitFormHandler}>
                    <Text style={styles.buttonText}>Submit</Text>
 
                    </TouchableOpacity>   
-{/* 
-                   <Button
-                   title="Submit"
-                   onPress={onSubmitFormHandler}
-                   /> */}
-            
-                
-                {/* <View style={{display:'flex', flexDirection:"row", justifyContent:"space-evenly"}}> */}
-                 {/* Reset Button?: */}
-                  {/* <TouchableOpacity style={styles.formButtons}
+
+                <View style={{display:'flex', flexDirection:"row", justifyContent:"space-evenly"}}> 
+               
+                 <TouchableOpacity style={styles.formButtons}
                   onPress={() => navigation.navigate('Register')}>  
                       <Text style={styles.buttonText}>Reset</Text>
-                  </TouchableOpacity>  */}
-                {/* </View> */}
+                  </TouchableOpacity> 
+                 </View> 
       
               </View>
             </ScrollView>

@@ -7,7 +7,15 @@ import axios from 'axios';
 import config from '../config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { lessThan } from 'react-native-reanimated';
+var bcrypt = require('bcryptjs');
+import isaac from "isaac";
 
+//fallback function for hash api
+bcrypt.setRandomFallback((len) => {
+	const buf = new Uint8Array(len);
+
+	return buf.map(() => Math.floor(isaac.random() * 256));
+});
 
 
 const LogIn = () => {
@@ -65,8 +73,9 @@ const LogIn = () => {
             console.log(response.data.PasswordGood); 
             console.log(response.data.idnum);
             console.log(response.data.name)
+            
             var passwordValid = response.data.PasswordGood;
-
+            
             if(passwordValid == true){
                 //Setting user State
                    let user = {
@@ -79,6 +88,7 @@ const LogIn = () => {
             }else{
                 alert("Email or Password Incorrect")
             }
+        
 
       } catch (error) {
         console.log(error);
