@@ -21,6 +21,7 @@ import {
   incrementQuantity,
   removeFromCart,
 } from "../redux/CartReducer";
+import { insertFoodOrder, insertOrderMenuItem } from "../API/OrdersAPI";
 
 const ViewCart = (props) => {
   const navigation = useNavigation();
@@ -29,7 +30,16 @@ const ViewCart = (props) => {
     .map((item) => item.price * item.quantity)
     .reduce((prev, curr) => prev + curr, 0);
 
-  console.log(cart)
+  const totalOriginalPrice = cart
+  .map((item) => item.original_price * item.quantity)
+  .reduce((prev, curr) => prev + curr, 0);
+
+  const totalDiscount = totalOriginalPrice - totalPrice;
+
+  const [custId, setCustId] = useState(1);
+  const [restId, setRestId] = useState(1);
+  const [menuItemID, setMenuItemID] = useState(0);
+  const [quantity, setQuantity] = useState(0);
 
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
@@ -39,9 +49,11 @@ const ViewCart = (props) => {
   const formattedPrice = (Math.round(totalPrice * 100) / 100).toFixed(2);
   let formattedTime = date.getHours() + ':' + date.getMinutes();
   const dispatch = useDispatch();
-
   const restaurantName = props.restaurantName;
 
+  console.log(date);
+  
+  
   const onTimeChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setDate(currentDate);
@@ -51,8 +63,8 @@ const ViewCart = (props) => {
     formattedTime = tempDate.getHours() + ':' + tempDate.getMinutes();
 
     const orderDate = new Date();
-    console.log(orderDate);
-    console.log(tempDate);
+    // console.log(orderDate);
+    // console.log(tempDate);
 
     if(orderDate > tempDate){
       alert("You have selected a time in the past. Please don't");
@@ -67,6 +79,27 @@ const ViewCart = (props) => {
   const placeOrder = () => {
     setModal(false);
     let formattedTime = date.getHours() + ':' + date.getMinutes();
+    setRestId(cart[0].restaurant_id);
+    
+
+    // setCustId(1);
+    //totalAmount =  totalPrice;
+    //reservation_datetime = date;
+    //discount = totalDiscount;
+
+    // JOIN THE TWO
+    // Need to create a food_order. Requires customer_id, restaurant_id, order_status_id, total_amount, reservation_datetime, discount
+    // Need to create order_status.
+
+    const formattedSQLDateTime = date.toISOString().slice(0, 19).replace('T', ' ');
+    insertFoodOrder(custId, restId, totalPrice, formattedSQLDateTime, totalDiscount);
+
+    menuOrderItemList = cart.map(item => {
+      return {"menu_item_id": item["id"], "qty_ordered": item["quantity"]}
+    });
+
+    insertOrderMenuItem(menuOrderItemList);
+    
     navigation.navigate("OrderPage", {
       restaurantName: restaurantName,
       orderTime: formattedTime,
