@@ -5,7 +5,7 @@ import stylesR from '../components/stylesR'
 import { Ionicons } from "@expo/vector-icons";
 import axios from 'axios';
 import config from '../config';
-var bcrypt = require('bcryptjs');
+import bcrypt from 'bcryptjs';
 import isaac from "isaac";
 
 

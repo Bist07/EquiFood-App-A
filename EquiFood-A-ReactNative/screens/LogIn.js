@@ -7,7 +7,7 @@ import axios from 'axios';
 import config from '../config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { lessThan } from 'react-native-reanimated';
-var bcrypt = require('bcryptjs');
+import bcrypt from 'bcryptjs';
 import isaac from "isaac";
 
 //fallback function for hash api
@@ -77,7 +77,7 @@ const LogIn = () => {
             var passwordValid = response.data.PasswordGood;
             
             if(passwordValid == true){
-                //Setting user State
+                //Setting user Stateq
                    let user = {
                    firstName: response.data.name,
                    id: response.data.idnum,
