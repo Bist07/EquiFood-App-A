@@ -14,45 +14,45 @@ const Admin = ({ onPress, text }) => {
 
     return (
         <View style={styles.root}>
-            <View style={{  backgroundColor: "white", paddingTop: 30 }}>
- 
-                    <Text style={{fontSize:32, marginBottom:70, textAlign: "center"}}> Administrator Portal </Text>
+            <View style={{ backgroundColor: "white", paddingTop: 30 }}>
 
-                    <Text style={{fontSize:20, marginBottom:4, textAlign: "center"}}> Welcome Administrator </Text>
+                <Text style={{ fontSize: 32, marginBottom: 70, textAlign: "center" }}> Administrator Portal </Text>
 
-                    <Text style={{fontSize:12, marginBottom:100, textAlign: "center"}}> Please select from the below options for Equifood maintenance. </Text>
+                <Text style={{ fontSize: 20, marginBottom: 4, textAlign: "center" }}> Welcome Administrator </Text>
 
-
-
-                            <TouchableOpacity style={styles.AdminItem}
-                                onPress={() => navigation.navigate('Donations')}>
-                                <Text style={styles.textStyle}> View Donations </Text>
-                                {/* <Text> To be developed... </Text> */}
-                            </TouchableOpacity>
+                <Text style={{ fontSize: 12, marginBottom: 100, textAlign: "center" }}> Please select from the below options for Equifood maintenance. </Text>
 
 
-                            <TouchableOpacity style={styles.AdminItem}
-                                onPress={() => navigation.navigate('RestaurantRequests')}>
-                                <View style={styles.innerContent}>
-                                    <Text style={styles.textStyle}> Restaurant Requests </Text>
-                                </View>
-                                {/* <Text> To be developed... </Text> */}
-                            </TouchableOpacity>
+
+                <TouchableOpacity style={styles.AdminItem}
+                    onPress={() => navigation.navigate('Donations')}>
+                    <Text style={styles.textStyle}> View Donations </Text>
+                    {/* <Text> To be developed... </Text> */}
+                </TouchableOpacity>
 
 
-                            <TouchableOpacity style={styles.AdminItem}
-                                onPress={() => navigation.navigate('ViewCurrentRestaurants')}>
-                                <Text style={styles.textStyle}> View Current Restaurants </Text>
-                                {/* <Text> To be developed... </Text> */}
-                            </TouchableOpacity>
-                        </View>
+                <TouchableOpacity style={styles.AdminItem}
+                    onPress={() => navigation.navigate('RestaurantRequests')}>
+                    <View style={styles.innerContent}>
+                        <Text style={styles.textStyle}> Restaurant Requests </Text>
+                    </View>
+                    {/* <Text> To be developed... </Text> */}
+                </TouchableOpacity>
 
-                        <View>
+
+                <TouchableOpacity style={styles.AdminItem}
+                    onPress={() => navigation.navigate('AdminRestaurantsView')}>
+                    <Text style={styles.textStyle}> View Current Restaurants </Text>
+                    {/* <Text> To be developed... </Text> */}
+                </TouchableOpacity>
+            </View>
+
+            <View>
 
 
-                        </View>
+            </View>
 
-          
+
         </View>
     )
 }
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         paddingTop: 15,
         paddingBottom: 15,
         marginBottom: 40,
-        marginLeft:15,
+        marginLeft: 15,
         marginRight: 15,
         // borderTopLeftRadius: 50,
         // borderTopRightRadius: 50,

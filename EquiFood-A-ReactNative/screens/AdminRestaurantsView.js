@@ -5,11 +5,11 @@ import RestaurantCard from "../components/RestaurantCard";
 import Header from "../components/header";
 import ProfilePage from "./ProfilePage";
 import { getRestaurants } from "../API/RestaurantAPI";
-import {useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { FlatList } from "react-native-gesture-handler";
 import stylesR from '../components/stylesR'
 import { Ionicons, Feather } from "@expo/vector-icons";
-import CurrentRestaurantsCard from "../components/CurrentRestaurantsCard";
+import AdminRestaurantsCard from "../components/AdminRestaurantsCard";
 
 // View of current donations
 
@@ -17,59 +17,59 @@ import CurrentRestaurantsCard from "../components/CurrentRestaurantsCard";
 // We will calculate donations as the difference from the original amount subtracted by the discounted amount
 
 
-const ViewCurrentRestaurants = ({onPress, text}) => {
+const AdminRestaurantsView = ({ onPress, text }) => {
     const [storeData, setStoreData] = useState([]);
     useEffect(() => {
-      async function fetchData() {
-        const result = await getRestaurants();
-        setStoreData(result);
-      }
-      fetchData();
-    
-    }, []);
-    
-    return (
-        <View style={{backgroundColor: 'white',}}> 
+        async function fetchData() {
+            const result = await getRestaurants();
+            setStoreData(result);
+        }
+        fetchData();
 
-                      <Pressable
-                        onPress={() => navigation.goBack()}
-                        style={{
-                            backgroundColor: "#50c864",
-                            width: 30,
-                            height: 30,
-                            borderRadius: 15,
-                            justifyContent: "center",
-                            alignItems: "center",
-                            marginLeft: 20,
-                            marginTop: 90,
-                            marginBottom: 15
-                        }}
-                    >
-                    <Ionicons name="chevron-back-outline" size={22} color="white" />
+    }, []);
+
+    return (
+        <View style={{ backgroundColor: 'white', }}>
+
+            <Pressable
+                onPress={() => navigation.goBack()}
+                style={{
+                    backgroundColor: "#50c864",
+                    width: 30,
+                    height: 30,
+                    borderRadius: 15,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginLeft: 20,
+                    marginTop: 90,
+                    marginBottom: 15
+                }}
+            >
+                <Ionicons name="chevron-back-outline" size={22} color="white" />
             </Pressable>
 
-            <View style={{backgroundColor: 'white', alignItems: 'center'}}>
-                <Text style={{fontSize:25, marginTop:10,}}>View Current Restaurants</Text>
+            <View style={{ backgroundColor: 'white', alignItems: 'center' }}>
+                <Text style={{ fontSize: 25, marginTop: 10, }}>View Current Restaurants</Text>
             </View>
-        
-        <ScrollView style={{backgroundColor:"#FFF"}}>
 
-                      <View style={{ marginLeft: 40, marginRight: 40, marginTop: 30 }}>
-            {storeData.map((item, index) => <CurrentRestaurantsCard key={index} item={item} />)}
-          </View>
-                
+            <ScrollView style={{ backgroundColor: "#FFF" }}>
 
-        </ScrollView>
+                <View style={{ marginLeft: 40, marginRight: 40, marginTop: 30 }}>
+                    {storeData.map((item, index) => <AdminRestaurantsCard key={index} item={item} />)}
+                </View>
+
+
+            </ScrollView>
         </View>
-    
+
     )
 }
 
-export default ViewCurrentRestaurants;
+export default AdminRestaurantsView;
 
 const styles = StyleSheet.create({
 
-    root:{
+    root: {
         // alignItems: 'center',
         // padding: 20,
         backgroundColor: 'white',
@@ -83,16 +83,16 @@ const styles = StyleSheet.create({
         padding: 10,
         width: "100%",
         alignItems: "center",
-        
+
 
     },
-    accept:{
-        marginLeft:1,
+    accept: {
+        marginLeft: 1,
 
     },
-    cancel:{
+    cancel: {
         marginTop: -24,
-        marginLeft:220,
+        marginLeft: 220,
     },
 
     innerContainer: {
@@ -109,19 +109,19 @@ const styles = StyleSheet.create({
         // fontWeight: "bold",
         fontSize: 30,
         textAlign: "center",
-    }, 
-    linkButton:{
+    },
+    linkButton: {
         backgroundColor: '#50C878',
         width: '70%',
         padding: 15,
         marginVertical: 5,
-        marginTop:70,    
+        marginTop: 70,
         alignItems: 'center',
         borderRadius: 14
     },
-    linkText:{
-        fontWeight:'bold',
-        color:'white',
+    linkText: {
+        fontWeight: 'bold',
+        color: 'white',
         textAlign: "center"
     },
 
