@@ -5,7 +5,7 @@ if (Platform.OS === 'ios') {
     // var url = "http://localhost";
 }
 if (Platform.OS === 'android') {
-    var url = "http://192.168.0.36";
+    var url = "http://192.168.248.227";
 }
 
 export default config = {

@@ -36,16 +36,17 @@ const RestaurantInsertView = () => {
       hours: hours,
       cuisine: cuisine,
       name: name,
-      ImageURL: ''
+      ImageURL: '',
+      status: 'pending',
     };
     await uploadFile(name, file, 'restaurant', data)
   }
 
   return (
     <>
-    <View style={styles.root}> 
-            <View style={{alignSelf: "flex-start", marginTop: 70}}>
-        <Pressable
+      <View style={styles.root}>
+        <View style={{ alignSelf: "flex-start", marginTop: 70 }}>
+          <Pressable
             onPress={() => navigation.goBack()}
             style={{
               backgroundColor: '#50C878',
@@ -55,37 +56,33 @@ const RestaurantInsertView = () => {
               justifyContent: "center",
               alignItems: "center",
               marginLeft: 2,
-              marginTop:-10,
-              marginBottom:10,
+              marginTop: -10,
+              marginBottom: 10,
             }}
           >
-            <Ionicons name="chevron-back-outline" size={20} color="white"  />
+            <Ionicons name="chevron-back-outline" size={20} color="white" />
           </Pressable>
-          </View>   
+        </View>
 
 
-          <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:70}}>
+        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 70 }}>
           <TextInput placeholder={"Restaurant Name"} value={name} onChangeText={onChangeNameHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
-          </View>
+        </View>
 
-          <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:20}}>
-          <TextInput placeholder={"Address"} value={address} onChangeText={onChangeAddressHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-          </View>      
-
-          <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:20}}>
+        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 20 }}>
           <TextInput placeholder={"Cuisine"} value={cuisine} onChangeText={onChangeCuisineHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-         </View>     
+        </View>
 
-          <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:20}}>
+        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 20 }}>
           <TextInput placeholder={"Hours"} value={hours} onChangeText={onChangeHoursHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-          </View> 
+        </View>
 
-          <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:20}}>
+        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 20 }}>
           <TextInput placeholder={"Address"} value={address} onChangeText={onChangeAddressHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-          </View> 
+        </View>
 
 
-          <View>
+        <View>
           <Text style={{ marginBottom: 5 }}>Image</Text>
           <View style={styles.inputForm}>
             {<ImagePickerButton callback={setFile} />}
@@ -112,7 +109,7 @@ const RestaurantInsertView = () => {
             <TextInput placeholder={"Cuisine"} value={cuisine} onChangeText={onChangeCuisineHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
           </View>
         </View> */}
-{/* 
+        {/* 
         <View>
           <Text style={{ marginBottom: 5 }}>Hours</Text>
           <View style={stylesR.inputForm}>
@@ -153,53 +150,53 @@ export default RestaurantInsertView;
 
 const styles = StyleSheet.create({
 
-  root:{
+  root: {
     alignItems: 'center',
     padding: 20,
     backgroundColor: 'white',
-    flex:1,
+    flex: 1,
     // borderTopLeftRadius:50,
     // borderTopRightRadius: 50,
     // borderBottomLeftRadius: 50,
     // borderBottomEndRadius: 50
-},
-formButtons:{
+  },
+  formButtons: {
     backgroundColor: '#50C878',
     width: '80%',
     padding: 7,
     marginVertical: 5,
-    marginTop:12,
+    marginTop: 12,
 
     alignItems: 'center',
     borderRadius: 5,
-    
-},
-   container: {
-      paddingTop: 23
-   },
-   input: {
-      margin: 15,
-      marginLeft: 10,
-      paddingLeft: 10,
-      height: 40,
-      fontWeight: 'bold',
-      borderColor: '#50c864',
-      borderWidth: 2
-   },
-   buttonText:{
+
+  },
+  container: {
+    paddingTop: 23
+  },
+  input: {
+    margin: 15,
+    marginLeft: 10,
+    paddingLeft: 10,
+    height: 40,
+    fontWeight: 'bold',
+    borderColor: '#50c864',
+    borderWidth: 2
+  },
+  buttonText: {
     padding: 10,
     textAlign: "center",
-    fontWeight:'bold',
-    color:'white',
-   },
-   inputForm: {
-    flexDirection:'row',
-    borderColor:'#ccc', 
-    borderWidth:2, 
-    padding:8, 
-    marginBottom:25,
-    paddingBottom:8, 
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  inputForm: {
+    flexDirection: 'row',
+    borderColor: '#ccc',
+    borderWidth: 2,
+    padding: 8,
+    marginBottom: 25,
+    paddingBottom: 8,
     width: "100%",
-},
+  },
 
 })

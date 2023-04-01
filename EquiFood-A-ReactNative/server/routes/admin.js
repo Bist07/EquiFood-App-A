@@ -18,8 +18,6 @@ router.post('/AdminRegister', async function (req, res) {
     }
 });
 
-
-
 router.post('/login', async function (req, res) {
     try {
         const { email, enteredAdminPassword } = req.body; //change to email in future
@@ -50,4 +48,15 @@ router.post('/login', async function (req, res) {
     }
 
 });
+
+//get restaurants with 'pending' status
+router.get('/', async function (req, res) {
+    try {
+        const sqlQuery = "SELECT * FROM restaurant WHERE status = 'pending'"
+        const rows = await pool.query(sqlQuery);
+        res.status(200).json(rows);
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+})
 
