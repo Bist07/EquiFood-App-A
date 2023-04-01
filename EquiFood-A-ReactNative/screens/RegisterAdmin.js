@@ -5,7 +5,18 @@ import stylesR from '../components/stylesR'
 import { Ionicons } from "@expo/vector-icons";
 import axios from 'axios';
 import config from '../config';
+import bcrypt from 'bcryptjs';
+import isaac from "isaac";
 
+
+//fallback for hash api
+bcrypt.setRandomFallback((len) => {
+	const buf = new Uint8Array(len);
+
+	return buf.map(() => Math.floor(isaac.random() * 256));
+});
+
+var salt = bcrypt.genSaltSync(10);
 
 
     const RegisterAdmin = () => {
@@ -50,7 +61,8 @@ import config from '../config';
       
         const onSubmitFormHandler = async (e) => {
        
-          
+           //hashes password
+           var hash = bcrypt.hashSync(passwordHash, salt);
 
 
         //checking if password is valid
@@ -67,7 +79,7 @@ import config from '../config';
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
-                passwordHash: passwordHash,
+                passwordHash: hash,
                 company_code: CompanyCode
                 
             };
@@ -126,7 +138,7 @@ import config from '../config';
               </Pressable>
         </View>
 
-        <Text style={{fontSize:22, marginTop:35}}> Enter Your Restaurant Information</Text>
+        <Text style={{fontSize:22, marginTop:35}}> Enter Your Admin Information</Text>
 
             <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:70}}>
             <TextInput placeholder={"First Name"} value={first_name} onChangeText={onChangeFirstNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
