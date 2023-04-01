@@ -1,6 +1,17 @@
 import express from "express";
 import { pool } from '../helpers/database.js'
 export const router = express.Router()
+import bcrypt from 'bcryptjs'
+import isaac from "isaac";
+
+//fallback for hash api
+bcrypt.setRandomFallback((len) => {
+	const buf = new Uint8Array(len);
+
+	return buf.map(() => Math.floor(isaac.random() * 256));
+});
+
+
 
 router.post('/register', async function (req, res) {
     try {
@@ -22,15 +33,19 @@ router.post('/login', async function (req, res) {
         const { email, enteredPassword } = req.body; //change to email in future
         const sqlGetUser = 'SELECT passwordHash, first_name, id FROM customer WHERE email = ?';
         const rows = await pool.query(sqlGetUser, [email]); //pulls user id
-
+        
 
         if (rows) {
-            var isValid = false;
 
-            if (enteredPassword == rows[0].passwordHash) {
+         
+
+
+            var isValid = false;
+                    //compares hash in database to entered password
+             if (bcrypt.compareSync(enteredPassword, rows[0].passwordHash)) {
                 isValid = true;
             };
-
+            console.log(rows[0].passwordHash)
             console.log(rows[0].passwordHash)
             console.log(enteredPassword)
             console.log(isValid)
