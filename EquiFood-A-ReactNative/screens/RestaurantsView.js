@@ -87,27 +87,13 @@ const RestaurantsView = () => {
           onChangeText={(text) => setInput(text)}
         />
       </View>
-      <View>
-        {/* <FlatList style={{ marginLeft: 40, marginRight: 40, marginTop: 30 }}
-              data = {storeData}
-              keyExtractor= {(item, index) => index.toString()}
-              ItemSeparatorComponent= {ItemSeparatorView}
-              renderItem= {ItemView}
-
-            /> */}
-      </View>
       <View style={{ width: '80%', backgroundColor: "#fff" }}>
         <View id="header">
           {/* <Header /> */}
         </View>
       </View>
       <View style={{ marginTop: 10, height: "90%" }}>
-
         <SearchFilter data={storeData} input={input} setInput={setInput} />
-        {/* <View style={{ marginLeft: 40, marginRight: 40, marginTop: 30 }}>
-            {storeData.map((item, index) => <RestaurantCard key={index} item={item} />)}
-          </View> */}
-
       </View>
     </View>
   );
