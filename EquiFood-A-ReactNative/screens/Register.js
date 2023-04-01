@@ -4,8 +4,20 @@ import React, { useState } from 'react'
 import stylesR from '../components/stylesR'
 import { Ionicons } from "@expo/vector-icons";
 import axios from 'axios';
-import config from '../config';
 import {MaterialIcons} from '@expo/vector-icons';
+import config from '../config';
+import bcrypt from 'bcryptjs';
+import isaac from "isaac";
+
+
+//fallback for hash api
+bcrypt.setRandomFallback((len) => {
+	const buf = new Uint8Array(len);
+
+	return buf.map(() => Math.floor(isaac.random() * 256));
+});
+
+var salt = bcrypt.genSaltSync(10);
 
     const Register = () => {
         const navigation = useNavigation();
