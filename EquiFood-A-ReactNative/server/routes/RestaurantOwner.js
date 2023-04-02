@@ -1,7 +1,15 @@
 import express from "express";
 import { pool } from '../helpers/database.js'
 export const router = express.Router()
+import bcrypt from 'bcryptjs'
+import isaac from "isaac";
 
+//fallback for hash api
+bcrypt.setRandomFallback((len) => {
+	const buf = new Uint8Array(len);
+
+	return buf.map(() => Math.floor(isaac.random() * 256));
+});
 
 //function to register new account
 router.post('/register', async function (req, res) {
@@ -28,10 +36,8 @@ router.post('/login', async function (req, res) {
 
         if (rows) {
             var isValid = false;
-
-            if (enteredRestaurantOwnerPassword == rows[0].passwordHash) {
+            if (bcrypt.compareSync(enteredRestaurantOwnerPassword, rows[0].passwordHash)) {
                 isValid = true;
-
             };
 
             console.log(rows[0].passwordHash)
