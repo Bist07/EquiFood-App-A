@@ -18,6 +18,7 @@ import AdminRestaurantsCard from "../components/AdminRestaurantsCard";
 
 
 const AdminRestaurantsView = ({ onPress, text }) => {
+    const navigation = useNavigation();
     const [storeData, setStoreData] = useState([]);
     useEffect(() => {
         async function fetchData() {
@@ -27,6 +28,8 @@ const AdminRestaurantsView = ({ onPress, text }) => {
         fetchData();
 
     }, []);
+
+   
 
     return (
         <View style={{ backgroundColor: 'white', }}>
