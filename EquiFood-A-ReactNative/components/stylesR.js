@@ -7,14 +7,16 @@ const stylesR = StyleSheet.create({
 
     /*Restaurants.js page */
     card:{
-        width:"100%",
+        width:"90%",
+        marginLeft:"5%",
+        marginRight: "5%",
         borderColor: "white",
         borderWidth:1,
         borderRadius: 15,
         // margin:7,
         shadowOpacity: 0.1,
         shadowRadius: 10,
-        marginBottom: 23,
+        marginBottom: 20,
 
     },
     borders:{

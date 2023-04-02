@@ -1,6 +1,15 @@
 import express from "express";
 import { pool } from '../helpers/database.js'
 export const router = express.Router()
+import bcrypt from 'bcryptjs'
+import isaac from "isaac";
+
+//fallback for hash api
+bcrypt.setRandomFallback((len) => {
+	const buf = new Uint8Array(len);
+
+	return buf.map(() => Math.floor(isaac.random() * 256));
+});
 
 router.post('/AdminRegister', async function (req, res) {
     try {
@@ -18,8 +27,6 @@ router.post('/AdminRegister', async function (req, res) {
     }
 });
 
-
-
 router.post('/login', async function (req, res) {
     try {
         const { email, enteredAdminPassword } = req.body; //change to email in future
@@ -30,9 +37,9 @@ router.post('/login', async function (req, res) {
         if (rows) {
             var isValid = false;
 
-            if (enteredAdminPassword == rows[0].passwordHash) {
+                //compares hash in database to entered password
+                if (bcrypt.compareSync(enteredAdminPassword, rows[0].passwordHash)) {
                 isValid = true;
-
             };
 
             console.log("DB pass: " + rows[0].passwordHash)
@@ -50,4 +57,15 @@ router.post('/login', async function (req, res) {
     }
 
 });
+
+//get restaurants with 'pending' status
+router.get('/', async function (req, res) {
+    try {
+        const sqlQuery = "SELECT * FROM restaurant WHERE status = 'pending'"
+        const rows = await pool.query(sqlQuery);
+        res.status(200).json(rows);
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+})
 

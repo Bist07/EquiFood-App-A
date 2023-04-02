@@ -24,14 +24,25 @@ router.get('/:id', async function (req, res) {
     }
 });
 
-// Insert food menu items
+// Insert Restaurant
 router.post('/Insert', async function (req, res) {
     try {
-        const { name, address, hours, ImageURL, cuisine } = req.body;
-        const sqlQuery = "INSERT INTO restaurant (name, address, hours, ImageURL, cuisine) VALUES (?,?,?,?,?)";
-        const result = await pool.query(sqlQuery, [name, address, hours, ImageURL, cuisine]);
+        const { name, address, hours, ImageURL, cuisine, status } = req.body;
+        const sqlQuery = "INSERT INTO restaurant (name, address, hours, ImageURL, cuisine, status) VALUES (?,?,?,?,?)";
+        const result = await pool.query(sqlQuery, [name, address, hours, ImageURL, cuisine, status]);
         res.status(200).send("Restaurant Added");
     } catch (error) {
         res.status(400).send(error.message)
+    }
+})
+
+router.post('/delete', async function (req, res) {
+    try {
+        const { id } = req.body;
+        const sqlQuery = "DELETE FROM restaurant WHERE id = '" + id + "'";
+        const result = await pool.query(sqlQuery, [id]);
+        res.status(200).send("Restaurant Added");
+    } catch (error) {
+        res.status(400).send(error.message);
     }
 })

@@ -14,63 +14,45 @@ const Admin = ({ onPress, text }) => {
 
     return (
         <View style={styles.root}>
+            <View style={{ backgroundColor: "white", paddingTop: 30 }}>
 
-            <ScrollView style={{ marginTop: 45, backgroundColor: "white" }}>
-                <View style={{ width: '100%', paddingTop: 70 }}>
-                    <View id="header">
-                        {/* <Header /> */}
+                <Text style={{ fontSize: 32, marginBottom: 70, textAlign: "center" }}> Administrator Portal </Text>
+
+                <Text style={{ fontSize: 20, marginBottom: 4, textAlign: "center" }}> Welcome Administrator </Text>
+
+                <Text style={{ fontSize: 12, marginBottom: 100, textAlign: "center" }}> Please select from the below options for Equifood maintenance. </Text>
+
+
+
+                <TouchableOpacity style={styles.AdminItem}
+                    onPress={() => navigation.navigate('Donations')}>
+                    <Text style={styles.textStyle}> View Donations </Text>
+                    {/* <Text> To be developed... </Text> */}
+                </TouchableOpacity>
+
+
+                <TouchableOpacity style={styles.AdminItem}
+                    onPress={() => navigation.navigate('RestaurantRequests')}>
+                    <View style={styles.innerContent}>
+                        <Text style={styles.textStyle}> Restaurant Requests </Text>
                     </View>
-                    <View style={styles.adminBackground}>
-
-                        <View style={styles.container}>
-
-                            <TouchableOpacity style={styles.AdminItem}
-                                onPress={() => navigation.navigate('Donations')}>
-                                <Text style={styles.textStyle}> View Donations </Text>
-                                {/* <Text> To be developed... </Text> */}
-                            </TouchableOpacity>
+                    {/* <Text> To be developed... </Text> */}
+                </TouchableOpacity>
 
 
-                            <TouchableOpacity style={styles.AdminItem}
-                                onPress={() => navigation.navigate('RestaurantRequests')}>
-                                <View style={styles.innerContent}>
-                                    <Text style={styles.textStyle}> Restaurant Requests </Text>
-                                </View>
-                                {/* <Text> To be developed... </Text> */}
-                            </TouchableOpacity>
+                <TouchableOpacity style={styles.AdminItem}
+                    onPress={() => navigation.navigate('AdminRestaurantsView')}>
+                    <Text style={styles.textStyle}> View Current Restaurants </Text>
+                    {/* <Text> To be developed... </Text> */}
+                </TouchableOpacity>
+            </View>
+
+            <View>
 
 
-                            <TouchableOpacity style={styles.AdminItem}
-                                onPress={() => navigation.navigate('ViewCurrentRestaurants')}>
-                                <Text style={styles.textStyle}> View Current Restaurants </Text>
-                                {/* <Text> To be developed... </Text> */}
-                            </TouchableOpacity>
-                        </View>
-
-                        {/* <View > 
-                <Text style={{fontSize:20, fontWeight: "bold", marginTop:20, marginBottom:10}}>Current Restaurants</Text>
-            </View> */}
-
-                        <View>
-
-                            {/* <Pressable onPress={() => navigation.navigate("RestaurantPage",{
-                id:restaurant.id,
-                name:restaurant.name,
-                address:restaurant.address,
-                cuisines:restaurant.cuisines,
-            })}></Pressable>
-             {storeData.map((store, index) => <AdminRestaurantView key={index} restaurant={store}/>)}
-            
-             */}
-
-                        </View>
+            </View>
 
 
-                    </View>
-
-
-                </View>
-            </ScrollView>
         </View>
     )
 }
@@ -83,7 +65,7 @@ const styles = StyleSheet.create({
 
     root: {
         alignItems: 'center',
-        padding: 20,
+        padding: 10,
         backgroundColor: 'white',
         flex: 1,
         // borderTopLeftRadius:50,
@@ -106,53 +88,25 @@ const styles = StyleSheet.create({
         // width: '100%',
         paddingTop: 15,
         paddingBottom: 15,
-        marginBottom: 15,
-        borderTopLeftRadius: 50,
-        borderTopRightRadius: 50,
-        borderBottomLeftRadius: 50,
-        borderBottomEndRadius: 50,
+        marginBottom: 40,
+        marginLeft: 15,
+        marginRight: 15,
+        // borderTopLeftRadius: 50,
+        // borderTopRightRadius: 50,
+        // borderBottomLeftRadius: 50,
+        // borderBottomEndRadius: 50,
         alignItems: "center",
-        borderRadius: 18,
+        borderRadius: 12,
         shadowOpacity: 0.1,
 
     },
     textStyle: {
-        fontSize: 20,
+        fontSize: 21,
         color: "white",
         textAlign: "center",
         padding: 4,
         paddingLeft: 10,
         paddingRight: 10,
-    },
-
-
-
-    signInButton: {
-        backgroundColor: '#50C878',
-        width: '100%',
-        padding: 15,
-        marginVertical: 5,
-        marginTop: 40,
-
-        alignItems: 'center',
-        borderRadius: 5
-    },
-    signInText: {
-        fontWeight: 'bold',
-        color: 'white'
-    },
-    passwordButton: {
-        marginTop: 15,
-    },
-    passwordText: {
-        color: 'grey',
-    },
-    ROButton: {
-        marginTop: 90,
-    },
-    ROText: {
-        color: '#50C878',
-        fontSize: 18,
     },
     AdminButton: {
         marginTop: 20,

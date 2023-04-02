@@ -4,8 +4,20 @@ import React, { useState } from 'react'
 import stylesR from '../components/stylesR'
 import { Ionicons } from "@expo/vector-icons";
 import axios from 'axios';
+import {MaterialIcons} from '@expo/vector-icons';
 import config from '../config';
+import bcrypt from 'bcryptjs';
+import isaac from "isaac";
 
+
+//fallback for hash api
+bcrypt.setRandomFallback((len) => {
+	const buf = new Uint8Array(len);
+
+	return buf.map(() => Math.floor(isaac.random() * 256));
+});
+
+var salt = bcrypt.genSaltSync(10);
 
 
     const Register = () => {
@@ -55,7 +67,8 @@ import config from '../config';
       
         const onSubmitFormHandler = async (e) => {
        
-          
+          //hashes password
+          var hash = bcrypt.hashSync(passwordHash, salt);
 
 
         
@@ -67,7 +80,7 @@ import config from '../config';
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
-                passwordHash: passwordHash
+                passwordHash: hash
                 
             };
             console.log(JSON.stringify(data));
@@ -95,120 +108,73 @@ import config from '../config';
 
         }else(alert("Passwords do not match")
             );
-      
-            
-    
+
     }
 
         return (
           <>
-            <View style={{paddingTop:20}} id="header">
-                   {/* <Header /> */}
+        <View style={styles.root}> 
+            <View style={{alignSelf: "flex-start", marginTop: 70}}>
+        <Pressable
+            onPress={() => navigation.goBack()}
+            style={{
+              backgroundColor: '#50C878',
+              width: 35,
+              height: 35,
+              borderRadius: 17,
+              justifyContent: "center",
+              alignItems: "center",
+              marginLeft: 2,
+              marginTop:-10,
+              marginBottom:10,
+            }}
+          >
+            <Ionicons name="chevron-back-outline" size={20} color="white"  />
+          </Pressable>
+          </View> 
+
+          <Text style={{fontSize:25, marginTop:40}}> Register </Text>
+
+            <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:70}}>
+              <TextInput placeholder={"First Name"} value={first_name} onChangeText={onChangeFirstNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
             </View>
-            <Pressable
-              onPress={() => navigation.goBack()}
-              style={{
-                backgroundColor: '#50C878',
-                width: 37,
-                height: 37,
-                borderRadius: 20,
-                justifyContent: "center",
-                alignItems: "center",
-                marginLeft: 14,
-                marginTop:60,
-              }}
-            >
-              <Ionicons name="chevron-back-outline" size={24} color="white" />
-            </Pressable>   
-            <ScrollView style={stylesR.FoodInsertView}>
-      
-               <Text style={styles.title}>Register</Text>
-             
-      
-              <View>
 
-                <Text style={{marginTop: 20, marginBottom:0, fontWeight: "bold"}}>Name</Text>
 
-            //    <Text style={styles.subtitles}>First Name</Text>
+            <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:20}}>
+            <TextInput placeholder={"Last Name"} value={last_name} onChangeText={onChangeLastNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
+            </View>
 
-                <View style={styles.input}>
-                    <TextInput placeholder={"First Name"} value={first_name} onChangeText={onChangeFirstNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
-                </View>
-              </View>
-      
-              <View>
+            <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:20}}>
+            <TextInput placeholder={"Email"} value={email} onChangeText={onChangeEmailHandler}  style={{ flex:1, paddingVertical:0,}} keyboardType="email-address" />
+            </View>
 
-                <Text style={{marginTop:-20}}></Text>
 
-               // <Text style={styles.subtitles}>Last Name</Text>
+            <Text style={{fontSize:11, marginTop:16}}> Password must be longer than 5 characters and have a number. </Text>
+           
 
-                <View style={styles.input}>
-                    <TextInput placeholder={"Last Name"} value={last_name} onChangeText={onChangeLastNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
-                </View>
-              </View>
-      
-              <View>
-
-                <Text style={{marginTop: 15, marginBottom:0, fontWeight: "bold"}}>Email</Text>
-
-              //  <Text style={styles.subtitles}>Email</Text>
-
-                <View style={styles.input}>
-                    <TextInput placeholder={"Email"} value={email} onChangeText={onChangeEmailHandler}  style={{ flex:1, paddingVertical:0,}} keyboardType="email-address" />
-                </View>
-              </View>
-
-              <View>
-
-                <Text style={{marginTop:10, fontWeight: "bold"}}>Password</Text>
-
-          //      <Text style={styles.subtitles}>Password</Text>
-
-                <View style={styles.input}>
-                    <TextInput placeholder={"Password"} value={passwordHash} onChangeText={onChangePasswordHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
-                </View>
-                <Text style={{marginBottom: 20}}>Must be longer than 5 characters and have a number </Text>
-                
-              </View>
-
-              <View>
-
-                <Text style={{marginTop:-20}}></Text>
-
-             //   <Text style={styles.subtitles}>Verify Password</Text>
-
-                <View style={styles.input}>
-                    <TextInput placeholder={"Verify Password"} value={passwordCheck} onChangeText={onChangePasswordCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
-                </View>
-              </View>
-      
-              
-      
-              
-      
-              <View style={{marginTop:20}}>
-
-                   <TouchableOpacity style={styles.formButtons}>
-                   <Text style={styles.buttonText}>Submit</Text>
-
-                   </TouchableOpacity>   
-{/* 
-                   <Button
-                   title="Submit"
-                   onPress={onSubmitFormHandler}
-                   /> */}
+            <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:20}}>
+            <TextInput placeholder={"Password"} value={passwordHash} onChangeText={onChangePasswordHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
+            </View>
             
-                
-                {/* <View style={{display:'flex', flexDirection:"row", justifyContent:"space-evenly"}}> */}
-                 {/* Reset Button?: */}
-                  {/* <TouchableOpacity style={styles.formButtons}
+
+            
+            <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:15, marginTop:20}}>
+            {/* <Text style={{fontSize:12, marginTop:0, }}> Verify Password: </Text> */}
+            <TextInput placeholder={"Verify Password"} value={passwordCheck} onChangeText={onChangePasswordCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
+            </View>
+
+
+            <TouchableOpacity style={styles.formButtons} onPress={onSubmitFormHandler}>
+                   <Text style={styles.buttonText}>Submit</Text>
+            </TouchableOpacity>  
+
+                 <TouchableOpacity style={styles.formButtons}
                   onPress={() => navigation.navigate('Register')}>  
                       <Text style={styles.buttonText}>Reset</Text>
-                  </TouchableOpacity>  */}
-                {/* </View> */}
-      
+                  </TouchableOpacity> 
+
+
               </View>
-            </ScrollView>
           </>
         )
       }
@@ -217,6 +183,32 @@ import config from '../config';
       
       
       const styles = StyleSheet.create({
+
+        root:{
+          alignItems: 'center',
+          padding: 20,
+          backgroundColor: 'white',
+          flex:1,
+          // borderTopLeftRadius:50,
+          // borderTopRightRadius: 50,
+          // borderBottomLeftRadius: 50,
+          // borderBottomEndRadius: 50
+      },
+      formButtons:{
+          backgroundColor: '#50C878',
+          width: '90%',
+          padding: 10,
+          marginVertical: 5,
+          marginTop:35,
+  
+          alignItems: 'center',
+          borderRadius: 5,
+          marginTop:60,
+      },
+      linkText:{
+          fontWeight:'bold',
+          color:'white'
+      },
          container: {
             paddingTop: 23
          },
@@ -230,18 +222,7 @@ import config from '../config';
             borderColor: '#50c864',
             borderWidth: 0.75
          },
-         formButtons: {
-            backgroundColor: '#50C878',
-            // width: '100%',
-            padding: 6,
-            // marginVertical: 5,
-            marginTop:35,
-            marginLeft: 60,
-            marginRight:60,
-            // alignItems: 'center',
-            borderRadius: 5
-            
-         },
+         
          buttonText:{
           padding: 10,
           textAlign: "center",
