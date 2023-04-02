@@ -5,7 +5,18 @@ import stylesR from '../components/stylesR'
 import { Ionicons } from "@expo/vector-icons";
 import axios from 'axios';
 import config from '../config';
+import bcrypt from 'bcryptjs';
+import isaac from "isaac";
 
+
+//fallback for hash api
+bcrypt.setRandomFallback((len) => {
+	const buf = new Uint8Array(len);
+
+	return buf.map(() => Math.floor(isaac.random() * 256));
+});
+
+var salt = bcrypt.genSaltSync(10);
 
 //declaring constants
     const RegisterRO = () => {
@@ -44,6 +55,9 @@ import config from '../config';
       //validates entered values and sends data to back end
       const onSubmitFormHandler = async (e) => {
 
+        //hashes password
+        var hash = bcrypt.hashSync(passwordHash, salt);
+
         //checking if password is valid
         if(passwordCheck == passwordHash ){
             if(passwordCheck.length > 4){
@@ -54,7 +68,7 @@ import config from '../config';
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
-                passwordHash: passwordHash,
+                passwordHash: hash
             };
             //sending form data to router
             console.log(JSON.stringify(data));
