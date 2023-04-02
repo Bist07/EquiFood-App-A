@@ -51,14 +51,10 @@ const AdminRestaurantsView = ({ onPress, text }) => {
             <View style={{ backgroundColor: 'white', alignItems: 'center' }}>
                 <Text style={{ fontSize: 25, marginTop: 10, }}>View Current Restaurants</Text>
             </View>
-
             <ScrollView style={{ backgroundColor: "#FFF" }}>
-
                 <View style={{ marginLeft: 40, marginRight: 40, marginTop: 30 }}>
                     {storeData.map((item, index) => <AdminRestaurantsCard key={index} item={item} />)}
                 </View>
-
-
             </ScrollView>
         </View>
 

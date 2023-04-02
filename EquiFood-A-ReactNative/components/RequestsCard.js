@@ -21,31 +21,29 @@ const RequestsCard = (data) => {
     //   rating: restaurant.rating,
     // })}>
 
-      <View style={stylesR.card}>
-        <View style={stylesR.borders}>
-          <Image style={stylesR.imageStyle} source={{ uri: restaurant.ImageURL }} />
-          <View style={stylesR.rating}>
-            <Text style={stylesR.ratingText}> {restaurant.rating} </Text>
-            <AntDesign name="star" size={18} color="gold" />
-          </View>
-
+    <View style={stylesR.card}>
+      <View style={stylesR.borders}>
+        <Image style={stylesR.imageStyle} source={{ uri: restaurant.ImageURL }} />
+        <View style={stylesR.rating}>
+          <Text style={stylesR.ratingText}> {restaurant.rating} </Text>
+          <AntDesign name="star" size={18} color="gold" />
         </View>
 
-        <View style={stylesR.descriptionCard}>
-          <View>
-            <Text style={stylesR.restaurantName}>
-              {restaurant.name}
-            </Text>
-            <Text style={stylesR.restaurantHours}>
-              {restaurant.hours}
-            </Text>
-          </View>
+      </View>
 
-
-        </View>
+      <View style={stylesR.descriptionCard}>
+        <View>
+          <Text style={stylesR.restaurantName}>
+            {restaurant.name}
+          </Text>
+          <Text style={stylesR.restaurantHours}>
+            {restaurant.hours}
+          </Text>
         </View>
 
-    //  {/* </Pressable> */}
+
+      </View>
+    </View>
   );
 };
 

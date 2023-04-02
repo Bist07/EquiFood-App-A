@@ -13,9 +13,11 @@
   "license": "ISC",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.290.0",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
+    "isaac": "^0.0.5",
     "mariadb": "^3.0.2"
   },
   "devDependencies": {

@@ -35,3 +35,14 @@ router.post('/Insert', async function (req, res) {
         res.status(400).send(error.message)
     }
 })
+
+// Get restaurant requests
+router.get('/Request', async function (req, res) {
+    try {
+        const sqlQuery = 'SELECT * FROM restaurant WHERE status=pending';
+        const rows = await pool.query(sqlQuery);
+        res.status(200).json(rows);
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+})

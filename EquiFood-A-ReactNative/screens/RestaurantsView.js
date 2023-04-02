@@ -8,48 +8,40 @@ import { FlatList } from "react-native-gesture-handler";
 
 // This page displays all restaurant data in one page.
 
-// const navigation = useNavigation();
 
 const RestaurantsView = () => {
-  const [filteredData, setfilteredData] = useState([]);
 
   const [input, setInput] = useState('');
-  // console.log(input)
-
   const navigation = useNavigation();
-  const [masterData, setmasterData] = useState([]);
-  const [search, setsearch] = useState('');
-
   const [storeData, setStoreData] = useState([]);
+
   useEffect(() => {
     async function fetchData() {
       const result = await getRestaurants();
       setStoreData(result);
-      setmasterData(result);
     }
     fetchData();
-
   }, []);
 
   const SearchFilter = ({ data, input, setInput }) => {
     return (
       <View>
-        <FlatList contentContainerStyle={{ flexGrow: 1 }} data={data} renderItem={({ item }) => {
-          if (input === "") {
-            return (
-              <View>
-                <RestaurantCard item={item} />
-              </View>
-            )
-          }
-          if (item.name.toLowerCase().includes(input.toLowerCase())) {
-            return (
-              <View>
-                <RestaurantCard item={item} />
-              </View>
-            )
-          }
-        }}
+        <FlatList
+          contentContainerStyle={{ flexGrow: 1 }}
+          data={data}
+          keyExtractor={(item) => item.id.toString()} // Add a key extractor function
+          renderItem={({ item }) => {
+            if (input === "") {
+              return (
+                <RestaurantCard item={item} /> // Render RestaurantCard component directly
+              )
+            }
+            if (item.name.toLowerCase().includes(input.toLowerCase())) {
+              return (
+                <RestaurantCard item={item} /> // Render RestaurantCard component directly
+              )
+            }
+          }}
           ListHeaderComponent={() => (
             <Text style={{ fontSize: 30, textAlign: "center", marginTop: 20, fontWeight: 'bold', textDecorationLine: 'underline' }}>
             </Text>
@@ -60,7 +52,6 @@ const RestaurantsView = () => {
         />
       </View>
     )
-
   }
 
   return (
