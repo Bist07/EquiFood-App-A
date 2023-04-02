@@ -13,8 +13,6 @@ const AdminRestaurantsCard = (data) => {
   const navigation = useNavigation();
   const restaurant = data.item
 
-
-
   const onSubmitHandler =  (e) => {
   Alert.alert(
     'Delete',
@@ -38,13 +36,9 @@ const AdminRestaurantsCard = (data) => {
 
     try {
         const data = {
-            
           id: restaurant.id,
-            
         };
 
-        
-        
         console.log(JSON.stringify(data));
         const response = await axios({
           url: `${config.local.url}:${config.local.port}/restaurant/delete`,
@@ -53,21 +47,14 @@ const AdminRestaurantsCard = (data) => {
           headers: {
             'Content-Type': 'application/json'
              },
-            }); 
-    
-            
-              
-         
-               navigation.navigate('Admin');
-           
+        }); 
         
-
+        navigation.navigate('Admin');
+          
       } catch (error) {
         console.log(error);
         alert("An error has occurred");
       }
-    
-    
 }
 
   return (
@@ -87,8 +74,6 @@ const AdminRestaurantsCard = (data) => {
                 </TouchableOpacity>            
                 </View> */}
       <View style={styles.card}>
-
-
         <View style={styles.descriptionCard}>
           <View>
             <Text style={styles.restaurantName}>
@@ -104,14 +89,8 @@ const AdminRestaurantsCard = (data) => {
               <Text  onPress={() => {onSubmitHandler();}} style={{ fontWeight: "bold", marginTop: 10, padding: 7, fontSize: 10, borderColor: 'red', borderWidth: 1, marginLeft: "60%", textAlign: "center" }}> Delete </Text>
             </TouchableOpacity>
           </View>
-
-
-
         </View>
-
-
       </View>
-
     </Pressable>
   );
 };
