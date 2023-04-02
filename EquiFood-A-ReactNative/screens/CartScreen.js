@@ -51,7 +51,7 @@ const ViewCart = (props) => {
   const dispatch = useDispatch();
   const restaurantName = props.restaurantName;
 
-  console.log(date);
+  // console.log(date);
   
   
   const onTimeChange = (event, selectedDate) => {
@@ -80,20 +80,12 @@ const ViewCart = (props) => {
     setModal(false);
     let formattedTime = date.getHours() + ':' + date.getMinutes();
     setRestId(cart[0].restaurant_id);
-    
-
-    // setCustId(1);
-    //totalAmount =  totalPrice;
-    //reservation_datetime = date;
-    //discount = totalDiscount;
-
-    // JOIN THE TWO
-    // Need to create a food_order. Requires customer_id, restaurant_id, order_status_id, total_amount, reservation_datetime, discount
-    // Need to create order_status.
 
     menuOrderItemList = cart.map(item => {
       return {"menu_item_id": item["id"], "qty_ordered": item["quantity"]}
     });
+
+    console.log(menuOrderItemList)
 
     const formattedSQLDateTime = date.toISOString().slice(0, 19).replace('T', ' ');
     insertFoodOrder(custId, restId, totalPrice, formattedSQLDateTime, totalDiscount, menuOrderItemList);
