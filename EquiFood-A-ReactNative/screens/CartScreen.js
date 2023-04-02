@@ -91,14 +91,12 @@ const ViewCart = (props) => {
     // Need to create a food_order. Requires customer_id, restaurant_id, order_status_id, total_amount, reservation_datetime, discount
     // Need to create order_status.
 
-    const formattedSQLDateTime = date.toISOString().slice(0, 19).replace('T', ' ');
-    insertFoodOrder(custId, restId, totalPrice, formattedSQLDateTime, totalDiscount);
-
     menuOrderItemList = cart.map(item => {
       return {"menu_item_id": item["id"], "qty_ordered": item["quantity"]}
     });
 
-    insertOrderMenuItem(menuOrderItemList);
+    const formattedSQLDateTime = date.toISOString().slice(0, 19).replace('T', ' ');
+    insertFoodOrder(custId, restId, totalPrice, formattedSQLDateTime, totalDiscount, menuOrderItemList);
     
     navigation.navigate("OrderPage", {
       restaurantName: restaurantName,

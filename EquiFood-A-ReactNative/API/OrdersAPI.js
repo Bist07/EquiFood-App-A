@@ -19,9 +19,9 @@ export const getOrderDetails = async (food_order_id) => {
     }
 }
 
-export const insertFoodOrder = async (customer_id, restaurant_id, total_amount, reservation_datetime, discount) => {
+export const insertFoodOrder = async (customer_id, restaurant_id, total_amount, reservation_datetime, discount, menuItems) => {
     try {
-        const response = await axios.post(`${config.local.url}:${config.local.port}/Orders/OrderInsert`, {customer_id, restaurant_id, total_amount, reservation_datetime, discount});
+        const response = await axios.post(`${config.local.url}:${config.local.port}/Orders/OrderInsert`, {customer_id, restaurant_id, total_amount, reservation_datetime, discount, menuItems});
         return response.data;
     } catch (error){
         console.error(error);

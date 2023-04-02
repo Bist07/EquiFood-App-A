@@ -22,8 +22,8 @@ const RestaurantOwnerOrders = () => {
     fetchData();
   }, []);
 
-  const pending = orders.filter(order => order.status_value == 0);
-  const accepted = orders.filter(order => order.status_value == 1);
+  const pending = orders.filter(order => order.status_value == "pending");
+  const accepted = orders.filter(order => order.status_value == "accepted");
   
   console.log("pending: "+ JSON.stringify(pending));
   console.log("accepted: "+ JSON.stringify(accepted));

@@ -36,49 +36,72 @@ router.get("/OrderDetails/:id", async function (req, res) {
 });
 
 router.post("/OrderInsert", async function (req, res) {
+  let conn;
   try {
     const data = req.body;
+    conn = await pool.getConnection();
 
     // Transaction either fully completes, or rolls back if COMMIT is not reached
-    const sqlQuery = `
-      START TRANSACTION;
+    await conn.beginTransaction();
 
-        INSERT INTO order_status (status_value) VALUES (0);
+    // Query does 2 things,
+    // 1 - Creates an order_status of "pending" so it can be inserted to the food_order
+    // 2 - Insert a food order which takes in customer/restaurant/order_status IDs, price total, reservation time, and discount total
+    const sqlQuery = `
+        INSERT INTO order_status (status_value) VALUES ("pending");
         
         SET @order_status_id = LAST_INSERT_ID();
 
         INSERT INTO food_order (customer_id, restaurant_id, order_status_id, total_amount, reservation_datetime, discount)
           VALUES (?, ?, @order_status_id, ?, ?, ?);
-        SET @food_order_id = LAST_INSERT_ID();
 
-      COMMIT;
+        SET @food_order_id = LAST_INSERT_ID();
       `;
 
-    const result = await pool
-      .query(sqlQuery, [
+    const result = await conn.query(sqlQuery, [
         data.customer_id,
         data.restaurant_id,
         data.total_amount,
         data.reservation_datetime,
         data.discount,
-      ])
-      .then(() => {
-        console.log("Transaction completed successfully!");
-      })
-      .catch((err) => {
-        console.error("Error during transaction", err);
-        pool
-          .query("ROLLBACK")
-          .then(() => {
-            console.log("Transaction rolled back!");
-          })
-          .catch((err) => {
-            console.error("Error rolling back transaction: ", err);
-          });
-      });
-    res.status(200).send("Order Added");
+      ]);
+
+    // const lastFoodOrderID = result[0].food_order_id;
+    const menuItems = req.body.menuItems;
+    
+    // Query inserts an item and quantity into the order_menu_item
+    const sqlQuery2 = `
+      INSERT INTO order_menu_item (food_order_id, menu_item_id, qty_ordered)
+      VALUES (?, ?, ?);
+    `;
+    
+    // Gets the foodOrderID from previous insert query
+    const foodOrderId = Number(result[2].insertId);
+
+    if(menuItems.length > 1){
+      // Maps cart items into array of 2 item arrays of [[menu_item_id, qty_ordered], [exampleId, exampleQuantity], ...]
+      const insertValues = menuItems.map(item => [item.menu_item_id, item.qty_ordered]);
+
+      // Loops through cart items and executes sqlQuery2 (inserting items in order to order_menu_item table)
+      for (const item of insertValues){
+        await conn.execute(sqlQuery2, [foodOrderId, item[0], item[1]]);
+      }
+      await conn.commit();
+      conn.release();
+      res.status(200).send("Menu Order Items added correctly");
+    } else{
+      // 
+      const insertValues = [foodOrderId, menuItems[0].menu_item_id, menuItems[0].qty_ordered];
+      await conn.execute(sqlQuery2, insertValues);
+      await conn.commit();
+      conn.release();
+      res.status(200).send("Menu Order Items added correctly");
+    }
+
+    // res.status(200).send("Order Added");
   } catch (error) {
-    res.status(400).send("Error connecting to MariaDB: ", error.message);
+    res.status(400).send(error);
+    conn.rollback();
   }
 });
 
@@ -94,9 +117,6 @@ router.post("/InsertOrderMenuItem", async function (req, res) {
 
     const sqlQuery1 = `SELECT @food_order_id AS lastFoodOrderID`;
     const [result] = await conn.execute(sqlQuery1);
-    if (result && result.length > 0){
-      const lastFoodOrderID = result[0].lastFoodOrderID;
-    }
     // const lastFoodOrderID = rows[0].lastFoodOrderID;
 
     const sqlQuery2 = `
