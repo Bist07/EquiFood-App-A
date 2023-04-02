@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, Text, Image, Pressable, TouchableOpacity, TouchableHighlight, TextInput, ScrollView } from 'react-native'
 import Logo from '../assets/logos/Equifood_Logo.png'
 import CustomInput from '../components/CustomInput'
@@ -7,27 +7,26 @@ import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { MaterialIcons } from '@expo/vector-icons';
 import { Ionicons, Feather } from "@expo/vector-icons";
 import Header from '../components/header';
-import RestaurantData from "../data/RestaurantData";
 import AdminRestaurantView from '../components/AdminRestaurantView';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
-
+import RequestsCard from "../components/RequestsCard";
+import { getRestaurantsRequest } from "../API/RestaurantAPI";
 
 // View of Restaurant Requests
-
-
-const RestaurantRequests = ({ onPress, text }) => {
+const RestaurantRequests = () => {
     const [storeData, setStoreData] = useState([]);
+    const navigation = useNavigation();
+
     useEffect(() => {
         async function fetchData() {
             const result = await getRestaurantsRequest();
             setStoreData(result);
+            // console.log(result);
         }
         fetchData();
     }, []);
-
-    const navigation = useNavigation();
 
     return (
         <View style={styles.root}>
@@ -55,14 +54,9 @@ const RestaurantRequests = ({ onPress, text }) => {
 
 
             <ScrollView style={styles.body}>
-
-
                 <View style={{ marginTop: 40, width: "100%" }}>
-
                     <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, marginBottom: 10, marginTop: 20 }}>
                     </View>
-
-
                     <View style={styles.card}>
                         <TouchableOpacity>
                             <Text style={{ fontWeight: "bold", padding: 20, fontSize: 20 }}> Restaurant Name </Text>
@@ -74,22 +68,14 @@ const RestaurantRequests = ({ onPress, text }) => {
                             <MaterialCommunityIcons name="delete-forever-outline" size={28} color="#DC143C" style={{ margin: 10, padding: 7, borderColor: '#ccc', borderWidth: 1 }} />
                         </TouchableOpacity>
                     </View>
-
-
-                    {/* <TouchableOpacity style={styles.AdminItem}
-                                // onPress={() => navigation.navigate('RestaurantRequests')}
-                                >
-                                <View style={styles.innerContent}>
-                                    <Text style={styles.textStyle}> Donair Dude </Text>
-                                    <Feather name="check-square" size={23} color="#80461B" style={styles.accept} />
-                                <MaterialCommunityIcons name="delete-forever-outline" size={28} color="#80461B" style={styles.cancel} />
-                                </View>
-                                
-                </TouchableOpacity> */}
-
-
+                    <View style={{ marginLeft: 40, marginRight: 40, marginTop: 30 }}>
+                        <ScrollView style={{ backgroundColor: "#FFF" }}>
+                            <View style={{ marginLeft: 40, marginRight: 40, marginTop: 30 }}>
+                                {storeData.map((item, index) => <RequestsCard key={index} item={item} />)}
+                            </View>
+                        </ScrollView>
+                    </View>
                 </View>
-
             </ScrollView>
         </View>
     )

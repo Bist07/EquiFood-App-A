@@ -11,13 +11,8 @@ import stylesR from '../components/stylesR'
 import { Ionicons, Feather } from "@expo/vector-icons";
 import AdminRestaurantsCard from "../components/AdminRestaurantsCard";
 
-// View of current donations
-
-// Process:
-// We will calculate donations as the difference from the original amount subtracted by the discounted amount
-
-
 const AdminRestaurantsView = ({ onPress, text }) => {
+    const navigation = useNavigation();
     const [storeData, setStoreData] = useState([]);
     useEffect(() => {
         async function fetchData() {
@@ -30,7 +25,6 @@ const AdminRestaurantsView = ({ onPress, text }) => {
 
     return (
         <View style={{ backgroundColor: 'white', }}>
-
             <Pressable
                 onPress={() => navigation.goBack()}
                 style={{

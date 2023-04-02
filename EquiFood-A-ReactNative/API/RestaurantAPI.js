@@ -12,7 +12,7 @@ export const getRestaurants = async () => {
 
 export const getRestaurantsRequest = async () => {
     try {
-        const response = await axios.get(`${config.local.url}:${config.local.port}/Restaurant/Request`);
+        const response = await axios.get(`${config.local.url}:${config.local.port}/Restaurant/Requests/Pending`);
         return response.data;
     } catch (error) {
         console.error(error);

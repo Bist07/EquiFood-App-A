@@ -12,11 +12,10 @@ bcrypt.setRandomFallback((len) => {
 });
 
 
-
 router.post('/register', async function (req, res) {
     try {
         // const {id, address, hours, cuisine, rating, img_id, longitude, latitude, name, Img} = req.body;
-        const { first_name, last_name, email, passwordHash } = req.body; v
+        const { first_name, last_name, email, passwordHash } = req.body;
         const sqlQuery = "INSERT INTO customer (first_name, last_name, email, passwordHash) VALUES (?,?,?,?)";
         const result = await pool.query(sqlQuery, [first_name, last_name, email, passwordHash]);
 

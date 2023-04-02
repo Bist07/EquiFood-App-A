@@ -2,25 +2,16 @@ import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import stylesR from './stylesR'
 
 // This is the functionality and design of each restaurant request card (for the page that lists all restaurants requests).
-
 
 const RequestsCard = (data) => {
   const navigation = useNavigation();
   const restaurant = data.item
+  console.log(data)
 
   return (
-    // <Pressable onPress={() => navigation.navigate("RequestPage", {
-    //   id: restaurant.id,
-    //   name: restaurant.name,
-    //   uri: restaurant.ImageURL,
-    //   address: restaurant.address,
-    //   cuisines: restaurant.cuisine,
-    //   hours: restaurant.hours,
-    //   rating: restaurant.rating,
-    // })}>
-
     <View style={stylesR.card}>
       <View style={stylesR.borders}>
         <Image style={stylesR.imageStyle} source={{ uri: restaurant.ImageURL }} />
@@ -28,9 +19,7 @@ const RequestsCard = (data) => {
           <Text style={stylesR.ratingText}> {restaurant.rating} </Text>
           <AntDesign name="star" size={18} color="gold" />
         </View>
-
       </View>
-
       <View style={stylesR.descriptionCard}>
         <View>
           <Text style={stylesR.restaurantName}>
@@ -40,13 +29,11 @@ const RequestsCard = (data) => {
             {restaurant.hours}
           </Text>
         </View>
-
-
       </View>
     </View>
   );
 };
 
-export default RestaurantCard;
+export default RequestsCard;
 
 const styles = StyleSheet.create({});
