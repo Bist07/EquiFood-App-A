@@ -1,24 +1,38 @@
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { StyleSheet, Text, View, Image, Pressable, TouchableOpacity } from "react-native";
+import { Ionicons, Feather } from "@expo/vector-icons";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import stylesR from './stylesR'
-
-// This is the functionality and design of each restaurant request card (for the page that lists all restaurants requests).
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const RequestsCard = (data) => {
   const navigation = useNavigation();
   const restaurant = data.item
   console.log(data)
 
+  const UpdateRequest = (id, status) => {
+
+  }
+
+
   return (
     <View style={stylesR.card}>
       <View style={stylesR.borders}>
         <Image style={stylesR.imageStyle} source={{ uri: restaurant.ImageURL }} />
-        <View style={stylesR.rating}>
-          <Text style={stylesR.ratingText}> {restaurant.rating} </Text>
-          <AntDesign name="star" size={18} color="gold" />
-        </View>
+        <TouchableOpacity>
+          <Pressable
+            onPress={() => UpdateRequest(data.id, 'accepted')}
+          >
+            <Feather name="check-square" size={22} color="#50C878" style={{ margin: 10, padding: 10, borderColor: '#ccc', borderWidth: 1 }} />
+          </Pressable>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Pressable
+            onPress={() => UpdateRequest(data.id, 'declined')}
+          >
+            <MaterialCommunityIcons name="delete-forever-outline" size={28} color="#DC143C" style={{ margin: 10, padding: 7, borderColor: '#ccc', borderWidth: 1 }} />
+          </Pressable>
+        </TouchableOpacity>
       </View>
       <View style={stylesR.descriptionCard}>
         <View>

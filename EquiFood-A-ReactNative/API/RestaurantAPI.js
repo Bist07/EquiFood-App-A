@@ -19,3 +19,12 @@ export const getRestaurantsRequest = async () => {
     }
 };
 
+export const UpdateRequest = async (id, status) => {
+    try {
+        const response = await axios.put(`${config.local.url}:${config.local.port}/Restaurant//Requests/Update`, { id, status });
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
