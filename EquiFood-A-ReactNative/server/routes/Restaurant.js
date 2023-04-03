@@ -47,3 +47,14 @@ router.get('/Requests/Pending', async function (req, res) {
         res.status(400).send(error.message)
     }
 })
+
+router.post('/delete', async function (req, res) {
+    try {
+        const { id } = req.body;
+        const sqlQuery = "DELETE FROM restaurant WHERE id = '" + id + "'";
+        const result = await pool.query(sqlQuery, [id]);
+        res.status(200).send("Restaurant Added");
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+})

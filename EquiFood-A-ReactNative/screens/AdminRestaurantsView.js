@@ -23,6 +23,8 @@ const AdminRestaurantsView = ({ onPress, text }) => {
 
     }, []);
 
+   
+
     return (
         <View style={{ backgroundColor: 'white', }}>
             <Pressable
