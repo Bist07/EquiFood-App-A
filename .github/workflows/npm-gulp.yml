@@ -23,6 +23,6 @@ jobs:
 
     - name: Build
       run: |
-      #   cd EquiFood-A-ReactNative
+        cd EquiFood-A-ReactNative
         npm install
         gulp
