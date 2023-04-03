@@ -41,7 +41,6 @@ router.get('/Requests/Pending', async function (req, res) {
     try {
         const sqlQuery = 'SELECT * FROM restaurant WHERE status=?';
         const rows = await pool.query(sqlQuery, 'pending');
-        console.log(rows)
         res.status(200).json(rows);
     } catch (error) {
         res.status(400).send(error.message)
@@ -51,10 +50,21 @@ router.get('/Requests/Pending', async function (req, res) {
 router.post('/delete', async function (req, res) {
     try {
         const { id } = req.body;
-        const sqlQuery = "DELETE FROM restaurant WHERE id = '" + id + "'";
+        const sqlQuery = "DELETE FROM restaurant WHERE id = ?";
         const result = await pool.query(sqlQuery, [id]);
-        res.status(200).send("Restaurant Added");
+        res.status(200).send("Restaurant Deleted");
     } catch (error) {
         res.status(400).send(error.message);
     }
 })
+
+router.put('/Update', async function (req, res) {
+    try {
+        const { status, id } = req.body;
+        const sqlQuery = "UPDATE restaurant SET status = ? WHERE id = ?";
+        const result = await pool.query(sqlQuery, [status, id]);
+        res.status(200).send({ id, status });
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+});
