@@ -92,7 +92,7 @@ const LogIn = () => {
 
       } catch (error) {
         console.log(error);
-        alert("An error has occurred");
+        alert("User Not Found");
       }
     }
     else(alert("Please enter both an Email and a Password"));
