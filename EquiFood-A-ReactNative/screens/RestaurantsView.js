@@ -1,14 +1,12 @@
-import { StyleSheet, View, TextInput, Image, Pressable, ScrollView, Text, FlatList, TouchableOpacity, Modal } from "react-native";
+import { StyleSheet, View, TextInput, Text, FlatList, TouchableOpacity, Modal } from "react-native";
 import React, { useState, useEffect } from 'react';
 import { AntDesign } from "@expo/vector-icons";
 import RestaurantCard from "../components/RestaurantCard";
-import { getOrderedRestaurants, getRestaurantName, getRestaurants } from "../API/RestaurantAPI";
+import { getOrderedRestaurants, getRestaurants } from "../API/RestaurantAPI";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // This page displays all restaurant data in one page.
-
 
 const RestaurantsView = () => {
   const navigation = useNavigation();
@@ -18,9 +16,6 @@ const RestaurantsView = () => {
 
   // For filtering Modal Pop Up:
   const [modalVisible, setModalVisible] = useState(false);
-
-  // For filtering through alphabetically:
-  const [restaurant, setRestaurant] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -32,7 +27,6 @@ const RestaurantsView = () => {
     fetchData();
   }, []);
 
-  // storeData.forEach(item => console.log(item.name))
   const SearchFilter = ({ data, input, setInput }) => {
     return (
       <View>
