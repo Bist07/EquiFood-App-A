@@ -31,7 +31,7 @@ router.post('/register', async function (req, res) {
 router.post('/login', async function (req, res) {
     try {
         const { email, enteredRestaurantOwnerPassword } = req.body; //change to email in future
-        const sqlGetUser = 'SELECT passwordHash FROM restaurant_admin WHERE email = ?';
+        const sqlGetUser = 'SELECT passwordHash, id, first_name, restaurant_id FROM restaurant_admin WHERE email = ?';
         const rows = await pool.query(sqlGetUser, [email]); //pulls user id
 
 
@@ -44,7 +44,8 @@ router.post('/login', async function (req, res) {
             console.log(rows[0].passwordHash)
             console.log(enteredRestaurantOwnerPassword)
             console.log(isValid)
-            res.status(200).json({ PasswordGood: isValid })
+       
+            res.status(200).json({ PasswordGood: isValid, idnum: rows[0].id, name: rows[0].first_name, restaurantId: rows[0].restaurant_id })
 
 
 
