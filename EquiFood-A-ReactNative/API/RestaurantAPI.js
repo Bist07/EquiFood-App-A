@@ -28,3 +28,18 @@ export const UpdateRequest = async (id, status) => {
     }
 };
 
+export const InsertRestaurant = async (data) => {
+    axios({
+        url: `${config.local.url}:${config.local.port}/Restaurant/Insert`,
+        method: 'post',
+        data: data,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then(
+        alert("Restaurant added.")
+    ).catch((error) => {
+        console.log(error);
+        alert("An error has occurred when inserting restaurant.");
+    });
+}

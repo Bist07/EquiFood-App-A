@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, View, Text, Image, Pressable, TouchableOpacity, TouchableHighlight, TextInput, ScrollView } from 'react-native'
-import Logo from '../assets/logos/Equifood_Logo.png'
-import CustomInput from '../components/CustomInput'
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
-import { MaterialIcons } from '@expo/vector-icons';
+import { StyleSheet, View, Text, Pressable, TouchableOpacity, ScrollView } from 'react-native'
+import { useNavigation } from "@react-navigation/native";
 import { Ionicons, Feather } from "@expo/vector-icons";
-import Header from '../components/header';
-import AdminRestaurantView from '../components/AdminRestaurantView';
-import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
 import RequestsCard from "../components/RequestsCard";
 import { getRestaurantsRequest } from "../API/RestaurantAPI";
 

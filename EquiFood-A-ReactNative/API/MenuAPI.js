@@ -18,3 +18,19 @@ export const getFoodItem = async (menu_item_id) => {
         console.error(error);
     }
 }
+
+export const InsertFoodItem = async (data) => {
+    axios({
+        url: `${config.local.url}:${config.local.port}/Menu/FoodInsert`,
+        method: 'post',
+        data: data,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then(
+        alert("Food has been inserted into your restaurant.")
+    ).catch((error) => {
+        console.log(error);
+        alert("An error has occurred when inserting food.");
+    });
+}
