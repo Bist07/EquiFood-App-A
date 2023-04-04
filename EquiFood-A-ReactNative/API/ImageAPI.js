@@ -33,7 +33,7 @@ export const uploadFile = async (name, file, type, data) => {
               alert("Food has been inserted into your restaurant.")
             ).catch((error) => {
               console.log(error);
-              alert("An error has occurred");
+              alert("An error has occurred when inserting food.");
             });
           }
 
@@ -49,7 +49,7 @@ export const uploadFile = async (name, file, type, data) => {
               alert("Restaurant added.")
             ).catch((error) => {
               console.log(error);
-              alert("An error has occurred");
+              alert("An error has occurred when inserting restaurant.");
             });
           }
 

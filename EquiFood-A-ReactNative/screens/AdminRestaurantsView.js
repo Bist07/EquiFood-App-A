@@ -11,12 +11,6 @@ import stylesR from '../components/stylesR'
 import { Ionicons, Feather } from "@expo/vector-icons";
 import AdminRestaurantsCard from "../components/AdminRestaurantsCard";
 
-// View of current donations
-
-// Process:
-// We will calculate donations as the difference from the original amount subtracted by the discounted amount
-
-
 const AdminRestaurantsView = ({ onPress, text }) => {
     const navigation = useNavigation();
     const [storeData, setStoreData] = useState([]);
@@ -33,7 +27,6 @@ const AdminRestaurantsView = ({ onPress, text }) => {
 
     return (
         <View style={{ backgroundColor: 'white', }}>
-
             <Pressable
                 onPress={() => navigation.goBack()}
                 style={{
@@ -54,14 +47,10 @@ const AdminRestaurantsView = ({ onPress, text }) => {
             <View style={{ backgroundColor: 'white', alignItems: 'center' }}>
                 <Text style={{ fontSize: 25, marginTop: 10, }}>View Current Restaurants</Text>
             </View>
-
             <ScrollView style={{ backgroundColor: "#FFF" }}>
-
                 <View style={{ marginLeft: 40, marginRight: 40, marginTop: 30 }}>
                     {storeData.map((item, index) => <AdminRestaurantsCard key={index} item={item} />)}
                 </View>
-
-
             </ScrollView>
         </View>
 

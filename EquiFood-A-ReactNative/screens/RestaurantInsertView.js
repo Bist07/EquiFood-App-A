@@ -64,7 +64,6 @@ const RestaurantInsertView = () => {
           </Pressable>
         </View>
 
-
         <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 70 }}>
           <TextInput placeholder={"Restaurant Name"} value={name} onChangeText={onChangeNameHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
         </View>
@@ -83,46 +82,13 @@ const RestaurantInsertView = () => {
 
 
         <View>
-          <Text style={{ marginBottom: 5 }}>Image</Text>
+
           <View style={styles.inputForm}>
             {<ImagePickerButton callback={setFile} />}
           </View>
         </View>
 
-        {/* <View>
-          <Text style={{ marginBottom: 5 }}>Restaurant Name</Text>
-          <View style={stylesR.inputForm}>
-            <TextInput placeholder={"Restaurant Name"} value={name} onChangeText={onChangeNameHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
-          </View>
-        </View> */}
 
-        {/* <View>
-          <Text style={{ marginBottom: 5 }}>Address</Text>
-          <View style={stylesR.inputForm}>
-            <TextInput placeholder={"Address"} value={address} onChangeText={onChangeAddressHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-          </View>
-        </View> */}
-
-        {/* <View>
-          <Text style={{ marginBottom: 5 }}>Cuisine</Text>
-          <View style={stylesR.inputForm}>
-            <TextInput placeholder={"Cuisine"} value={cuisine} onChangeText={onChangeCuisineHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-          </View>
-        </View> */}
-        {/* 
-        <View>
-          <Text style={{ marginBottom: 5 }}>Hours</Text>
-          <View style={stylesR.inputForm}>
-            <TextInput placeholder={"Hours"} value={hours} onChangeText={onChangeHoursHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-          </View>
-        </View> */}
-
-        {/* <View>
-          <Text style={{ marginBottom: 5 }}>Image</Text>
-          <View style={stylesR.inputForm}>
-            {<ImagePickerButton callback={setFile} />}
-          </View>
-        </View> */}
         <View>
 
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
@@ -155,10 +121,6 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: 'white',
     flex: 1,
-    // borderTopLeftRadius:50,
-    // borderTopRightRadius: 50,
-    // borderBottomLeftRadius: 50,
-    // borderBottomEndRadius: 50
   },
   formButtons: {
     backgroundColor: '#50C878',
@@ -166,10 +128,8 @@ const styles = StyleSheet.create({
     padding: 7,
     marginVertical: 5,
     marginTop: 12,
-
     alignItems: 'center',
     borderRadius: 5,
-
   },
   container: {
     paddingTop: 23
