@@ -5,6 +5,8 @@ import stylesR from '../components/stylesR'
 import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import config from '../config';
+
 
 const RestaurantInsertView = () => {
   const navigation = useNavigation();
@@ -57,6 +59,7 @@ try {
              },
             });
             console.log(data);
+        
             alert("Username Updated!")
             navigation.navigate('AccountSettings');
 
@@ -97,18 +100,15 @@ try {
 
 
         
+       
 
 
         <View>
 
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
-            <TouchableOpacity style={stylesR.ROFormButtons} >
-              <Button
-                title="Submit"
-                onPress={onSubmitFormHandler}
-                style={{ "backgroundColor": "gray", "margin": 2 }}
-              />
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.formButtons} onPress={onSubmitFormHandler}>
+          <Text style={styles.buttonText}>Submit</Text>
+        </TouchableOpacity>
            
           </View>
         </View>

@@ -76,3 +76,17 @@ router.post('/EditUsername', async function (req, res) {
     }
 });
 
+router.post('/ChangePassword', async function (req, res) {
+    try {
+        const {  NewPassword, idnum } = req.body;
+        const sqlQuery = "UPDATE customer SET passwordHash = ? WHERE id = ?";
+        const result = await pool.query(sqlQuery, [NewPassword, idnum]);
+        console.log(result);
+        console.log(sqlQuery);
+        res.status(200).send("Username updated!")
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+});
+
+
