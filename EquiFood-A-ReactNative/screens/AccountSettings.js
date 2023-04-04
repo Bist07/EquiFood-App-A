@@ -39,7 +39,7 @@ export default function AccountSettings(){
 
                     <TouchableOpacity style={styles.linkButton}
                         // Functionality to be added that sends a link to change password:
-                        // onPress={() => navigation.navigate('')}
+                         onPress={() => navigation.navigate('EditUsername')}
                         >
                         <Text style ={styles.linkText}>Edit Username </Text>
                     </TouchableOpacity>

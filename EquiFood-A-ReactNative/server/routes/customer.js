@@ -61,3 +61,18 @@ router.post('/login', async function (req, res) {
 
 });
 
+
+
+router.post('/EditUsername', async function (req, res) {
+    try {
+        const {  NewUserName, idnum } = req.body;
+        const sqlQuery = "UPDATE customer SET first_name = ? WHERE id = ?";
+        const result = await pool.query(sqlQuery, [NewUserName, idnum]);
+        console.log(result);
+        console.log(sqlQuery);
+        res.status(200).send("Username updated!")
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+});
+

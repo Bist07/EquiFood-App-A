@@ -19,6 +19,7 @@ import LogIn from './screens/LogIn';
 import Register from './screens/Register';
 import ForgotPassword from './screens/ForgotPassword';
 import AdminLogIn from './screens/AdminLogIn';
+import EditUsername from './screens/EditUsername';
 
 import RegisterAdmin from './screens/RegisterAdmin';
 import RestaurantOwnerLogIn from './screens/RestaurantOwnerLogIn';
@@ -285,6 +286,7 @@ const StackNavigator = () => {
         <Stack.Screen name="ROOrderDetailView" component={ROOrderDetailView} options={{ headerShown: false }} />
         <Stack.Screen name="RestaurantOwnerView" component={ROView} options={{ headerShown: false }} />
         <Stack.Screen name="RestaurantInsertView" component={RestaurantInsertView} options={{ headerShown: false }} />
+        <Stack.Screen name="EditUsername" component={EditUsername} options={{ headerShown: false }} />
         <Stack.Screen name="FoodEditView" component={FoodEditView} options={{ headerShown: false }} />
         <Stack.Screen name="FoodEditForm" component={FoodEditForm} options={{ headerShown: false }} />
         <Stack.Screen name="FoodInsertView" component={FoodInsertView} options={{ headerShown: false }} />
