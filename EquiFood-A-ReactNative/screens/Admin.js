@@ -1,35 +1,24 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import { useNavigation, useRoute } from "@react-navigation/native";
-import RestaurantData from "../data/RestaurantData";
+import { getRestaurantsRequest } from '../API/RestaurantAPI';
 
 
 const Admin = ({ onPress, text }) => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const route = useRoute();
     const navigation = useNavigation();
-    const storeData = RestaurantData;
-    // const restaurant = props.restaurant;
 
     return (
         <View style={styles.root}>
             <View style={{ backgroundColor: "white", paddingTop: 30 }}>
-
                 <Text style={{ fontSize: 32, marginBottom: 70, textAlign: "center" }}> Administrator Portal </Text>
-
                 <Text style={{ fontSize: 20, marginBottom: 4, textAlign: "center" }}> Welcome Administrator </Text>
-
                 <Text style={{ fontSize: 12, marginBottom: 100, textAlign: "center" }}> Please select from the below options for Equifood maintenance. </Text>
-
-
 
                 <TouchableOpacity style={styles.AdminItem}
                     onPress={() => navigation.navigate('Donations')}>
                     <Text style={styles.textStyle}> View Donations </Text>
                     {/* <Text> To be developed... </Text> */}
                 </TouchableOpacity>
-
 
                 <TouchableOpacity style={styles.AdminItem}
                     onPress={() => navigation.navigate('RestaurantRequests')}>
@@ -39,20 +28,12 @@ const Admin = ({ onPress, text }) => {
                     {/* <Text> To be developed... </Text> */}
                 </TouchableOpacity>
 
-
                 <TouchableOpacity style={styles.AdminItem}
                     onPress={() => navigation.navigate('AdminRestaurantsView')}>
                     <Text style={styles.textStyle}> View Current Restaurants </Text>
                     {/* <Text> To be developed... </Text> */}
                 </TouchableOpacity>
             </View>
-
-            <View>
-
-
-            </View>
-
-
         </View>
     )
 }

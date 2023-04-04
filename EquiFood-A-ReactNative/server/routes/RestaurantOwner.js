@@ -26,6 +26,7 @@ router.post('/register', async function (req, res) {
         res.status(400).send(error.message)
     }
 });
+
 //function to login to existing account
 router.post('/login', async function (req, res) {
     try {

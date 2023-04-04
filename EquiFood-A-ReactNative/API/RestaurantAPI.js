@@ -9,3 +9,22 @@ export const getRestaurants = async () => {
         console.error(error);
     }
 };
+
+export const getRestaurantsRequest = async () => {
+    try {
+        const response = await axios.get(`${config.local.url}:${config.local.port}/Restaurant/Requests/Pending`);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const UpdateRequest = async (id, status) => {
+    try {
+        const response = await axios.put(`${config.local.url}:${config.local.port}/Restaurant/Update`, { id, status });
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+

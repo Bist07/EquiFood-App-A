@@ -1,7 +1,6 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from "@expo/vector-icons";
-import RestaurantData from '../data/RestaurantData'
 import FoodEditCard from '../components/FoodEditCard'
 import React, { useState, useEffect } from "react";
 import { getMenu } from '../API/MenuAPI';

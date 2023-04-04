@@ -6,9 +6,9 @@ import isaac from "isaac";
 
 //fallback for hash api
 bcrypt.setRandomFallback((len) => {
-	const buf = new Uint8Array(len);
+    const buf = new Uint8Array(len);
 
-	return buf.map(() => Math.floor(isaac.random() * 256));
+    return buf.map(() => Math.floor(isaac.random() * 256));
 });
 
 router.post('/AdminRegister', async function (req, res) {
@@ -17,7 +17,6 @@ router.post('/AdminRegister', async function (req, res) {
         const { first_name, last_name, email, passwordHash } = req.body;
         const sqlQuery = "INSERT INTO admin (first_name, last_name, email, passwordHash) VALUES (?,?,?,?)";
         const result = await pool.query(sqlQuery, [first_name, last_name, email, passwordHash]);
-
 
         console.log(result);
         console.log(sqlQuery);
@@ -37,8 +36,8 @@ router.post('/login', async function (req, res) {
         if (rows) {
             var isValid = false;
 
-                //compares hash in database to entered password
-                if (bcrypt.compareSync(enteredAdminPassword, rows[0].passwordHash)) {
+            //compares hash in database to entered password
+            if (bcrypt.compareSync(enteredAdminPassword, rows[0].passwordHash)) {
                 isValid = true;
             };
 
@@ -58,14 +57,4 @@ router.post('/login', async function (req, res) {
 
 });
 
-//get restaurants with 'pending' status
-router.get('/', async function (req, res) {
-    try {
-        const sqlQuery = "SELECT * FROM restaurant WHERE status = 'pending'"
-        const rows = await pool.query(sqlQuery);
-        res.status(200).json(rows);
-    } catch (error) {
-        res.status(400).send(error.message)
-    }
-})
 
