@@ -14,7 +14,6 @@ import config from '../config';
 
 const Donations = ({ onPress, text }) => {
     const navigation = useNavigation();
-    const storeData = RestaurantData;
     // const restaurant = props.restaurant;
     const [totalAmount, setTotalAmount] = React.useState('');
     const [data, setData] = useState([]);
