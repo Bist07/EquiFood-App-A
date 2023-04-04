@@ -4,16 +4,11 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import stylesR from './stylesR'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { UpdateRequest } from '../API/RestaurantAPI'
 
 const RequestsCard = (data) => {
   const navigation = useNavigation();
   const restaurant = data.item
-  console.log(data)
-
-  const UpdateRequest = (id, status) => {
-
-  }
-
 
   return (
     <View style={stylesR.card}>
@@ -21,14 +16,20 @@ const RequestsCard = (data) => {
         <Image style={stylesR.imageStyle} source={{ uri: restaurant.ImageURL }} />
         <TouchableOpacity>
           <Pressable
-            onPress={() => UpdateRequest(data.id, 'accepted')}
+            onPress={() => {
+              UpdateRequest(restaurant.id, 'accepted');
+              alert("restaurant request accepted");
+            }}
           >
             <Feather name="check-square" size={22} color="#50C878" style={{ margin: 10, padding: 10, borderColor: '#ccc', borderWidth: 1 }} />
           </Pressable>
         </TouchableOpacity>
         <TouchableOpacity>
           <Pressable
-            onPress={() => UpdateRequest(data.id, 'declined')}
+            onPress={() => {
+              UpdateRequest(restaurant.id, 'declined');
+              alert("restaurant request declined");
+            }}
           >
             <MaterialCommunityIcons name="delete-forever-outline" size={28} color="#DC143C" style={{ margin: 10, padding: 7, borderColor: '#ccc', borderWidth: 1 }} />
           </Pressable>
@@ -44,7 +45,7 @@ const RequestsCard = (data) => {
           </Text>
         </View>
       </View>
-    </View>
+    </View >
   );
 };
 

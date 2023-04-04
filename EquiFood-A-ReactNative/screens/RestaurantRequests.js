@@ -23,9 +23,13 @@ const RestaurantRequests = () => {
         async function fetchData() {
             const result = await getRestaurantsRequest();
             setStoreData(result);
-            // console.log(result);
         }
-        fetchData();
+        fetchData()
+        const intervalId = setInterval(fetchData, 15000);
+
+        return () => {
+            clearInterval(intervalId);
+        };
     }, []);
 
     return (
