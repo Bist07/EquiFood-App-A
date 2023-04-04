@@ -85,7 +85,7 @@ const RestaurantInsertView = () => {
         <View>
           <Text style={{ marginBottom: 5 }}>Image</Text>
           <View style={styles.inputForm}>
-            {<ImagePickerButton callback={setFile} />}
+            {<ImagePickerButton textColor = "#50C878" callback={setFile} />}
           </View>
         </View>
 
@@ -126,16 +126,14 @@ const RestaurantInsertView = () => {
         <View>
 
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
-            <TouchableOpacity style={stylesR.ROFormButtons} >
-              <Button
-                title="Submit"
-                onPress={onSubmitFormHandler}
-                style={{ "backgroundColor": "gray", "margin": 2 }}
-              />
+            <TouchableOpacity style={stylesR.ROFormButtons} 
+               onPress={() => navigation.navigate('RestaurantInsertView')}>
+                {/* onPress={onSubmitFormHandler} */}
+                <Text style={styles.buttonText}> Submit </Text>
             </TouchableOpacity>
             <TouchableOpacity style={stylesR.ROFormButtons}
               onPress={() => navigation.navigate('RestaurantInsertView')}>
-              <Button title="Reset" style={stylesR.ROButtonText}></Button>
+                 <Text style={styles.buttonText}> Reset </Text>
             </TouchableOpacity>
           </View>
         </View>

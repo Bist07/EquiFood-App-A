@@ -19,6 +19,7 @@ bcrypt.setRandomFallback((len) => {
 
 var salt = bcrypt.genSaltSync(10);
 
+
     const Register = () => {
         const navigation = useNavigation();
        const [first_name, setFirstname] = useState('');
@@ -66,7 +67,8 @@ var salt = bcrypt.genSaltSync(10);
       
         const onSubmitFormHandler = async (e) => {
        
-          
+          //hashes password
+          var hash = bcrypt.hashSync(passwordHash, salt);
 
 
         
@@ -78,7 +80,7 @@ var salt = bcrypt.genSaltSync(10);
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
-                passwordHash: passwordHash
+                passwordHash: hash
                 
             };
             console.log(JSON.stringify(data));
@@ -137,6 +139,7 @@ var salt = bcrypt.genSaltSync(10);
               <TextInput placeholder={"First Name"} value={first_name} onChangeText={onChangeFirstNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
             </View>
 
+
             <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:20}}>
             <TextInput placeholder={"Last Name"} value={last_name} onChangeText={onChangeLastNameHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" />
             </View>
@@ -144,6 +147,7 @@ var salt = bcrypt.genSaltSync(10);
             <View style={{flexDirection:'row', borderBottomColor:'#ccc', borderBottomWidth:1, paddingBottom:8, marginBottom:25, marginTop:20}}>
             <TextInput placeholder={"Email"} value={email} onChangeText={onChangeEmailHandler}  style={{ flex:1, paddingVertical:0,}} keyboardType="email-address" />
             </View>
+
 
             <Text style={{fontSize:11, marginTop:16}}> Password must be longer than 5 characters and have a number. </Text>
            
@@ -159,18 +163,18 @@ var salt = bcrypt.genSaltSync(10);
             <TextInput placeholder={"Verify Password"} value={passwordCheck} onChangeText={onChangePasswordCheckHandler}  style={{ flex:1, paddingVertical:0}} keyboardType="default" secureTextEntry={true} />
             </View>
 
-            <TouchableOpacity style={styles.formButtons}>
+
+            <TouchableOpacity style={styles.formButtons} onPress={onSubmitFormHandler}>
                    <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>  
 
+                 <TouchableOpacity style={styles.formButtons}
+                  onPress={() => navigation.navigate('Register')}>  
+                      <Text style={styles.buttonText}>Reset</Text>
+                  </TouchableOpacity> 
+
+
               </View>
-
-
-{/* 
-                   <Button
-                   title="Submit"
-                   onPress={onSubmitFormHandler}
-                   /> */}
           </>
         )
       }

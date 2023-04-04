@@ -13,9 +13,6 @@ import AdminRestaurantsCard from "../components/AdminRestaurantsCard";
 
 // View of current donations
 
-// Process:
-// We will calculate donations as the difference from the original amount subtracted by the discounted amount
-
 
 const AdminRestaurantsView = ({ onPress, text }) => {
     const [storeData, setStoreData] = useState([]);
