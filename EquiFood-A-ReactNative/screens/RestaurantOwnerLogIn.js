@@ -6,6 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Ionicons } from "@expo/vector-icons";
 import axios from 'axios';
 import config from '../config'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const RestaurantOwnerLogIn = () => {
@@ -67,13 +68,23 @@ const RestaurantOwnerLogIn = () => {
 
                 if(passwordValid == true){
                     navigation.navigate('RestaurantOwnerView');
+
+                      //Setting user State for restaurant owner
+                   let user = {
+                    firstName: response.data.name,
+                    id: response.data.idnum,
+                    restaurantId: response.data.restaurantId
+                    }
+                    AsyncStorage.setItem('RestaurantOwner', JSON.stringify(user));
+                    console.log(user);
+
                 }else{
                     alert("Email or Password Incorrect")
                 }
 
             } catch (error) {
             console.log(error);
-            alert("An error has occurred");
+            alert("Account not Found");
             }
         }
         else(alert("Please enter both an Email and a Password"));

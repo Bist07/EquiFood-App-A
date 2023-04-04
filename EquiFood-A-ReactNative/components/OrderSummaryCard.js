@@ -22,23 +22,24 @@ const OrderSummaryCard = ( data ) => {
         customer_id: order.customer_id,
         order_id: order.id,
         totalCost: order.total_amount,
-        discount: order.discount,
-        order_status: order.order_status,
+        order_status: order.status_value,
+        first_name: order.first_name,
+        last_name: order.last_name,
       })}
       >
 
       <View style={{ marginLeft: 10, flex: 1 }}>
         <View style={{ flexDirection: "column" }}>
           <Text style={styles.text}>
-            Customer ID: {order.customer_id}
+            Order For: {order.first_name} {order.last_name}
           </Text>
           <Text style={stylesR.currentPrice}>
             ${(Math.round(order.total_amount * 100) / 100).toFixed(2)}
           </Text>
+          <Text style={stylesR.servingsCount}>
+          Pickup Time: {dateTime[1].substring(0, dateTime[1].length-5 )}
+          </Text>
         </View>
-        <Text style={stylesR.servingsCount}>
-          Reservation Time: {'\n' + dateTime[0] + ' ' + dateTime[1].substring(0, dateTime[1].length-5 )}
-        </Text>
       </View>
 
     </Pressable>

@@ -79,7 +79,7 @@ const AdminLogIn = () => {
 
             } catch (error) {
                 console.log(error);
-                alert("An error has occurred");
+                alert("Account not Found");
             }
 
 
