@@ -84,7 +84,7 @@ const RestaurantOwnerLogIn = () => {
 
             } catch (error) {
             console.log(error);
-            alert("An error has occurred");
+            alert("Account not Found");
             }
         }
         else(alert("Please enter both an Email and a Password"));
