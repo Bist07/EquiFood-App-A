@@ -13,6 +13,19 @@ router.get('/', async function (req, res) {
     }
 })
 
+//getting sorted alphabetically
+router.get('/OrderedRestaurants', async function (req, res) {
+    try {
+        const sqlQuery = 'SELECT * FROM restaurant WHERE status=? ORDER BY name ASC';
+        
+        const rows = await pool.query(sqlQuery, 'accepted');
+        console.log("erroe"+ JSON.stringify(rows));
+        res.status(200).json(rows);
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+})
+
 //get by id
 router.get('/:id', async function (req, res) {
     try {
