@@ -29,14 +29,29 @@ router.get("/donationsPerRestaurant", async function (req, res) {
   }
 });
 
-//get customer id, order id, cost, discount, status, reservation from tables
+//get customer id, customer name, order id, cost, discount, status, reservation from tables
 router.get("/:id", async function (req, res) {
   try {
     const sqlQuery =
-      "SELECT F.customer_id, F.id, F.total_amount, F.reservation_datetime, O.status_value FROM food_order F JOIN order_status O ON F.order_status_id = O.id WHERE O.status_value<2 AND restaurant_id=?"; //defines query
+      "SELECT F.customer_id, F.id, F.total_amount, F.reservation_datetime, O.status_value, C.first_name, C.last_name FROM food_order F JOIN order_status O ON F.order_status_id = O.id JOIN customer C ON F.customer_id = C.id WHERE O.status_value<2 AND restaurant_id=?"; //defines query
     const rows = await pool.query(sqlQuery, req.params.id);
     res.status(200).json(rows);
   } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+router.put("/UpdateStatus", async function (req, res) {
+  try{
+    const {id, status} = req.body;
+    const sqlQuery = "UPDATE order_status OS JOIN food_order FO ON OS.id=FO.order_status_id SET status_value = ? WHERE OS.id = ?";
+    await pool.query(sqlQuery, [status, id], (error, res) => {
+      if(error){
+        res.status(400).send(error.message);
+      }
+      res.status(200).send("Order Status Updated");
+    });
+  } catch(error){
     res.status(400).send(error.message);
   }
 });

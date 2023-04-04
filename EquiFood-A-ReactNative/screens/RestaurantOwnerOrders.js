@@ -39,6 +39,8 @@ const RestaurantOwnerOrders = () => {
       setOrders(result)
     }
     fetchData();
+      const interval = setInterval(fetchData, 5000);
+      return () => clearInterval(interval);
   }, []);
 
   const pending = orders.filter(order => order.status_value == "pending");
@@ -56,12 +58,6 @@ const RestaurantOwnerOrders = () => {
       >
         <Ionicons name="chevron-back-outline" size={24} color="white" />
       </Pressable>
-      <View style={{ marginTop: 0, margin: 10, marginBottom:0, alignItems: "center", justifyContent: "center", }}>
-        <Text style={{ marginTop: 0, fontSize: 20 }}>Pending Orders</Text>
-      </View>
-      <View style={{ marginLeft: 40, marginRight: 40, marginTop: 0 }}>
-        {pending.map((item, index) => <OrderSummaryCard key={index} item={item} />)}
-      </View>
 
       <View style={{ marginTop: 0, margin: 10, marginBottom:0, alignItems: "center", justifyContent: "center", }}>
         <Text style={{ marginTop: 0, fontSize: 20 }}>Accepted Orders</Text>
@@ -69,6 +65,15 @@ const RestaurantOwnerOrders = () => {
       <View style={{ marginLeft: 40, marginRight: 40, marginTop: 0 }}>
         {accepted.map((item, index) => <OrderSummaryCard key={index} item={item} />)}
       </View>
+
+      <View style={{ marginTop: 0, margin: 10, marginBottom:0, alignItems: "center", justifyContent: "center", }}>
+        <Text style={{ marginTop: 0, fontSize: 20 }}>Pending Orders</Text>
+      </View>
+      <View style={{ marginLeft: 40, marginRight: 40, marginTop: 0 }}>
+        {pending.map((item, index) => <OrderSummaryCard key={index} item={item} />)}
+      </View>
+
+      <View style={{marginBottom:100}}></View>
 
     </ScrollView>
   )
