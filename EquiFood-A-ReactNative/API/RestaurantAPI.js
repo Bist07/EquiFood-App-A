@@ -10,6 +10,15 @@ export const getRestaurants = async () => {
     }
 };
 
+export const getOrderedRestaurants = async () => {
+    try {
+        const response = await axios.get(`${config.local.url}:${config.local.port}/Restaurant/OrderedRestaurants`);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 export const getRestaurantsRequest = async () => {
     try {
         const response = await axios.get(`${config.local.url}:${config.local.port}/Restaurant/Requests/Pending`);

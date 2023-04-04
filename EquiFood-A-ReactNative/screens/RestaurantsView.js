@@ -1,28 +1,38 @@
-import { StyleSheet, View, TextInput, Image, Pressable, ScrollView, Text } from "react-native";
+import { StyleSheet, View, TextInput, Image, Pressable, ScrollView, Text, FlatList, TouchableOpacity, Modal} from "react-native";
 import React, { useState, useEffect } from 'react';
 import { AntDesign } from "@expo/vector-icons";
 import RestaurantCard from "../components/RestaurantCard";
-import { getRestaurants } from "../API/RestaurantAPI";
+import { getOrderedRestaurants, getRestaurantName, getRestaurants } from "../API/RestaurantAPI";
 import { useNavigation } from "@react-navigation/native";
-import { FlatList } from "react-native-gesture-handler";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // This page displays all restaurant data in one page.
 
 
 const RestaurantsView = () => {
-
-  const [input, setInput] = useState('');
   const navigation = useNavigation();
+  const [input, setInput] = useState('');
   const [storeData, setStoreData] = useState([]);
+  const [orderedData, setOrderedData] = useState();
+
+  // For filtering Modal Pop Up:
+  const [modalVisible, setModalVisible] = useState(false);
+
+  // For filtering through alphabetically:
+  const [restaurant, setRestaurant] = useState('');
 
   useEffect(() => {
     async function fetchData() {
       const result = await getRestaurants();
+      const orderedResult = await getOrderedRestaurants();
       setStoreData(result);
+      setOrderedData(orderedResult);
     }
     fetchData();
   }, []);
 
+  // storeData.forEach(item => console.log(item.name))
   const SearchFilter = ({ data, input, setInput }) => {
     return (
       <View>
@@ -63,21 +73,50 @@ const RestaurantsView = () => {
           backgroundColor: "#FAF9F6",
           borderWidth: 0.2,
           borderColor: "#e8e8e8",
-          padding: 11,
-          borderRadius: 12,
-          marginLeft: 27,
-          marginRight: 27,
+          padding: 0,
+          marginLeft: 20,
+          marginRight: 20,
           marginTop: 20,
+          borderBottomLeftRadius:10,
+          borderBottomEndRadius:10,
         }}
       >
-        <AntDesign name="search1" size={20} color="gray" />
+        <View style={{ backgroundColor: "#fff", paddingRight:10, borderRadius: 12,}}>
+        <TouchableOpacity onPress={() =>{
+          setModalVisible(true);
+        }}>
+        <MaterialCommunityIcons name="tune-variant" size={24} color="gray" style={{ padding:10, backgroundColor: "#fff", borderWidth: 1, borderColor: "#e8e8e8", borderRadius: 12, }} />
+        </TouchableOpacity>
+        </View>
+        <AntDesign name="search1" size={20} color="gray" style={{ paddingLeft: 7}} />
         <TextInput
-          style={{ paddingLeft: 5 }}
+          style={{ paddingLeft: 10 }}
           value={input}
           placeholder="Restaurant name, cuisines, or a dish"
-          onChangeText={(text) => setInput(text)}
+          onChangeText={(text) => 
+            setInput(text)
+          }
         />
-      </View>
+        {/* <View id="filter"
+        style={{
+          flexDirection: "row",
+          justifyContent: 'flex-end',
+          // alignItems: "right",
+          backgroundColor: "#fff",
+          borderWidth: 1,
+          borderColor: "#e8e8e8",
+          padding: 8,
+          borderRadius: 12,
+          // alignContent: "flex-end",
+          marginLeft: 30,
+          position: "fixed",
+          // marginRight: 27,
+          // marginTop: 20,
+        }}>
+
+        </View> */}
+    
+        </View>
       <View style={{ width: '80%', backgroundColor: "#fff" }}>
         <View id="header">
           {/* <Header /> */}
@@ -86,6 +125,53 @@ const RestaurantsView = () => {
       <View style={{ marginTop: 10, height: "90%" }}>
         <SearchFilter data={storeData} input={input} setInput={setInput} />
       </View>
+
+      <Modal
+      transparent = {true}
+      visible = {modalVisible}
+      animationType="fade">
+
+      <View style = {{backgroundColor: "#000000aa", flex:1}}>
+
+          <View style = {{backgroundColor: "#50C878", marginTop: 400, margin:75, borderRadius:25 }}>
+            <TouchableOpacity style = {{borderBottomWidth: 1,borderBottomColor: "gray"}}
+            onPress={() =>{
+
+              // Sort Function to Sort Alphabetically:
+              // If I could parse out the name from the data then I believe it should work properly other than that.
+              
+              
+          
+
+              console.log(orderedData);
+                <FlatList contentContainerStyle={{ flexGrow: 1 }} data={orderedData} renderItem={({ item }) => {
+                      <View>
+                        <RestaurantCard item={item} />
+                      </View>
+                  } } />
+              // <sortByName data={storeData} />
+              setModalVisible(false);
+            }}>
+            <Text style = {{ fontSize:22 ,padding:12, textAlign:"center", color: "#FAF9F6"}}> Sort by Name </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style = {{}}
+            onPress={() =>{
+              const sortedData = [storeData].sort((a,b) => a.item.name > (b.item.name) ? -1 : 1);
+              console.log(storeData);
+                <FlatList contentContainerStyle={{ flexGrow: 1 }} data={sortedData} renderItem={({ item }) => {
+                      <View>
+                        <RestaurantCard item={item} />
+                      </View>
+                  } } />
+              setModalVisible(false);
+            }}>
+            <Text style = {{ fontSize:22 ,padding:12, textAlign:"center", color: "#FAF9F6"}}> Sort by Rating </Text>
+            </TouchableOpacity>
+          </View>
+
+      </View>
+        
+      </Modal>
     </View>
   );
 };
