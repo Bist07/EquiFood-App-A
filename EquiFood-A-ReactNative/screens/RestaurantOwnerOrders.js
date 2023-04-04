@@ -5,18 +5,37 @@ import { getOrders } from '../API/OrdersAPI';
 import { Ionicons } from "@expo/vector-icons";
 import OrderSummaryCard from '../components/OrderSummaryCard';
 import stylesR from '../components/stylesR';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const RestaurantOwnerOrders = () => {
 
   const navigation = useNavigation();
   const [orders, setOrders] = useState([]);
+  const [restaurantId, setrestaurantId] = useState("");
 
   //Set to rest_id to Burger Hub for now
-  const restaurant_id = 1;
+  
+
+
+  const getUser = async () => {
+    try {
+      const savedUser = await AsyncStorage.getItem('RestaurantOwner');
+      let parsed = JSON.parse(savedUser)
+      setrestaurantId(parsed.restaurantId);
+      console.log(restaurantId);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+   //calling getuser function to set username
+   useEffect(() => {
+    getUser();
+  }, [])
 
   useEffect(() => {
     async function fetchData() {
-      const result = await getOrders(restaurant_id);
+      const result = await getOrders(restaurantId);
       setOrders(result)
     }
     fetchData();
