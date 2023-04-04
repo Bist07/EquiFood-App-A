@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, Text, Image, Pressable, TouchableOpacity, TouchableHighlight, TextInput, ScrollView } from 'react-native'
 import Logo from '../assets/logos/Equifood_Logo.png'
 import CustomInput from '../components/CustomInput'
@@ -8,10 +8,76 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Ionicons, Feather } from "@expo/vector-icons";
 import Header from '../components/header';
 import AdminRestaurantView from '../components/AdminRestaurantView';
+import axios from 'axios';
+import config from '../config';
 
 
 const Donations = ({ onPress, text }) => {
     const navigation = useNavigation();
+    const storeData = RestaurantData;
+    // const restaurant = props.restaurant;
+    const [totalAmount, setTotalAmount] = React.useState('');
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+
+
+        //function to all donations summed
+        async function fetchData() {
+            try {
+                const response = await axios({
+                    url: `${config.local.url}:${config.local.port}/Orders/totalDonations`,
+                    method: 'get',
+
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                });
+
+                //parsing out just the number  
+                const jsonObject = response.data.totalAmount;
+                const totalAmount = jsonObject[0]['SUM(fo.discount)'];
+
+                setTotalAmount(totalAmount);
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        if (true) {
+            fetchData();
+
+        }
+
+        //function to get per Restaurant donations
+        async function fetchData2() {
+            try {
+                const response = await axios({
+                    url: `${config.local.url}:${config.local.port}/Orders/donationsPerRestaurant`,
+                    method: 'get',
+
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                });
+                console.log(response.data.Object);
+
+                const data = response.data.Object;
+
+                setData(data);
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        if (true) {
+            fetchData2();
+
+        }
+    }, [])
+
+
+
 
     return (
 
@@ -32,24 +98,34 @@ const Donations = ({ onPress, text }) => {
             >
                 <Ionicons name="chevron-back-outline" size={22} color="white" />
             </Pressable>
-            <View style={{ width: '100%' }}>
+            <View style={styles.container}>
+                <Text style={styles.title}> </Text>
+                <Text style={styles.title}> Donations </Text>
+                <View style={styles.innerContainer}>
+                    <View>
+
+                        {data.map((item, index) => (
+                            <View key={index} >
+                                <Text style={{ left: 150, textDecorationLine: 'underline', fontSize: 20 }}> {item.name}</Text>
+                                <Text style={{ left: 150 }}> Amount: ${item.discount} </Text>
+                                <Text></Text>
+                            </View>
+                        ))}
 
 
-                <View style={styles.container}>
-                    <Text style={styles.title}> March 2023 </Text>
-                    <Text style={styles.title}> Donation Amounts </Text>
-                    <View style={styles.innerContainer}>
-                        <Text style={{ textAlign: "center", marginTop: 50, fontSize: 20, fontWeight: "220" }}> {" Freshie - $379.00\nJugo Juice - $240.00\nBurger Baron - $121.00\nSubway - $358.00\n"}</Text>
                     </View>
-                    <View style={{ borderBottomColor: "#50c864", borderBottomWidth: 10, }}>
-                        <Text style={{ textAlign: "center", marginTop: 70, fontSize: 27, fontWeight: "300" }}>March 2023 Total Donations: </Text>
-                        <Text style={{ textAlign: "center", marginTop: 14, fontSize: 30, fontWeight: "250" }}>$1,098.00</Text>
+                    <View style={{ borderBottomColor: "#50c864", borderBottomWidth: 10, right: 50 }}>
+                        <Text></Text>
+                        <Text></Text>
+                        <Text></Text>
+
+                        <Text style={{ textAlign: "center", marginTop: 120, fontSize: 30, fontWeight: "250" }}>Total Donations: ${totalAmount} </Text>
                     </View>
                 </View>
 
             </View>
         </ScrollView>
-    )
+    );
 }
 
 export default Donations;
@@ -64,6 +140,7 @@ const styles = StyleSheet.create({
         padding: 10,
         width: "100%",
         alignItems: "center",
+
 
 
     },
@@ -82,6 +159,7 @@ const styles = StyleSheet.create({
         // fontWeight: "bold",
         fontSize: 30,
         textAlign: "center",
+        marginBottom: 10
     },
     linkButton: {
         backgroundColor: '#50C878',

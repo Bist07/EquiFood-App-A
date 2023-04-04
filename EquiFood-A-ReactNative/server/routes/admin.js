@@ -14,9 +14,9 @@ bcrypt.setRandomFallback((len) => {
 router.post('/AdminRegister', async function (req, res) {
     try {
         // const {id, address, hours, cuisine, rating, img_id, longitude, latitude, name, Img} = req.body;
-        const { first_name, last_name, email, passwordHash, company_code } = req.body;
-        const sqlQuery = "INSERT INTO admin (first_name, last_name, email, passwordHash, company_code) VALUES (?,?,?,?,?)";
-        const result = await pool.query(sqlQuery, [first_name, last_name, email, passwordHash, company_code]);
+        const { first_name, last_name, email, passwordHash } = req.body;
+        const sqlQuery = "INSERT INTO admin (first_name, last_name, email, passwordHash) VALUES (?,?,?,?)";
+        const result = await pool.query(sqlQuery, [first_name, last_name, email, passwordHash]);
 
         console.log(result);
         console.log(sqlQuery);

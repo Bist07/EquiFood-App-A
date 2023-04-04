@@ -64,23 +64,26 @@ var salt = bcrypt.genSaltSync(10);
            //hashes password
            var hash = bcrypt.hashSync(passwordHash, salt);
 
+         
 
         //checking if password is valid
         if(passwordCheck == passwordHash ){
             if(passwordCheck.length > 4){
                 if(hasNumber.test(passwordCheck) == true){
-                    if(CompanyCode == "0000"){ 
+                  if (bcrypt.compareSync(CompanyCode, '$2a$10$K/UY57TDh6mfcL3qeXbfeuw7llqfpBdFIfZ5mAxyGP1u4bTfdwKui')) {
+                   
+              
                       /*Company code is a preset code set by Equifood, 
                       it is used to ensure only members of the equifood team 
                       are able to register as and admin.
-                      It can be set here*/
+                     */
           try {
             const data = {
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
                 passwordHash: hash,
-                company_code: CompanyCode
+               
                 
             };
             //sending form data to router
