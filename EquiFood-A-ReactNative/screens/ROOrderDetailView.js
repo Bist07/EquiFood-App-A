@@ -3,7 +3,7 @@ import React, { useState, useEffect }  from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from "@expo/vector-icons";
 import stylesR from '../components/stylesR';
-import { getOrderDetails } from '../API/OrdersAPI';
+import { getOrderDetails, updateOrderStatus } from '../API/OrdersAPI';
 import OrderCard from '../components/OrderCard';
 
 // This is the page that shows pending/accepted order cards after clicking "View my Orders"
@@ -22,8 +22,23 @@ const ROOrderDetailView = () => {
     fetchData();
   }, []);
 
-  console.log("asdf");
-  console.log(menuItems);  
+  const handleAcceptPress = () => {
+    if(route.params.order_status == "pending"){
+      updateOrderStatus(route.params.order_id, "accepted");
+      navigation.navigate("RestaurantOwnerOrders");
+    }
+    if(route.params.order_status == "accepted"){
+      updateOrderStatus(route.params.order_id, "completed");
+      navigation.navigate("RestaurantOwnerOrders");
+    }
+  }
+
+  const handleDeclinePress = () => {
+    updateOrderStatus(route.params.order_id, "declined");
+    navigation.navigate("RestaurantOwnerOrders");
+  }
+
+  console.log(route.params);  
   const navigation = useNavigation();
   return (
     <>
@@ -36,7 +51,7 @@ const ROOrderDetailView = () => {
       </Pressable>
     </View>
     <View>
-      <Text style={stylesR.centeredBoldText}>Customer ID: {route.params.customer_id}</Text>
+      <Text style={stylesR.centeredBoldText}>Customer Name: {route.params.first_name} {route.params.last_name}</Text>
     </View>
     <View style={{ marginLeft: 10, flex: 1 }}>
       <View style={{ flexDirection: "column" }}>
@@ -45,20 +60,19 @@ const ROOrderDetailView = () => {
         </View>
       </View>
     </View>
-    {/* Can't get it to be side by side nicely :() */}
     <View style={{display:"flex", justifyContent:"space-evenly", marginBottom:25}}>
-      <TouchableOpacity style={styles.acceptButton}>
+      <TouchableOpacity style={styles.acceptButton} onPress={handleAcceptPress}>
         <Button
         title="Accept" style={stylesR.ROButtonText}
-        // onPress={}
+        onPress={handleAcceptPress}
         />
       </TouchableOpacity>   
       
       <View style={{display:'flex', flexDirection:2, justifyContent:"space-evenly"}}>
         <TouchableOpacity style={styles.declineButton}
-        // onPress={() => navigation.navigate('RestaurantInsertView')}
+          onPress={handleDeclinePress}
         > 
-            <Button title="Decline" style={stylesR.ROButtonText}></Button>
+            <Button id="declineButton" title="Decline" onPress={handleDeclinePress} style={stylesR.ROButtonText}></Button>
         </TouchableOpacity> 
       </View>
 

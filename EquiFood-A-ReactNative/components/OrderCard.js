@@ -20,7 +20,7 @@ const OrderCard = (data) => {
 
         <View style={stylesR.descriptionCard}>
           <View>
-            <Text style={stylesR.restaurantName}>
+            <Text style={stylesR.descriptionCard}>
               {menuItem.item_name}
             </Text>
             <Text style={stylesR.restaurantHours}>
