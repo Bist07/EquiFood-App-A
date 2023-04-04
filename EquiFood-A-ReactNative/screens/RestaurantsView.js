@@ -2,9 +2,11 @@ import { StyleSheet, View, TextInput, Image, Pressable, ScrollView, Text, FlatLi
 import React, { useState, useEffect } from 'react';
 import { AntDesign } from "@expo/vector-icons";
 import RestaurantCard from "../components/RestaurantCard";
-import { getRestaurants } from "../API/RestaurantAPI";
+import { getRestaurantName, getRestaurants } from "../API/RestaurantAPI";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 // This page displays all restaurant data in one page.
 
 
@@ -16,13 +18,32 @@ const RestaurantsView = () => {
   // For filtering Modal Pop Up:
   const [modalVisible, setModalVisible] = useState(false);
 
+  // For filtering through alphabetically:
+  const [restaurant, setRestaurant] = useState('');
+
   useEffect(() => {
     async function fetchData() {
       const result = await getRestaurants();
       setStoreData(result);
+      const restaurantName = await AsyncStorage.getItem('restaurant');
+      let parsed = JSON.parse(result)
+      setRestaurant(parsed.name);
+      // const restaurantName = await getRestaurantsName();
     }
     fetchData();
   }, []);
+
+  //Retrieving restaurant State Object and parsing out Restaurant 
+  const getRestaurant = async () => {
+      try {
+        const rest = await AsyncStorage.getItem('restaurant');
+        let parsed = JSON.parse(rest)
+        setRestaurant(parsed.name);
+        console.log(restaurant);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
   const SearchFilter = ({ data, input, setInput }) => {
     return (
@@ -127,8 +148,12 @@ const RestaurantsView = () => {
           <View style = {{backgroundColor: "#50C878", marginTop: 400, margin:75, borderRadius:25 }}>
             <TouchableOpacity style = {{borderBottomWidth: 1,borderBottomColor: "gray"}}
             onPress={() =>{
-              const sortedData = [storeData].sort((a,b) => a.item.name > (b.item.name) ? -1 : 1);
-              // console.log(sortedData);
+
+              // Sort Function to Sort Alphabetically:
+              // If I could parse out the name from the data then I believe it should work properly other than that.
+              
+              const sortedData = [restaurant].sort((a,b) => a.item.name > (b.item.name) ? -1 : 1);
+              console.log(sortedData);
                 <FlatList contentContainerStyle={{ flexGrow: 1 }} data={sortedData} renderItem={({ item }) => {
                       <View>
                         <RestaurantCard item={item} />
