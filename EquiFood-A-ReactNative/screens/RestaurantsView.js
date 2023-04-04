@@ -1,4 +1,4 @@
-import { StyleSheet, View, TextInput, Image, Pressable, ScrollView, Text, FlatList, TouchableOpacity, Modal} from "react-native";
+import { StyleSheet, View, TextInput, Image, Pressable, ScrollView, Text, FlatList, TouchableOpacity, Modal } from "react-native";
 import React, { useState, useEffect } from 'react';
 import { AntDesign } from "@expo/vector-icons";
 import RestaurantCard from "../components/RestaurantCard";
@@ -77,49 +77,29 @@ const RestaurantsView = () => {
           marginLeft: 20,
           marginRight: 20,
           marginTop: 20,
-          borderBottomLeftRadius:10,
-          borderBottomEndRadius:10,
+          borderBottomLeftRadius: 10,
+          borderBottomEndRadius: 10,
         }}
       >
-        <View style={{ backgroundColor: "#fff", paddingRight:10, borderRadius: 12,}}>
-        <TouchableOpacity onPress={() =>{
-          setModalVisible(true);
-        }}>
-        <MaterialCommunityIcons name="tune-variant" size={24} color="gray" style={{ padding:10, backgroundColor: "#fff", borderWidth: 1, borderColor: "#e8e8e8", borderRadius: 12, }} />
-        </TouchableOpacity>
+        <View style={{ backgroundColor: "#fff", paddingRight: 10, borderRadius: 12, }}>
+          <TouchableOpacity onPress={() => {
+            setModalVisible(true);
+          }}>
+            <MaterialCommunityIcons name="tune-variant" size={24} color="gray" style={{ padding: 10, backgroundColor: "#fff", borderWidth: 1, borderColor: "#e8e8e8", borderRadius: 12, }} />
+          </TouchableOpacity>
         </View>
-        <AntDesign name="search1" size={20} color="gray" style={{ paddingLeft: 7}} />
+        <AntDesign name="search1" size={20} color="gray" style={{ paddingLeft: 7 }} />
         <TextInput
           style={{ paddingLeft: 10 }}
           value={input}
           placeholder="Restaurant name, cuisines, or a dish"
-          onChangeText={(text) => 
+          onChangeText={(text) =>
             setInput(text)
           }
         />
-        {/* <View id="filter"
-        style={{
-          flexDirection: "row",
-          justifyContent: 'flex-end',
-          // alignItems: "right",
-          backgroundColor: "#fff",
-          borderWidth: 1,
-          borderColor: "#e8e8e8",
-          padding: 8,
-          borderRadius: 12,
-          // alignContent: "flex-end",
-          marginLeft: 30,
-          position: "fixed",
-          // marginRight: 27,
-          // marginTop: 20,
-        }}>
-
-        </View> */}
-    
-        </View>
+      </View>
       <View style={{ width: '80%', backgroundColor: "#fff" }}>
         <View id="header">
-          {/* <Header /> */}
         </View>
       </View>
       <View style={{ marginTop: 10, height: "90%" }}>
@@ -127,50 +107,31 @@ const RestaurantsView = () => {
       </View>
 
       <Modal
-      transparent = {true}
-      visible = {modalVisible}
-      animationType="fade">
+        transparent={true}
+        visible={modalVisible}
+        animationType="fade">
 
-      <View style = {{backgroundColor: "#000000aa", flex:1}}>
+        <View style={{ backgroundColor: "#000000aa", flex: 1 }}>
 
-          <View style = {{backgroundColor: "#50C878", marginTop: 400, margin:75, borderRadius:25 }}>
-            <TouchableOpacity style = {{borderBottomWidth: 1,borderBottomColor: "gray"}}
-            onPress={() =>{
-
-              // Sort Function to Sort Alphabetically:
-              // If I could parse out the name from the data then I believe it should work properly other than that.
-              
-              
-          
-
-              console.log(orderedData);
-                <FlatList contentContainerStyle={{ flexGrow: 1 }} data={orderedData} renderItem={({ item }) => {
-                      <View>
-                        <RestaurantCard item={item} />
-                      </View>
-                  } } />
-              // <sortByName data={storeData} />
-              setModalVisible(false);
-            }}>
-            <Text style = {{ fontSize:22 ,padding:12, textAlign:"center", color: "#FAF9F6"}}> Sort by Name </Text>
+          <View style={{ backgroundColor: "#50C878", marginTop: 400, margin: 75, borderRadius: 25 }}>
+            <TouchableOpacity style={{ borderBottomWidth: 1, borderBottomColor: "gray" }}
+              onPress={() => {
+                setStoreData(orderedData);
+                setModalVisible(false);
+              }}>
+              <Text style={{ fontSize: 22, padding: 12, textAlign: "center", color: "#FAF9F6" }}> Sort by Name </Text>
             </TouchableOpacity>
-            <TouchableOpacity style = {{}}
-            onPress={() =>{
-              const sortedData = [storeData].sort((a,b) => a.item.name > (b.item.name) ? -1 : 1);
-              console.log(storeData);
-                <FlatList contentContainerStyle={{ flexGrow: 1 }} data={sortedData} renderItem={({ item }) => {
-                      <View>
-                        <RestaurantCard item={item} />
-                      </View>
-                  } } />
-              setModalVisible(false);
-            }}>
-            <Text style = {{ fontSize:22 ,padding:12, textAlign:"center", color: "#FAF9F6"}}> Sort by Rating </Text>
+            <TouchableOpacity style={{}}
+              onPress={() => {
+                setStoreData(orderedData);
+                setModalVisible(false);
+              }}>
+              <Text style={{ fontSize: 22, padding: 12, textAlign: "center", color: "#FAF9F6" }}> Sort by Rating </Text>
             </TouchableOpacity>
           </View>
 
-      </View>
-        
+        </View>
+
       </Modal>
     </View>
   );
