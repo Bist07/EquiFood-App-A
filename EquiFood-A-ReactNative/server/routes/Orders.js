@@ -1,7 +1,33 @@
 import express from "express";
 import { pool } from "../helpers/database.js";
 export const router = express.Router();
-//get all by id and pending/accepted orders
+
+
+//gets total donations across all restaurants
+router.get("/totalDonations", async function (req, res) {
+  try {
+    const sqlQuery =
+      "SELECT SUM(fo.discount) FROM food_order fo JOIN order_status os ON fo.order_status_id = os.id WHERE os.status_value = 'completed'"; //defines query
+    const rows = await pool.query(sqlQuery);
+    res.status(200).json({totalAmount: rows});
+    console.log(rows);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+//gets donation amounts for each restaurant
+router.get("/donationsPerRestaurant", async function (req, res) {
+  try {
+    const sqlQuery =
+      "SELECT SUM(fo.discount) as discount, fo.restaurant_id, r.name FROM food_order fo JOIN order_status os ON fo.order_status_id = os.id JOIN restaurant r ON fo.restaurant_id = r.id WHERE os.status_value = 'completed' GROUP BY fo.restaurant_id"; //defines query
+    const rows = await pool.query(sqlQuery);
+    res.status(200).json({Object: rows});
+    console.log(rows);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
 
 //get customer id, order id, cost, discount, status, reservation from tables
 router.get("/:id", async function (req, res) {
