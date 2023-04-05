@@ -19,7 +19,20 @@ router.get('/OrderedRestaurants', async function (req, res) {
         const sqlQuery = 'SELECT * FROM restaurant WHERE status=? ORDER BY name ASC';
         
         const rows = await pool.query(sqlQuery, 'accepted');
-        console.log("erroe"+ JSON.stringify(rows));
+        // console.log("erroe"+ JSON.stringify(rows));
+        res.status(200).json(rows);
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+})
+
+//getting sorted by rating
+router.get('/RatingRestaurants', async function (req, res) {
+    try {
+        const sqlQuery = 'SELECT * FROM restaurant WHERE status=? ORDER BY rating DESC';
+        
+        const rows = await pool.query(sqlQuery, 'accepted');
+        // console.log("erroe"+ JSON.stringify(rows));
         res.status(200).json(rows);
     } catch (error) {
         res.status(400).send(error.message)
