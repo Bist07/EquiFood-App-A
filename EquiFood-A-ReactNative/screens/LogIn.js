@@ -81,6 +81,7 @@ const LogIn = () => {
                    let user = {
                    firstName: response.data.name,
                    id: response.data.idnum,
+                   password: enteredPassword
                    }
                AsyncStorage.setItem('user', JSON.stringify(user));
                //navigate to home page

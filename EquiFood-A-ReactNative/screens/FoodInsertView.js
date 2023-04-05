@@ -4,7 +4,7 @@ import stylesR from '../components/stylesR'
 import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from "@expo/vector-icons";
 import ImagePickerButton from '../components/ImagePicker'
-import { uploadFile } from '../API/ImageAPI'
+import { InsertForm } from '../API/ImageAPI'
 
 const FoodInsertView = () => {
   const navigation = useNavigation();
@@ -42,7 +42,7 @@ const FoodInsertView = () => {
       quantity: servings,
     }
 
-    await uploadFile(foodName, file, 'food', data)
+    await InsertForm(foodName, file, 'food', data)
   }
 
   return (
