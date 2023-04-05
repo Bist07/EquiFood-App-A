@@ -26,32 +26,36 @@ const FoodEditView = () => {
 
 
   return (
-    <ScrollView style={stylesR.FoodInsertView}>
+    <View style={{backgroundColor: "#fff", height: "100%"}}>
       {/* <Header/> */}
       <Pressable
         onPress={() => navigation.goBack()}
         style={{
-          backgroundColor: "#006A4E",
-          width: 40,
-          height: 40,
-          marginTop: 50,
-          borderRadius: 20,
+          backgroundColor: "#50c864",
+          width: 37,
+          height: 37,
+          borderRadius: 15,
           justifyContent: "center",
           alignItems: "center",
           marginLeft: 10,
-          marginTop: 30,
+          marginTop: 90,
+          marginBottom:10 
         }}
       >
         <Ionicons name="chevron-back-outline" size={24} color="white" />
       </Pressable>
 
-      <View>
-        {foods.map((item, i) => (
+      <View style={{ backgroundColor: 'white', alignItems: 'center' }}>
+                <Text style={{ fontSize: 30, marginTop: 10, marginBottom:60 }}>Edit Food View</Text>
+      </View>
+      
+      <ScrollView style={{backgroundColor: "#fff", marginLeft:30, marginRight:30}}>
+                {foods.map((item, i) => (
           <FoodEditCard food={item} key={i} />
         ))}
-      </View>
+      </ScrollView>
 
-    </ScrollView>
+    </View>
   )
 }
 

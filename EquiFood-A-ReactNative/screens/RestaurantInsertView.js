@@ -63,15 +63,15 @@ const RestaurantInsertView = () => {
           <Pressable
             onPress={() => navigation.goBack()}
             style={{
-              backgroundColor: '#50C878',
-              width: 35,
-              height: 35,
-              borderRadius: 17,
+              backgroundColor: "#50c864",
+              width: 37,
+              height: 37,
+              borderRadius: 15,
               justifyContent: "center",
               alignItems: "center",
-              marginLeft: 2,
-              marginTop: -10,
-              marginBottom: 10,
+              marginLeft: 0,
+              marginTop: 10,
+              marginBottom:20
             }}
           >
             <Ionicons name="chevron-back-outline" size={20} color="white" />
