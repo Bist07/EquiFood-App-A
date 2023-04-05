@@ -82,11 +82,11 @@ const AdminRestaurantsCard = (data) => {
             {/* <Text style={stylesR.restaurantHours}>
                 {restaurant.hours}
               </Text> */}
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
               <Text style={{ fontWeight: "bold", marginTop: 10, padding: 7, fontSize: 10, borderColor: '#50c864', borderWidth: 1, marginLeft: "60%", textAlign: "center" }}> Submit Review </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <TouchableOpacity>
-              <Text  onPress={() => {onSubmitHandler();}} style={{ fontWeight: "bold", marginTop: 10, padding: 7, fontSize: 10, borderColor: 'red', borderWidth: 1, marginLeft: "60%", textAlign: "center" }}> Delete </Text>
+              <Text  onPress={() => {onSubmitHandler();}} style={{ flexDirection:'row', fontWeight: "bold", marginTop: 10, padding: 7, fontSize: 10, borderColor: 'red', borderWidth: 1, marginLeft: "35%", marginRight: "35%", marginTop:"10%" ,textAlign: "center" }}> Delete? </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   descriptionCard: {
     // marginLeft: 0,
     // marginRight: -3,
-    padding: 10,
+    padding: 20,
     backgroundColor: "white",
     flexDirection: "row",
     // alignItems: "center",

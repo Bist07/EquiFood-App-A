@@ -51,20 +51,7 @@ const RestaurantRequests = () => {
 
             <ScrollView style={styles.body}>
                 <View style={{ marginTop: 40, width: "100%" }}>
-                    <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, marginBottom: 10, marginTop: 20 }}>
-                    </View>
-                    <View style={styles.card}>
-                        <TouchableOpacity>
-                            <Text style={{ fontWeight: "bold", padding: 20, fontSize: 20 }}> Restaurant Name </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Feather name="check-square" size={22} color="#50C878" style={{ margin: 10, padding: 10, borderColor: '#ccc', borderWidth: 1 }} />
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <MaterialCommunityIcons name="delete-forever-outline" size={28} color="#DC143C" style={{ margin: 10, padding: 7, borderColor: '#ccc', borderWidth: 1 }} />
-                        </TouchableOpacity>
-                    </View>
-                    <View style={{ marginLeft: 40, marginRight: 40, marginTop: 30 }}>
+                    <View style={{ marginLeft: 10, marginRight: 10, marginTop: 30 }}>
                         <ScrollView style={{ backgroundColor: "#FFF" }}>
                             <View style={{ marginLeft: 40, marginRight: 40, marginTop: 30 }}>
                                 {storeData.map((item, index) => <RequestsCard key={index} item={item} />)}

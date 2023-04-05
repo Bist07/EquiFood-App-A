@@ -26,7 +26,7 @@ const AdminRestaurantsView = ({ onPress, text }) => {
    
 
     return (
-        <View style={{ backgroundColor: 'white', }}>
+        <View style={{ backgroundColor: 'white', height: "100%"}}>
             <Pressable
                 onPress={() => navigation.goBack()}
                 style={{
