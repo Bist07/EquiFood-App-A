@@ -1,7 +1,7 @@
 import { Amplify, Storage } from 'aws-amplify';
 import awsconfig from '../src/aws-exports.js'
-import { InsertFoodItem } from './MenuAPI';
-import { InsertRestaurant } from './RestaurantAPI';
+import { RestaurantInsert } from './RestaurantAPI.js';
+import { FoodInsert } from './MenuAPI.js';
 
 Amplify.configure(awsconfig);
 
@@ -21,12 +21,17 @@ export const InsertForm = async (name, file, type, data) => {
       Storage.get(res.key)
         .then((result) => {
           data.ImageURL = result.substring(0, result.indexOf('?'))
+
           if (type === 'food') {
-            InsertFoodItem(data);
+            FoodInsert(data);
           }
 
           if (type === 'restaurant') {
-            InsertRestaurant(data);
+            RestaurantInsert(data);
+          }
+
+          if (type === 'customer') {
+            //CustomerInsert(data);
           }
 
         })
@@ -37,6 +42,7 @@ export const InsertForm = async (name, file, type, data) => {
       console.log("Upload to storage error 2: " + e);
     })
 }
+
 ////end upload img ////
 
 export const DeleteFile = async (file) => {

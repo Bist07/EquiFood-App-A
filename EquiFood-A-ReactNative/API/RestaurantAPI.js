@@ -46,11 +46,11 @@ export const UpdateRequest = async (id, status) => {
     }
 };
 
-export const InsertRestaurant = async (data) => {
+export const RestaurantInsert = async (data) => {
     axios({
         url: `${config.local.url}:${config.local.port}/Restaurant/Insert`,
         method: 'post',
-        data: data,
+        data,
         headers: {
             'Content-Type': 'application/json'
         },
@@ -60,4 +60,4 @@ export const InsertRestaurant = async (data) => {
         console.log(error);
         alert("An error has occurred when inserting restaurant.");
     });
-}
+};

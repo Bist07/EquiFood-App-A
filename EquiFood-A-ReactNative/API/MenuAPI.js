@@ -19,7 +19,7 @@ export const getFoodItem = async (menu_item_id) => {
     }
 }
 
-export const InsertFoodItem = async (data) => {
+export const FoodInsert = async (data) => {
     axios({
         url: `${config.local.url}:${config.local.port}/Menu/FoodInsert`,
         method: 'post',

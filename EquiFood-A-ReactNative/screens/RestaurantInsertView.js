@@ -5,6 +5,7 @@ import stylesR from '../components/stylesR'
 import { Ionicons } from "@expo/vector-icons";
 import ImagePickerButton from '../components/ImagePicker'
 import { InsertForm } from '../API/ImageAPI'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const RestaurantInsertView = () => {
   const navigation = useNavigation();
@@ -13,16 +14,13 @@ const RestaurantInsertView = () => {
   const [cuisine, setCuisine] = useState('');
   const [file, setFile] = useState();
   const [name, setName] = useState('');
-  const [restaurantId, setrestaurantId] = useState("");
-
-
+  const [ownerID, setOwnerID] = useState("");
 
   const getUser = async () => {
     try {
-      const savedUser = await AsyncStorage.getItem('RestaurantOwner');
-      let parsed = JSON.parse(savedUser)
-      setrestaurantId(parsed.restaurantId);
-      console.log(restaurantId);
+      const user = JSON.parse(await AsyncStorage.getItem('RestaurantOwner'));
+      const id = user.id
+      setOwnerID(id);
     } catch (error) {
       console.log(error);
     }
@@ -45,13 +43,15 @@ const RestaurantInsertView = () => {
   };
 
   const onSubmitFormHandler = async (e) => {
+    getUser();
     const data = {
-      address: address,
-      hours: hours,
+      address,
+      hours,
       cuisine: cuisine,
-      name: name,
+      name,
       ImageURL: '',
       status: 'pending',
+      ownerID
     };
     await InsertForm(name, file, 'restaurant', data)
   }
@@ -63,15 +63,15 @@ const RestaurantInsertView = () => {
           <Pressable
             onPress={() => navigation.goBack()}
             style={{
-              backgroundColor: '#50C878',
-              width: 35,
-              height: 35,
-              borderRadius: 17,
+              backgroundColor: "#50c864",
+              width: 37,
+              height: 37,
+              borderRadius: 15,
               justifyContent: "center",
               alignItems: "center",
-              marginLeft: 2,
-              marginTop: -10,
-              marginBottom: 10,
+              marginLeft: 0,
+              marginTop: 10,
+              marginBottom:20
             }}
           >
             <Ionicons name="chevron-back-outline" size={20} color="white" />
@@ -102,18 +102,15 @@ const RestaurantInsertView = () => {
           </View>
         </View>
 
-
         <View>
-
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
-          <TouchableOpacity style={stylesR.ROFormButtons} 
-               onPress={() => navigation.navigate('RestaurantInsertView')}>
-                {/* onPress={onSubmitFormHandler} */}
-                <Text style={styles.buttonText}> Submit </Text>
+            <TouchableOpacity style={stylesR.ROFormButtons}
+              onPress={() => onSubmitFormHandler()}>
+              <Text style={styles.buttonText}> Submit </Text>
             </TouchableOpacity>
             <TouchableOpacity style={stylesR.ROFormButtons}
               onPress={() => navigation.navigate('RestaurantInsertView')}>
-                 <Text style={styles.buttonText}> Reset </Text>
+              <Text style={styles.buttonText}> Reset </Text>
             </TouchableOpacity>
           </View>
         </View>
