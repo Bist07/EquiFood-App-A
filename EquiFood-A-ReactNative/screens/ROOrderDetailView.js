@@ -3,8 +3,9 @@ import React, { useState, useEffect }  from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons } from "@expo/vector-icons";
 import stylesR from '../components/stylesR';
-import { getOrderDetails, updateOrderStatus } from '../API/OrdersAPI';
+import { completeOrder, getOrderDetails, updateOrderStatus } from '../API/OrdersAPI';
 import OrderCard from '../components/OrderCard';
+import { acceptOrder } from '../API/OrdersAPI';
 
 // This is the page that shows pending/accepted order cards after clicking "View my Orders"
 
@@ -22,20 +23,35 @@ const ROOrderDetailView = () => {
     fetchData();
   }, []);
 
-  const handleAcceptPress = () => {
-    if(route.params.order_status == "pending"){
-      updateOrderStatus(route.params.order_id, "accepted");
-      navigation.navigate("RestaurantOwnerOrders");
-    }
-    if(route.params.order_status == "accepted"){
-      updateOrderStatus(route.params.order_id, "completed");
-      navigation.navigate("RestaurantOwnerOrders");
-    }
-  }
-
   const handleDeclinePress = () => {
     updateOrderStatus(route.params.order_id, "declined");
     navigation.navigate("RestaurantOwnerOrders");
+  }
+
+  function AcceptButton(order_id, status_value) {
+    const handleAcceptPress = () => {
+        updateOrderStatus(order_id, "accepted");
+        navigation.navigate("RestaurantOwnerOrders");
+    };
+  
+    const handleCompletePress = () => {
+        completeOrder(order_id, "completed");
+        navigation.navigate("RestaurantOwnerOrders");
+    };
+
+    return (
+      <>
+        {status_value == "accepted" ? (
+          <TouchableOpacity style={styles.acceptButton} onPress={handleCompletePress}>
+            <Button title="Complete Order" onPress={handleCompletePress} style={stylesR.ROButtonText}/>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity style={styles.acceptButton} onPress={handleAcceptPress}>
+            <Button title="Accept  Order" onPress={handleAcceptPress} style={stylesR.ROButtonText}/>
+          </TouchableOpacity>
+        )}
+      </>
+    );
   }
 
   console.log(route.params);  
@@ -60,27 +76,19 @@ const ROOrderDetailView = () => {
         </View>
       </View>
     </View>
-    <View style={{display:"flex", justifyContent:"space-evenly", marginBottom:25}}>
-      <TouchableOpacity style={styles.acceptButton} onPress={handleAcceptPress}>
-        <Button
-        title="Accept" style={stylesR.ROButtonText}
-        onPress={handleAcceptPress}
-        />
-      </TouchableOpacity>   
-      
-      <View style={{display:'flex', flexDirection:2, justifyContent:"space-evenly"}}>
-        <TouchableOpacity style={styles.declineButton}
-          onPress={handleDeclinePress}
-        > 
-            <Button id="declineButton" title="Decline" onPress={handleDeclinePress} style={stylesR.ROButtonText}></Button>
-        </TouchableOpacity> 
+    <View style={{display:"flex", flexDirection:'row', justifyContent:"space-evenly", marginBottom:50}}>
+      <View>
+        {AcceptButton(route.params.order_id, route.params.order_status)}
       </View>
 
+      <View style={{display:'flex', flexDirection:'row', justifyContent:"space-evenly"}}>
+        <TouchableOpacity style={styles.declineButton} onPress={handleDeclinePress}> 
+            <Button id="declineButton" title="Decline Order" onPress={handleDeclinePress} style={stylesR.ROButtonText}></Button>
+        </TouchableOpacity> 
+      </View>
+      
     </View>
     </>
-
-
-        
   )
 }
 
@@ -89,8 +97,8 @@ export default ROOrderDetailView
 const styles = StyleSheet.create({
   acceptButton:{
     backgroundColor: '#50C878',
-    width: '40%',
-    padding: 15,
+    width: 150,
+    padding: 12,
     marginVertical: 5,
     margin:5,
     alignSelf: "center",
@@ -99,8 +107,8 @@ const styles = StyleSheet.create({
   },
   declineButton:{
     backgroundColor: '#F88379',
-    width: '40%',
-    padding: 15,
+    width: 150,
+    padding: 12,
     marginVertical: 5,
     margin:5,
     alignSelf: "center",

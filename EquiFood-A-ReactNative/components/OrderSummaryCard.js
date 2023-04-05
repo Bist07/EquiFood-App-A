@@ -14,7 +14,6 @@ const OrderSummaryCard = ( data ) => {
   const navigation = useNavigation();
   const order = data.item;
   const dateTime = order.reservation_datetime.split("T");
-  const customer_id = 1;
   return (
     <Pressable
       style={stylesR.itemDisplay}
