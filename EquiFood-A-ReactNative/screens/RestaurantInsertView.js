@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import stylesR from '../components/stylesR'
 import { Ionicons } from "@expo/vector-icons";
 import ImagePickerButton from '../components/ImagePicker'
-import { uploadFile } from '../API/ImageAPI'
+import { InsertForm } from '../API/ImageAPI'
 
 const RestaurantInsertView = () => {
   const navigation = useNavigation();
@@ -13,6 +13,20 @@ const RestaurantInsertView = () => {
   const [cuisine, setCuisine] = useState('');
   const [file, setFile] = useState();
   const [name, setName] = useState('');
+  const [restaurantId, setrestaurantId] = useState("");
+
+
+
+  const getUser = async () => {
+    try {
+      const savedUser = await AsyncStorage.getItem('RestaurantOwner');
+      let parsed = JSON.parse(savedUser)
+      setrestaurantId(parsed.restaurantId);
+      console.log(restaurantId);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const onChangeHoursHandler = (hours) => {
     setHours(hours);
@@ -39,7 +53,7 @@ const RestaurantInsertView = () => {
       ImageURL: '',
       status: 'pending',
     };
-    await uploadFile(name, file, 'restaurant', data)
+    await InsertForm(name, file, 'restaurant', data)
   }
 
   return (
