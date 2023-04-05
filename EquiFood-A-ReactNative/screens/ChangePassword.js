@@ -71,7 +71,7 @@ try {
     const savedUser = await AsyncStorage.getItem('user');
     let parsed = JSON.parse(savedUser)
      onChangeOldPassCheckHandler(parsed.password);
-    console.log(oldpass);
+    
   
 } catch (error) {
   console.log(error);
