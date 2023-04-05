@@ -63,8 +63,6 @@ const ViewCart = (props) => {
     formattedTime = tempDate.getHours() + ':' + tempDate.getMinutes();
 
     const orderDate = new Date();
-    // console.log(orderDate);
-    // console.log(tempDate);
 
     if(orderDate > tempDate){
       alert("You have selected a time in the past. Please don't");
@@ -78,7 +76,7 @@ const ViewCart = (props) => {
 
   const placeOrder = () => {
     setModal(false);
-    let formattedTime = date.getHours() + ':' + date.getMinutes();
+    let reservationTime = date.getHours() + ':' + ('0'+date.getMinutes()).slice(-2);
     setRestId(cart[0].restaurant_id);
 
     menuOrderItemList = cart.map(item => {
@@ -92,7 +90,7 @@ const ViewCart = (props) => {
     
     navigation.navigate("OrderPage", {
       restaurantName: restaurantName,
-      orderTime: formattedTime,
+      orderTime: reservationTime,
     });
   };
 
