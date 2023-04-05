@@ -1,19 +1,28 @@
 import { Button, Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import stylesR from '../components/stylesR'
 import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from "@expo/vector-icons";
 import ImagePickerButton from '../components/ImagePicker'
-import { uploadFile } from '../API/ImageAPI'
+import { InsertForm } from '../API/ImageAPI'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const FoodInsertView = () => {
+  //calling getuser function to set username
+  useEffect(() => {
+    getUser();
+  }, [])
+  
+
+
   const navigation = useNavigation();
   const [foodName, setFoodName] = useState('');
   const [ogPrice, setOgPrice] = useState(0);
   const [discPrice, setDiscPrice] = useState(0);
   const [servings, setServings] = useState(0);
   const [file, setFile] = useState();
-  const restaurantId = 1;
+  const [restaurantId, setrestaurantId] = useState("");
 
   const onChangeNameHandler = (name) => {
     setFoodName(name);
@@ -31,19 +40,39 @@ const FoodInsertView = () => {
     setServings(parseInt(servings));
   };
 
+
+  const getUser = async () => {
+    try {
+      const savedUser = await AsyncStorage.getItem('RestaurantOwner');
+      let parsed = JSON.parse(savedUser)
+      setrestaurantId(parsed.restaurantId);
+      console.log(restaurantId);
+   
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  
+
+
   const onSubmitFormHandler = async (e) => {
 
-    const data = {
+   const data = {
       item_name: foodName,
       price: discPrice,
       restaurant_id: restaurantId,
       ImageURL: '',
       original_price: ogPrice,
       quantity: servings,
-    }
+     
+  } 
 
-    await uploadFile(foodName, file, 'food', data)
+    await InsertForm(foodName, file, 'food', data)
+    navigation.navigate('FoodInsertView');
+   
   }
+
 
   return (
     <>
@@ -53,74 +82,73 @@ const FoodInsertView = () => {
       <Pressable
         onPress={() => navigation.goBack()}
         style={{
-          backgroundColor: "#006A4E",
-          width: 40,
-          height: 40,
-          borderRadius: 20,
+          backgroundColor: "#50c864",
+          width: 37,
+          height: 37,
+          borderRadius: 15,
           justifyContent: "center",
           alignItems: "center",
           marginLeft: 10,
           marginTop: 30,
+          marginBottom:0
         }}
       >
         <Ionicons name="chevron-back-outline" size={24} color="white" />
       </Pressable>
       <ScrollView style={stylesR.FoodInsertView}>
-        <View>
-          <Text style={{ marginBottom: 5 }}>Food Name</Text>
-          <View style={stylesR.inputForm}>
-            <TextInput placeholder={"Food Name"} value={foodName} onChangeText={onChangeNameHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
-          </View>
+        
+
+
+        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 70 }}>
+          <TextInput placeholder={"Food Name"} value={foodName} onChangeText={onChangeNameHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
+        </View>
+
+        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 20 }}>
+          <TextInput placeholder={"Original Price"} value={ogPrice} onChangeText={onChangePriceHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
+        </View>
+
+        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 20 }}>
+          <TextInput placeholder={"Discounted Price"} value={discPrice} onChangeText={onChangeDiscPriceHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
+        </View>
+
+        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 20 }}>
+          <TextInput placeholder={"Servings Available"} value={servings} onChangeText={onChangeServingsHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
         </View>
 
         <View>
-          <Text style={{ marginBottom: 5 }}>Original Price</Text>
-          <View style={stylesR.inputForm}>
-            <TextInput placeholder={"Original Price"} value={ogPrice} onChangeText={onChangePriceHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-          </View>
-        </View>
-
-        <View>
-          <Text style={{ marginBottom: 5 }}>Discounted Price</Text>
-          <View style={stylesR.inputForm}>
-            <TextInput placeholder={"Discounted Price"} value={discPrice} onChangeText={onChangeDiscPriceHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-          </View>
-        </View>
-
-        <View>
-          <Text style={{ marginBottom: 5 }}>Servings Available</Text>
-          <View style={stylesR.inputForm}>
-            <TextInput placeholder={"Servings Available"} value={servings} onChangeText={onChangeServingsHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
-          </View>
-        </View>
-
-        <View>
-          <Text style={{ marginBottom: 5 }}>Image</Text>
+          <Text style={{marginTop:7, marginBottom: 5 }}>Image</Text>
           <View style={stylesR.inputForm}>
             {<ImagePickerButton callback={setFile} />}
           </View>
         </View>
-        <View>
+        
+        <View style= {{marginTop:10}}>
 
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
-            <TouchableOpacity style={stylesR.ROFormButtons}>
-
-              <Button
-                title="Submit"
-                onPress={onSubmitFormHandler}
-                style={{ "backgroundColor": "gray", "margin": 2 }}
-              />
+          <TouchableOpacity style={stylesR.ROFormButtons} 
+              onPress={() => onSubmitFormHandler()}>
+                <Text style={styles.buttonText}> Submit </Text>
             </TouchableOpacity>
             <TouchableOpacity style={stylesR.ROFormButtons}
               onPress={() => navigation.navigate('FoodInsertView')}>
-              <Button title="Reset" style={stylesR.ROButtonText}></Button>
+                <Text style={styles.buttonText}> Reset </Text>
             </TouchableOpacity>
           </View>
-        </View>
+
+        </View>         
+        
       </ScrollView>
     </>
   )
 }
 
 export default FoodInsertView
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+
+  buttonText: {
+    padding: 10,
+    textAlign: "center",
+    fontWeight: 'bold',
+    color: 'white',
+  },
+})

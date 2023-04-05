@@ -19,10 +19,12 @@ import LogIn from './screens/LogIn';
 import Register from './screens/Register';
 import ForgotPassword from './screens/ForgotPassword';
 import AdminLogIn from './screens/AdminLogIn';
-
+import EditUsername from './screens/EditUsername';
+import ChangePassword from './screens/ChangePassword';
 import RegisterAdmin from './screens/RegisterAdmin';
 import RestaurantOwnerLogIn from './screens/RestaurantOwnerLogIn';
 import Admin from './screens/Admin';
+import DeleteAccount from './screens/DeleteAccount';
 import Donations from './screens/Donations';
 import RestaurantOwnerView from './screens/RestaurantOwnerView';
 import RestaurantInsertView from './screens/RestaurantInsertView';
@@ -285,6 +287,7 @@ const StackNavigator = () => {
         <Stack.Screen name="ROOrderDetailView" component={ROOrderDetailView} options={{ headerShown: false }} />
         <Stack.Screen name="RestaurantOwnerView" component={ROView} options={{ headerShown: false }} />
         <Stack.Screen name="RestaurantInsertView" component={RestaurantInsertView} options={{ headerShown: false }} />
+        <Stack.Screen name="EditUsername" component={EditUsername} options={{ headerShown: false }} />
         <Stack.Screen name="FoodEditView" component={FoodEditView} options={{ headerShown: false }} />
         <Stack.Screen name="FoodEditForm" component={FoodEditForm} options={{ headerShown: false }} />
         <Stack.Screen name="FoodInsertView" component={FoodInsertView} options={{ headerShown: false }} />
@@ -292,6 +295,8 @@ const StackNavigator = () => {
         <Stack.Screen name="RegisterRO" component={RegisterRO} options={{ headerShown: false }} />
         <Stack.Screen name="RegisterAdmin" component={RegisterAdmin} options={{ headerShown: false }} />
         <Stack.Screen name="Admin" component={AdminView} options={{ headerShown: false }} />
+        <Stack.Screen name="ChangePassword" component={ChangePassword} options={{ headerShown: false }} />
+        <Stack.Screen name="DeleteAccount" component={DeleteAccount} options={{ headerShown: false }} />
         <Stack.Screen name="Donations" component={Donations} options={{ headerShown: false }} />
         <Stack.Screen name="RestaurantsView" component={IndividualView} options={{ headerShown: false }} />
         <Stack.Screen name="RestaurantPage" component={RestaurantPage} options={{ headerShown: false }} />

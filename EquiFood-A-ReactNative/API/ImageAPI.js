@@ -1,7 +1,7 @@
 import { Amplify, Storage } from 'aws-amplify';
 import awsconfig from '../src/aws-exports.js'
-import axios from 'axios';
-import config from '../config';
+import { RestaurantInsert } from './RestaurantAPI.js';
+import { FoodInsert } from './MenuAPI.js';
 
 Amplify.configure(awsconfig);
 
@@ -11,7 +11,7 @@ export const fetchImageUri = async (uri) => {
   const blob = await response.blob();
   return blob;
 }
-export const uploadFile = async (name, file, type, data) => {
+export const InsertForm = async (name, file, type, data) => {
   const img = await fetchImageUri(file.uri);
   return Storage.put(`${name}.jpg`, img, {
     level: 'public',
@@ -21,36 +21,17 @@ export const uploadFile = async (name, file, type, data) => {
       Storage.get(res.key)
         .then((result) => {
           data.ImageURL = result.substring(0, result.indexOf('?'))
+
           if (type === 'food') {
-            axios({
-              url: `${config.local.url}:${config.local.port}/Menu/FoodInsert`,
-              method: 'post',
-              data: data,
-              headers: {
-                'Content-Type': 'application/json'
-              },
-            }).then(
-              alert("Food has been inserted into your restaurant.")
-            ).catch((error) => {
-              console.log(error);
-              alert("An error has occurred when inserting food.");
-            });
+            FoodInsert(data);
           }
 
           if (type === 'restaurant') {
-            axios({
-              url: `${config.local.url}:${config.local.port}/Restaurant/Insert`,
-              method: 'post',
-              data: data,
-              headers: {
-                'Content-Type': 'application/json'
-              },
-            }).then(
-              alert("Restaurant added.")
-            ).catch((error) => {
-              console.log(error);
-              alert("An error has occurred when inserting restaurant.");
-            });
+            RestaurantInsert(data);
+          }
+
+          if (type === 'customer') {
+            //CustomerInsert(data);
           }
 
         })
@@ -61,6 +42,7 @@ export const uploadFile = async (name, file, type, data) => {
       console.log("Upload to storage error 2: " + e);
     })
 }
+
 ////end upload img ////
 
 export const DeleteFile = async (file) => {
