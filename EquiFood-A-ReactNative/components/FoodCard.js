@@ -9,6 +9,7 @@ const FoodCard = ({ food }) => {
   const dispatch = useDispatch();
   const [itemCount, setCount] = useState(0);
   const [selected, setSelected] = useState(false);
+  const [showLimitError, setShowLimitError] = useState(false);
 
   return (
     <View
@@ -62,13 +63,26 @@ const FoodCard = ({ food }) => {
               </Text>
             </Pressable>
             <Pressable onPress={() => {
-              setCount((c) => c + 1);
-              dispatch(incrementQuantity(food))
+              if(itemCount < 2 && food.quantity > itemCount){
+                setCount((c) => c + 1);
+                dispatch(incrementQuantity(food))
+              }else{
+                setShowLimitError(true);
+                setTimeout(() => {
+                  setShowLimitError(false);
+                }, 2000);
+              }
             }}>
-              <Text style={stylesR.increaseItem}>
-                +
-              </Text>
+            
+              {itemCount < 2 && food.quantity > itemCount ? (
+                <Text style={stylesR.increaseItem}>+</Text>
+              ) : <Text style={stylesR.increaseItem}>  </Text>}
             </Pressable>
+            {showLimitError && (
+            <Text style={{ color: 'red', position:"absolute", top:45, right:15 }}>
+              You can only add up to {Math.min(2,food.quantity)} servings
+            </Text>
+)}
           </Pressable>
         ) : (
           <Pressable
