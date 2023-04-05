@@ -43,6 +43,7 @@ import { Ionicons } from '@expo/vector-icons';
 import RestaurantOwnerOrders from './screens/RestaurantOwnerOrders';
 import ROOrderDetailView from './screens/ROOrderDetailView';
 import RegisterRO from './screens/RegisterRO';
+import ReservationView from './screens/ReservationView';
 
 const Stack = createNativeStackNavigator();
 
@@ -107,7 +108,7 @@ function IndividualView() {
 
       {/* Why is order page giving me errors? */}
 
-      <Drawer.Screen name="View Reservation" component={OrderPage} options={{
+      <Drawer.Screen name="View Reservation" component={ReservationView} options={{
         drawerIcon: ({ color }) => (
           <AntDesign name={"shoppingcart"} size={20} color={color} />
         ),
@@ -309,7 +310,7 @@ const StackNavigator = () => {
         <Stack.Screen name="About" component={About} options={{ headerShown: false }} />
         <Stack.Screen name="RestaurantRequests" component={RestaurantRequests} options={{ headerShown: false }} />
         <Stack.Screen name="AdminRestaurantsView" component={AdminRestaurantsView} options={{ headerShown: false }} />
-
+        <Stack.Screen name="ReservationView" component={ReservationView} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   )

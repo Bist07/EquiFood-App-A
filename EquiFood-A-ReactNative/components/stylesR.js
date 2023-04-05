@@ -44,7 +44,6 @@ const stylesR = StyleSheet.create({
     },
 
     imageStyle:{
-        width: "100%",
         aspectRatio: 2,
         borderRadius: 15,
         borderBottomLeftRadius: 0,
