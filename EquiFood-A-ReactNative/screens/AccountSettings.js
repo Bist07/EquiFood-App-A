@@ -52,8 +52,8 @@ export default function AccountSettings(){
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.linkButton}
-                        // Functionality to be added that sends a link to change password:
-                        // onPress={() => navigation.navigate('')}
+                      
+                        onPress={() => navigation.navigate('DeleteAccount')}
                         >
                         <Text style ={styles.linkText}>Delete Account</Text>
                     </TouchableOpacity>

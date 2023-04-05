@@ -89,4 +89,17 @@ router.post('/ChangePassword', async function (req, res) {
     }
 });
 
+router.post('/DeleteAccount', async function (req, res) {
+    try {
+        const { idnum } = req.body;
+        const sqlQuery = "DELETE FROM customer WHERE id = ?";
+        const result = await pool.query(sqlQuery, [idnum]);
+        console.log(result);
+        console.log(sqlQuery);
+        res.status(200).send("Account Deleted!")
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+});
+
 
