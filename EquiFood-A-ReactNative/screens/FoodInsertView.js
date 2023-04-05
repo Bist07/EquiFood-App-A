@@ -1,19 +1,28 @@
 import { Button, Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import stylesR from '../components/stylesR'
 import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from "@expo/vector-icons";
 import ImagePickerButton from '../components/ImagePicker'
 import { InsertForm } from '../API/ImageAPI'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const FoodInsertView = () => {
+  //calling getuser function to set username
+  useEffect(() => {
+    getUser();
+  }, [])
+  
+
+
   const navigation = useNavigation();
   const [foodName, setFoodName] = useState('');
   const [ogPrice, setOgPrice] = useState(0);
   const [discPrice, setDiscPrice] = useState(0);
   const [servings, setServings] = useState(0);
   const [file, setFile] = useState();
-  const restaurantId = 1;
+  const [restaurantId, setrestaurantId] = useState("");
 
   const onChangeNameHandler = (name) => {
     setFoodName(name);
@@ -31,19 +40,39 @@ const FoodInsertView = () => {
     setServings(parseInt(servings));
   };
 
+
+  const getUser = async () => {
+    try {
+      const savedUser = await AsyncStorage.getItem('RestaurantOwner');
+      let parsed = JSON.parse(savedUser)
+      setrestaurantId(parsed.restaurantId);
+      console.log(restaurantId);
+   
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  
+
+
   const onSubmitFormHandler = async (e) => {
 
-    const data = {
+   const data = {
       item_name: foodName,
       price: discPrice,
       restaurant_id: restaurantId,
       ImageURL: '',
       original_price: ogPrice,
       quantity: servings,
-    }
+     
+  } 
 
     await InsertForm(foodName, file, 'food', data)
+    navigation.navigate('FoodInsertView');
+   
   }
+
 
   return (
     <>
@@ -97,8 +126,7 @@ const FoodInsertView = () => {
 
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
           <TouchableOpacity style={stylesR.ROFormButtons} 
-              onPress={() => navigation.navigate('RestaurantInsertView')}>
-                {/* onPress={onSubmitFormHandler} */}
+              onPress={() => onSubmitFormHandler()}>
                 <Text style={styles.buttonText}> Submit </Text>
             </TouchableOpacity>
             <TouchableOpacity style={stylesR.ROFormButtons}
