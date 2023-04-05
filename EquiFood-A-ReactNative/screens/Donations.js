@@ -98,27 +98,26 @@ const Donations = ({ onPress, text }) => {
                 <Ionicons name="chevron-back-outline" size={22} color="white" />
             </Pressable>
             <View style={styles.container}>
-                <Text style={styles.title}> </Text>
                 <Text style={styles.title}> Donations </Text>
                 <View style={styles.innerContainer}>
                     <View>
 
                         {data.map((item, index) => (
                             <View key={index} >
-                                <Text style={{ left: 150, textDecorationLine: 'underline', fontSize: 20 }}> {item.name}</Text>
-                                <Text style={{ left: 150 }}> Amount: ${item.discount} </Text>
+                                <Text style={{ marginTop: 10,left: 170, marginLeft:20, marginRight:20, textDecorationLine: 'underline', fontSize: 20 }}> {item.name}</Text>
+                                <Text style={{ marginTop: 5, left: 210,marginLeft:20, marginRight:20,fontSize:15}}> Amount: ${item.discount} </Text>
                                 <Text></Text>
                             </View>
                         ))}
 
 
                     </View>
-                    <View style={{ borderBottomColor: "#50c864", borderBottomWidth: 10, right: 50 }}>
+                    <View style={{ marginLeft:20, marginRight:20, borderBottomColor: "#50c864", borderBottomWidth: 10, right: 80 }}>
                         <Text></Text>
                         <Text></Text>
                         <Text></Text>
 
-                        <Text style={{ textAlign: "center", marginTop: 120, fontSize: 30, fontWeight: "250" }}>Total Donations: ${totalAmount} </Text>
+                        <Text style={{ textAlign: "center", marginTop: 200, fontSize: 27, fontWeight: "bold", marginLeft:20, marginRight:20 }}>Total Donations: ${totalAmount} </Text>
                     </View>
                 </View>
 
@@ -156,9 +155,9 @@ const styles = StyleSheet.create({
     title: {
         marginTop: 1,
         // fontWeight: "bold",
-        fontSize: 30,
+        fontSize: 40,
         textAlign: "center",
-        marginBottom: 10
+        marginBottom: 70
     },
     linkButton: {
         backgroundColor: '#50C878',
