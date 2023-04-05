@@ -10,6 +10,24 @@ export const getRestaurants = async () => {
     }
 };
 
+export const getOrderedRestaurants = async () => {
+    try {
+        const response = await axios.get(`${config.local.url}:${config.local.port}/Restaurant/OrderedRestaurants`);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const getOrderedByRatingRestaurants = async () => {
+    try {
+        const response = await axios.get(`${config.local.url}:${config.local.port}/Restaurant/RatingRestaurants`);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 export const getRestaurantsRequest = async () => {
     try {
         const response = await axios.get(`${config.local.url}:${config.local.port}/Restaurant/Requests/Pending`);
@@ -28,3 +46,18 @@ export const UpdateRequest = async (id, status) => {
     }
 };
 
+export const RestaurantInsert = async (data) => {
+    axios({
+        url: `${config.local.url}:${config.local.port}/Restaurant/Insert`,
+        method: 'post',
+        data,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then(
+        alert("Restaurant added.")
+    ).catch((error) => {
+        console.log(error);
+        alert("An error has occurred when inserting restaurant.");
+    });
+};

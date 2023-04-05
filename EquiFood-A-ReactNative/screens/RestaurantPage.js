@@ -41,8 +41,8 @@ const RestaurantPage = () => {
 
   return (
     <>
-    <View style={{  backgroundColor:"#fff" }}>
-      <ScrollView style={{ marginTop: 30, }}>
+    <View style={{  backgroundColor:"#fff" , height: "100%"}}>
+      <ScrollView style={{ marginTop: 30}}>
       <View style={{width: '100%' ,  backgroundColor:"#fff"  }}>
           <View id="header">
             {/* <Header /> */}
@@ -66,7 +66,7 @@ const RestaurantPage = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 marginLeft: 10,
-                marginTop: 20,
+                marginTop: 80,
                 marginBottom: 15
               }}
             >
@@ -75,15 +75,13 @@ const RestaurantPage = () => {
 
           </View>
 
-          <View style={{ margin: 30, marginTop: 7 }}>
+          <View style={{ margin: 30, marginTop: 7 , }}>
             <View
               style={{
-                flexDirection: "row",
                 alignItems: "center",
-                justifyContent: "space-between",
               }}
             >
-              <View style={{ marginLeft: 75, marginTop: 10, alignItems:'center' }}>
+              <View style={{ marginTop: 10, alignItems:'center' }}>
                 <Text style={{ marginBottom: 5, fontSize: 24, fontWeight: "bold" }}>
                   {route.params.name}
                 </Text>

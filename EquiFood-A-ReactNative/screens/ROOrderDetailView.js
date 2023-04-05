@@ -89,9 +89,6 @@ const ROOrderDetailView = () => {
       
     </View>
     </>
-
-
-        
   )
 }
 
