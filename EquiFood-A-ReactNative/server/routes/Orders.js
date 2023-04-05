@@ -56,6 +56,50 @@ router.put("/UpdateStatus", async function (req, res) {
   }
 });
 
+router.put("/CompleteOrder", async function (req, res) {
+  let conn;
+  try{
+    conn = await pool.getConnection();
+    await conn.beginTransaction();
+
+    //Set accepted order to completed
+    const {id, status} = req.body;
+    const sqlQuery = `
+    UPDATE 
+      order_status OS JOIN
+      food_order FO ON OS.id=FO.order_status_id
+    SET 
+      OS.status_value = ?
+    WHERE 
+      OS.id = ?`;
+    await conn.query(sqlQuery, [status, id]);
+
+    //Update menu item quantities
+    const sqlQuery2 = `
+    UPDATE 
+      order_status OS 
+      JOIN food_order FO ON OS.id = FO.order_status_id
+      JOIN order_menu_item OMI ON FO.id = OMI.food_order_id
+      JOIN menu_item MI ON OMI.menu_item_id = MI.id
+    SET 
+      MI.quantity = MI.quantity - OMI.qty_ordered
+    WHERE 
+      OMI.food_order_id = ?`;
+
+    conn.query(sqlQuery2, id);
+    conn.commit();
+    res.status(200).send("Order completed and menu quantities updated");
+    
+  } catch(error){
+    await conn.rollback();
+    res.status(400).send(error.message);
+  } finally{
+    if (conn){
+      conn.release();
+    }
+  }
+});
+
 // Get all menu items based on food order id
 router.get("/OrderDetails/:id", async function (req, res) {
   try {

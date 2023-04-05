@@ -28,6 +28,15 @@ export const updateOrderStatus = async (id, status) => {
     }
 }
 
+export const completeOrder = async (id, status) => {
+    try {
+        const response = await axios.put(`${config.local.url}:${config.local.port}/Orders/CompleteOrder`, {id, status});
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const insertFoodOrder = async (customer_id, restaurant_id, total_amount, reservation_datetime, discount, menuItems) => {
     try {
         const response = await axios.post(`${config.local.url}:${config.local.port}/Orders/OrderInsert`, {customer_id, restaurant_id, total_amount, reservation_datetime, discount, menuItems});
