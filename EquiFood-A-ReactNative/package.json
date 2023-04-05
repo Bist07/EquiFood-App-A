@@ -25,6 +25,7 @@
     "dotenv": "^16.0.3",
     "expo": "^47.0.13",
     "expo-image-picker": "~14.0.2",
+    "expo-media-library": "~15.0.0",
     "expo-status-bar": "~1.4.2",
     "express": "^4.18.2",
     "isaac": "^0.0.5",

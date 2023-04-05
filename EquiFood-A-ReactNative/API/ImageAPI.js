@@ -12,7 +12,7 @@ export const fetchImageUri = async (uri) => {
   return blob;
 }
 export const InsertForm = async (name, file, type, data) => {
-  const img = await fetchImageUri(file.uri);
+  const img = await fetchImageUri(file);
   return Storage.put(`${name}.jpg`, img, {
     level: 'public',
     contentType: file.type,
@@ -21,6 +21,7 @@ export const InsertForm = async (name, file, type, data) => {
       Storage.get(res.key)
         .then((result) => {
           data.ImageURL = result.substring(0, result.indexOf('?'))
+          console.log(data);
 
           if (type === 'food') {
             FoodInsert(data);
@@ -28,10 +29,6 @@ export const InsertForm = async (name, file, type, data) => {
 
           if (type === 'restaurant') {
             RestaurantInsert(data);
-          }
-
-          if (type === 'customer') {
-            //CustomerInsert(data);
           }
 
         })
@@ -48,4 +45,3 @@ export const InsertForm = async (name, file, type, data) => {
 export const DeleteFile = async (file) => {
   await Storage.remove(file);
 }
-
