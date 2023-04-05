@@ -22,6 +22,8 @@ import {
   removeFromCart,
 } from "../redux/CartReducer";
 import { insertFoodOrder, insertOrderMenuItem } from "../API/OrdersAPI";
+import { useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const ViewCart = (props) => {
   const navigation = useNavigation();
@@ -36,7 +38,6 @@ const ViewCart = (props) => {
 
   const totalDiscount = totalOriginalPrice - totalPrice;
 
-  const [custId, setCustId] = useState(1);
   const [restId, setRestId] = useState(1);
   const [menuItemID, setMenuItemID] = useState(0);
   const [quantity, setQuantity] = useState(0);
@@ -45,6 +46,24 @@ const ViewCart = (props) => {
   const [show, setShow] = useState(false);
   const [buttonShow, setButtonShow] = useState(true);
   const [modal, setModal] = useState(false);
+
+  const [custId, setCustId] = useState(0);
+
+  //Retrieving User state Object and parsing out userName
+  const getUser = async () => {
+    try {
+      const savedUser = await AsyncStorage.getItem('user');
+      let parsed = JSON.parse(savedUser)
+      setCustId(parseInt(parsed.id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, [])
+
 
   const formattedPrice = (Math.round(totalPrice * 100) / 100).toFixed(2);
   let formattedTime = date.getHours() + ':' + date.getMinutes();
@@ -68,16 +87,18 @@ const ViewCart = (props) => {
       alert("You have selected a time in the past. Please don't");
     }
   }
-
+  
   const showTimePicker = () => {
     setButtonShow(false);
     setShow(true);
   }
 
-  const placeOrder = () => {
+  const placeOrder = async () => {
     setModal(false);
     let reservationTime = date.getHours() + ':' + ('0'+date.getMinutes()).slice(-2);
-    setRestId(cart[0].restaurant_id);
+
+    await setRestId(parseInt(cart[0].restaurant_id));
+    console.log(restId);
 
     menuOrderItemList = cart.map(item => {
       return {"menu_item_id": item["id"], "qty_ordered": item["quantity"]}

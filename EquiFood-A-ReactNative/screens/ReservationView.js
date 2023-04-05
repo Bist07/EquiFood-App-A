@@ -1,42 +1,41 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
-import React, { useState, useEffect }  from 'react'
+import React from 'react'
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { getOrders } from '../API/OrdersAPI';
+import { getUserOrders } from '../API/OrdersAPI';
 import { Ionicons } from "@expo/vector-icons";
-import OrderSummaryCard from '../components/OrderSummaryCard';
-import stylesR from '../components/stylesR';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import stylesR from '../components/stylesR';
+import OrderSummaryCard from '../components/OrderSummaryCard';
+import ReservationCard from '../components/ReservationCard';
 
-const RestaurantOwnerOrders = () => {
+const ReservationView = () => {
 
   const navigation = useNavigation();
   const [orders, setOrders] = useState([]);
-  const [restaurantId, setrestaurantId] = useState(0);
+  const [id, setId] = useState("");
 
-  //Set to rest_id to Burger Hub for now
-  
+  //Retrieving User state Object and parsing out userName
   const getUser = async () => {
     try {
-      const savedUser = await AsyncStorage.getItem('RestaurantOwner');
+      const savedUser = await AsyncStorage.getItem('user');
       let parsed = JSON.parse(savedUser)
-      await setrestaurantId(parseInt(parsed.restaurantId));
-      console.log(restaurantId);
+      setId(parsed.id);
     } catch (error) {
       console.log(error);
     }
   };
-
-
+  
   useEffect(() => {
     async function fetchData() {
-      const result = await getOrders(restaurantId);
-      await setOrders(result)
+      const result = await getUserOrders(parseInt(id));
+      setOrders(result);
     }
     getUser();
     fetchData();
-    const interval = setInterval(fetchData, 5000);
-    return () => clearInterval(interval);
   }, []);
+  
 
   if(orders.length != 0) {
     const pending = orders.filter(order => order.status_value == "pending");
@@ -46,7 +45,7 @@ const RestaurantOwnerOrders = () => {
     console.log("accepted: "+ JSON.stringify(accepted));
 
     return (
-      <ScrollView style={{ paddingTop: 50 }}>
+      <ScrollView style={{ paddingTop: 20 }}>
         <Pressable
           onPress={() => navigation.goBack()}
           style={stylesR.backArrow}
@@ -58,14 +57,14 @@ const RestaurantOwnerOrders = () => {
           <Text style={{ marginTop: 0, fontSize: 20 }}>Accepted Orders</Text>
         </View>
         <View style={{ marginLeft: 40, marginRight: 40, marginTop: 0 }}>
-          {accepted.map((item, index) => <OrderSummaryCard key={index} item={item} />)}
+          {accepted.map((item, index) => <ReservationCard key={index} item={item} />)}
         </View>
 
-        <View style={{ marginTop: 0, margin: 10, marginBottom:0, alignItems: "center", justifyContent: "center", }}>
+        <View style={{ marginTop: 15, margin: 10, marginBottom:0, alignItems: "center", justifyContent: "center", }}>
           <Text style={{ marginTop: 0, fontSize: 20 }}>Pending Orders</Text>
         </View>
         <View style={{ marginLeft: 40, marginRight: 40, marginTop: 0 }}>
-          {pending.map((item, index) => <OrderSummaryCard key={index} item={item} />)}
+          {pending.map((item, index) => <ReservationCard key={index} item={item} />)}
         </View>
 
         <View style={{marginBottom:100}}></View>
@@ -92,6 +91,12 @@ const RestaurantOwnerOrders = () => {
   }
 }
 
-export default RestaurantOwnerOrders
+export default ReservationView
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  line: { 
+    borderColor: "#F0F0F0", 
+    height: 1, 
+    borderWidth: 1 
+  },
+})

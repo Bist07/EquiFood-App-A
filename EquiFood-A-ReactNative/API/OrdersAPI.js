@@ -10,6 +10,15 @@ export const getOrders = async (restaurant_id) => {
     }
 }
 
+export const getUserOrders = async (user_id) => {
+    try {
+        const response = await axios.get(`${config.local.url}:${config.local.port}/Orders/User/${user_id}`);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const getOrderDetails = async (food_order_id) => {
     try {
         const response = await axios.get(`${config.local.url}:${config.local.port}/Orders/OrderDetails/${food_order_id}`);
