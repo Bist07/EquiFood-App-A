@@ -1,19 +1,18 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Text, Image, Pressable, TouchableOpacity, TextInput } from 'react-native'
 import Logo from '../assets/logos/Equifood_Logo.png'
-import { useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from '@expo/vector-icons';
 import { Ionicons } from "@expo/vector-icons";
 import axios from 'axios';
 import config from '../config'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
 const RestaurantOwnerLogIn = () => {
 
     const [email, setEmail] = useState('');
     const [enteredRestaurantOwnerPassword, setenteredRestaurantOwnerPassword] = useState('');
-    
+
     const navigation = useNavigation();
 
     // function for signing in:
@@ -41,56 +40,54 @@ const RestaurantOwnerLogIn = () => {
     };
 
     const onSubmitFormHandler = async (e) => {
-    //Validating entered password against the on in the database
-    //if they match, send the request and log in
+        //Validating entered password against the on in the database
+        //if they match, send the request and log in
 
-        if(email.length !=0 && enteredRestaurantOwnerPassword.length !=0){
-        try {
-            const data = {
-                
-                email: email,
-                enteredRestaurantOwnerPassword: enteredRestaurantOwnerPassword
-                
-            };
-            console.log(JSON.stringify(data));
-            const response = await axios({
-                url: `${config.local.url}:${config.local.port}/RestaurantOwner/login`,
-                method:'post',
-                data:data,
-                headers: {
-                'Content-Type': 'application/json'
+        if (email.length != 0 && enteredRestaurantOwnerPassword.length != 0) {
+            try {
+                const data = {
+
+                    email: email,
+                    enteredRestaurantOwnerPassword: enteredRestaurantOwnerPassword
+
+                };
+                console.log(JSON.stringify(data));
+                const response = await axios({
+                    url: `${config.local.url}:${config.local.port}/RestaurantOwner/login`,
+                    method: 'post',
+                    data: data,
+                    headers: {
+                        'Content-Type': 'application/json'
                     },
                 });
-        
 
-                console.log(response.data.PasswordGood); 
+                console.log(response.data.PasswordGood);
                 var passwordValid = response.data.PasswordGood;
 
-                if(passwordValid == true){
+                if (passwordValid == true) {
                     navigation.navigate('RestaurantOwnerView');
 
-                      //Setting user State for restaurant owner
-                   let user = {
-                    firstName: response.data.name,
-                    id: response.data.idnum,
-                    restaurantId: response.data.restaurantId
+                    //Setting user State for restaurant owner
+                    let user = {
+                        firstName: response.data.name,
+                        id: response.data.idnum,
+                        restaurantId: response.data.restaurantId
                     }
                     AsyncStorage.setItem('RestaurantOwner', JSON.stringify(user));
-                    console.log(user);
 
-                }else{
+                } else {
                     alert("Email or Password Incorrect")
                 }
 
             } catch (error) {
-            console.log(error);
-            alert("Account not Found");
+                console.log(error);
+                alert("Account not Found");
             }
         }
-        else(alert("Please enter both an Email and a Password"));
+        else (alert("Please enter both an Email and a Password"));
     }
 
-//front end and styling below
+    //front end and styling below
     return (
         <View style={styles.root}>
 
@@ -114,7 +111,7 @@ const RestaurantOwnerLogIn = () => {
             <Image style={styles.logo}
                 source={Logo} />
 
-         
+
             <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25 }}>
                 <MaterialIcons name='email' size={20} color='#ccc' style={{ marginRight: 5 }} />
                 <TextInput placeholder='Email' style={{ flex: 1, paddingVertical: 0 }} keyboardType="email-address" autoCapitalize='none' autoCorrect={false} value={email} onChangeText={onChangeEmailHandler} />
@@ -122,11 +119,11 @@ const RestaurantOwnerLogIn = () => {
 
             <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25 }}>
                 <MaterialIcons name="lock" size={20} color='#ccc' style={{ marginRight: 5 }} />
-                <TextInput placeholder='Password' style={{ flex: 1, paddingVertical: 0 }} secureTextEntry={true} autoCapitalize='none' autoCorrect={false} value={enteredRestaurantOwnerPassword} onChangeText={onChangeenteredRestaurantOwnerPasswordHandler}/>
+                <TextInput placeholder='Password' style={{ flex: 1, paddingVertical: 0 }} secureTextEntry={true} autoCapitalize='none' autoCorrect={false} value={enteredRestaurantOwnerPassword} onChangeText={onChangeenteredRestaurantOwnerPasswordHandler} />
             </View>
 
             <TouchableOpacity style={styles.signInButton}
-                         onPress={() => {onSubmitFormHandler();}}>
+                onPress={() => { onSubmitFormHandler(); }}>
                 <Text style={styles.signInText}>Sign In as Restaurant Owner</Text>
             </TouchableOpacity>
 

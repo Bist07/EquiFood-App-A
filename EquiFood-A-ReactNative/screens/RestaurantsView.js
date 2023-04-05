@@ -123,14 +123,11 @@ const RestaurantsView = () => {
               <Text style={{ fontSize: 22, padding: 12, textAlign: "center", color: "#FAF9F6" }}> Sort by Rating </Text>
             </TouchableOpacity>
           </View>
-
         </View>
-
       </Modal>
     </View>
   );
 };
 
 export default RestaurantsView;
-
 const styles = StyleSheet.create({});
