@@ -11,7 +11,6 @@ export const fetchImageUri = async (uri) => {
   const blob = await response.blob();
   return blob;
 }
-
 export const InsertForm = async (name, file, type, data) => {
   const img = await fetchImageUri(file.uri);
   return Storage.put(`${name}.jpg`, img, {

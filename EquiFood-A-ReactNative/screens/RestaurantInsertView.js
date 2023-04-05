@@ -7,7 +7,6 @@ import ImagePickerButton from '../components/ImagePicker'
 import { InsertForm } from '../API/ImageAPI'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
 const RestaurantInsertView = () => {
   const navigation = useNavigation();
   const [hours, setHours] = useState('');
@@ -55,7 +54,6 @@ const RestaurantInsertView = () => {
       ownerID
     };
     await InsertForm(name, file, 'restaurant', data)
-    console.log("button pressed")
   }
 
   return (
