@@ -5,15 +5,18 @@ import FoodEditCard from '../components/FoodEditCard'
 import React, { useState, useEffect } from "react";
 import { getMenu } from '../API/MenuAPI';
 import stylesR from '../components/stylesR';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const FoodEditView = () => {
   const navigation = useNavigation();
-  var fake_id = 1;
-
-  //Should be getting id from login. maybe store in redux store?
-  const restaurant_id = fake_id;
-
+  const [restaurant_id, setrestaurantId] = useState("");
   const [foods, setFoods] = useState([]);
+
+
+  //calling getuser function to set username
+  useEffect(() => {
+    getUser();
+  }, [])
 
 
   useEffect(() => {
@@ -23,6 +26,19 @@ const FoodEditView = () => {
     }
     fetchData();
   }, []);
+
+
+  const getUser = async () => {
+    try {
+      const savedUser = await AsyncStorage.getItem('RestaurantOwner');
+      let parsed = JSON.parse(savedUser)
+      setrestaurantId(parsed.restaurantId);
+      console.log(restaurant_id);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 
   return (
