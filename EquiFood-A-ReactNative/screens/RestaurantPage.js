@@ -12,7 +12,7 @@ import { AntDesign } from "@expo/vector-icons";
 import FoodCard from "../components/FoodCard";
 import { getMenu } from "../API/MenuAPI";
 
-
+import { cleanCart } from "../redux/CartReducer";
 import CartScreen from "./CartScreen";
 import { useSelector } from "react-redux";
 import Header from "../components/header";
@@ -57,7 +57,10 @@ const RestaurantPage = () => {
             }}
           >
             <Pressable
-              onPress={() => navigation.goBack()}
+              onPress={() => {
+                // cleanCart();
+                navigation.goBack()
+                }}
               style={{
                 backgroundColor: "#50c864",
                 width: 37,
@@ -66,7 +69,7 @@ const RestaurantPage = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 marginLeft: 10,
-                marginTop: 80,
+                marginTop: 40,
                 marginBottom: 15
               }}
             >
