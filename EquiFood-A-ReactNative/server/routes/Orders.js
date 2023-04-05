@@ -41,6 +41,17 @@ router.get("/:id", async function (req, res) {
   }
 });
 
+router.get("/User/:id", async function (req, res) {
+  try {
+    const sqlQuery =
+      "SELECT R.name, F.id, F.total_amount, F.reservation_datetime, O.status_value, C.first_name, C.last_name FROM food_order F JOIN order_status O ON F.order_status_id = O.id JOIN customer C ON F.customer_id = C.id JOIN restaurant R ON R.id = F.restaurant_id WHERE O.status_value<2 AND C.id=?"; //defines query
+    const rows = await pool.query(sqlQuery, req.params.id);
+    res.status(200).json(rows);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
 router.put("/UpdateStatus", async function (req, res) {
   try{
     const {id, status} = req.body;

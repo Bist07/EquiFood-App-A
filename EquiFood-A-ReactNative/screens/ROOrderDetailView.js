@@ -18,7 +18,7 @@ const ROOrderDetailView = () => {
   useEffect(() => {
     async function fetchData() {
       const result = await getOrderDetails(route.params.order_id);
-      setMenuItems(result);
+      await setMenuItems(result);
     }
     fetchData();
   }, []);
@@ -54,7 +54,6 @@ const ROOrderDetailView = () => {
     );
   }
 
-  console.log(route.params);  
   const navigation = useNavigation();
   return (
     <>

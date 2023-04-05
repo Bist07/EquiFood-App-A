@@ -19,7 +19,7 @@ const OrderPage = (props) => {
           {route.params.restaurantName} has accepted your order at {time}
         </Text>
       </View>
-      <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
+      <Pressable onPress={() => navigation.navigate("RestaurantsView")} style={styles.backButton}>
         <Ionicons name="chevron-back-outline" size={24} color="white" />
       </Pressable>
       <View
@@ -32,8 +32,8 @@ const OrderPage = (props) => {
         <Text style={{ fontSize: 20, fontWeight: "bold", textAlign: "center" }}>
           Your reservation is set to {route.params.orderTime}
         </Text>
-        <Text style={{ fontSize: 20, fontWeight: "bold", textAlign: "center" }}>
-          Your code is 1234
+        <Text style={{ fontSize: 20, fontWeight: "bold", textAlign: "center", marginTop:50 }}>
+          Please show your reservation to the restaurant staff upon arrival.
         </Text>
       </View>
     </SafeAreaView>
