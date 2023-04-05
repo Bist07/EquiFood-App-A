@@ -43,7 +43,7 @@ const RestaurantOwnerOrders = () => {
       return () => clearInterval(interval);
   }, []);
 
-  if(orders.length != 0) {
+  if(orders) {
     const pending = orders.filter(order => order.status_value == "pending");
     const accepted = orders.filter(order => order.status_value == "accepted");
     
@@ -51,7 +51,7 @@ const RestaurantOwnerOrders = () => {
     console.log("accepted: "+ JSON.stringify(accepted));
 
     return (
-      <ScrollView style={{ paddingTop: 50 }}>
+      <ScrollView style={{ paddingTop: 50 , backgroundColor: "white", height: "100%" }}>
         <Pressable
           onPress={() => navigation.goBack()}
           style={stylesR.backArrow}

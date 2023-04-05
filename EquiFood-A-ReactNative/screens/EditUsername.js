@@ -76,7 +76,7 @@ try {
           <Pressable
             onPress={() => navigation.goBack()}
             style={{
-              backgroundColor: '#50C878',
+              backgroundColor: "#50c864",
               width: 35,
               height: 35,
               borderRadius: 17,
@@ -91,7 +91,7 @@ try {
           </Pressable>
         </View>
 
-        <Text style={{fontSize:22, marginTop:35}}> Enter Your New Username</Text>
+        <Text style={{fontSize:22, marginTop:200}}> Enter Your New Username</Text>
 
         <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 70 }}>
           <TextInput placeholder={"New Username"} value={NewUserName} onChangeText={onChangeNewUserNameHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   formButtons: {
-    backgroundColor: '#50C878',
+    backgroundColor: "#50c864",
     width: '80%',
     padding: 7,
     marginVertical: 5,
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     height: 40,
     fontWeight: 'bold',
-    borderColor: '#50c864',
+    borderColor: "#50c864",
     borderWidth: 2
   },
   buttonText: {

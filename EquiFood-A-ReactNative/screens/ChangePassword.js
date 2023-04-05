@@ -125,7 +125,7 @@ try {
           <Pressable
             onPress={() => navigation.goBack()}
             style={{
-              backgroundColor: '#50C878',
+              backgroundColor: "#50c864",
               width: 35,
               height: 35,
               borderRadius: 17,
@@ -140,7 +140,7 @@ try {
           </Pressable>
         </View>
 
-        <Text style={{fontSize:22, marginTop:35}}> Enter Your Old Password</Text>
+        <Text style={{fontSize:22, marginTop:70}}> Enter Your Old Password</Text>
 
         <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 70 }}>
           <TextInput autoCapitalize='none' placeholder={"Old Password"} value={OldPassword} onChangeText={onChangeOldPasswordHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   formButtons: {
-    backgroundColor: '#50C878',
+    backgroundColor: "#50c864",
     width: '80%',
     padding: 7,
     marginVertical: 5,

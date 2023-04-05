@@ -76,9 +76,8 @@ const FoodInsertView = () => {
 
   return (
     <>
-      <View style={{ paddingTop: 50 }} id="header">
-        {/* <Header /> */}
-      </View>
+    <View style={{backgroundColor: "white", height: "100%"}}>
+
       <Pressable
         onPress={() => navigation.goBack()}
         style={{
@@ -89,7 +88,7 @@ const FoodInsertView = () => {
           justifyContent: "center",
           alignItems: "center",
           marginLeft: 10,
-          marginTop: 30,
+          marginTop: 40,
           marginBottom:0
         }}
       >
@@ -99,7 +98,7 @@ const FoodInsertView = () => {
         
 
 
-        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 70 }}>
+        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 100 }}>
           <TextInput placeholder={"Food Name"} value={foodName} onChangeText={onChangeNameHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
         </View>
 
@@ -138,6 +137,7 @@ const FoodInsertView = () => {
         </View>         
         
       </ScrollView>
+      </View>
     </>
   )
 }

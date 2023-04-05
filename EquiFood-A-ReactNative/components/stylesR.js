@@ -239,6 +239,9 @@ const stylesR = StyleSheet.create({
 
     FoodInsertView:{
         margin:10,
+        marginTop: 50,
+        backgroundColor: "white",
+        height: "100%"
     },
 
     inputForm: {
@@ -261,7 +264,7 @@ const stylesR = StyleSheet.create({
     },
 
     ROFormButtons:{
-        backgroundColor: '#50C878',
+        backgroundColor: "#50c864",
         width: '40%',
         padding: 15,
         marginVertical: 5,
@@ -272,7 +275,7 @@ const stylesR = StyleSheet.create({
     },
 
     backArrow:{
-        backgroundColor: "#006A4E",
+        backgroundColor: "#50c864",
         width: 40,
         height: 40,
         borderRadius: 20,

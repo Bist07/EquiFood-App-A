@@ -95,7 +95,7 @@ const RestaurantOwnerLogIn = () => {
                 <Pressable
                     onPress={() => navigation.goBack()}
                     style={{
-                        backgroundColor: '#50C878',
+                        backgroundColor: "#50c864",
                         width: 35,
                         height: 35,
                         borderRadius: 20,
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
 
     },
     signInButton: {
-        backgroundColor: '#50C878',
+        backgroundColor: "#50c864",
         width: '100%',
         padding: 15,
         marginVertical: 5,
@@ -195,14 +195,14 @@ const styles = StyleSheet.create({
         marginTop: 90,
     },
     ROText: {
-        color: '#50C878',
+        color: "#50c864",
         fontSize: 18,
     },
     AdminButton: {
         marginTop: 20,
     },
     AdminText: {
-        color: '#50C878',
+        color: "#50c864",
         fontSize: 18,
     }
 

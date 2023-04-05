@@ -44,7 +44,7 @@ export default OrderPage;
 
 const styles = StyleSheet.create({
   backButton: {
-    backgroundColor: "#006A4E",
+    backgroundColor: "#50c864",
     width: 40,
     height: 40,
     marginTop: 10,
