@@ -2,7 +2,7 @@ import { StyleSheet, View, TextInput, Text, FlatList, TouchableOpacity, Modal } 
 import React, { useState, useEffect } from 'react';
 import { AntDesign } from "@expo/vector-icons";
 import RestaurantCard from "../components/RestaurantCard";
-import { getOrderedRestaurants, getRestaurants } from "../API/RestaurantAPI";
+import { getOrderedByRatingRestaurants, getOrderedRestaurants, getRestaurants } from "../API/RestaurantAPI";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -13,6 +13,7 @@ const RestaurantsView = () => {
   const [input, setInput] = useState('');
   const [storeData, setStoreData] = useState([]);
   const [orderedData, setOrderedData] = useState();
+  const [ratedData, setRatedData] = useState();
 
   // For filtering Modal Pop Up:
   const [modalVisible, setModalVisible] = useState(false);
@@ -21,8 +22,10 @@ const RestaurantsView = () => {
     async function fetchData() {
       const result = await getRestaurants();
       const orderedResult = await getOrderedRestaurants();
+      const ratedResult = await getOrderedByRatingRestaurants();
       setStoreData(result);
       setOrderedData(orderedResult);
+      setRatedData(ratedResult);
     }
     fetchData();
   }, []);
@@ -117,7 +120,7 @@ const RestaurantsView = () => {
             </TouchableOpacity>
             <TouchableOpacity style={{}}
               onPress={() => {
-                setStoreData(orderedData);
+                setStoreData(ratedData);
                 setModalVisible(false);
               }}>
               <Text style={{ fontSize: 22, padding: 12, textAlign: "center", color: "#FAF9F6" }}> Sort by Rating </Text>
