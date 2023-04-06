@@ -4,7 +4,6 @@ import { Ionicons } from "@expo/vector-icons";
 import FoodEditCard from '../components/FoodEditCard'
 import React, { useState, useEffect } from "react";
 import { getMenu } from '../API/MenuAPI';
-import stylesR from '../components/stylesR';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const FoodEditView = () => {
@@ -21,7 +20,7 @@ const FoodEditView = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const result = await getMenu(restaurant_id);
+      const result = await getMenu(1);
       setFoods(result)
     }
     fetchData();
@@ -40,9 +39,8 @@ const FoodEditView = () => {
     }
   };
 
-
   return (
-    <View style={{backgroundColor: "#fff", height: "100%"}}>
+    <View style={{ backgroundColor: "#fff", height: "100%" }}>
       {/* <Header/> */}
       <Pressable
         onPress={() => navigation.goBack()}
@@ -55,26 +53,22 @@ const FoodEditView = () => {
           alignItems: "center",
           marginLeft: 10,
           marginTop: 90,
-          marginBottom:10 
+          marginBottom: 10
         }}
       >
         <Ionicons name="chevron-back-outline" size={24} color="white" />
       </Pressable>
-
       <View style={{ backgroundColor: 'white', alignItems: 'center' }}>
-                <Text style={{ fontSize: 30, marginTop: 10, marginBottom:60 }}>Edit Food View</Text>
+        <Text style={{ fontSize: 30, marginTop: 10, marginBottom: 60 }}>Edit Food View</Text>
       </View>
-      
-      <ScrollView style={{backgroundColor: "#fff", marginLeft:30, marginRight:30}}>
-                {foods.map((item, i) => (
+      <ScrollView style={{ backgroundColor: "#fff", marginLeft: 30, marginRight: 30 }}>
+        {foods.map((item, i) => (
           <FoodEditCard food={item} key={i} />
         ))}
       </ScrollView>
-
     </View>
   )
 }
 
 export default FoodEditView
-
 const styles = StyleSheet.create({})

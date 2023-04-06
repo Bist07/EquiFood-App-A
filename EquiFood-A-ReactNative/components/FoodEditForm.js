@@ -11,6 +11,7 @@ const FoodEditForm = (item) => {
   const navigation = useNavigation();
   const route = useRoute();
   const [image, setImage] = useState(null);
+
   return (
     <View style={{ paddingTop: 25 }}>
       <Header />
@@ -38,7 +39,6 @@ const FoodEditForm = (item) => {
         <ImagePickerButton callback={setImage} />
 
         <View>
-
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
             <TouchableOpacity style={stylesR.ROFormButtons}>
               <Text style={stylesR.ROButtonText}> Confirm  </Text>
@@ -49,7 +49,6 @@ const FoodEditForm = (item) => {
           </View>
         </View>
       </ScrollView>
-
     </View>
   )
 }
