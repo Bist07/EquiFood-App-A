@@ -2,6 +2,7 @@ import { Amplify, Storage } from 'aws-amplify';
 import awsconfig from '../src/aws-exports.js'
 import { RestaurantInsert } from './RestaurantAPI.js';
 import { FoodInsert } from './MenuAPI.js';
+import { UpdateFoodItem } from './MenuAPI.js';
 
 Amplify.configure(awsconfig);
 
@@ -30,8 +31,8 @@ export const InsertForm = async (name, file, type, data) => {
             RestaurantInsert(data);
           }
 
-          if (type === 'customer') {
-            //CustomerInsert(data);
+          if (type === 'editFood') {
+            UpdateFoodItem(data);
           }
 
         })

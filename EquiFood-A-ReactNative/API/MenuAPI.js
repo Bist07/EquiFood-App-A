@@ -34,3 +34,14 @@ export const FoodInsert = async (data) => {
         alert("An error has occurred when inserting food.");
     });
 }
+
+export const UpdateFoodItem = async (data) => {
+    try {
+        console.log(data);
+        const response = await axios.put(`${config.local.url}:${config.local.port}/Menu/Update`, { data });
+        return response.data;
+
+    } catch (error) {
+        console.error(error);
+    }
+}
