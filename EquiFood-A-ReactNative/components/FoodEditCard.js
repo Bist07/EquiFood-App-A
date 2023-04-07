@@ -21,7 +21,8 @@ const FoodEditCard = ({ food }) => {
         originalPrice: food.original_price,
         discountPrice: food.price,
         servingsLeft: food.quantity,
-        imgSrc: ImageURL,
+        ImageURL: food.ImageURL,
+        id: food.id,
       })}>
 
       <View style={{ marginLeft: 10, flex: 1 }}>
