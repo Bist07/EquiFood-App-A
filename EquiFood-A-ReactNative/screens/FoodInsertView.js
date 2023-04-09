@@ -13,7 +13,7 @@ const FoodInsertView = () => {
   useEffect(() => {
     getUser();
   }, [])
-  
+
 
 
   const navigation = useNavigation();
@@ -47,30 +47,27 @@ const FoodInsertView = () => {
       let parsed = JSON.parse(savedUser)
       setrestaurantId(parsed.restaurantId);
       console.log(restaurantId);
-   
+
     } catch (error) {
       console.log(error);
     }
   };
 
-  
-
-
   const onSubmitFormHandler = async (e) => {
 
-   const data = {
+    const data = {
       item_name: foodName,
       price: discPrice,
       restaurant_id: restaurantId,
       ImageURL: '',
       original_price: ogPrice,
       quantity: servings,
-     
-  } 
+
+    }
 
     await InsertForm(foodName, file, 'food', data)
     navigation.navigate('FoodInsertView');
-   
+
   }
 
 
@@ -88,14 +85,16 @@ const FoodInsertView = () => {
           justifyContent: "center",
           alignItems: "center",
           marginLeft: 10,
+
           marginTop: 40,
           marginBottom:0
+
         }}
       >
         <Ionicons name="chevron-back-outline" size={24} color="white" />
       </Pressable>
       <ScrollView style={stylesR.FoodInsertView}>
-        
+
 
 
         <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 100 }}>
@@ -115,27 +114,27 @@ const FoodInsertView = () => {
         </View>
 
         <View>
-          <Text style={{marginTop:7, marginBottom: 5 }}>Image</Text>
+          <Text style={{ marginTop: 7, marginBottom: 5 }}>Image</Text>
           <View style={stylesR.inputForm}>
             {<ImagePickerButton callback={setFile} />}
           </View>
         </View>
-        
-        <View style= {{marginTop:10}}>
+
+        <View style={{ marginTop: 10 }}>
 
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-evenly" }}>
-          <TouchableOpacity style={stylesR.ROFormButtons} 
+            <TouchableOpacity style={stylesR.ROFormButtons}
               onPress={() => onSubmitFormHandler()}>
-                <Text style={styles.buttonText}> Submit </Text>
+              <Text style={styles.buttonText}> Submit </Text>
             </TouchableOpacity>
             <TouchableOpacity style={stylesR.ROFormButtons}
               onPress={() => navigation.navigate('FoodInsertView')}>
-                <Text style={styles.buttonText}> Reset </Text>
+              <Text style={styles.buttonText}> Reset </Text>
             </TouchableOpacity>
           </View>
 
-        </View>         
-        
+        </View>
+
       </ScrollView>
       </View>
     </>

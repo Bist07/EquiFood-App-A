@@ -36,4 +36,15 @@ router.post('/FoodInsert', async function (req, res) {
     }
 })
 
-
+router.put('/Update', async function (req, res) {
+    try {
+        const { data } = req.body;
+        console.log(data);
+        console.log([data.item_name, data.price, data.imageURL, data.original_price, data.quantity, data.id]);
+        const sqlQuery = "UPDATE menu_item SET item_name = ?, price = ?, original_price = ?, quantity = ? WHERE id = ?";
+        const result = await pool.query(sqlQuery, [data.item_name, data.price, data.original_price, data.quantity, data.id]);
+        res.status(200).send({ id: data.id, status: "updated" });
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+});
