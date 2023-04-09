@@ -100,7 +100,7 @@ try {
           <Pressable
             onPress={() => navigation.goBack()}
             style={{
-              backgroundColor: '#50C878',
+              backgroundColor: "#50c864",
               width: 35,
               height: 35,
               borderRadius: 17,
@@ -115,7 +115,7 @@ try {
           </Pressable>
         </View>
 
-        <Text style={{fontSize:22, marginTop:35, textAlign: 'center'}}> Enter your Password to Delete your Account</Text>
+        <Text style={{fontSize:22, marginTop:200, textAlign: 'center'}}> Enter your Password to Delete your Account</Text>
 
         <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 70 }}>
           <TextInput autoCapitalize='none' placeholder={"Password"} value={Password} onChangeText={onChangePasswordHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   formButtons: {
-    backgroundColor: '#50C878',
+    backgroundColor: "#50c864",
     width: '80%',
     padding: 7,
     marginVertical: 5,

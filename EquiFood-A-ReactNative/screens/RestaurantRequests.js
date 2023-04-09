@@ -46,14 +46,14 @@ const RestaurantRequests = () => {
             </View>
 
             <Text style={{ fontSize: 35, marginTop: 20 }}> Restaurant Requests </Text>
-            <Text style={{ textAlign: "center", marginTop: 12, fontSize: 15, fontWeight: "205" }}> Select restaurant to view restaurant information</Text>
+            <Text style={{ textAlign: "center", marginTop: 12, fontSize: 15, fontWeight: "205" }}> View restaurant information to accept or decline.</Text>
 
 
             <ScrollView style={styles.body}>
                 <View style={{ marginTop: 40, width: "100%" }}>
                     <View style={{ marginLeft: 10, marginRight: 10, marginTop: 30 }}>
                         <ScrollView style={{ backgroundColor: "#FFF" }}>
-                            <View style={{ marginLeft: 40, marginRight: 40, marginTop: 30 }}>
+                            <View style={{ marginLeft: 10, marginRight: 10, marginTop: 30 }}>
                                 {storeData.map((item, index) => <RequestsCard key={index} item={item} />)}
                             </View>
                         </ScrollView>

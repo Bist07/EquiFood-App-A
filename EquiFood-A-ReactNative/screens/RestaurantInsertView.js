@@ -59,7 +59,7 @@ const RestaurantInsertView = () => {
   return (
     <>
       <View style={styles.root}>
-        <View style={{ alignSelf: "flex-start", marginTop: 70 }}>
+        <View style={{ alignSelf: "flex-start", marginTop: 30 }}>
           <Pressable
             onPress={() => navigation.goBack()}
             style={{
@@ -70,27 +70,27 @@ const RestaurantInsertView = () => {
               justifyContent: "center",
               alignItems: "center",
               marginLeft: 0,
-              marginTop: 10,
-              marginBottom:20
+              marginTop: 0,
+              marginBottom:0
             }}
           >
             <Ionicons name="chevron-back-outline" size={20} color="white" />
           </Pressable>
         </View>
 
-        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 70 }}>
+        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 15, marginTop: 170 }}>
           <TextInput placeholder={"Restaurant Name"} value={name} onChangeText={onChangeNameHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="default" />
         </View>
 
-        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 20 }}>
+        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 15, marginTop: 25 }}>
           <TextInput placeholder={"Cuisine"} value={cuisine} onChangeText={onChangeCuisineHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
         </View>
 
-        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 20 }}>
+        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 15, marginTop: 25 }}>
           <TextInput placeholder={"Hours"} value={hours} onChangeText={onChangeHoursHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
         </View>
 
-        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 25, marginTop: 20 }}>
+        <View style={{ flexDirection: 'row', borderBottomColor: '#ccc', borderBottomWidth: 1, paddingBottom: 8, marginBottom: 40, marginTop: 25 }}>
           <TextInput placeholder={"Address"} value={address} onChangeText={onChangeAddressHandler} style={{ flex: 1, paddingVertical: 0 }} keyboardType="numeric" />
         </View>
 
@@ -129,6 +129,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
     backgroundColor: 'white',
+    height: "100%",
     flex: 1,
   },
   formButtons: {

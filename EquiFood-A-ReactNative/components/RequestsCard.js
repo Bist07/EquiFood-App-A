@@ -54,9 +54,9 @@ const RequestsCard = (data) => {
                         
                       </TouchableOpacity>
                         <TouchableOpacity>
-                            {/* <Image style={{ fontWeight: "bold", padding: 20, fontSize: 20 }} source={{ uri: restaurant.ImageURL }} /> */}
+                            
                             <Text style={{ fontWeight: "bold", padding: 10, fontSize: 20 }}> {restaurant.name} </Text>
-                            <Text style={{ padding: 5, marginLeft:5,fontSize: 20 }}> {restaurant.hours} </Text>
+                            <Text style={{ padding: 0, marginLeft:0,fontSize: 20 }}> Hours of Op. {restaurant.hours} </Text>
                         </TouchableOpacity>
                         <TouchableOpacity>
                           <Pressable

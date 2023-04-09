@@ -174,7 +174,7 @@ const ViewCart = (props) => {
 
         <View style={{ padding: 10, backgroundColor: "white" }}>
           <View style={styles.totalPrice}>
-            <Text style={{ fontWeight: "bold", fontSize: 24 }}>
+            <Text style={{fontSize: 27 , marginLeft:3 }}>
               Total Price:
             </Text>
             <Text style={{ fontWeight: "bold", fontSize: 24 }}>
@@ -184,10 +184,10 @@ const ViewCart = (props) => {
         </View>
 
         <View style={styles.pickupTime}>
-          <Text style={{ fontWeight: "bold", fontSize: 20 }}>
+          <Text style={{fontSize: 23 , marginTop:4, marginLeft:6}}>
             Pickup Time: 
           </Text>
-          {buttonShow && (<Button id="timeButton" onPress={showTimePicker} title="Click to pick a Time!" />)}
+          {buttonShow && (<Button color={"#50c864"} id="timeButton" onPress={showTimePicker} title="Click to pick a Time!" />)}
           {show && (<DateTimePicker
             testID='dateTimePicker'
             value={date}
@@ -205,10 +205,10 @@ const ViewCart = (props) => {
             placeOrder();
             dispatch(cleanCart());
           }}
-          style={{ backgroundColor: "green", padding: 10 }}
+          style={{ backgroundColor: "#50c864", padding: 20 }}
         >
           <Text style={styles.checkoutText}>
-            Checkout
+           Checkout
           </Text>
         </Pressable>
       </View>
@@ -299,6 +299,7 @@ const styles = StyleSheet.create({
 
   cartItems: {
     marginTop:5,
+     
     display: "flex",
     flexDirection: "row",
     // flexBasis: "30%",
@@ -308,10 +309,10 @@ const styles = StyleSheet.create({
   },
 
   cartItemText: { 
-    color: "green", 
+    color: "black", 
     paddingTop:6, 
     fontWeight: "500", 
-    fontSize: 16,
+    fontSize: 17,
     flex: '1 1 auto',
   },
 
@@ -327,14 +328,14 @@ const styles = StyleSheet.create({
 
   itemCountButtons: {
     fontSize: 20,
-    color: "green",
+    color: "#50c864",
     paddingHorizontal: 6,
     fontWeight: "600",
   },
 
   itemCount: {
     fontSize: 19,
-    color: "green",
+    color: "#50c864",
     paddingHorizontal: 8,
     fontWeight: "600",
   },

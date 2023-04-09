@@ -96,13 +96,13 @@ const AdminLogIn = () => {
                 <Pressable
                     onPress={() => navigation.goBack()}
                     style={{
-                        backgroundColor: '#50C878',
+                        backgroundColor: "#50c864",
                         width: 35,
                         height: 35,
                         borderRadius: 20,
                         justifyContent: "center",
                         alignItems: "center",
-                        marginLeft: 10,
+                        marginLeft: 0,
                     }}
                 >
                     <Ionicons name="chevron-back-outline" size={20} color="white" />
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
 
     },
     signInButton: {
-        backgroundColor: '#50C878',
+        backgroundColor: "#50c864",
         width: '100%',
         padding: 15,
         marginVertical: 5,
